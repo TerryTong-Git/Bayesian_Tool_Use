@@ -1,0 +1,4202 @@
+{
+  "slide-0": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Jan 6th Agenda"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.57,
+      "top": 0.78,
+      "width": 8.43,
+      "height": 3.47,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Recap what happened last time (slide 2, 5 min)",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Current plots and GSM8K inclusion / Exclusion (slide 3-10,  20 min)",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Are the current plots sufficient?",
+          "bullet": true,
+          "level": 1,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "Is GSM8K negative results. Hypothesis why?",
+          "bullet": true,
+          "level": 1,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "Current plots of the logistic regression / MI (slide 11-16, 20 min)",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Data setup, examples and label distribution",
+          "bullet": true,
+          "level": 1
+        },
+        {
+          "text": "MI lower bound is predictive of final accuracy (supported by theory)",
+          "bullet": true,
+          "level": 1
+        },
+        {
+          "text": "MI of code is always higher of NL (on tasks where they are both defined, in some data points parsing fails)",
+          "bullet": true,
+          "level": 1
+        },
+        {
+          "text": "Key takeaways + Next steps (slide 17-18, 10 min)",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Should I invest time in the noisy exps / recovery exps. Further, how do we define noise? An obvious control would be without any noise and seeing how it performs.",
+          "bullet": true,
+          "level": 1
+        },
+        {
+          "text": "Or should I invest time into the pretraining exps",
+          "bullet": true,
+          "level": 1
+        }
+      ]
+    }
+  },
+  "slide-1": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Recap"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.74,
+      "top": 1.04,
+      "width": 8.27,
+      "height": 1.35,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Json Parsing Failures / Structured output failures (fixed)",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Increasing sample size",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Using different models.",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Adding different benchmarks (gsm8k, clrs30, nphardeval)",
+          "bullet": true,
+          "level": 0
+        }
+      ]
+    }
+  },
+  "slide-2": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Example Prompt for Arm setup"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.48,
+      "top": 0.52,
+      "width": 4.37,
+      "height": 0.39,
+      "paragraphs": [
+        {
+          "text": "model=qwen/qwen-2.5-coder-32b-instruct seed=1 digit=2",
+          "font_size": 11.0,
+          "theme_color": "DARK_1"
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 0.81,
+      "top": 1.24,
+      "width": 2.93,
+      "height": 0.37,
+      "paragraphs": [
+        {
+          "text": "Example Prompt",
+          "alignment": "CENTER"
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 0.57,
+      "top": 1.75,
+      "width": 7.98,
+      "height": 1.1,
+      "overflow": {
+        "frame": {
+          "overflow_bottom": 0.06
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Production planning: Choose integer quantities x_j ≥ 0 to maximize total profit sum_j profit[j]*x_j, subject",
+          "font_size": 12.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 13.8
+        },
+        {
+          "text": "to resource constraints sum_j consumption[i][j]*x_j ≤ capacity[i]. Return the max profit. profit = [6, 20]",
+          "font_size": 12.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 13.8
+        },
+        {
+          "text": "consumption (rows=resources) = [[29, 27], [26, 4]] capacity = [10, 5] upper_bounds = [3, 3]",
+          "font_size": 12.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 13.8
+        }
+      ]
+    },
+    "shape-4": {
+      "left": 2.08,
+      "top": 4.08,
+      "width": 7.62,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "Hardness parameter dictates dimensionality of constraints"
+        }
+      ]
+    }
+  },
+  "slide-3": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-1": 1.13,
+          "shape-2": 1.12
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Example Responses"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 3.51,
+      "top": 0.08,
+      "width": 2.57,
+      "height": 0.44,
+      "overflow": {
+        "frame": {
+          "overflow_bottom": 0.15
+        }
+      },
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-0": 1.13
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Code miserably fails here"
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 7.05,
+      "top": 0.11,
+      "width": 2.98,
+      "height": 0.44,
+      "overflow": {
+        "slide": {
+          "overflow_right": 0.03
+        }
+      },
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-0": 1.12
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Sometimes gives JSON err"
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 0.29,
+      "top": 0.95,
+      "width": 9.44,
+      "height": 1.33,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-4": 0.15,
+          "shape-6": 0.47
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "The problem requires maximizing profit under resource constraints. The consumption matrix shows that producing",
+          "font_size": 12.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 13.8
+        },
+        {
+          "text": "any unit of product 1 or 2 requires 29 or 27 units of resource 1, respectively. However, the capacity for",
+          "font_size": 12.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 13.8
+        },
+        {
+          "text": "resource 1 is only 10. Since even one unit of either product exceeds this capacity, no production is feasible.",
+          "font_size": 12.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 13.8
+        },
+        {
+          "text": "Thus, the maximum profit is 0.",
+          "font_size": 12.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 13.8
+        }
+      ]
+    },
+    "shape-4": {
+      "left": 0.58,
+      "top": 0.63,
+      "width": 2.93,
+      "height": 0.37,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-3": 0.15
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Example NL Solution",
+          "alignment": "CENTER"
+        }
+      ]
+    },
+    "shape-5": {
+      "left": 0.26,
+      "top": 2.52,
+      "width": 7.42,
+      "height": 0.4,
+      "paragraphs": [
+        {
+          "text": "```python def solution():     import pulp      profit = [9, 20]",
+          "font_size": 12.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 13.8
+        }
+      ]
+    },
+    "shape-6": {
+      "left": 0.58,
+      "top": 2.12,
+      "width": 2.93,
+      "height": 0.37,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-3": 0.47
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Example Code Solution",
+          "alignment": "CENTER"
+        }
+      ]
+    },
+    "shape-7": {
+      "left": 0.26,
+      "top": 3.2,
+      "width": 9.51,
+      "height": 2.42,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-8": 0.38
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "{   \"Answer\": \"0\",   \"code\": \"```python\\nimport pulp\\n\\ndef solution():\\n    profit",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "= [6, 20]\\n    consumption = [[29, 27], [26, 4]]\\n    capacity = [10, 5]\\n    upper_bounds = [3, 3]\\n    \\n",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "n_products = len(profit)\\n    n_resources = len(consumption)\\n    \\n    prob =",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "pulp.LpProblem(\\\"Production_Planning\\\", pulp.LpMaximize)\\n    \\n    x = [pulp.LpVariable(f\\\"x_{i}\\\",",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "lowBound=0, upBound=upper_bounds[i], cat='Integer') for i in range(n_products)]\\n    \\n    prob +=",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "sum(profit[i] * x[i] for i in range(n_products)), \\\"Total Profit\\\"\\n    \\n    for i in range(n_resources):\\n",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "prob += sum(consumption[i][j] * x[j] for j in range(n_products)) <= capacity[i],",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "f\\\"Resource_{i}_constraint\\\"\\n    \\n    prob.solve()\\n    \\n    return int(pulp.value(prob.objective))\\n```\",",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "\"simulation\": \"The resource constraints for the first resource (capacity 10) are exceeded by any non-zero",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "production. For example, producing 1 unit of product 1 requires 27 units of the first resource, which exceeds",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "the capacity of 10. Thus, the only feasible solution is x = [0, 0], resulting in a profit of 0.\" }",
+          "font_size": 12.0,
+          "theme_color": "DARK_1"
+        }
+      ]
+    },
+    "shape-8": {
+      "left": 0.72,
+      "top": 2.96,
+      "width": 2.93,
+      "height": 0.37,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-7": 0.38
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Example Code Sim Solution",
+          "alignment": "CENTER"
+        }
+      ]
+    }
+  },
+  "slide-4": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Code > NL holds when GSM8k excluded"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.0,
+      "top": 0.92,
+      "width": 9.28,
+      "height": 2.79,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-2": 2.42
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Sampling (over 3 seeds, digits 2,4,6,...,20):",
+          "bold": true
+        },
+        {
+          "text": "500/run GSM (1500 total)",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "500/run CLRS 30 (1500 total)",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "270 for NPHardEval (810 total)",
+          "bullet": true,
+          "level": 0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "270 for Our custom suite (810 total over 3 seeds)",
+          "bullet": true,
+          "level": 0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "Model Selection (over 10 models):",
+          "bold": true,
+          "theme_color": "DARK_1"
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 2.18,
+      "top": 1.37,
+      "width": 5.5,
+      "height": 0.44,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-1": 2.42
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Accuracy (Higher is better)"
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 2.56,
+      "top": 4.19,
+      "width": 1.64,
+      "height": 0.91,
+      "overflow": {
+        "frame": {
+          "overflow_bottom": 0.26
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Without prompt shortcut it does much worse"
+        }
+      ]
+    }
+  },
+  "slide-5": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Purely GSM8K Shows that code exec is worse than simulation"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 2.3,
+      "top": 1.02,
+      "width": 2.11,
+      "height": 0.91,
+      "paragraphs": [
+        {
+          "text": "Code > NL trend holds for closed models"
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 1.19,
+      "top": 3.37,
+      "width": 2.19,
+      "height": 1.38,
+      "overflow": {
+        "frame": {
+          "overflow_bottom": 0.18
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Weaker open models break the trend. Likely due to inability to generate sound code from the NL prompt"
+        }
+      ]
+    }
+  },
+  "slide-6": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Aggregate trend is statistically significant"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.76,
+      "top": 2.24,
+      "width": 1.99,
+      "height": 1.01,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "We see the same trend as the line plot"
+        }
+      ]
+    }
+  },
+  "slide-7": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-1": 0.72
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Benefits of code improves at scale"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 6.35,
+      "top": 0.31,
+      "width": 3.67,
+      "height": 0.91,
+      "overflow": {
+        "frame": {
+          "overflow_bottom": 0.07
+        },
+        "slide": {
+          "overflow_right": 0.03
+        }
+      },
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-0": 0.72
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Question: Why does multiplication not generalize perfectly for code? shouldn’t it be very easy?"
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 0.08,
+      "top": 1.29,
+      "width": 2.31,
+      "height": 1.35,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Rote memorization overcome be better generalization for harder difficulty"
+        }
+      ]
+    }
+  },
+  "slide-8": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Models struggle to recover on harder tasks (can’t take shortcut)"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.0,
+      "top": 1.33,
+      "width": 3.09,
+      "height": 0.67,
+      "paragraphs": [
+        {
+          "text": "As tasks get harder, models struggle to recover"
+        }
+      ]
+    }
+  },
+  "slide-9": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Stronger models don’t recover / take shortcut as much"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 1.94,
+      "top": 4.28,
+      "width": 6.54,
+      "height": 1.38,
+      "overflow": {
+        "slide": {
+          "overflow_bottom": 0.04
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Strong closed models don’t take shortcuts and have lower recovery rate as they get better (rely on actual generalization). benefits of recovery reduce as we improve our models…"
+        },
+        {
+          "text": "Weak open models take shortcuts so as they improve in accuracy, the recovery improves"
+        }
+      ]
+    }
+  },
+  "slide-10": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-1": 1.6
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Logistic Setup"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 4.36,
+      "top": 0.1,
+      "width": 3.81,
+      "height": 0.67,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-0": 1.6
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "More structured, always starts with ```python def solution() etc…"
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 0.54,
+      "top": 1.18,
+      "width": 9.17,
+      "height": 4.24,
+      "paragraphs": [
+        {
+          "text": "Example 3: kind=activity_selector, digits=6",
+          "font_size": 16.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "gamma (nl):   activity_selector|d6|bNA",
+          "font_size": 16.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "gamma (code): activity_selector|d6|bNA",
+          "font_size": 16.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "nl rationale:",
+          "font_size": 16.0,
+          "bold": true,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "Using the greedy activity selector algorithm, I sorted activities by finish time. Starting with Activity 3 (finishes at 0.544), I selected it. Then Activity 1 (starts at 0.715, finishes at 0.891) was selected as it starts after Activity 3 finishes. All remaining activities overlapped with either Activity 3 or Activity 1, so no more could be selected. The maximum number of non-overlapping...",
+          "font_size": 16.0,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "code rationale:",
+          "font_size": 16.0,
+          "bold": true,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "```python def solution() -> int: # Activity Selector Problem - Greedy Algorithm # Select maximum number of non-overlapping activities # Activities are sorted by finish time s = [0.437, 0.715, 0.602, 0.383, 0.423, 0.528] # start times f = [0.548, 0.891, 0.963, 0.544, 0.791, 0.645] # finish times # Create list of activities with indices activities = [(s[i], f[i], i) for i in range(len(s))] # Sort...",
+          "font_size": 16.0,
+          "theme_color": "DARK_1"
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 0.76,
+      "top": 0.81,
+      "width": 4.87,
+      "height": 0.34,
+      "overflow": {
+        "frame": {
+          "overflow_bottom": 0.53
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Example NL Rationale + Label",
+          "alignment": "CENTER",
+          "font_size": 24.0
+        }
+      ]
+    }
+  },
+  "slide-11": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-1": 1.48
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Logistic Label distribution"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 6.41,
+      "top": 0.07,
+      "width": 3.61,
+      "height": 0.91,
+      "overflow": {
+        "slide": {
+          "overflow_right": 0.03
+        }
+      },
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-0": 1.48
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Should exclude NPHardEval and others, only use the base and base accuracy…"
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 8.51,
+      "top": 2.54,
+      "width": 2.28,
+      "height": 0.44,
+      "overflow": {
+        "slide": {
+          "overflow_right": 0.79
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Exclude?"
+        }
+      ]
+    }
+  },
+  "slide-12": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Code generally has higher variational lower bound"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 4.38,
+      "top": 3.63,
+      "width": 0.28,
+      "height": 0.34,
+      "overflow": {
+        "frame": {
+          "overflow_bottom": 0.06
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "-",
+          "alignment": "CENTER"
+        }
+      ]
+    }
+  },
+  "slide-13": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "The contrasts trend for vlb holds across models"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.76,
+      "top": 2.24,
+      "width": 1.99,
+      "height": 1.01,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Statistically significant (wilcoxon)"
+        }
+      ]
+    }
+  },
+  "slide-14": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "The VLB is predictive of downstream accuracy"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 2.55,
+      "top": 1.79,
+      "width": 7.62,
+      "height": 0.44,
+      "overflow": {
+        "slide": {
+          "overflow_right": 0.16
+        }
+      },
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-2": 1.22
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Linear relationship"
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 5.56,
+      "top": 1.68,
+      "width": 3.71,
+      "height": 0.44,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-1": 1.22
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "MI variational lower bound*"
+        }
+      ]
+    }
+  },
+  "slide-15": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "CE also predictive of downstream accuracy"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 3.93,
+      "top": 1.56,
+      "width": 1.27,
+      "height": 1.14,
+      "paragraphs": [
+        {
+          "text": "Final accuracy on end task (e.g. ilp)"
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 5.98,
+      "top": 3.92,
+      "width": 3.58,
+      "height": 0.91,
+      "paragraphs": [
+        {
+          "text": "CE from logistic regression with nl and code that generated that final accuracy."
+        }
+      ]
+    }
+  },
+  "slide-16": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Main takeaways"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.57,
+      "top": 0.91,
+      "width": 8.71,
+      "height": 2.69,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Part 1:"
+        },
+        {
+          "text": "3 arms works, but not with heavy NL / non-algorithmic tasks (e.g. gsm8k) under weak models",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Models do not recover as tasks get harder",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "benefits of recovery reduce as we improve our models",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Part 2:"
+        },
+        {
+          "text": "MI lower bound predicts final performance",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Code has higher MI than NL",
+          "bullet": true,
+          "level": 0
+        }
+      ]
+    }
+  },
+  "slide-17": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Plans:"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.57,
+      "top": 0.83,
+      "width": 7.15,
+      "height": 4.12,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "4 types of perturbations for noise experiments:"
+        },
+        {
+          "text": "Numerical (perturb_numerical): Replaces a fraction of digits with random digits.",
+          "bullet": true,
+          "level": 0,
+          "space_before": 12.0,
+          "font_name": "Arial",
+          "font_size": 16.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 18.4
+        },
+        {
+          "text": "Textual (perturb_textual): Character-level noise via insertions, deletions, and swaps.",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Arial",
+          "font_size": 16.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 18.4
+        },
+        {
+          "text": "Structural (perturb_structural): Shuffles list/matrix elements (or words if no bracketed lists are found).",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Arial",
+          "font_size": 16.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 18.4
+        },
+        {
+          "text": "Irrelevant (perturb_irrelevant): Injects distractor sentences.",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Arial",
+          "font_size": 16.0,
+          "theme_color": "DARK_1",
+          "line_spacing": 18.4
+        }
+      ]
+    }
+  },
+  "slide-18": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Dec 17 Agenda"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.27,
+      "top": 0.63,
+      "width": 9.16,
+      "height": 0.67,
+      "paragraphs": [
+        {
+          "text": "Takeaway and open questions from last week (slide 3, ~ 5 mins)",
+          "bullet": true,
+          "level": 0,
+          "bold": true,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "Schedule and Plans ( < 10 mins)",
+          "bullet": true,
+          "level": 0,
+          "bold": true,
+          "theme_color": "DARK_1"
+        }
+      ]
+    }
+  },
+  "slide-19": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Takeaways from last week"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.44,
+      "top": 0.74,
+      "width": 8.46,
+      "height": 0.67,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Some models exhibit abnormal behaviour"
+        },
+        {
+          "text": "Debug why",
+          "bullet": true,
+          "level": 0
+        }
+      ]
+    }
+  },
+  "slide-20": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Plans (Engineering Mode)"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.57,
+      "top": 0.78,
+      "width": 8.43,
+      "height": 3.37,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Understand the impact of increasing samples to 500"
+        },
+        {
+          "text": "Visualize and analyze the impact of different models"
+        },
+        {
+          "text": "E.g. impact of model size, architecture, reasoning, code, other benchmarked abilities.",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Test MI Code"
+        },
+        {
+          "text": "Is MI Predictive of Performance",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Does pre-training MI predict test time MI? How can we establish this relationship.",
+          "bullet": true,
+          "level": 0
+        },
+        {
+          "text": "Noisy Exps"
+        },
+        {
+          "text": "Look at the perturb. What is X Axis.",
+          "bullet": true,
+          "level": 0
+        }
+      ]
+    }
+  },
+  "slide-21": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Schedule (Away until Jan 5th)"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.57,
+      "top": 0.78,
+      "width": 8.43,
+      "height": 1.01,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Begin working on Jan 5th"
+        },
+        {
+          "text": "Blocked by PhD Apps, OpenRouter Costs, and Holidays"
+        }
+      ]
+    }
+  },
+  "slide-22": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Dec 5 Agenda"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.41,
+      "top": 0.73,
+      "width": 8.22,
+      "height": 2.32,
+      "paragraphs": [
+        {
+          "text": "Takeaway and open questions from last week (slide 3, ~ 5 mins)",
+          "bullet": true,
+          "level": 0,
+          "bold": true
+        },
+        {
+          "text": "Main Plots ( < 25 mins)",
+          "bullet": true,
+          "level": 0,
+          "bold": true,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "Pretraining mutual information (10 mins)",
+          "bullet": true,
+          "level": 0,
+          "bold": true,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "Interpreting results",
+          "bullet": true,
+          "level": 1,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "how does this fit into the picture",
+          "bullet": true,
+          "level": 1,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "Is MI predictive of performance? (10 mins)",
+          "bullet": true,
+          "level": 0,
+          "bold": true,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "What are the effects of different performances on agentic behaviour ? Does overall natural language or coding ability influence agentic behaviour?",
+          "bullet": true,
+          "level": 0,
+          "bold": true,
+          "theme_color": "DARK_1"
+        },
+        {
+          "text": "Next steps and milestones ?",
+          "bullet": true,
+          "level": 0,
+          "bold": true,
+          "theme_color": "DARK_1"
+        }
+      ]
+    }
+  },
+  "slide-23": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Summary"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.44,
+      "top": 0.8,
+      "width": 4.73,
+      "height": 2.02,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Last time:"
+        },
+        {
+          "text": "Empirical Success of 3 arms experiment",
+          "bullet": true,
+          "level": 0,
+          "bold": false
+        },
+        {
+          "text": "Does this generalize to other models?",
+          "bullet": true,
+          "level": 0,
+          "bold": false
+        },
+        {
+          "text": "Are the results rigorous / robust?",
+          "bullet": true,
+          "level": 0,
+          "bold": false
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 0.36,
+      "top": 3.8,
+      "width": 5.52,
+      "height": 0.88,
+      "paragraphs": [
+        {
+          "text": "Discussion:",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true
+        },
+        {
+          "text": "What models would be useful signals",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0
+        }
+      ]
+    }
+  },
+  "slide-24": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Prompts / Structured Output Schema"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 5.41,
+      "top": 0.94,
+      "width": 3.95,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "Example formatting:"
+        }
+      ]
+    }
+  },
+  "slide-25": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Results"
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.21,
+      "top": 0.6,
+      "width": 4.62,
+      "height": 3.74,
+      "paragraphs": [
+        {
+          "text": "Results on more models, most have 2-5 seeds run."
+        },
+        {
+          "text": "Prompts:"
+        },
+        {
+          "text": "Includes: NPHardEval (225), CLRS30 (25), GSM8K (25), Fine-grained (225)"
+        },
+        {
+          "text": "Qualitative Observations: Why does open-ai models excel at NL reasoning, but not code?"
+        },
+        {
+          "text": "Some models struggle really badly on all tasks."
+        },
+        {
+          "text": "How other benchmarks impact the results?"
+        },
+        {
+          "text": "What is impact of <thinking> ?"
+        }
+      ]
+    }
+  },
+  "slide-26": {
+    "shape-0": {
+      "left": 0.11,
+      "top": 0.2,
+      "width": 1.82,
+      "height": 0.82,
+      "paragraphs": [
+        {
+          "text": "Non reasoning models",
+          "font_size": 11.0,
+          "color": "222222",
+          "line_spacing": 12.65
+        }
+      ]
+    }
+  },
+  "slide-27": {
+    "shape-0": {
+      "left": 6.81,
+      "top": 0.2,
+      "width": 3.28,
+      "height": 3.28,
+      "overflow": {
+        "slide": {
+          "overflow_right": 0.09
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Reasoning models",
+          "font_size": 11.0,
+          "color": "222222",
+          "line_spacing": 12.65
+        }
+      ]
+    }
+  },
+  "slide-28": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Fine-grained Results"
+        }
+      ]
+    }
+  },
+  "slide-29": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Overalls"
+        }
+      ]
+    }
+  },
+  "slide-30": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.06,
+      "width": 8.2,
+      "height": 1.21,
+      "paragraphs": [
+        {
+          "text": "Tool Use Language Models",
+          "font_name": "Calibri",
+          "font_size": 36.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 36.0
+        },
+        {
+          "text": "Research Updates",
+          "font_name": "Calibri",
+          "font_size": 36.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 36.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.12,
+      "top": 1.74,
+      "width": 3.67,
+      "height": 1.97,
+      "paragraphs": [
+        {
+          "text": "Terry Tong",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Yu Feng",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "University of Pennsylvania,",
+          "space_before": 9.0,
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 18.0
+        },
+        {
+          "text": "Cognitive Computation Group",
+          "space_before": 9.0,
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 18.0
+        },
+        {
+          "text": "09/19/2025",
+          "space_before": 9.0,
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 18.0
+        }
+      ]
+    }
+  },
+  "slide-31": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.06,
+      "width": 9.88,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "This presentation traces our research progress",
+          "font_name": "Calibri",
+          "font_size": 26.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 26.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 3.7,
+      "top": 1.51,
+      "width": 3.72,
+      "height": 0.46,
+      "paragraphs": [
+        {
+          "text": "What is the phenomena?",
+          "font_name": "Calibri",
+          "font_size": 24.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 24.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 5.15,
+      "top": 3.14,
+      "width": 3.32,
+      "height": 0.46,
+      "paragraphs": [
+        {
+          "text": "Why does it happen?",
+          "font_name": "Calibri",
+          "font_size": 24.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 24.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 6.86,
+      "top": 4.73,
+      "width": 3.0,
+      "height": 0.46,
+      "paragraphs": [
+        {
+          "text": "How is this useful?",
+          "font_name": "Calibri",
+          "font_size": 24.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 24.0
+        }
+      ]
+    }
+  },
+  "slide-32": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.1,
+      "width": 9.87,
+      "height": 0.43,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Direct Comparison is Challenging 🡪 Show a partial ordering",
+          "font_name": "Calibri",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "theme_color": "DARK_1",
+          "line_spacing": 12.0
+        }
+      ]
+    }
+  },
+  "slide-33": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.06,
+      "width": 9.84,
+      "height": 0.94,
+      "paragraphs": [
+        {
+          "text": "Execution is better than Code, which is better than Natural Language at solving Arithmetic, Dynamic Programming, ILP",
+          "font_name": "Calibri",
+          "font_size": 28.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 28.0
+        }
+      ]
+    }
+  },
+  "slide-34": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.06,
+      "width": 9.88,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "This presentation traces our research progress",
+          "font_name": "Calibri",
+          "font_size": 26.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 26.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 3.7,
+      "top": 1.51,
+      "width": 3.72,
+      "height": 0.46,
+      "paragraphs": [
+        {
+          "text": "What is the phenomena?",
+          "font_name": "Calibri",
+          "font_size": 24.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 24.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 5.17,
+      "top": 3.03,
+      "width": 3.72,
+      "height": 0.46,
+      "paragraphs": [
+        {
+          "text": "Why does it happen?",
+          "font_name": "Calibri",
+          "font_size": 24.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 24.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 6.86,
+      "top": 4.73,
+      "width": 3.0,
+      "height": 0.46,
+      "paragraphs": [
+        {
+          "text": "How is this useful?",
+          "font_name": "Calibri",
+          "font_size": 24.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 24.0
+        }
+      ]
+    }
+  },
+  "slide-35": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.06,
+      "width": 9.84,
+      "height": 0.47,
+      "paragraphs": [
+        {
+          "text": "Better Code Pretraining 🡪 Higher MI 🡪 Better Tool Use",
+          "font_name": "Calibri",
+          "font_size": 28.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 28.0
+        }
+      ]
+    }
+  },
+  "slide-36": {
+    "shape-0": {
+      "left": 0.25,
+      "top": 0.07,
+      "width": 9.75,
+      "height": 0.94,
+      "paragraphs": [
+        {
+          "text": "Problem solving is marginalizing in Bayesian inference, and using concept (e.g. LDA)",
+          "font_name": "Calibri",
+          "font_size": 28.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 28.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.17,
+      "top": 1.51,
+      "width": 3.58,
+      "height": 0.5,
+      "paragraphs": [
+        {
+          "text": "Concept helps infer answer",
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 18.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 5.69,
+      "top": 1.51,
+      "width": 3.74,
+      "height": 0.5,
+      "paragraphs": [
+        {
+          "text": "CoT is generated by input prompt x",
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 18.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 2.83,
+      "top": 4.65,
+      "width": 3.58,
+      "height": 0.5,
+      "paragraphs": [
+        {
+          "text": "CoT helps infer concept",
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 18.0
+        }
+      ]
+    }
+  },
+  "slide-37": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "This pipeline helps explain why code > NL for problem solving",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 6.38,
+      "top": 4.08,
+      "width": 2.04,
+      "height": 0.4,
+      "paragraphs": [
+        {
+          "text": "P(Y| . ) unreliable",
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 18.0
+        }
+      ]
+    }
+  },
+  "slide-38": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Higher MI 🡪 Lower Final Error Rate",
+          "line_spacing": 12.0
+        }
+      ]
+    }
+  },
+  "slide-40": {
+    "shape-0": {
+      "left": 4.44,
+      "top": 4.85,
+      "width": 5.33,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "Estimate via Logistic Regression",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-42": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "NL has higher Cross-Entropy than Code at predicting the class",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.41,
+      "top": 3.21,
+      "width": 3.74,
+      "height": 1.02,
+      "paragraphs": [
+        {
+          "text": "Gamma is (Concept, Digit, Instance). Instances Discretized. Drop samples < 1. (only 70/9601 datapoints dropped)",
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 18.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 2.77,
+      "top": 4.47,
+      "width": 2.9,
+      "height": 0.71,
+      "paragraphs": [
+        {
+          "text": "Another Observation: Better Discrimination",
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 18.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 6.18,
+      "top": 4.47,
+      "width": 2.9,
+      "height": 0.71,
+      "paragraphs": [
+        {
+          "text": "Higher lower bound, this is what we want",
+          "font_name": "Calibri",
+          "font_size": 18.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 18.0
+        }
+      ]
+    }
+  },
+  "slide-43": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Code is theoretically at least 6% better than NL at predicting Y.",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 3.64,
+      "top": 0.92,
+      "width": 4.66,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "Empirical Cross Entropies via Lemma 2",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-44": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.06,
+      "width": 9.88,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "This presentation traces our research progress",
+          "font_name": "Calibri",
+          "font_size": 26.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 26.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 3.7,
+      "top": 1.51,
+      "width": 3.72,
+      "height": 0.46,
+      "paragraphs": [
+        {
+          "text": "What is the phenomena?",
+          "font_name": "Calibri",
+          "font_size": 24.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 24.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 5.17,
+      "top": 3.03,
+      "width": 3.72,
+      "height": 0.46,
+      "paragraphs": [
+        {
+          "text": "Why does it happen?",
+          "font_name": "Calibri",
+          "font_size": 24.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 24.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 6.86,
+      "top": 4.73,
+      "width": 3.0,
+      "height": 0.46,
+      "paragraphs": [
+        {
+          "text": "How is this useful?",
+          "font_name": "Calibri",
+          "font_size": 24.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "262626",
+          "line_spacing": 24.0
+        }
+      ]
+    }
+  },
+  "slide-45": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.88,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Hyp0: Pretraining Code Provides a much better signal over NL at discriminating between concepts.",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.08,
+      "top": 4.89,
+      "width": 9.52,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "How Does Code Pretraining Affect Language Model Task Performance? TMLR 24’",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-46": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Evaluation of Hyp0: 80% Success Rate, 3 Day Execution",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.22,
+      "top": 0.86,
+      "width": 9.55,
+      "height": 3.13,
+      "paragraphs": [
+        {
+          "text": "Tasks",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Find open-source models (e.g. Marin-8B-Instruct) (30 min)",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Subsample their datasets, split into code v.s. general, i.e. DCLM Baseline https://huggingface.co/datasets/mlfoundations/dclm-baseline-1.0  v StarCoder https://huggingface.co/datasets/bigcode/starcoderdata  (6 hours) (Here rn).",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Embed using sentence-transformers mini-LM",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Do Retrieval Using queries of algorithms (6 hours) (weak supervision)",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Train Logistic Reg Model (2 hours)",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-47": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Story / Quick Abstract",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.23,
+      "top": 0.73,
+      "width": 9.69,
+      "height": 5.15,
+      "overflow": {
+        "slide": {
+          "overflow_bottom": 0.26
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Why is the problem interesting?",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "People instinctively call tools to solve algorithmic problems, but why is it better?  🡪 Data? Algorithm? Model? Task Distribution?",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "What is the insight / challenge?",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "How can we grapple with two drastically different settings with different i/o? 🡪 Mathematical Linguistics / Statistical Learning Theory won’t work too well.",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Sol: 3 arms, Lets try pairwise, rather than mutual, comparison for tractability",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "How?",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "How is this useful?",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "For practitioners, understanding for what types of (algorithmic) problems benefits more / less from tools informs the data / learning algorithm they choose.",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-48": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "What we already have",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.4,
+      "top": 0.92,
+      "width": 9.37,
+      "height": 5.82,
+      "overflow": {
+        "slide": {
+          "overflow_bottom": 1.11
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "3 arms experiment + explanation",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Showing 1st arm < 2nd arm (3 arms)",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Showing 2nd arm < 3rd arm (Statistical Analysis) 🡪 This week",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "00B050",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Follow-up Questions we (pre-emptively) answered:",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Why is 1st  arm < 2nd arm? Mutual Info + Pretraining",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Why is 2nd  arm < 3rd arm? Solver is deterministic 🡪 1 Mutual Info",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Challenges solved on the way?",
+          "bullet": true,
+          "level": 0,
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        },
+        {
+          "text": "How can we begin to reason about capturing NL vs Structured  Language and compare them? 🡪 Information",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-49": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "What we need",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.5,
+      "top": 0.84,
+      "width": 8.41,
+      "height": 2.02,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "When are tools good / bad for algorithms?",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Now that we know MI is higher, does this arise from pretraining?",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "line_spacing": 20.0
+        },
+        {
+          "text": "Scale up experiments to bigger / more diverse models?",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-50": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Further Notes",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.4,
+      "top": 0.8,
+      "width": 2.54,
+      "height": 1.68,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "LoR’s email received",
+          "line_spacing": 12.0
+        },
+        {
+          "text": "Oumi",
+          "line_spacing": 12.0
+        },
+        {
+          "text": "Next ideas",
+          "line_spacing": 12.0
+        }
+      ]
+    }
+  },
+  "slide-51": {
+    "shape-0": {
+      "left": 0.31,
+      "top": 0.25,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "LLM Brain on ChatGPT",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.32,
+      "top": 2.23,
+      "width": 4.41,
+      "height": 0.34,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Agents continually learn w/ Tools",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 0.32,
+      "top": 3.17,
+      "width": 4.41,
+      "height": 0.34,
+      "paragraphs": [
+        {
+          "text": "Individual performance Degradation?",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-52": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Hyp1: LM’s rarely (<0.05) overcome failed CoT",
+          "line_spacing": 12.0
+        }
+      ]
+    }
+  },
+  "slide-53": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.88,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Prior experiment has 90% Success Rate and will take 2 days to execute",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.65,
+      "top": 0.96,
+      "width": 7.83,
+      "height": 4.88,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "overflow": {
+        "slide": {
+          "overflow_bottom": 0.21
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Tasks:",
+          "font_size": 30.0,
+          "line_spacing": 30.0
+        },
+        {
+          "text": "Let X = initial code generation",
+          "bullet": true,
+          "level": 0,
+          "line_spacing": 12.0
+        },
+        {
+          "text": "Compute P(X = fail), and thus P(X = succeed) = 1- P(X=fail)",
+          "bullet": true,
+          "level": 0,
+          "line_spacing": 12.0
+        },
+        {
+          "text": "LM Quantities:",
+          "font_size": 30.0,
+          "line_spacing": 30.0
+        },
+        {
+          "text": "Compute P(LM Succeeds | X = Fail), P(LM Succeeds | X = succeed).",
+          "bullet": true,
+          "level": 0,
+          "line_spacing": 12.0
+        },
+        {
+          "text": "Compute P(LM Fail | X = Fail), P(LM Fail | X = succeed).",
+          "bullet": true,
+          "level": 0,
+          "line_spacing": 12.0
+        },
+        {
+          "text": "Solver Quantities",
+          "font_size": 30.0,
+          "line_spacing": 30.0
+        },
+        {
+          "text": "Compute P(Solver succeeds | X = Fail), P(Solver succeeds | X = succeed)",
+          "bullet": true,
+          "level": 0,
+          "line_spacing": 12.0
+        },
+        {
+          "text": "Compute P(Solver succeeds | X = Fail), P(Solver succeeds | X = succeed)",
+          "bullet": true,
+          "level": 0,
+          "line_spacing": 12.0
+        }
+      ]
+    }
+  },
+  "slide-54": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Overall Means Meet our Expectation",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.0,
+      "top": 0.61,
+      "width": 3.75,
+      "height": 4.81,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-2": 4.52
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "OLMO",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall Code Exec Correct",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Mean  0.103300",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.304366",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: correct_code_exec",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall Code Sim:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.028600",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.166688",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: correct_code_sim,",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall Exeuctable Code:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.309600",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.462352",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: executable_code",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall NL:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.03030",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.17142",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: correct_nl",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 2.81,
+      "top": 0.61,
+      "width": 3.83,
+      "height": 4.81,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-1": 4.52,
+          "shape-3": 1.88
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "GEMMA",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall Code Exec Correct mean:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.72950",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.44424",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: correct_code_exec,",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall Code Sim:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.283300",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.450623",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: correct_code_sim",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall Exeuctable Code:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.798700",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.400992",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: executable_code",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall NL:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.247900",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.431815",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: correct_nl",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 6.25,
+      "top": 0.61,
+      "width": 3.75,
+      "height": 4.81,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-2": 1.88
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "DEEPSEEK",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall Code Exec Correct",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.804600",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.396528",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: correct_code_exec",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall Code Sim:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.293800",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.455524",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: correct_code_sim",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall Exeuctable Code:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.851600",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.355514",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: executable_code",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Overall NL:",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mean    0.213000",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "std     0.409448",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Name: correct_nl",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        }
+      ]
+    }
+  },
+  "slide-55": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "Fine grained Accuracy Results",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.21,
+      "top": 0.6,
+      "width": 0.95,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "OLMO",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 5.73,
+      "top": 0.6,
+      "width": 1.18,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "GEMMA",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 3.98,
+      "top": 2.94,
+      "width": 1.36,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "DEEPSEEK",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-56": {
+    "shape-0": {
+      "left": 0.15,
+      "top": 0.0,
+      "width": 9.69,
+      "height": 0.88,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-3": 0.36
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Likelihood Ratio of Contingency Tables show correlation between each of the code categories",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.0,
+      "top": 0.87,
+      "width": 3.26,
+      "height": 4.58,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-2": 0.69
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "OLMO",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "We are 1.8959316700382107 more likely to observe executable_code with correct_code_sim than with not executable_code. We have p-value, 1.1806017078591974e-07",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "We are 6914.0397479398935 more likely to observe executable_code with correct_code_exec than with not executable_code. We have p-value, 4.1241693243630626e-10",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "We are 2.027248839449943 more likely to observe correct_code_exec with correct_code_sim than with not correct_code_exec. We have p-value, 5.791848423858121e-06",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 3.11,
+      "top": 0.86,
+      "width": 3.23,
+      "height": 4.58,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-1": 0.69
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "GEMMA",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "We are 5.133226775795072 more likely to observe executable_code with correct_code_sim than with not executable_code. We have p-value, 1.712472743560229e-88",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "We are 42441.71965317919 more likely to observe executable_code with correct_code_exec than with not executable_code. We have p-value, 5.037750528546603e-14",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "We are 4.705844185411165 more likely to observe correct_code_exec with correct_code_sim than with not correct_code_exec. We have p-value, 3.875304758094849e-115",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 6.34,
+      "top": 0.77,
+      "width": 3.26,
+      "height": 4.58,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-0": 0.36
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "DEEPSEEK",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "We are 2.3904885911725717 more likely to observe executable_code with correct_code_sim than with not executable_code. We have p-value, 6.656285387406294e-32",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "We are 50809.63404255319 more likely to observe executable_code with correct_code_exec than with not executable_code. We have p-value, 1.9107092933266125e-14",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "We are 1.999086440803873 more likely to observe correct_code_exec with correct_code_sim than with not correct_code_exec. We have p-value, 1.355798843967054e-28",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        }
+      ]
+    }
+  },
+  "slide-57": {
+    "shape-0": {
+      "left": 0.08,
+      "top": 0.08,
+      "width": 9.69,
+      "height": 0.88,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "One-Way Anova actually shows that the NL and Code Sims are statistically significant!",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.08,
+      "top": 1.03,
+      "width": 2.72,
+      "height": 4.58,
+      "paragraphs": [
+        {
+          "text": "DEEPSEEK",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "friedman statistic 9277.32, p-value 0.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Correct_nl and correct code sim mcnemar statistic",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "pvalue      2.7741687827426563e-111",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "statistic   287.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Correct_nl and executable code mcnemar statistic",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "pvalue      0.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "statistic   139.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Correct_nl and correct code exec mcnemar statistic",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "pvalue      0.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "statistic   245.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 3.16,
+      "top": 1.09,
+      "width": 3.13,
+      "height": 4.58,
+      "overflow": {
+        "slide": {
+          "overflow_bottom": 0.04
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "GEMMA",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "friedman statistic 8369.344741532994, p-value 0.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Correct_nl and correct code sim mcnemar statistic",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "pvalue      9.380234214302106e-21",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "statistic   544.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Correct_nl and executable code mcnemar statistic",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "pvalue      0.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "statistic   202.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Correct_nl and correct code exec mcnemar statistic",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "pvalue      0.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "statistic   265.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 6.39,
+      "top": 1.2,
+      "width": 3.76,
+      "height": 4.34,
+      "overflow": {
+        "slide": {
+          "overflow_right": 0.14
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "OLMO",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "friedman statistic 3973.1409815567413, p-value 0.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Correct_nl and correct code sim",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "mcnemar statistic",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "pvalue      0.47650664585820707",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "statistic   244.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Correct_nl and executable code mcnemar statistic",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "pvalue      0.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "statistic   151.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "Correct_nl and correct code exec mcnemar statistic",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "pvalue      1.5518553962447072e-104",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        },
+        {
+          "text": "statistic   239.0",
+          "font_name": "Arial",
+          "font_size": 14.0,
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 14.0
+        }
+      ]
+    }
+  },
+  "slide-58": {
+    "shape-0": {
+      "left": 0.0,
+      "top": -0.1,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-2": 0.99,
+          "shape-3": 1.04
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Recovery Rate Are Low",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 1.02,
+      "top": 0.29,
+      "width": 3.06,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "Correct code exec vs sim",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 4.14,
+      "top": -0.04,
+      "width": 2.6,
+      "height": 0.77,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-0": 0.99,
+          "shape-3": 0.23
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "executable code exec vs exec",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    },
+    "shape-3": {
+      "left": 6.43,
+      "top": -0.06,
+      "width": 2.6,
+      "height": 0.77,
+      "overlap": {
+        "overlapping_shapes": {
+          "shape-0": 1.04,
+          "shape-2": 0.23
+        }
+      },
+      "paragraphs": [
+        {
+          "text": "Executable code vs correct sim",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    },
+    "shape-4": {
+      "left": 0.21,
+      "top": 1.12,
+      "width": 1.34,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "Deepseek",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    },
+    "shape-5": {
+      "left": 0.22,
+      "top": 2.29,
+      "width": 1.12,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "Gemma",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    },
+    "shape-6": {
+      "left": 0.3,
+      "top": 4.11,
+      "width": 0.84,
+      "height": 0.44,
+      "paragraphs": [
+        {
+          "text": "Olmo",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  },
+  "slide-59": {
+    "shape-0": {
+      "left": 0.31,
+      "top": 0.25,
+      "width": 9.69,
+      "height": 0.44,
+      "placeholder_type": "TITLE",
+      "default_font_size": 26.0,
+      "paragraphs": [
+        {
+          "text": "LLM Brain on ChatGPT",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-1": {
+      "left": 0.32,
+      "top": 2.23,
+      "width": 4.41,
+      "height": 0.34,
+      "placeholder_type": "BODY",
+      "default_font_size": 20.0,
+      "paragraphs": [
+        {
+          "text": "Agents continually learn w/ Tools",
+          "line_spacing": 12.0
+        }
+      ]
+    },
+    "shape-2": {
+      "left": 0.32,
+      "top": 3.17,
+      "width": 4.41,
+      "height": 0.34,
+      "paragraphs": [
+        {
+          "text": "Individual performance Degradation?",
+          "font_name": "Calibri",
+          "font_size": 20.0,
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "color": "000000",
+          "line_spacing": 20.0
+        }
+      ]
+    }
+  }
+}

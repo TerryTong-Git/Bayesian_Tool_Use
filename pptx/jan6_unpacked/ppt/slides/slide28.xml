@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="ascii"?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:dgm="http://schemas.openxmlformats.org/drawingml/2006/diagram" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:pvml="urn:schemas-microsoft-com:office:powerpoint" xmlns:com="http://schemas.openxmlformats.org/drawingml/2006/compatibility" xmlns:p14="http://schemas.microsoft.com/office/powerpoint/2010/main" xmlns:p15="http://schemas.microsoft.com/office/powerpoint/2012/main" xmlns:ahyp="http://schemas.microsoft.com/office/drawing/2018/hyperlinkcolor">
+  <p:cSld>
+    <p:spTree>
+      <p:nvGrpSpPr>
+        <p:cNvPr id="303" name="Shape 303"/>
+        <p:cNvGrpSpPr/>
+        <p:nvPr/>
+      </p:nvGrpSpPr>
+      <p:grpSpPr>
+        <a:xfrm>
+          <a:off x="0" y="0"/>
+          <a:ext cx="0" cy="0"/>
+          <a:chOff x="0" y="0"/>
+          <a:chExt cx="0" cy="0"/>
+        </a:xfrm>
+      </p:grpSpPr>
+      <p:sp>
+        <p:nvSpPr>
+          <p:cNvPr id="304" name="Google Shape;304;g3af2e3bdb1b_0_19"/>
+          <p:cNvSpPr txBox="1"/>
+          <p:nvPr>
+            <p:ph idx="12" type="sldNum"/>
+          </p:nvPr>
+        </p:nvSpPr>
+        <p:spPr>
+          <a:xfrm>
+            <a:off x="63050" y="4788399"/>
+            <a:ext cx="456000" cy="338700"/>
+          </a:xfrm>
+          <a:prstGeom prst="rect">
+            <a:avLst/>
+          </a:prstGeom>
+        </p:spPr>
+        <p:txBody>
+          <a:bodyPr anchorCtr="0" anchor="t" bIns="45700" lIns="91425" spcFirstLastPara="1" rIns="91425" wrap="square" tIns="45700">
+            <a:spAutoFit/>
+          </a:bodyPr>
+          <a:lstStyle/>
+          <a:p>
+            <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="r">
+              <a:spcBef>
+                <a:spcPts val="0"/>
+              </a:spcBef>
+              <a:spcAft>
+                <a:spcPts val="0"/>
+              </a:spcAft>
+              <a:buClr>
+                <a:srgbClr val="888888"/>
+              </a:buClr>
+              <a:buSzPts val="1600"/>
+              <a:buFont typeface="Calibri"/>
+              <a:buNone/>
+            </a:pPr>
+            <a:fld id="{00000000-1234-1234-1234-123412341234}" type="slidenum">
+              <a:rPr lang="en-US"/>
+              <a:t>&#8249;#&#8250;</a:t>
+            </a:fld>
+            <a:endParaRPr/>
+          </a:p>
+        </p:txBody>
+      </p:sp>
+      <p:graphicFrame>
+        <p:nvGraphicFramePr>
+          <p:cNvPr id="305" name="Google Shape;305;g3af2e3bdb1b_0_19"/>
+          <p:cNvGraphicFramePr/>
+          <p:nvPr/>
+        </p:nvGraphicFramePr>
+        <p:xfrm>
+          <a:off x="152400" y="152400"/>
+          <a:ext cx="3000000" cy="3000000"/>
+        </p:xfrm>
+        <a:graphic>
+          <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/table">
+            <a:tbl>
+              <a:tblPr>
+                <a:noFill/>
+                <a:tableStyleId>{EAE55144-D47E-4AE6-A9EA-0E63392E4AAA}</a:tableStyleId>
+              </a:tblPr>
+              <a:tblGrid>
+                <a:gridCol w="2419350"/>
+                <a:gridCol w="1000125"/>
+                <a:gridCol w="2514600"/>
+              </a:tblGrid>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Model name </a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Open-source/ Close-source</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Note</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:lnSpc>
+                          <a:spcPct val="115000"/>
+                        </a:lnSpc>
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>O3-mini</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Close-source</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:lnSpc>
+                          <a:spcPct val="115000"/>
+                        </a:lnSpc>
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:lnSpc>
+                          <a:spcPct val="115000"/>
+                        </a:lnSpc>
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Quick responses to technical questions. Optimized for STEM, excels at coding, math equations, and science questions</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:lnSpc>
+                          <a:spcPct val="115000"/>
+                        </a:lnSpc>
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>gemini-2.5-pro</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Close-source</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Complex reasoning, advanced coding, multimodal analysis	State-of-the-art performance, massive context window (1 million tokens), adaptive reasoning, rich multimodal input support</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:lnSpc>
+                          <a:spcPct val="115000"/>
+                        </a:lnSpc>
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>claude-4-sonnet</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Close-source</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:lnSpc>
+                          <a:spcPct val="115000"/>
+                        </a:lnSpc>
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Everyday coding tasks, writing and document review, reading text and images. Efficient and fast, large context support, strong reasoning</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>DeepSeek-R1</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Open-source</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Qwen/Qwen3-4B-Instruct-2507</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Open-source</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Qwen/Qwen3-Coder-30B-A3B-Instruct</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:rPr lang="en-US" sz="1100">
+                          <a:solidFill>
+                            <a:srgbClr val="222222"/>
+                          </a:solidFill>
+                          <a:highlight>
+                            <a:srgbClr val="FFFFFF"/>
+                          </a:highlight>
+                        </a:rPr>
+                        <a:t>Open-source</a:t>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+              <a:tr h="12700">
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+                <a:tc>
+                  <a:txBody>
+                    <a:bodyPr/>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+                        <a:spcBef>
+                          <a:spcPts val="0"/>
+                        </a:spcBef>
+                        <a:spcAft>
+                          <a:spcPts val="0"/>
+                        </a:spcAft>
+                        <a:buNone/>
+                      </a:pPr>
+                      <a:r>
+                        <a:t/>
+                      </a:r>
+                      <a:endParaRPr sz="1100">
+                        <a:solidFill>
+                          <a:srgbClr val="222222"/>
+                        </a:solidFill>
+                        <a:highlight>
+                          <a:srgbClr val="FFFFFF"/>
+                        </a:highlight>
+                      </a:endParaRPr>
+                    </a:p>
+                  </a:txBody>
+                  <a:tcPr marT="63500" marB="63500" marR="63500" marL="63500"/>
+                </a:tc>
+              </a:tr>
+            </a:tbl>
+          </a:graphicData>
+        </a:graphic>
+      </p:graphicFrame>
+      <p:sp>
+        <p:nvSpPr>
+          <p:cNvPr id="306" name="Google Shape;306;g3af2e3bdb1b_0_19"/>
+          <p:cNvSpPr txBox="1"/>
+          <p:nvPr/>
+        </p:nvSpPr>
+        <p:spPr>
+          <a:xfrm>
+            <a:off x="6227375" y="183775"/>
+            <a:ext cx="3000000" cy="3000000"/>
+          </a:xfrm>
+          <a:prstGeom prst="rect">
+            <a:avLst/>
+          </a:prstGeom>
+          <a:noFill/>
+          <a:ln>
+            <a:noFill/>
+          </a:ln>
+        </p:spPr>
+        <p:txBody>
+          <a:bodyPr anchorCtr="0" anchor="ctr" bIns="91425" lIns="91425" spcFirstLastPara="1" rIns="91425" wrap="square" tIns="91425">
+            <a:noAutofit/>
+          </a:bodyPr>
+          <a:lstStyle/>
+          <a:p>
+            <a:pPr indent="0" lvl="0" marL="0" rtl="0" algn="l">
+              <a:lnSpc>
+                <a:spcPct val="115000"/>
+              </a:lnSpc>
+              <a:spcBef>
+                <a:spcPts val="0"/>
+              </a:spcBef>
+              <a:spcAft>
+                <a:spcPts val="0"/>
+              </a:spcAft>
+              <a:buNone/>
+            </a:pPr>
+            <a:r>
+              <a:rPr lang="en-US" sz="1100">
+                <a:solidFill>
+                  <a:srgbClr val="222222"/>
+                </a:solidFill>
+                <a:highlight>
+                  <a:srgbClr val="FFFFFF"/>
+                </a:highlight>
+              </a:rPr>
+              <a:t>Reasoning models </a:t>
+            </a:r>
+            <a:endParaRPr sz="1100">
+              <a:solidFill>
+                <a:srgbClr val="222222"/>
+              </a:solidFill>
+              <a:highlight>
+                <a:srgbClr val="FFFFFF"/>
+              </a:highlight>
+            </a:endParaRPr>
+          </a:p>
+        </p:txBody>
+      </p:sp>
+    </p:spTree>
+  </p:cSld>
+  <p:clrMapOvr>
+    <a:masterClrMapping/>
+  </p:clrMapOvr>
+</p:sld>
