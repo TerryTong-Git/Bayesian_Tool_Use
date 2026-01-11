@@ -9,7 +9,7 @@
 \newlabel{intro}{{1}{1}{}{section.1}{}}
 \newlabel{intro@cref}{{[section][1][]1}{[1][1][]1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:three_arms}{{1}{1}{Bayesian Inference model showing the \emph {three arms methodology} in \cref {exp:0}. Given an algorithmic problem, we may split it into two steps (1) Translate (2) Execute. The (1) translation $\in \{ \mathrm {Code}, \mathrm {NL }\}$. Then (2) execution $\in \{ \mathrm {LLM \ Reasoning}, \mathrm {Solver \ Execution}\}$. We have three pairs, Arm 1: $\{\mathrm {NL \ Gen},\mathrm {LLM \ Reasoning}\}$, Arm 2: $\{\mathrm {Code \ Gen}, \mathrm {LLM \ Reasoning}\}$, Arm 3: $\{\mathrm {Code \ Gen} , \mathrm {Solver \ Execution}\}$. Typically, the problem is tackled by comparing Arm 1 and Arm 3 in neuro-symbolic literature, which is intractable theoretically, and uncontrolled since multiple variables are changing. By introducing Arm 2, the problem becomes tractable. In the diagram, the \emph {shaded} circles correspond to observed R.V. and \emph {white} correspond to unobserved. The notation for R.V.s is correspondingly used in \cref {prelim}}{figure.caption.1}{}}
+\newlabel{fig:three_arms}{{1}{1}{Bayesian Inference model showing the \emph {three arms methodology} in \cref {exp:0}. Given an algorithmic problem, we may split it into two steps (1) Translate (2) Execute. The (1) translation $\in \{ \mathrm {Code}, \mathrm {NL }\}$. Then (2) execution $\in \{ \mathrm {LLM \ Reasoning}, \mathrm {Solver \ Execution}\}$. We have three pairs, Arm 1: $\{\mathrm {NL \ Gen},\mathrm {LLM \ Reasoning}\}$, Arm 2: $\{\mathrm {Code \ Gen}, \mathrm {LLM \ Reasoning}\}$, Arm 3: $\{\mathrm {Code \ Gen} , \mathrm {Solver \ Execution}\}$. Typically, the problem is tackled by comparing Arm 1 and Arm 3 in neuro-symbolic literature, which is intractable theoretically, and uncontrolled since multiple variables are changing. By introducing Arm 2, the problem becomes tractable. In the diagram, the \emph {shaded} circles correspond to observed R.V. and \emph {white} correspond to unobserved. The notation for R.V.s is correspondingly used in \cref {method}}{figure.caption.1}{}}
 \newlabel{fig:three_arms@cref}{{[figure][1][]1}{[1][1][]1}}
 \citation{xie2021explanation}
 \citation{lyu2023faithful,pan2023logic}
@@ -25,9 +25,8 @@
 \citation{shen_llm_2024,schick_toolformer_nodate,qin_toolllm_2023,tang_toolalpaca_2023,parisi_talm_2022}
 \citation{shin_few-shot_2022,krishnamurthy_neural_2017,berant_semantic_2013,dong_language_2016}
 \citation{puri_codenet_2021,alon_code2vec_2019,chen_neural_2018}
-\citation{xie2021explanation}
-\newlabel{prelim}{{3}{3}{}{section.3}{}}
-\newlabel{prelim@cref}{{[section][3][]3}{[1][3][]3}}
+\newlabel{method}{{3}{3}{}{section.3}{}}
+\newlabel{method@cref}{{[section][3][]3}{[1][3][]3}}
 \newlabel{exp:0}{{4}{3}{}{section.4}{}}
 \newlabel{exp:0@cref}{{[section][4][]4}{[1][3][]3}}
 \newlabel{fig:main}{{2}{4}{Accuracy comparison across the three reasoning arms for Deepseek-Coder and Gemma-2 models. Code execution (Arm 3) consistently outperforms code simulation (Arm 2) and natural language reasoning (Arm 1) across all task families: arithmetic, dynamic programming, and integer linear programming}{figure.caption.2}{}}
@@ -36,34 +35,35 @@
 \newlabel{fig:line@cref}{{[figure][3][]3}{[1][4][]4}}
 \newlabel{fig:pval}{{4}{4}{Pairwise $p$-values from McNemar tests comparing accuracy between arms. All comparisons are statistically significant ($p < 0.05$), confirming the ordering Arm 1 $<$ Arm 2 $<$ Arm 3. We use non-parametric tests (Kruskal-Wallis for overall comparison, McNemar for pairwise) to avoid distributional assumptions}{figure.caption.4}{}}
 \newlabel{fig:pval@cref}{{[figure][4][]4}{[1][4][]4}}
-\citation{ton2024understanding,altabaa2025cot}
-\citation{poole2019variational}
-\newlabel{lem:1}{{5.0.1}{5}{}{lemma.5.0.1}{}}
-\newlabel{lem:1@cref}{{[lemma][1][]5.0.1}{[1][5][]5}}
-\newlabel{lem:2}{{5.0.2}{5}{Variational Lower Bound}{lemma.5.0.2}{}}
-\newlabel{lem:2@cref}{{[lemma][2][]5.0.2}{[1][5][]5}}
-\newlabel{thm:1}{{5.1}{5}{}{theorem.5.1}{}}
-\newlabel{thm:1@cref}{{[theorem][1][5]5.1}{[1][5][]5}}
 \citation{bai2023transformers}
-\newlabel{cor:1}{{5.1.1}{6}{}{corollary.5.1.1}{}}
-\newlabel{cor:1@cref}{{[corollary][1][]5.1.1}{[1][6][]6}}
-\newlabel{exp:1}{{6}{6}{}{section.6}{}}
-\newlabel{exp:1@cref}{{[section][6][]6}{[1][6][]6}}
-\newlabel{exp:2}{{6.2}{6}{}{subsection.6.2}{}}
-\newlabel{exp:2@cref}{{[subsection][2][6]6.2}{[1][6][]6}}
-\newlabel{fig:vlb}{{5}{7}{Cross-entropy comparison between code and natural language representations. Code achieves significantly lower cross-entropy (higher mutual information bound) than NL for both TF-IDF and BERT features, validating \cref {cor:1}}{figure.caption.5}{}}
-\newlabel{fig:vlb@cref}{{[figure][5][]5}{[1][7][]7}}
-\newlabel{fig:mi_v_acc}{{6}{7}{Relationship between estimated mutual information and task accuracy. Each point represents a task-representation pair. Higher mutual information (lower cross-entropy) correlates with improved accuracy ($r = 0.73$, $p < 0.01$), supporting the theoretical prediction that code's informational advantage translates to performance gains}{figure.caption.6}{}}
-\newlabel{fig:mi_v_acc@cref}{{[figure][6][]6}{[1][7][]7}}
+\newlabel{exp:1}{{5}{5}{}{section.5}{}}
+\newlabel{exp:1@cref}{{[section][5][]5}{[1][5][]5}}
+\newlabel{exp:2}{{5.2}{5}{}{subsection.5.2}{}}
+\newlabel{exp:2@cref}{{[subsection][2][5]5.2}{[1][5][]5}}
+\newlabel{fig:vlb}{{5}{6}{Cross-entropy comparison between code and natural language representations. Code achieves significantly lower cross-entropy (higher mutual information bound) than NL for both TF-IDF and BERT features, validating \cref {cor:1}}{figure.caption.5}{}}
+\newlabel{fig:vlb@cref}{{[figure][5][]5}{[1][5][]6}}
+\newlabel{fig:mi_v_acc}{{6}{6}{Relationship between estimated mutual information and task accuracy. Each point represents a task-representation pair. Higher mutual information (lower cross-entropy) correlates with improved accuracy ($r = 0.73$, $p < 0.01$), supporting the theoretical prediction that code's informational advantage translates to performance gains}{figure.caption.6}{}}
+\newlabel{fig:mi_v_acc@cref}{{[figure][6][]6}{[1][5][]6}}
+\newlabel{fig:recovery_final}{{7}{6}{Recovery rate analysis: proportion of cases where LLM simulation (Arm 2) produces the correct answer despite incorrect code (Arm 3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation}{figure.caption.7}{}}
+\newlabel{fig:recovery_final@cref}{{[figure][7][]7}{[1][6][]6}}
+\newlabel{fig:recovery_powerlaw}{{8}{6}{Recovery rate as a function of task complexity (hardness parameter $\tau $). Recovery follows a power-law decay, indicating that the advantage of symbolic execution over LLM simulation grows with problem difficulty}{figure.caption.8}{}}
+\newlabel{fig:recovery_powerlaw@cref}{{[figure][8][]8}{[1][6][]6}}
+\citation{xie2021explanation}
+\citation{ton2024understanding,altabaa2025cot}
+\newlabel{fig:kde}{{9}{7}{Kernel density estimation of accuracy distributions across the three arms. Arm 3 (code execution) exhibits a mode near 100\% accuracy, while Arms 1 and 2 show broader, lower-accuracy distributions. The bimodal structure of Arm 3 reflects the dichotomy between correct and incorrect code generation---when code is correct, execution is perfect}{figure.caption.9}{}}
+\newlabel{fig:kde@cref}{{[figure][9][]9}{[1][6][]7}}
+\newlabel{lem:1}{{6.0.1}{7}{}{lemma.6.0.1}{}}
+\newlabel{lem:1@cref}{{[lemma][1][]6.0.1}{[1][7][]7}}
+\citation{poole2019variational}
+\newlabel{lem:2}{{6.0.2}{8}{Variational Lower Bound}{lemma.6.0.2}{}}
+\newlabel{lem:2@cref}{{[lemma][2][]6.0.2}{[1][8][]8}}
+\newlabel{thm:1}{{6.1}{8}{}{theorem.6.1}{}}
+\newlabel{thm:1@cref}{{[theorem][1][6]6.1}{[1][8][]8}}
+\newlabel{cor:1}{{6.1.1}{8}{}{corollary.6.1.1}{}}
+\newlabel{cor:1@cref}{{[corollary][1][]6.1.1}{[1][8][]8}}
 \bibdata{example_paper}
 \bibcite{akyurek2022learning}{{1}{2022}{{Aky{\"u}rek et~al.}}{{Aky{\"u}rek, Schuurmans, Andreas, Ma, and Zhou}}}
 \bibcite{alon_code2vec_2019}{{2}{2019}{{Alon et~al.}}{{Alon, Zilberstein, Levy, and Yahav}}}
-\newlabel{fig:recovery_final}{{7}{8}{Recovery rate analysis: proportion of cases where LLM simulation (Arm 2) produces the correct answer despite incorrect code (Arm 3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation}{figure.caption.7}{}}
-\newlabel{fig:recovery_final@cref}{{[figure][7][]7}{[1][7][]8}}
-\newlabel{fig:recovery_powerlaw}{{8}{8}{Recovery rate as a function of task complexity (hardness parameter $\tau $). Recovery follows a power-law decay, indicating that the advantage of symbolic execution over LLM simulation grows with problem difficulty}{figure.caption.8}{}}
-\newlabel{fig:recovery_powerlaw@cref}{{[figure][8][]8}{[1][7][]8}}
-\newlabel{fig:kde}{{9}{8}{Kernel density estimation of accuracy distributions across the three arms. Arm 3 (code execution) exhibits a mode near 100\% accuracy, while Arms 1 and 2 show broader, lower-accuracy distributions. The bimodal structure of Arm 3 reflects the dichotomy between correct and incorrect code generation---when code is correct, execution is perfect}{figure.caption.9}{}}
-\newlabel{fig:kde@cref}{{[figure][9][]9}{[1][7][]8}}
 \bibcite{altabaa2025cot}{{3}{2025{a}}{{Altabaa et~al.}}{{Altabaa, Montasser, and Lafferty}}}
 \bibcite{altabaa_cot_2025}{{4}{2025{b}}{{Altabaa et~al.}}{{Altabaa, Montasser, and Lafferty}}}
 \bibcite{anderson_neural_2010}{{5}{2010}{{Anderson}}{{}}}
@@ -110,6 +110,6 @@
 \bibcite{zelikman_star_2022}{{46}{2022}{{Zelikman et~al.}}{{Zelikman, Wu, Mu, and Goodman}}}
 \bibcite{zhang2024trained}{{47}{2024}{{Zhang et~al.}}{{Zhang, Frei, and Bartlett}}}
 \bibstyle{icml2025}
-\newlabel{app:cor1_proof}{{A}{11}{}{appendix.A}{}}
-\newlabel{app:cor1_proof@cref}{{[appendix][1][2147483647]A}{[1][11][]11}}
-\gdef \@abspage@last{11}
+\newlabel{app:cor1_proof}{{A}{12}{}{appendix.A}{}}
+\newlabel{app:cor1_proof@cref}{{[appendix][1][2147483647]A}{[1][12][]12}}
+\gdef \@abspage@last{12}
