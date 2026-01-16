@@ -1,4 +1,4 @@
-\begin{thebibliography}{47}
+\begin{thebibliography}{44}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -42,11 +42,6 @@ Andreas, J., Rohrbach, M., Darrell, T., and Klein, D.
 \newblock Neural {Module} {Networks}, July 2017.
 \newblock URL \url{http://arxiv.org/abs/1511.02799}.
 \newblock arXiv:1511.02799 [cs].
-
-\bibitem[Bai et~al.(2023)Bai, Chen, Wang, Xiong, and Mei]{bai2023transformers}
-Bai, Y., Chen, F., Wang, H., Xiong, C., and Mei, S.
-\newblock Transformers as statisticians: Provable in-context learning with in-context algorithm selection.
-\newblock \emph{Advances in neural information processing systems}, 36:\penalty0 57125--57211, 2023.
 
 \bibitem[Berant et~al.(2013)Berant, Chou, Frostig, and Liang]{berant_semantic_2013}
 Berant, J., Chou, A., Frostig, R., and Liang, P.
@@ -190,11 +185,6 @@ Poggio, T., Mhaskar, H., Rosasco, L., Miranda, B., and Liao, Q.
 \newblock Why and when can deep-but not shallow-networks avoid the curse of dimensionality: a review.
 \newblock \emph{International Journal of Automation and Computing}, 14\penalty0 (5):\penalty0 503--519, 2017.
 
-\bibitem[Poole et~al.(2019)Poole, Ozair, Van Den~Oord, Alemi, and Tucker]{poole2019variational}
-Poole, B., Ozair, S., Van Den~Oord, A., Alemi, A., and Tucker, G.
-\newblock On variational bounds of mutual information.
-\newblock In \emph{International conference on machine learning}, pp.\  5171--5180. PMLR, 2019.
-
 \bibitem[Puri et~al.(2021)Puri, Kung, Janssen, Zhang, Domeniconi, Zolotov, Dolby, Chen, Choudhury, Decker, Thost, Buratti, Pujar, Ramji, Finkler, Malaika, and Reiss]{puri_codenet_2021}
 Puri, R., Kung, D.~S., Janssen, G., Zhang, W., Domeniconi, G., Zolotov, V., Dolby, J., Chen, J., Choudhury, M., Decker, L., Thost, V., Buratti, L., Pujar, S., Ramji, S., Finkler, U., Malaika, S., and Reiss, F.
 \newblock {CodeNet}: {A} {Large}-{Scale} {AI} for {Code} {Dataset} for {Learning} a {Diversity} of {Coding} {Tasks}, August 2021.
@@ -250,11 +240,6 @@ Tang, Q., Deng, Z., Lin, H., Han, X., Liang, Q., Cao, B., and Sun, L.
 \newblock {ToolAlpaca}: {Generalized} {Tool} {Learning} for {Language} {Models} with 3000 {Simulated} {Cases}, September 2023.
 \newblock URL \url{http://arxiv.org/abs/2306.05301}.
 \newblock arXiv:2306.05301 [cs].
-
-\bibitem[Ton et~al.(2024)Ton, Taufiq, and Liu]{ton2024understanding}
-Ton, J.-F., Taufiq, M.~F., and Liu, Y.
-\newblock Understanding chain-of-thought in llms through information theory.
-\newblock \emph{arXiv preprint arXiv:2411.11984}, 2024.
 
 \bibitem[Veličković \& Blundell(2021)Veličković and Blundell]{velickovic_neural_2021}
 Veličković, P. and Blundell, C.
