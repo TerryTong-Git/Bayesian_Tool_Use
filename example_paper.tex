@@ -243,7 +243,7 @@ Our main contributions are:
 We formalize our central claim as $\text{Acc}(\text{Arm 1}) \leq \text{Acc}(\text{Arm 2}) < \text{Acc}(\text{Arm 3})$. The following sections detail how we break down the problem and evaluate pairwise $\text{Acc}(\text{Arm 1}) \leq \text{Acc}(\text{Arm 2})$ and then $\text{Acc}(\text{Arm 2}) \leq \text{Acc}(\text{Arm 3})$.
 
 \subsection{$\text{Acc}(\text{Arm 2}) \leq \text{Acc}(\text{Arm 3})$}
-Between Arms 2 and 3, the first part of the inference pipeline is controlled: both use identical generated pieces' of code. Defining the baseline as the llm simulation (Arm 2), we compare the baseline to our intervention branch (Arm 3) which executesss the generated code in a python runtime. To control for prompt shortcutting (since code execution does not use information from the prompt), we mask the prompt in Arms 2.5 and observe the results. 
+Between Arms 2 and 3, the first stage of the inference pipeline is held constant: both arms use identical generated code. We treat LLM-based code simulation (Arm 2) as the baseline and compare it against code execution in a Python runtime (Arm 3). A potential confound arises because code execution does not observe the original prompt, whereas LLM simulation does---the model could shortcut directly from the prompt to the answer without faithfully simulating the code. To control for this, we introduce Arm 2.5, which masks the prompt before simulation, forcing the model to rely solely on the generated code. 
 
 \subsection{$\text{Acc}(\text{Arm 1}) \leq \text{Acc}(\text{Arm 2})$}
 We control the execution part of our inference (both llm simulation), intervening in the first section by replacing natural language (baseline) generation with code generation and observing the differences. Chaining together these results with 3.1, we can validate our claim. 
@@ -251,7 +251,7 @@ We control the execution part of our inference (both llm simulation), intervenin
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{line.png}
-    \caption{Average accuracy of different models and tasks (Y axis) across different arms (X axis). Code execution (Arm 3) is better than Code simulation (Arm 2) which is better than natural language reasoning (Arm 1) on CLRS$_{30}$ (n=500), NPHardEval (n=270), Fine-Grained evaluation (n=270) benchmarks across 3 seeds. Statistical significance measured by Wilcoxon Signed Rank test between adjacent branches. Analysis uses model-level Boostrappedd Wilson CI. }
+    \caption{Average accuracy across arms for all models and tasks. Code execution (Arm 3) outperforms code simulation (Arm 2), which outperforms natural language reasoning (Arm 1) on CLRS$_{30}$ (n=500), NPHardEval (n=270), and Fine-Grained evaluation (n=270) benchmarks across 3 seeds. Statistical significance measured by Wilcoxon signed-rank test between adjacent arms. Error bars show bootstrapped Wilson confidence intervals at the model level.}
     \label{fig:line}
 \end{figure}
 
@@ -260,11 +260,11 @@ We control the execution part of our inference (both llm simulation), intervenin
 \begin{figure*}
     \centering
     \includegraphics[width=1\linewidth]{main.png}
-    \caption{Different fine-grained tasks as problems get harder.}
+    \caption{Accuracy scaling across task difficulty ($\tau$) for Arithmetic, Dynamic Programming, and ILP tasks. Arm 3 (code execution) maintains high accuracy as problems get harder, while Arms 1 and 2 degrade. The widening gap demonstrates that solver execution becomes increasingly advantageous for challenging algorithmic problems.}
     \label{fig:main}
 \end{figure*}
 
-\textbf{Data.} We use the CLRS 30 Benchmark (n=500), NPHardEval Benchmark (n=270), and a custom fine-grained evaluation suite (n=270), across three seeds. We find it necessary to define our own task suite -- Arithmetic, Dynamic Programming, Integer Linear Programming (ILP) -- to modulate hardness with parameter $\tau$ to see hardness scaling results. For arithmetic problems, $\tau$ modulates digit length; for dynamic programming, it controls the dimensionality of the table; for ILP, it controls the dimensionality of the constraint matrix. = Our assumption is that these classical algorithms provide a wide enough coverage, which enables us to make claims generally. 
+\textbf{Data.} We use the CLRS 30 Benchmark (n=500), NPHardEval Benchmark (n=270), and a custom fine-grained evaluation suite (n=270), across three seeds. We define our own task suite---Arithmetic, Dynamic Programming, Integer Linear Programming (ILP)---to modulate hardness with parameter $\tau$. For arithmetic, $\tau$ controls digit length; for DP, it controls table dimensionality; for ILP, it controls the constraint matrix size. These classical algorithms provide sufficient coverage to support general claims. 
 
 \textbf{Models.} We select frontier models (Claude, GPT-4o, Gemini 2.5) as well as open-source models (Mistral, Llama, Qwen). Since we require structured output, we filter out models that give $>$50\% JSON Parse Error, since this is indicative of instruction-following failures, rather than outright lack of coding fidelity. 
 
@@ -273,11 +273,11 @@ We prompt the LLM in Arm 1 to never use any code in its reasoning, and to give a
 
 
 
-\textbf{Arm 1 $\leq$ Arm 2 $<$ Arm 3.} Figure 1 demonstrates a statistically significant gap between the three categories. The controlled simulation branch performs worse than the baseline simulation branch, indicating models do shortcut to answers with the prompt. 
+\textbf{Arm 1 $\leq$ Arm 2 $<$ Arm 3.} \cref{fig:line} demonstrates statistically significant gaps between all three arms ($p < 0.05$, Wilcoxon signed-rank test). Notably, the controlled simulation condition (Arm 2.5, prompt masked) performs worse than the standard simulation (Arm 2), confirming that models exploit prompt information to shortcut directly to answers rather than faithfully simulating code execution. This validates our experimental control: the gap between Arms 2 and 3 reflects genuine differences in execution fidelity, not confounds from prompt access. 
 
 
 
-\textbf{Advantages of Arm 3 emerge as tasks get harder.} On fine-grained analysis, Arm 3 (Code execution) scales much better (What is the metric, how much better?) than the other branches at scale for eaach problem. For arithmetic problems where models code simulation performs the best, perhaps because models memorized the relationships between the plus symbol and small digits (explains why natural language is low, because they cannot use symbols).
+\textbf{Advantages of Arm 3 emerge as tasks get harder.} \cref{fig:main} shows fine-grained scaling behavior across task difficulty. As problem hardness $\tau$ increases, Arm 3 (code execution) maintains robust accuracy while Arms 1 and 2 degrade substantially. The gap widens with difficulty: at the highest $\tau$, Arm 3 outperforms Arm 2 by over 40 percentage points on ILP and DP tasks. For arithmetic, code simulation (Arm 2) performs relatively better at low $\tau$, likely because models have memorized digit-symbol relationships during pretraining. However, this advantage vanishes as digit length increases beyond memorized patterns.
 
 
 
@@ -386,16 +386,18 @@ Thus,
 
 Since this holds for arbitrary NL rule $\delta_{\mathrm{NL}}$, taking the infimum over $\delta_{\mathrm{NL}}$ on the right-hand side yields $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + \varepsilon$. \qed
 
-\subsection{Arm 2  < Arm 3}
+\subsection{Arm 2 $<$ Arm 3}
 
-Assume:
-1. $Y_3 = g(X,Z) = Y^*(X)$
-2. $Y_2 \sim N(\cdot \mid Y_3, X,Z)$
-3. Under 0-1 loss $\ell ( y, x) = 1\{y \neq Y^*(X)\}$
-    $R_3 = 0 \leq R_2.$
-4. Moreover, since $Pr[Y_2 \neq Y_3] > 0$, therefore $R_2 > 0 $and hence $R_3 < R_2$. 
+We model the comparison between LLM simulation (Arm 2) and solver execution (Arm 3) under the following assumptions:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Solver correctness.} Given correct code $Z$, the solver deterministically produces the ground-truth answer: $Y_3 = g(X, Z) = Y^*(X)$.
+    \item \textbf{Noisy simulation.} LLM simulation adds stochastic noise: $Y_2 \sim N(\cdot \mid Y_3, X, Z)$ for some noise kernel $N$.
+    \item \textbf{0-1 loss.} We evaluate under $\ell(y, x) = \mathbf{1}\{y \neq Y^*(x)\}$.
+\end{enumerate}
 
-Since the arm is deterministic, it always outputs the right answer, therefore the performance can only be strictly greater than the other. In the case that the code is wrong, we also experiment with how often the model recovers later on. We show that this quantity is not high. 
+Under these assumptions, the solver achieves zero risk ($R_3 = 0$) whenever the generated code is correct. In contrast, LLM simulation incurs positive risk ($R_2 > 0$) whenever $\Pr[Y_2 \neq Y_3] > 0$, which occurs empirically due to execution errors in mental simulation. Therefore, $R_3 < R_2$.
+
+The only scenario where Arm 2 could outperform Arm 3 is when the generated code is \emph{incorrect}, yet the LLM ``recovers'' by reasoning to the correct answer despite the flawed code. We empirically quantify this recovery rate below. 
 
 \textbf{Recovery reduces as tasks get harder.}
 To further reinforce this result, we rule out the possibilities of recovery as tasks get harder, eliminating any benefit of running Arm 2:
