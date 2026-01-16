@@ -69,7 +69,7 @@
 
 % The \icmltitle you define below is probably too long as a header.
 % Therefore, a short form for the running title is supplied here:
-\icmltitlerunning{Neuro-Symbolic Language Models for Scaling Algorithmic Reasoning}
+\icmltitlerunning{An Explanation In Support Of Neuro-Symbolic Language Models for Scaling Algorithmic Reasoning}
 
 \newcommand{\mc}{\mathcal}
 \newcommand{\mb}{\mathbb}
@@ -91,7 +91,7 @@
 \begin{document}
 
 \twocolumn[
-\icmltitle{Neuro-symbolic language models for scaling algorithmic reasoning}
+\icmltitle{An Explanation In Support Of Neuro-Symbolic Language Models for Scaling Algorithmic Reasoning}
 
 % It is OKAY to include author information, even for blind
 % submissions: the style file will automatically remove it for you
@@ -179,6 +179,13 @@ These results inform the design of compositional AI systems, providing principle
     \vspace{-5pt}
 \end{figure}
 
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{arm_prompts.png}
+    \caption{Prompt templates for the three-arm evaluation framework. Arm 1 instructs the model to reason purely in natural language without code. Arm 2 instructs the model to generate code and simulate its execution. Arm 3 uses the same code generation prompt but executes the output in a Python runtime rather than simulating.}
+    \label{fig:arm_prompts}
+\end{figure*}
+
 %Introduce the setting and the problem. Make sure to narrow down the scope. 
 Consider the algorithmic task of computing arithmetic operations encoded in natural language. We wish to compute:
 \vspace{-5pt}
@@ -226,255 +233,281 @@ Our main contributions are:
 \end{enumerate}
 
 
-\section{Background and Related Work}
-
-\textbf{Neuro-symbolic Learning.} This paper builds on research in neuro-symbolic integration \cite{graves_neural_2014, velickovic_neural_2021, reed_neural_2016, graves_hybrid_2016}, which combines neural networks with symbolic reasoning systems. These approaches are motivated by cognitive science \cite{schneider_controlled_2003, risko_cognitive_2016, anderson_neural_2010}, hierarchical reinforcement learning \cite{kolter_hierarchical_2007, dietterich_hierarchical_2000}, and compositionality research \cite{hudson_compositional_2018, hupkes_compositionality_2020, andreas_neural_2017, poggio2017and}. An orthogonal line of work explores direct execution of algorithms by neural networks \cite{velickovic_neural_2021, mahdavi_towards_2023, ibarz_generalist_2022, yan_neural_2020}. Unlike these approaches that focus on \emph{how} to integrate neural and symbolic components, our work addresses \emph{why} symbolic execution outperforms neural reasoning for algorithmic tasks.
-
-\textbf{LLM Reasoning.} Recent work has explored various reasoning paradigms for LLMs, including symbolic reasoning \cite{marra_integrating_2019, olausson_linc_2023, han_folio_2024}, chain-of-thought prompting \cite{altabaa2025cot, zelikman_star_2022, merrill_expressive_2024, altabaa_cot_2025}, and in-context learning \cite{xie2021explanation, garg2022can, akyurek2022learning, zhang2024trained}. \citet{xie2021explanation} model in-context learning as implicit Bayesian inference, which we extend to compare different reasoning representations. While prior work demonstrates \emph{that} certain prompting strategies improve performance, we provide a theoretical framework explaining \emph{why} code representations lead to lower Bayes error.
-
-\textbf{LLM Tool-Use.} Tool-augmented LLMs have achieved strong empirical results \cite{shen_llm_2024, schick_toolformer_nodate, qin_toolllm_2023, tang_toolalpaca_2023, parisi_talm_2022}. Code generation for tool-use can be viewed as a form of semantic parsing \cite{shin_few-shot_2022, krishnamurthy_neural_2017, berant_semantic_2013, dong_language_2016} or function calling \cite{puri_codenet_2021, alon_code2vec_2019, chen_neural_2018}. Our work complements this literature by providing theoretical justification for the observed empirical advantages of code-based tool-use over direct natural language reasoning. 
 
 \section{Evaluation Framework}\label{method}
 We formalize our central claim as $\text{Acc}(\text{Arm 1}) \leq \text{Acc}(\text{Arm 2}) < \text{Acc}(\text{Arm 3})$. The following sections detail how we break down the problem and evaluate pairwise $\text{Acc}(\text{Arm 1}) \leq \text{Acc}(\text{Arm 2})$ and then $\text{Acc}(\text{Arm 2}) \leq \text{Acc}(\text{Arm 3})$.
 
 \subsection{$\text{Acc}(\text{Arm 2}) \leq \text{Acc}(\text{Arm 3})$}
-Since the first part of our inference is held constant, we can causally attribute the differences in outcome to whether execution of the code is better than simulating the code. That is, if we show that given the same inputs, that code execution is always better than code simulation. Then we have validated the claim. To arrive at a shared input, we first prompt the LLM to solve an algorithmic task by generating a piece of code. This piece of code is unified between the two arms, thus we input it into the LLM versus a python runtime and observe the output. For the simulation, we experiment with including and excluding the prompt. 
+Between Arms 2 and 3, the first part of the inference pipeline is controlled: both use identical generated pieces' of code. Defining the baseline as the llm simulation (Arm 2), we compare the baseline to our intervention branch (Arm 3) which executesss the generated code in a python runtime. To control for prompt shortcutting (since code execution does not use information from the prompt), we mask the prompt in Arms 2.5 and observe the results. 
 
-We prompt the model to generate external reasoning traces via its CoT which it used to arrive at the final answer
-
-
-\subsection{$\text{Acc}(\text{Arm 2}) \leq \text{Acc}(\text{Arm 3})$}
-
-% \textbf{Pretraining Distribution} We assume that first a Bernoulli R.V. $D \in \{\mathrm{Concept, Description}\}$ is drawn, determining whether our document segment is descriptive (i.e. a conversation, description of setting), or a program (i.e. arithmetic task, ILP formulation). If $D=\mathrm{Concept}$, we draw a latent concept $\theta$ from a family of concepts $\Theta$. Consider the task of arithmetic, the space of concepts is 
-
-
-% Regardless of the outcome of $D$ we draw another Bernoulli R.V. $R \in \{ \mathrm{Code, NL}\}$ that represents the representation of the program or description. The tuple (D,R, $\Theta$) specifies a distribution over our vocabulary $O$. This forms our family of document segments. We first sample a tuple (D, $\theta$, R) from a joint prior $p(D, \theta, R)$. Then, sample a document of length $T$ given this tuple. 
-% \[
-% p(o_1,...,o_T) = \sum_{R,D}\int_{\theta} p(o_1, ..., o_T|\theta, R,D)p(\theta, R,D) d\theta
-% \]
-% We assume that $p(o_1,...,o_T|\theta,R,D)$ is a Hidden Markov Model (HMM), where ($\theta$,R,D) specifies the transition probabilities of HMM hidden state $h_1,...,h_n \in \mc H$.
-
-% \textbf{Prompt Distribution} Suppose we wanted to induce a $\mathrm{Repr} \in \{\mathrm {Code}, \mathrm{NL}\}$ representation chain of thought. Our prompts are natural language encodings of the problems $\theta^*$, represented by segments sampled independently from the conditional HMM distribution $X \sim P(o_{1:{T-1}}| \theta^*,R=\mathrm{NL}, D=\mathrm{Program})$, $Y \sim P(o_{T}| \theta^*, D=\mathrm{Program})$. Y is the gold answer to predict, and we assume that $Y = \mathrm{eval}(\theta^*$), (e.g. eval is a python interpreter).
-
-
-
-
-
-\section{Experimental Results}\label{exp:0}
-
-This section presents our primary empirical evaluation comparing the three reasoning arms: (1) natural language generation with LLM reasoning, (2) code generation with LLM simulation, and (3) code generation with solver execution.
-
-\subsection{Hypothesis}
-
-We hypothesize that the three arms exhibit a strict ordering in terms of end-task accuracy:
-\begin{equation}
-    \text{Acc}(\text{Arm 1}) < \text{Acc}(\text{Arm 2}) < \text{Acc}(\text{Arm 3})
-\end{equation}
-This hypothesis is grounded in our theoretical framework (\cref{method}): code representations should yield higher mutual information with target algorithms than natural language, and deterministic solver execution should outperform stochastic LLM simulation.
-
-\subsection{Evaluation Methodology}
-
-\textbf{Tasks.} We evaluate on three families of algorithmic problems spanning different computational paradigms:
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Arithmetic}: Addition, subtraction, and multiplication of multi-digit integers.
-    \item \textbf{Dynamic Programming (DP)}: Rod-cutting, longest common subsequence (LCS), and 0-1 knapsack problems.
-    \item \textbf{Integer Linear Programming (ILP)}: Production planning, partitioning, and assignment problems.
-\end{itemize}
-
-\textbf{Difficulty Scaling.} Each task is parameterized by a hardness parameter $\tau$ that controls problem complexity. For arithmetic, $\tau$ specifies the number of digits (e.g., $\tau=2$ denotes two-digit operands sampled uniformly). For DP problems, $\tau$ determines the table dimensions ($\tau \times \tau$). For ILP, $\tau$ specifies the number of constraints.
-
-\textbf{Models.} We evaluate two instruction-tuned models: Deepseek-Coder and Gemma-2. These models represent different architectural choices and training distributions while both supporting code generation and natural language reasoning.
-
-\textbf{Experimental Protocol.} For each model-task combination, we generate 2,000 samples per seed across 5 random seeds (seeds $\in \{0,1,2,3,4\}$), yielding 10,000 samples per condition. All arms receive equivalent one-shot prompts to ensure fair comparison. For Arm 3, since solver execution does not condition on the prompt during execution, we include an additional control where Arm 2 also excludes the prompt during LLM simulation.
-
-\textbf{Metrics.} We report accuracy as the primary metric, computed as the proportion of samples where the generated answer matches the ground truth.
-
-\subsection{Results}
-
-\cref{fig:main} presents the aggregate accuracy across all tasks and models. Code execution (Arm 3) achieves 78\% mean accuracy, substantially outperforming code simulation (Arm 2) at 30\% and natural language reasoning (Arm 1) at 21\%. This ordering holds consistently across task families and models.
-
-
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{main.png}
-    \caption{Accuracy comparison across the three reasoning arms for Deepseek-Coder and Gemma-2 models. Code execution (Arm 3) consistently outperforms code simulation (Arm 2) and natural language reasoning (Arm 1) across all task families: arithmetic, dynamic programming, and integer linear programming.}
-    \label{fig:main}
-\end{figure}
+\subsection{$\text{Acc}(\text{Arm 1}) \leq \text{Acc}(\text{Arm 2})$}
+We control the execution part of our inference (both llm simulation), intervening in the first section by replacing natural language (baseline) generation with code generation and observing the differences. Chaining together these results with 3.1, we can validate our claim. 
 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{line.png}
-    \caption{Accuracy as a function of problem difficulty (hardness parameter $\tau$). As task complexity increases, the performance gap between arms widens, with code execution maintaining higher accuracy at greater difficulty levels.}
+    \caption{Average accuracy of different models and tasks (Y axis) across different arms (X axis). Code execution (Arm 3) is better than Code simulation (Arm 2) which is better than natural language reasoning (Arm 1) on CLRS$_{30}$ (n=500), NPHardEval (n=270), Fine-Grained evaluation (n=270) benchmarks across 3 seeds. Statistical significance measured by Wilcoxon Signed Rank test between adjacent branches. Analysis uses model-level Boostrappedd Wilson CI. }
     \label{fig:line}
 \end{figure}
 
-\subsection{Statistical Analysis}
+\subsection{Experiments} 
 
-To validate our hypothesis, we employ non-parametric statistical tests that make no assumptions about the underlying data distribution.
-
-\textbf{Wilcoxon Test.} Under the null that code and nl rank equally, the Wilcoxon Signed Rank test shows statistical significance in favor of the alternative.
-
-\textbf{Pairwise Comparisons.} To establish the ordering between arms, we conduct pairwise McNemar tests on contingency tables of correct/incorrect predictions. \cref{fig:pval} shows the resulting $p$-values for all pairwise comparisons. The differences between Arm 1 vs. Arm 2 ($p = 9.38 \times 10^{-21}$), Arm 2 vs. Arm 3 ($p < 10^{-50}$), and Arm 1 vs. Arm 3 ($p < 10^{-50}$) are all statistically significant at $\alpha = 0.05$.
-
-\begin{figure}
+\begin{figure*}
     \centering
-    \includegraphics[width=1\linewidth]{pval.png}
-    \caption{Pairwise $p$-values from McNemar tests comparing accuracy between arms. All comparisons are statistically significant ($p < 0.05$), confirming the ordering Arm 1 $<$ Arm 2 $<$ Arm 3. We use non-parametric tests (Kruskal-Wallis for overall comparison, McNemar for pairwise) to avoid distributional assumptions.}
-    \label{fig:pval}
-\end{figure}
+    \includegraphics[width=1\linewidth]{main.png}
+    \caption{Different fine-grained tasks as problems get harder.}
+    \label{fig:main}
+\end{figure*}
 
-\subsection{Analysis and Interpretation}
+\textbf{Data.} We use the CLRS 30 Benchmark (n=500), NPHardEval Benchmark (n=270), and a custom fine-grained evaluation suite (n=270), across three seeds. We find it necessary to define our own task suite -- Arithmetic, Dynamic Programming, Integer Linear Programming (ILP) -- to modulate hardness with parameter $\tau$ to see hardness scaling results. For arithmetic problems, $\tau$ modulates digit length; for dynamic programming, it controls the dimensionality of the table; for ILP, it controls the dimensionality of the constraint matrix. = Our assumption is that these classical algorithms provide a wide enough coverage, which enables us to make claims generally. 
 
-\textbf{Finding 1: Execution is the Primary Bottleneck.} The large gap between Arm 2 (30\%) and Arm 3 (78\%) indicates that the execution phase---not the translation phase---is the primary source of errors. When the LLM generates correct code, the solver executes it perfectly. However, when the LLM must simulate code execution, it frequently produces incorrect results even from correct code.
+\textbf{Models.} We select frontier models (Claude, GPT-4o, Gemini 2.5) as well as open-source models (Mistral, Llama, Qwen). Since we require structured output, we filter out models that give $>$50\% JSON Parse Error, since this is indicative of instruction-following failures, rather than outright lack of coding fidelity. 
 
-\textbf{Finding 2: Code Outperforms Natural Language as a Reasoning Representation.} The consistent advantage of Arm 2 over Arm 1 (30\% vs. 21\%) demonstrates that code serves as a superior intermediate representation for algorithmic reasoning, even when both are executed by the same LLM. This supports our theoretical prediction that code yields higher mutual information with the target algorithm.
-
-\textbf{Finding 3: The Gap Widens with Task Difficulty.} As shown in \cref{fig:line}, the performance differential between arms increases with the hardness parameter $\tau$. For simple problems ($\tau \leq 2$), all three arms achieve reasonable accuracy. However, as difficulty scales, Arm 3 degrades gracefully while Arms 1 and 2 deteriorate rapidly. This suggests that symbolic execution provides robustness benefits that become increasingly important for complex algorithmic tasks.
-
-\section{Experimental Validation of Theory} \label{exp:1}
-
-This section empirically validates the theoretical predictions from \cref{cor:1}. We design experiments to test whether code representations yield higher mutual information with target algorithms, thereby explaining the performance gap observed in \cref{exp:0}.
-
-\subsection{Validating Arm 1 $<$ Arm 2: Mutual Information Estimation}
-
-\textbf{Hypothesis.} According to \cref{cor:1}, if code representations achieve lower cross-entropy when predicting the latent algorithm $\gamma$, then code should yield lower Bayes error. We test this by estimating the cross-entropy for both representations.
-
-\textbf{Methodology.} We estimate cross-entropy using a plug-in estimator based on logistic regression, motivated by recent evidence that linear classifiers emerge during transformer inference \cite{bai2023transformers}. The experimental setup is as follows:
-
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Features}: We extract features from chain-of-thought traces using two methods: (1) TF-IDF vectors and (2) BERT embeddings (bert-base-uncased).
-    \item \textbf{Labels}: For each CoT, we construct the ground-truth label $\gamma$ by combining the algorithm type and discretized world variables. World variables are binned in increments of 10 to address sparsity, yielding $K = 761$ classes.
-    \item \textbf{Model}: Logistic regression trained with SAGA solver for 20 iterations on an 80/20 train/test split.
-    \item \textbf{Data}: CoT traces from the Deepseek-Coder experiments in \cref{exp:0}.
-\end{itemize}
-
-\textbf{Results.} \cref{fig:vlb} shows that code representations achieve significantly lower cross-entropy and higher classification accuracy than natural language representations for both feature types (F-test, $p < 0.05$). The figure displays the negative log-likelihood (cross-entropy) on the test set, computed as $H_{CE} = -\frac{1}{N}\sum_i \log q(\gamma_i | z_i, \theta^*)$ where $\theta^*$ are the fitted logistic regression parameters. Lower values indicate better discriminability of the underlying algorithm from the CoT representation.
-
-\textbf{Quantifying the Bayes Error Improvement.} From our cross-entropy estimates, we compute lower bounds on mutual information:
-\begin{align}
-    \mc I(\gamma, Z_{\mathrm{Code}}) &\geq H(\gamma) + L_{\mathrm{Code}} = 4.4952 \\
-    \mc I(\gamma, Z_{\mathrm{NL}}) &\geq H(\gamma) + L_{\mathrm{NL}} = 3.8467
-\end{align}
-
-Applying \cref{thm:1} with $K = 761$ classes:
-\begin{align}
-    P^*_{\mathrm{NL}} - P^*_{\mathrm{Code}} &\geq \frac{\mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}})}{\log_2(K-1)} \nonumber \\
-    &\geq \frac{4.4952 - 3.8467}{\log_2(760)} = 0.0678
-\end{align}
-
-This yields a \textbf{lower bound of 6.78\% improvement} in Bayes error rate when using code over natural language. Notably, our empirical results in \cref{exp:0} show a 9\% improvement (30\% vs. 21\%), which exceeds this theoretical lower bound as expected. 
+\textbf{Generating Code and Reasoning Traces.}
+We prompt the LLM in Arm 1 to never use any code in its reasoning, and to give a structured output of the rationale and answer to the algorithmic problem. Similarly for Arm 2, we prompt the LLM to use code in its reasoning, generating a structured output that contains a piece of code, and an attempt at simulating the execution of that piece of code in natural language, followed by a final answer. For Arm 2.5, we mirror the setup of Arm 2 but mask out the prompt, meaning the model must use the generated code and simulate execution to arrive at an answer. For Arm 3, we take the generated function (no prompt), and execute it in a python3 runtime. Models have access to native python packages, and numpy, pandas, scipy, PuLP, and pytorch. \cref{fig:arm_prompts} illustrates the prompt templates used across all three arms.
 
 
 
-\subsection{Validating Arm 2 $<$ Arm 3: Recovery Analysis} \label{exp:2}
+\textbf{Arm 1 $\leq$ Arm 2 $<$ Arm 3.} Figure 1 demonstrates a statistically significant gap between the three categories. The controlled simulation branch performs worse than the baseline simulation branch, indicating models do shortcut to answers with the prompt. 
 
-\textbf{Hypothesis.} Solver execution (Arm 3) should outperform LLM simulation (Arm 2) because the solver is deterministic: given correct code, it always produces the correct answer. The only scenario where Arm 2 could outperform Arm 3 is when the generated code is incorrect, yet the LLM ``recovers'' by reasoning its way to the correct answer despite the flawed code. We hypothesize that such recovery events are rare.
 
-\textbf{Methodology.} Using the data from \cref{exp:0}, we identify cases where:
-\begin{enumerate}[leftmargin=*]
-    \item Arm 3 produces an incorrect answer (implying incorrect code generation), and
-    \item Arm 2 produces the correct answer (implying successful LLM recovery).
-\end{enumerate}
-We compute the \emph{recovery rate} as the proportion of Arm 3 failures where Arm 2 succeeds.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{vlb.png}
-    \caption{Cross-entropy comparison between code and natural language representations. Code achieves significantly lower cross-entropy (higher mutual information bound) than NL for both TF-IDF and BERT features, validating \cref{cor:1}.}
-    \label{fig:vlb}
-\end{figure}
+\textbf{Advantages of Arm 3 emerge as tasks get harder.} On fine-grained analysis, Arm 3 (Code execution) scales much better (What is the metric, how much better?) than the other branches at scale for eaach problem. For arithmetic problems where models code simulation performs the best, perhaps because models memorized the relationships between the plus symbol and small digits (explains why natural language is low, because they cannot use symbols).
 
-\textbf{Correlation Analysis.} To validate that mutual information predicts task performance, we examine the relationship between our MI estimates and observed accuracy. For each task-representation pair, we compute: (1) the MI lower bound from the logistic regression cross-entropy, and (2) the empirical accuracy from \cref{exp:0}. We aggregate results across task families (arithmetic, DP, ILP) and representations (code, NL).
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{mi_v_acc.png}
-    \caption{Relationship between estimated mutual information and task accuracy. Each point represents a task-representation pair. Higher mutual information (lower cross-entropy) correlates with improved accuracy ($r = 0.73$, $p < 0.01$), supporting the theoretical prediction that code's informational advantage translates to performance gains.}
-    \label{fig:mi_v_acc}
-\end{figure}
+% \textbf{Recovery reduces as tasks get harder.}
+% To further reinforce this result, we rule out the possibilities of recovery as tasks get harder, eliminating any benefit of running Arm 2:
+% \begin{enumerate}[leftmargin=*]
+%     \item Arm 3 produces an incorrect answer (implying incorrect code generation), and
+%     \item Arm 2 produces the correct answer (implying successful LLM recovery).
+% \end{enumerate}
 
-\textbf{Results.} \cref{fig:recovery_final} presents the recovery analysis across all tasks and models. The recovery rate remains consistently low (typically $< 5\%$), indicating that LLM simulation rarely compensates for code generation errors. This confirms that Arm 3's advantage stems from reliable solver execution rather than Arm 2's inability to reason about code.
+% \cref{fig:recovery_final} presents the recovery analysis across all tasks and models. The recovery rate remains consistently low (typically $< 5\%$), indicating that LLM simulation rarely compensates for code generation errors. This confirms that Arm 3's advantage stems from reliable solver execution rather than Arm 2's inability to reason about code.
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=1\linewidth]{recovery_final.png}
-    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm 2) produces the correct answer despite incorrect code (Arm 3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
-    \label{fig:recovery_final}
-\end{figure}
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=1\linewidth]{recovery_final.png}
+%     \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm 2) produces the correct answer despite incorrect code (Arm 3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
+%     \label{fig:recovery_final}
+% \end{figure}
 
-\textbf{Scaling Analysis.} \cref{fig:recovery_powerlaw} examines how recovery rate varies with task difficulty. We observe a power-law decay: as problems become harder, recovery becomes increasingly unlikely. This occurs because complex problems require longer, more intricate reasoning chains where errors compound---the LLM cannot ``guess'' its way to the correct answer when the underlying algorithm is non-trivial.
+% \textbf{Weak models} \cref{fig:recovery_powerlaw} examines how recovery rate varies with task difficulty. We observe a power-law decay: as problems become harder, recovery becomes increasingly unlikely. This occurs because complex problems require longer, more intricate reasoning chains where errors compound---the LLM cannot ``guess'' its way to the correct answer when the underlying algorithm is non-trivial.
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=1\linewidth]{recovery_powerlaw.png}
-    \caption{Recovery rate as a function of task complexity (hardness parameter $\tau$). Recovery follows a power-law decay, indicating that the advantage of symbolic execution over LLM simulation grows with problem difficulty.}
-    \label{fig:recovery_powerlaw}
-\end{figure}
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=1\linewidth]{recovery_powerlaw.png}
+%     \caption{Recovery rate as a function of task complexity (hardness parameter $\tau$). Recovery follows a power-law decay, indicating that the advantage of symbolic execution over LLM simulation grows with problem difficulty.}
+%     \label{fig:recovery_powerlaw}
+% \end{figure}
 
-\textbf{Distribution Analysis.} To visualize the full accuracy distributions beyond summary statistics, we compute kernel density estimates (KDE) for each arm. For each model-task-seed combination, we compute the per-sample accuracy, yielding a distribution of accuracies per arm. We apply Gaussian KDE with Scott's bandwidth selection rule to smooth the empirical distributions.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{kde.png}
-    \caption{Kernel density estimation of accuracy distributions across the three arms. Arm 3 (code execution) exhibits a mode near 100\% accuracy, while Arms 1 and 2 show broader, lower-accuracy distributions. The bimodal structure of Arm 3 reflects the dichotomy between correct and incorrect code generation---when code is correct, execution is perfect.}
-    \label{fig:kde}
-\end{figure}
-
-\textbf{Interpretation.} These results validate the channel model from Section 5.2: solver execution acts as a noiseless channel (deterministic mapping from code to output), while LLM simulation acts as a noisy channel that introduces errors even when the ``transmitted'' code is correct. The low recovery rate confirms that this channel noise is the primary driver of Arm 2's inferior performance.
 
 \section{Statistical and Information Theoretic Foundations of Algorithmic Reasoning}
 
-\textbf{Task.}
-On a high level, we aim to show that Bayes error for code is less than for natural language: $p(\hat y \neq y^* | x, \mathrm{Code}) < p(\hat y \neq y^* | x, \mathrm{NL})$. 
+We claim that natural language reasoning is a garbling of code under a noisy channel paradigm of inference, leading code reasoning to be at least as good as NL reasoning.
 
+\textbf{Setup.}
+Let $X \sim p(x)$ denote the task instance (problem + inputs), drawn from a representative test distribution. Let $\mathcal{Y}$ be an output space (e.g., answer strings), and let $\ell : \mathcal{Y} \times X \to [0,1]$ be a bounded and measurable loss function (0--1 binary loss). In Arm~1 and Arm~2, each arm corresponds to an intermediate representation $Z$ produced by channel $p(z \mid x)$, and then choosing an output $Y$ via a randomized decision rule $\delta(y \mid x, z)$.
 
-\textbf{Modeling } To do this, we model LLM forward pass as posterior inference, a paradigm similar to implicit Bayesian inference in in-context learning by \citet{xie2021explanation}. 
+For any CoT observation $Z$, define the Bayes risk:
+\begin{align*}
+R^*(Z) &:= \inf_{\delta} \, \mathbb{E}[\ell(Y, X)], \\
+&\quad X \sim p, \; Z \sim p(\cdot \mid X), \; Y \sim \delta(\cdot \mid X, Z).
+\end{align*}
 
-Let $y,x$ be the inputs and outputs respectively. $x$ is defined as a natural language encoding of some algorithmic problem. Let the random variable $R \in \{\mathrm{Code}, \mathrm{NL}\}$ be the chain of thought representation. The random variable $\gamma$ represents the latent algorithm and the world variables. The latent algorithms are a piece of code (as opposed to a string describing the algorithm), whereas the world variables are inputs the algorithm takes in. Knowing $\gamma$ means we have all the information we need to solve the problem, and thus $\gamma$ is a sufficient statistic for $y$. For example, $\gamma = \{ \mathrm{addition}, 2,4\}$. We first assume that we perform this multi-class classification to the right algorithm implicitly through inferring $\gamma$, then condition on this to produce the right answer. 
+In the first arm, we observe $Z_{\mathrm{NL}} \sim p_{\mathrm{NL}}(\cdot \mid X)$.
+For the second arm, we have $Z_{\mathrm{Code}} \sim p_{\mathrm{Code}}(\cdot \mid X)$.
 
-\begin{align}
-     & p(y|x,r_{i}) =  \int_{\gamma \in \Gamma}  p(y| x,\gamma, r_i)p(\gamma | x, r_i)  d\gamma
-\end{align}
+Our goal is to show that $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + \varepsilon$ for some small $\varepsilon$.
 
-In the context of reasoning models, we suppose that the chain-of-thought helps to infer $\gamma$. 
+\subsection{Assumptions}
 
-\begin{align}
-     & p(y|x,r_{i}) =  \int_{\gamma \in \Gamma} \int_z p(y| x,\gamma, r_i)p(\gamma |z, x, r_i) p(z|x,r_i) d\gamma
-\end{align}
+\textbf{Assumption 1.}
+We assume there exists a stochastic kernel $T$ such that the Markov chain $X \to Z_{\mathrm{Code}} \to \hat{Z}_{\mathrm{NL}}$ is representative of CoT, with the final decision stage being $\delta(y \mid X, \hat{Z}_{\mathrm{NL}})$. That is,
+\begin{align*}
+\hat{Z}_{\mathrm{NL}} &\sim p_{\mathrm{translation}}(\cdot \mid x), \\
+p_{\mathrm{translation}}(z \mid X) &:= \int T(z \mid z_{\mathrm{Code}}) \, p_{\mathrm{Code}}(z_{\mathrm{Code}} \mid x) \, \mathrm{d}z_{\mathrm{Code}}.
+\end{align*}
 
-In this section we explain why the code representations $R = \mathrm{Code}$ has lower Bayes error rate $P^*$ than natural language representations $R = \mathrm{NL}$. This amounts to proving that $\text{Arm 3} > \text{Arm 1}$.
+\textbf{Assumption 2.}
+We assume that the original NL reasoning chain of thought is close to the translated NL on average. Let $p_{\mathrm{NL}}$ be the Arm~1 channel and $p_{\mathrm{translated}}(\cdot \mid x)$ be the translated NL channel. Assume an average conditional TV bound:
+\[
+\mathbb{E}_{X \sim p} \bigl[
+d_{\mathrm{TV}}\bigl(p_{\mathrm{NL}}(\cdot \mid X), \, p_{\mathrm{translated}}(\cdot \mid X)\bigr)
+\bigr] \leq \varepsilon,
+\]
+where
+\[
+d_{\mathrm{TV}}(P, Q) = \sup_{B} |P(B) - Q(B)|.
+\]
 
-% Why is it mutually intractable. 
-Directly showing $\text{Arm 3} > \text{Arm 1}$ is mutually intractable, but by introducing an intermediate step in Arm 2, the comparison between Arm 1 and Arm 2 is tractable, and Arm 2 and Arm 3 are tractable. Bayesian inference captures the breakdown nicely via marginalization. Furthermore, by moving into the realm of probabilistic inference, we can introduce information theory \cite{ton2024understanding, altabaa2025cot} as a unifying framework, sidestepping the intractability of mathematical frameworks attempting to capture natural language, e.g. CFG, CCGs. We know that parsing natural language to one of these frameworks optimally is NP-complete.
+In other words, averaged over task instances, the NL trace produced by Arm~1 is close in distribution to the NL traces obtained by translating the code trace (Arm~2) using the translator $T$ (Markov kernel).
 
+\subsection{Proof}
 
-This section explains a theory that sets up the experiments later that follow. First, we show that $\text{Arm 1} < \text{Arm 2}$, then $\text{Arm 2} < \text{Arm 3}$
+Under Assumptions~1--2, for the bounded loss $\ell \in [0,1]$,
+\[
+R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + \varepsilon.
+\]
 
-\subsection{Arm 1 $<$ Arm 2}
+\textbf{Step 1: Simulate NL from code via translation.}
+Here we first translate the input problem into CoT, then execute the CoT:
+\[
+\delta_{\mathrm{Code}}(y \mid x, z_{\mathrm{Code}})
+:= \int \underbrace{\delta_{\mathrm{NL}}(y \mid x, z)}_{\text{Execute}} \,
+\underbrace{T(z \mid z_{\mathrm{Code}})}_{\text{Translate}} \, \mathrm{d}z.
+\]
 
-We being by defining a few lemmas, proving them and showing why they are necessary. 
+Let $Y_{\mathrm{Code}} \sim \delta_{\mathrm{Code}}(\cdot \mid X, Z_{\mathrm{Code}})$. Let $\hat{Y}_{\mathrm{translated}} \sim \delta_{\mathrm{NL}}(\cdot \mid X, \hat{Z}_{\mathrm{NL}})$, where $\hat{Z}_{\mathrm{NL}}$ is produced from $Z_{\mathrm{Code}}$ via the translator kernel $T$.
 
-\begin{lemma} \label{lem:1}
-    For markov chain $Z_r \to \gamma \to Y$, the following equality holds:
-    $\mc I(Y, Z_{\mathrm{Code}}) - \mc I(Y, Z_{\mathrm{NL}}) = \mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}})$. 
+The joint distributions $(X, Y_{\mathrm{Code}})$ and $(X, \hat{Y}_{\mathrm{translated}})$ are the same. Thus,
+\[
+\mathbb{E}[\ell(Y_{\mathrm{Code}}, X)] = \mathbb{E}[\ell(\hat{Y}_{\mathrm{translated}}, X)].
+\]
+
+This is because conditional on $X = x$, sampling $Z_{code} \sim p_{code}(\cdot \mid x)$, then $\hat Z_{nl} \sim T(\cdot \mid Z_{code})$, then $Y \sim \delta_{NL} (\cdot \mid x, \hat Z_{NL})$ induces the same conditional distribution over Y as $Y \sim \delta_{code} (\cdot \mid x, Z_{code})$.
+
+\textbf{Step 2: Substitute translated NL and original NL via TV lemma.}
+
+\begin{lemma}[TV Lemma]
+Let $X \sim p(x)$. Let $Z \mid X = x \sim P_x$ and $Z' \mid X = x \sim Q_x$. Let $g(x, z) \in [0, 1]$ be measurable. Then
+\[
+\mathbb{E}[g(X, Z)] - \mathbb{E}[g(X, Z')] \leq \mathbb{E}_X \bigl[ d_{\mathrm{TV}}(P_X, Q_X) \bigr].
+\]
 \end{lemma}
 
-\begin{proof}
-    $ [\mc I(\gamma, Z_{\mathrm{Code}}) + \mc I(Y, \gamma) - H(\gamma)] - [\mc I(\gamma, Z_{\mathrm{NL}}) + \mc I(Y, \gamma) - H(\gamma)] $
-    \[\underbrace{\leq}_{\text{Chain Rule}} \mc I (Y, Z_{\mathrm{Code}}) - \mc I (Y, Z_{\mathrm{NL}})\] \[\underbrace{\leq}_{DPI} \mc I(\gamma, Z_{\mathrm{Code}}) - I(\gamma, Z_{\mathrm{NL}})\]
-    $ \implies \mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}})$ 
-    \[\underbrace{\leq}_{\text{Chain Rule}} \mc I (Y, Z_{\mathrm{Code}}) - \mc I (Y, Z_{\mathrm{NL}})\] \[ \underbrace{\leq}_{DPI} \mc I(\gamma, Z_{\mathrm{Code}}) - I(\gamma, Z_{\mathrm{NL}})\]
-    $ \implies \mc I (Y, Z_{\mathrm{Code}}) - \mc I (Y, Z_{\mathrm{NL}})$
-    \[= \mc I(\gamma, Z_{\mathrm{Code}}) - I(\gamma, Z_{\mathrm{NL}})\]
-\end{proof}
+Suppose we have $Y_{\mathrm{NL}} \sim \delta_{\mathrm{NL}}(\cdot \mid Z_{\mathrm{NL}})$ under the actual channel $p_{\mathrm{NL}}(\cdot \mid x)$. For each $x$ and trace $z$, define $g(x, z) := \mathbb{E}_{y \sim \delta(\cdot \mid z)}[\ell(y, x)]$.
 
-Here we show that the mutual information between Y and Z is the same as the mutual information between $\gamma$ and Z. This is useful because we don't need to use the conditional distribution $P(y|Z)$ which is generally uncalibrated for LLMs, and hard to obtain, since LLMs may generate prose and not just the final answer. We may instead work with $P(\gamma|Z)$, which can later be estimated variationally by a proposal distribution. 
+Then $g(x, z) \in [0, 1]$. Note that
+\begin{align*}
+\mathbb{E}[\ell(Y_{\mathrm{NL}}, X)] &= \mathbb{E}[g(X, Z_{\mathrm{NL}})], \\
+\mathbb{E}[\ell(\hat{Y}_{\mathrm{translated}}, X)] &= \mathbb{E}[g(X, \hat{Z}_{\mathrm{NL}})].
+\end{align*}
 
-\begin{lemma} [Variational Lower Bound] \label{lem:2}
-    $\mc I( \gamma, Z_{r}) \geq H(\gamma) + \max\limits_\theta \mb E_{\gamma,z} q(\gamma| z,\theta)$ where $\theta$ specifies the model drawn from our parametric family, and $q$ is some valid probability distribution \citep{poole2019variational}. 
-\end{lemma} 
+Applying the TV lemma with $P_x = p_{\mathrm{NL}}(\cdot \mid x)$ and $Q_x = p_{\mathrm{translated}}(\cdot \mid x)$:
+\begin{align*}
+&\bigl| \mathbb{E}[\ell(Y_{\mathrm{NL}}, X)] - \mathbb{E}[\ell(\hat{Y}_{\mathrm{translated}}, X)] \bigr| \\
+&\quad = \bigl| \mathbb{E}[g(X, Z_{\mathrm{NL}})] - \mathbb{E}[g(X, \hat{Z}_{\mathrm{NL}})] \bigr| \\
+&\quad \leq \mathbb{E}_X \bigl[ d_{\mathrm{TV}}(p_{\mathrm{NL}}(\cdot \mid X), \, p_{\mathrm{translated}}(\cdot \mid X)) \bigr]
+\leq \varepsilon.
+\end{align*}
 
-We can lower bound the mutual information with the cross entropy, which we use in experiments \cref{exp:1}. We apply this lemma in \cref{cor:1}.
+Therefore, rearranging gives
+\[
+\mathbb{E}[\ell(\hat{Y}_{\mathrm{translated}}, X)] \leq \mathbb{E}[\ell(Y_{\mathrm{NL}}, X)] + \varepsilon.
+\]
+Thus,
+\[
+\mathbb{E}[\ell(Y_{\mathrm{Code}}, X)]
+= \mathbb{E}[\ell(\hat{Y}_{\mathrm{translated}}, X)]
+\leq \mathbb{E}[\ell(Y_{\mathrm{NL}}, X)] + \varepsilon.
+\]
+
+Since this holds for arbitrary NL rule $\delta_{\mathrm{NL}}$, taking the infimum over $\delta_{\mathrm{NL}}$ on the right-hand side yields $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + \varepsilon$. \qed
+
+\begin{theorem}[Deterministic Solver Dominance under $0$--$1$ Loss]
+    \label{thm:deterministic_solver}
+    Let $X \sim p(x)$ be a task instance and let $Z \sim p_{\mathrm{Code}}(\cdot \mid X)$ be a code representation generated from $X$. 
+    Let $Y^*(X)$ denote the ground-truth answer.
+    
+    Consider two execution arms:
+    
+    \begin{itemize}
+        \item \textbf{Arm~2 (Noisy execution).} The final answer is
+        \[
+        Y_2 \sim p_2(\cdot \mid X, Z).
+        \]
+        
+        \item \textbf{Arm~3 (Deterministic solver).} The final answer is
+        \[
+        Y_3 = g(X, Z).
+        \]
+    \end{itemize}
+    
+    Assume:
+    \begin{enumerate}
+        \item (\emph{Solver correctness}) The solver output equals the ground-truth answer almost surely:
+        \[
+        Y_3 = Y^*(X) \quad \text{a.s.}
+        \]
+        \item (\emph{Noisy execution}) The noisy execution is obtained by adding noise to the solver output:
+        \[
+        p_2(y \mid X, Z) = N(y \mid Y_3, X, Z)
+        \]
+        for some stochastic kernel $N$.
+    \end{enumerate}
+    
+    Let the loss be the $0$--$1$ loss,
+    \[
+    \ell(y, x) = \mathbf{1}\{y \neq Y^*(x)\}.
+    \]
+    
+    Then the risks satisfy
+    \[
+    \boxed{
+    \mathbb{E}[\ell(Y_3, X)] \;\le\; \mathbb{E}[\ell(Y_2, X)],
+    }
+    \]
+    with strict inequality whenever
+    \[
+    \mathbb{P}(Y_2 \neq Y_3) > 0.
+    \]
+    \end{theorem}
+    
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=1\linewidth]{statistical(1).png}
+%     \caption{Bayesian Network of Inference Pipeline.}
+%     \label{fig:statistical}
+% \end{figure}
+
+% \textbf{Task.}
+% On a high level, we aim to show that Bayes error for code is less than for natural language: $p(\hat y \neq y^* | x, \mathrm{Code}) < p(\hat y \neq y^* | x, \mathrm{NL})$. 
+
+% \textbf{Modeling } To do this, we model LLM forward pass as posterior inference, a paradigm similar to implicit Bayesian inference in in-context learning by \citet{xie2021explanation}. 
+
+% Let $y,x$ be the inputs and outputs respectively. $x$ is defined as a natural language encoding of some algorithmic problem. Let the random variable $R \in \{\mathrm{Code}, \mathrm{NL}\}$ be the chain of thought representation. The random variable $\gamma$ represents the latent algorithm and the world variables. The latent algorithms are a piece of code (as opposed to a string describing the algorithm), whereas the world variables are inputs the algorithm takes in. Knowing $\gamma$ means we have all the information we need to solve the problem, and thus $\gamma$ is a sufficient statistic for $y$. For example, $\gamma = \{ \mathrm{addition}, 2,4\}$. We first assume that we perform this multi-class classification to the right algorithm implicitly through inferring $\gamma$, then condition on this to produce the right answer. 
+
+% \begin{align}
+%      & p(y|x,r_{i}) =  \int_{\gamma \in \Gamma}  p(y| x,\gamma, r_i)p(\gamma | x, r_i)  d\gamma
+% \end{align}
+
+% In the context of reasoning models, we suppose that the chain-of-thought helps to infer $\gamma$. 
+
+% \begin{align}
+%      & p(y|x,r_{i}) =  \int_{\gamma \in \Gamma} \int_z p(y| x,\gamma, r_i)p(\gamma |z, x, r_i) p(z|x,r_i) d\gamma
+% \end{align}
+
+% In this section we explain why the code representations $R = \mathrm{Code}$ has lower Bayes error rate $P^*$ than natural language representations $R = \mathrm{NL}$. This amounts to proving that $\text{Arm 3} > \text{Arm 1}$.
+
+% This section explains a theory that sets up the experiments later that follow. First, we show that $\text{Arm 1} < \text{Arm 2}$, then $\text{Arm 2} < \text{Arm 3}$
+
+% \subsection{Arm 1 $<$ Arm 2}
+
+% We being by defining a few lemmas, proving them and showing why they are necessary. 
+
+% \begin{lemma} \label{lem:1}
+%     For markov chain $Z_r \to \gamma \to Y$, the following equality holds:
+%     $\mc I(Y, Z_{\mathrm{Code}}) - \mc I(Y, Z_{\mathrm{NL}}) = \mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}})$. 
+% \end{lemma}
+
+% \begin{proof}
+%     $ [\mc I(\gamma, Z_{\mathrm{Code}}) + \mc I(Y, \gamma) - H(\gamma)] - [\mc I(\gamma, Z_{\mathrm{NL}}) + \mc I(Y, \gamma) - H(\gamma)] $
+%     \[\underbrace{\leq}_{\text{Chain Rule}} \mc I (Y, Z_{\mathrm{Code}}) - \mc I (Y, Z_{\mathrm{NL}})\] \[\underbrace{\leq}_{DPI} \mc I(\gamma, Z_{\mathrm{Code}}) - I(\gamma, Z_{\mathrm{NL}})\]
+%     $ \implies \mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}})$ 
+%     \[\underbrace{\leq}_{\text{Chain Rule}} \mc I (Y, Z_{\mathrm{Code}}) - \mc I (Y, Z_{\mathrm{NL}})\] \[ \underbrace{\leq}_{DPI} \mc I(\gamma, Z_{\mathrm{Code}}) - I(\gamma, Z_{\mathrm{NL}})\]
+%     $ \implies \mc I (Y, Z_{\mathrm{Code}}) - \mc I (Y, Z_{\mathrm{NL}})$
+%     \[= \mc I(\gamma, Z_{\mathrm{Code}}) - I(\gamma, Z_{\mathrm{NL}})\]
+% \end{proof}
+
+% Here we show that the mutual information between Y and Z is the same as the mutual information between $\gamma$ and Z. This is useful because we don't need to use the conditional distribution $P(y|Z)$ which is generally uncalibrated for LLMs, and hard to obtain, since LLMs may generate prose and not just the final answer. We may instead work with $P(\gamma|Z)$, which can later be estimated variationally by a proposal distribution. 
+
+% \begin{lemma} [Variational Lower Bound] \label{lem:2}
+%     $\mc I( \gamma, Z_{r}) \geq H(\gamma) + \max\limits_\theta \mb E_{\gamma,z} q(\gamma| z,\theta)$ where $\theta$ specifies the model drawn from our parametric family, and $q$ is some valid probability distribution \citep{poole2019variational}. 
+% \end{lemma} 
+
+% We can lower bound the mutual information with the cross entropy, which we use in experiments \cref{exp:1}. We apply this lemma in \cref{cor:1}.
 
 % \begin{proof}
 %     Start with the definition of Mutual Information. 
@@ -490,69 +523,195 @@ We can lower bound the mutual information with the cross entropy, which we use i
 %     $  \mc I ( \gamma ,Z)\geq H(\gamma) + \max\limits_\theta \mb E_{\gamma,Z} \log q(\gamma|Z, \theta)$
 % \end{proof}
 
-\begin{theorem} \label{thm:1}
-    For Markov Chain $Z_r \to \gamma \to Y$, higher mutual information $\mc I(\gamma, Z_{\mathrm{Code}}) > \mc I(\gamma, Z_{\mathrm{NL}})$ implies Bayes Error \[ P^*_{\mathrm{Code}} =\min_{\hat Y(\cdot) } P[ \hat Y(Z_{\mathrm{Code}}) = Y^*] \] \[ < \min_{\hat Y(\cdot) }  Pr[\hat Y(Z_{\mathrm{NL}}) = Y^*] = P^*_{\mathrm{NL}}\] 
-\end{theorem}
+% \begin{theorem} \label{thm:1}
+%     For Markov Chain $Z_r \to \gamma \to Y$, higher mutual information $\mc I(\gamma, Z_{\mathrm{Code}}) > \mc I(\gamma, Z_{\mathrm{NL}})$ implies Bayes Error \[ P^*_{\mathrm{Code}} =\min_{\hat Y(\cdot) } P[ \hat Y(Z_{\mathrm{Code}}) = Y^*] \] \[ < \min_{\hat Y(\cdot) }  Pr[\hat Y(Z_{\mathrm{NL}}) = Y^*] = P^*_{\mathrm{NL}}\] 
+% \end{theorem}
 
-%% Cross entropy estimate. 
+% \begin{proof}
+%     Start with Fano's Inequality, 
+%     \begin{align}
+%              & H(Y|Z_r) \leq h(P^*_r) + P^*_r \log_2(K-1) \\
+%              & = H(Y) - \mc I(Y, Z_r) \leq h(P^*_r) + P^*_r \log_2(K-1) \\
+%              & =  \frac{H(Y) - \mc I(Y, Z_r) -  h(P^*_r)}{\log_2(K-1)} \leq P^*_r \\
+%              & =  \frac{H(Y) - \mc I(Y, Z_r) - 1}{\log_2(K-1)} \leq P^*_r  % (h(P^*_r) \leq 1)
+%     \end{align}
 
-%% Train a logistic regression / neural network to do this? 
+%     Take the difference of $P^*_{\mathrm{NL}} - P^*_{\mathrm{Code}}   \geq  \frac{ \mc I(Y, Z_{\mathrm{Code}}) - \mc I(Y, Z_{\mathrm{NL}}) }{ \log_2 (K-1)} \underbrace{=}_{Lemma \; 1} \frac{ \mc I( \gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}}) }{ \log_2 (K-1)} $. 
+% \end{proof}
 
-%% Deciding when to use tools, constrained generation? 
+% \begin{corollary} \label{cor:1}
+%     Let $H_{CE}(r) = -\max_\theta \mb E_{\gamma,z} \log q(\gamma| z,\theta, r)$ denote the minimum cross-entropy achievable for representation $r$. When the cross-entropy for code is lower than for natural language:
+%     \begin{equation}
+%         H_{CE}(\mathrm{Code}) < H_{CE}(\mathrm{NL}),
+%     \end{equation}
+%     we have that the Bayes error for code is lower:
+%     \begin{equation}
+%         P^*_{\mathrm{Code}} < P^*_{\mathrm{NL}}.
+%     \end{equation}
+% \end{corollary}
 
-\begin{proof}
-    Start with Fano's Inequality, 
-    \begin{align}
-             & H(Y|Z_r) \leq h(P^*_r) + P^*_r \log_2(K-1) \\
-             & = H(Y) - \mc I(Y, Z_r) \leq h(P^*_r) + P^*_r \log_2(K-1) \\
-             & =  \frac{H(Y) - \mc I(Y, Z_r) -  h(P^*_r)}{\log_2(K-1)} \leq P^*_r \\
-             & =  \frac{H(Y) - \mc I(Y, Z_r) - 1}{\log_2(K-1)} \leq P^*_r  % (h(P^*_r) \leq 1)
-    \end{align}
+% \begin{proof}
+%     % See \cref{app:cor1_proof}.
+%     Let $L_r = \max_\theta \mb E_{\gamma,z} \log q(\gamma| z,\theta, r)$ denote the optimal expected log-likelihood for representation $r$. Note that $H_{CE}(r) = -L_r$.
 
-    Take the difference of $P^*_{\mathrm{NL}} - P^*_{\mathrm{Code}}   \geq  \frac{ \mc I(Y, Z_{\mathrm{Code}}) - \mc I(Y, Z_{\mathrm{NL}}) }{ \log_2 (K-1)} \underbrace{=}_{Lemma \; 1} \frac{ \mc I( \gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}}) }{ \log_2 (K-1)} $. 
-\end{proof}
+%     From \cref{lem:2}, the mutual information is lower bounded by:
+%     \begin{align}
+%         \mc I(\gamma, Z_r) \geq H(\gamma) + L_r.
+%     \end{align}
 
-\begin{corollary} \label{cor:1}
-    Let $H_{CE}(r) = -\max_\theta \mb E_{\gamma,z} \log q(\gamma| z,\theta, r)$ denote the minimum cross-entropy achievable for representation $r$. When the cross-entropy for code is lower than for natural language:
-    \begin{equation}
-        H_{CE}(\mathrm{Code}) < H_{CE}(\mathrm{NL}),
-    \end{equation}
-    we have that the Bayes error for code is lower:
-    \begin{equation}
-        P^*_{\mathrm{Code}} < P^*_{\mathrm{NL}}.
-    \end{equation}
-\end{corollary}
+%     Taking the difference between code and NL:
+%     \begin{align}
+%         &\mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}}) \nonumber \\
+%         &\quad \geq [H(\gamma) + L_C] - [H(\gamma) + L_{NL}] \nonumber \\
+%         &\quad = L_C - L_{NL} = H_{CE}(\mathrm{NL}) - H_{CE}(\mathrm{Code}).
+%     \end{align}
 
-\begin{proof}
-    See \cref{app:cor1_proof}.
-\end{proof}
+%     When $H_{CE}(\mathrm{Code}) < H_{CE}(\mathrm{NL})$, equivalently $L_C > L_{NL}$, the RHS is positive:
+%     \begin{equation}
+%         \mc I(\gamma, Z_{\mathrm{Code}}) > \mc I(\gamma, Z_{\mathrm{NL}}).
+%     \end{equation}
 
-\subsection{Arm 2 $<$ Arm 3}
-To explain why Arm 2 $<$ Arm 3, we model LLM forward pass as stochastic inference. The translation stage is the same, and the only difference is the execution stage. We model the inference as communication of information about the problem through a channel. The channel is noisy for LLM execution, and deterministic for solver inference. Therefore, the deterministic solver inference has exactly mutual information of 1 between the CoT Z and Y, and is an upper bound to the stochastic inference. 
+%     Applying \cref{thm:1}:
+%     \begin{align}
+%         P^*_{\mathrm{NL}} - P^*_{\mathrm{Code}} \geq \frac{\mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}})}{\log_2(K-1)} > 0.
+%     \end{align}
 
-\subsection{Summary}
+%     Therefore, $P^*_{\mathrm{Code}} < P^*_{\mathrm{NL}}$.
+% \end{proof}
 
-Combining the results from Sections 6.1 and 6.2, we establish the complete ordering:
-\begin{equation}
-    \text{Arm 1} < \text{Arm 2} < \text{Arm 3}
-\end{equation}
-The gap between Arms 1 and 2 is explained by code's higher mutual information with the target algorithm (\cref{cor:1}). The gap between Arms 2 and 3 is explained by the deterministic vs. stochastic execution channel. Together, these provide a principled theoretical account of why code execution outperforms natural language reasoning for algorithmic tasks.
+% \subsection{Arm 2 $<$ Arm 3}
+% To explain why Arm 2 $<$ Arm 3, we model LLM forward pass as stochastic inference. The translation stage is the same, and the only difference is the execution stage. We model the inference as communication of information about the problem through a channel. The channel is noisy for LLM execution, and deterministic for solver inference. Therefore, the deterministic solver inference has exactly mutual information of 1 between the CoT Z and Y, and is an upper bound to the stochastic inference. 
 
-\section{Discussion}
+% \subsection{Intractability of Direct Comparison and Insight}
+% \textbf{Intractability.}
+% % Why is it mutually intractable. 
+% Directly showing $\text{Arm 3} > \text{Arm 1}$ is mutually intractable, but by introducing an intermediate step in Arm 2, the comparison between Arm 1 and Arm 2 is tractable, and Arm 2 and Arm 3 are tractable. Bayesian inference captures the breakdown nicely via marginalization. Furthermore, by moving into the realm of probabilistic inference, we can introduce information theory \cite{ton2024understanding, altabaa2025cot} as a unifying framework, sidestepping the intractability of mathematical frameworks attempting to capture natural language, e.g. CFG, CCGs. We know that parsing natural language to one of these frameworks optimally is NP-complete.
 
-\textbf{Summary.} This paper addresses whether algorithmic problems encoded in natural language should be solved via direct reasoning or by translating to code and executing with a solver. Our three-arm framework demonstrates that code execution consistently outperforms both code simulation and natural language reasoning, with theoretical backing from information theory.
+% \textbf{Insight.} The gap between Arms 1 and 2 is explained by code's higher mutual information with the target algorithm (\cref{cor:1}). The gap between Arms 2 and 3 is explained by the deterministic vs. stochastic execution channel. Together, these provide a principled theoretical account of why code execution outperforms natural language reasoning for algorithmic tasks.
 
-\textbf{Interpretation.} The theoretical analysis reveals that code representations yield higher mutual information with target algorithms than natural language representations. This explains the empirical observation: code serves as a more discriminative intermediate representation for implicit algorithm classification during LLM inference. The Bayesian framework makes this comparison tractable by decomposing the problem into translation and execution phases.
+% % \subsection{Summary}
 
-\textbf{Limitations.} Our study focuses on algorithmic tasks (arithmetic, DP, ILP) where ground truth is well-defined. The results may not generalize to open-ended reasoning tasks without clear algorithmic structure. Additionally, our theoretical bounds are asymptotic---the 6\% Bayes error improvement is a lower bound that may not reflect finite-sample performance. Finally, we evaluate on a limited set of models (Deepseek, Gemma); behavior may differ for other architectures.
+% % Combining the results from Sections 6.1 and 6.2, we establish the complete ordering:
+% % \begin{equation}
+% %     \text{Arm 1} < \text{Arm 2} < \text{Arm 3}
+% % \end{equation}
 
-\textbf{Broader Impact.} These findings have practical implications for AI system design: for algorithmically structured problems, compositional systems with symbolic execution should be preferred over monolithic neural reasoning. This supports the growing trend toward tool-augmented LLMs.
+
+
+% \section{Empirical Validation of Theory} \label{exp:1}
+
+% The intuition behind the theory is that representations that better predict the concepts (lower cross-entropy on test set), lead to better end performance (lower Bayes error). We begin by showing that first code representations have lower cross-entropy on the test set, and then show that this cross-entropy correlates with end task performance. 
+
+% % Give example? 
+% \subsection{Code representations achieve lower cross entropy than natural language representations. } We begin by extracting CoT text from our previous evaluation, which are embedded by MPNET (dim=384). For each CoT (n=2000) we construct ground-truth label $\gamma$ by combining the algorithm type and input variables, which intuitively represent all the necessary information required to solve the problem. For each CoT text, we know the information required to generate it by construction. To address the sparsity issue, we bin the input variables on a log scale (\# classes K=781). Then, we run a logistic regression estimator to use the CoT embeddings to predict the label, and compare code versus natural language. Evaluations are reported on the 20/80 test set split. In our experiments, we tried removing comments and the algorithm name mentioned in the CoT's, but found that this made no significant difference. Furthermore, we only use paired data where there was no JSON Parse error, since this would imply the code block was blank. We do not differentiate between correct or incorrect labels on the end task when deciding what data to use, i.e. a data point generated to solve addition with input variables (2,5) may get the wrong answer (e.g. 7), yet the label would still be (+,2,5).
+
+% This section empirically validates the theoretical predictions from \cref{cor:1}. A requirement from theory is that the cross entropy of a classification is lower for code than natural language. Intuitively structured code leads to better representations for prediiction, posessing higher mutual information with the label. We empirically show that cross-entropy values are correlated with final accuracies on end tasks. I.e. better representations help disambiguate concepts, leads to better prediction. 
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=1\linewidth]{vlb.png}
+%     \caption{Cross-entropy comparison between code and natural language representations. Code achieves significantly lower cross-entropy (higher mutual information bound) than NL for both TF-IDF and BERT features, validating \cref{cor:1}.}
+%     \label{fig:vlb}
+% \end{figure}
+
+
+% \subsection{Cross Entropy is predictive of final performance.} We treat each (task, seed, representation) as a datapoint, and evaluate the cross entropy of the CoT's extracted from the corresponding datapoint and obtain the final end accuracy from the previous performance evaluation. Then, we measure how predictive the cross entropy is of the final performance. 
+
+
+
+% We design experiments to test whether code representations yield higher mutual information with target algorithms, thereby explaining the performance gap observed in \cref{exp:0}.
+
+% \subsection{Validating Arm 1 $<$ Arm 2: Mutual Information Estimation}
+
+% \textbf{Hypothesis.} According to \cref{cor:1}, if code representations achieve lower cross-entropy when predicting the latent algorithm $\gamma$, then code should yield lower Bayes error. We test this by estimating the cross-entropy for both representations. 
+
+% \textbf{Methodology.} We estimate cross-entropy using a plug-in estimator based on logistic regression, motivated by recent evidence that linear classifiers emerge during transformer inference \cite{bai2023transformers}. The experimental setup is as follows:
+
+% \begin{itemize}[leftmargin=*]
+%     \item \textbf{Features}: We extract features from chain-of-thought traces using two methods: (1) TF-IDF vectors and (2) BERT embeddings (bert-base-uncased).
+%     \item \textbf{Labels}: For each CoT, we construct the ground-truth label $\gamma$ by combining the algorithm type and discretized world variables. World variables are binned in increments of 10 to address sparsity, yielding $K = 761$ classes.
+%     \item \textbf{Model}: Logistic regression trained with SAGA solver for 20 iterations on an 80/20 train/test split.
+%     \item \textbf{Data}: CoT traces from the Deepseek-Coder experiments in \cref{exp:0}.
+% \end{itemize}
+
+% \textbf{Results.} \cref{fig:vlb} shows that code representations achieve significantly lower cross-entropy and higher classification accuracy than natural language representations for both feature types (F-test, $p < 0.05$). The figure displays the negative log-likelihood (cross-entropy) on the test set, computed as $H_{CE} = -\frac{1}{N}\sum_i \log q(\gamma_i | z_i, \theta^*)$ where $\theta^*$ are the fitted logistic regression parameters. Lower values indicate better discriminability of the underlying algorithm from the CoT representation.
+
+% \textbf{Quantifying the Bayes Error Improvement.} From our cross-entropy estimates, we compute lower bounds on mutual information:
+% \begin{align}
+%     \mc I(\gamma, Z_{\mathrm{Code}}) &\geq H(\gamma) + L_{\mathrm{Code}} = 4.4952 \\
+%     \mc I(\gamma, Z_{\mathrm{NL}}) &\geq H(\gamma) + L_{\mathrm{NL}} = 3.8467
+% \end{align}
+
+% Applying \cref{thm:1} with $K = 761$ classes:
+% \begin{align}
+%     P^*_{\mathrm{NL}} - P^*_{\mathrm{Code}} &\geq \frac{\mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}})}{\log_2(K-1)} \nonumber \\
+%     &\geq \frac{4.4952 - 3.8467}{\log_2(760)} = 0.0678
+% \end{align}
+
+% This yields a \textbf{lower bound of 6.78\% improvement} in Bayes error rate when using code over natural language. Notably, our empirical results in \cref{exp:0} show a 9\% improvement (30\% vs. 21\%), which exceeds this theoretical lower bound as expected. 
+
+
+
+% \subsection{Validating Arm 2 $<$ Arm 3: Recovery Analysis} \label{exp:2}
+
+% \textbf{Hypothesis.} Solver execution (Arm 3) should outperform LLM simulation (Arm 2) because the solver is deterministic: given correct code, it always produces the correct answer. The only scenario where Arm 2 could outperform Arm 3 is when the generated code is incorrect, yet the LLM ``recovers'' by reasoning its way to the correct answer despite the flawed code. We hypothesize that such recovery events are rare.
+
+% \textbf{Methodology.} Using the data from \cref{exp:0}, we identify cases where:
+% \begin{enumerate}[leftmargin=*]
+%     \item Arm 3 produces an incorrect answer (implying incorrect code generation), and
+%     \item Arm 2 produces the correct answer (implying successful LLM recovery).
+% \end{enumerate}
+% We compute the \emph{recovery rate} as the proportion of Arm 3 failures where Arm 2 succeeds.
+
+
+
+% \textbf{Correlation Analysis.} To validate that mutual information predicts task performance, we examine the relationship between our MI estimates and observed accuracy. For each task-representation pair, we compute: (1) the MI lower bound from the logistic regression cross-entropy, and (2) the empirical accuracy from \cref{exp:0}. We aggregate results across task families (arithmetic, DP, ILP) and representations (code, NL).
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=1\linewidth]{mi_v_acc.png}
+%     \caption{Relationship between estimated mutual information and task accuracy. Each point represents a task-representation pair. Higher mutual information (lower cross-entropy) correlates with improved accuracy ($r = 0.73$, $p < 0.01$), supporting the theoretical prediction that code's informational advantage translates to performance gains.}
+%     \label{fig:mi_v_acc}
+% \end{figure}
+
+
+% \textbf{Distribution Analysis.} To visualize the full accuracy distributions beyond summary statistics, we compute kernel density estimates (KDE) for each arm. For each model-task-seed combination, we compute the per-sample accuracy, yielding a distribution of accuracies per arm. We apply Gaussian KDE with Scott's bandwidth selection rule to smooth the empirical distributions.
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=1\linewidth]{kde.png}
+%     \caption{Kernel density estimation of accuracy distributions across the three arms. Arm 3 (code execution) exhibits a mode near 100\% accuracy, while Arms 1 and 2 show broader, lower-accuracy distributions. The bimodal structure of Arm 3 reflects the dichotomy between correct and incorrect code generation---when code is correct, execution is perfect.}
+%     \label{fig:kde}
+% \end{figure}
+
+% \textbf{Interpretation.} These results validate the channel model from Section 5.2: solver execution acts as a noiseless channel (deterministic mapping from code to output), while LLM simulation acts as a noisy channel that introduces errors even when the ``transmitted'' code is correct. The low recovery rate confirms that this channel noise is the primary driver of Arm 2's inferior performance.
+
+\section{Related Work and Discussion}
+
+\textbf{Neuro-symbolic Learning.} This paper builds on research in neuro-symbolic integration \cite{graves_neural_2014, velickovic_neural_2021, reed_neural_2016, graves_hybrid_2016}, which combines neural networks with symbolic reasoning systems. These approaches are motivated by cognitive science \cite{schneider_controlled_2003, risko_cognitive_2016, anderson_neural_2010}, hierarchical reinforcement learning \cite{kolter_hierarchical_2007, dietterich_hierarchical_2000}, and compositionality research \cite{hudson_compositional_2018, hupkes_compositionality_2020, andreas_neural_2017, poggio2017and}. An orthogonal line of work explores direct execution of algorithms by neural networks \cite{velickovic_neural_2021, mahdavi_towards_2023, ibarz_generalist_2022, yan_neural_2020}. Unlike these approaches that focus on \emph{how} to integrate neural and symbolic components, our work addresses \emph{why} symbolic execution outperforms neural reasoning for algorithmic tasks.
+
+\textbf{LLM Reasoning.} Recent work has explored various reasoning paradigms for LLMs, including symbolic reasoning \cite{marra_integrating_2019, olausson_linc_2023, han_folio_2024}, chain-of-thought prompting \cite{altabaa2025cot, zelikman_star_2022, merrill_expressive_2024, altabaa_cot_2025}, and in-context learning \cite{xie2021explanation, garg2022can, akyurek2022learning, zhang2024trained}. \citet{xie2021explanation} model in-context learning as implicit Bayesian inference, which we extend to compare different reasoning representations. While prior work demonstrates \emph{that} certain prompting strategies improve performance, we provide a theoretical framework explaining \emph{why} code representations lead to lower Bayes error.
+
+\textbf{LLM Tool-Use.} Tool-augmented LLMs have achieved strong empirical results \cite{shen_llm_2024, schick_toolformer_nodate, qin_toolllm_2023, tang_toolalpaca_2023, parisi_talm_2022}. Code generation for tool-use can be viewed as a form of semantic parsing \cite{shin_few-shot_2022, krishnamurthy_neural_2017, berant_semantic_2013, dong_language_2016} or function calling \cite{puri_codenet_2021, alon_code2vec_2019, chen_neural_2018}. Our work complements this literature by providing theoretical justification for the observed empirical advantages of code-based tool-use over direct natural language reasoning. 
+
+% \section{Discussion}
+
+% \textbf{Summary.} This paper addresses whether algorithmic problems encoded in natural language should be solved via direct reasoning or by translating to code and executing with a solver. Our three-arm framework demonstrates that code execution consistently outperforms both code simulation and natural language reasoning, with theoretical backing from information theory.
+
+% \textbf{Interpretation.} The theoretical analysis reveals that code representations yield higher mutual information with target algorithms than natural language representations. This explains the empirical observation: code serves as a more discriminative intermediate representation for implicit algorithm classification during LLM inference. The Bayesian framework makes this comparison tractable by decomposing the problem into translation and execution phases.
 
 \section{Conclusion}
 
 We introduced a three-arm framework that enables tractable comparison between code and natural language representations for algorithmic reasoning. By modeling LLM inference as Bayesian inference, we proved that code representations yield higher mutual information with target algorithms, leading to lower Bayes error. Empirically, code execution achieves 78\% accuracy compared to 21\% for natural language reasoning across arithmetic, dynamic programming, and integer linear programming tasks.
 
 An interesting direction for future work is understanding \emph{why} code has higher mutual information---whether this emerges from pretraining data distributions or from inherent structural properties of programming languages. Our framework provides a foundation for such investigations.
+
+\textbf{Limitations.} 
+
+Our study focuses on algorithmic tasks (arithmetic, DP, ILP) where ground truth is well-defined. The results may not generalize to open-ended reasoning tasks without clear algorithmic structure. Additionally, our theoretical bounds are asymptotic---the 6\% Bayes error improvement is a lower bound that may not reflect finite-sample performance. Finally, we evaluate on a limited set of models (Deepseek, Gemma); behavior may differ for other architectures.
+
+\textbf{Future Work.} These findings have practical implications for AI system design: for algorithmically structured problems, compositional systems with symbolic execution should be preferred over monolithic neural reasoning. This supports the growing trend toward tool-augmented LLMs.
+
 
 \bibliography{example_paper}
 \bibliographystyle{icml2025}
@@ -566,35 +725,35 @@ An interesting direction for future work is understanding \emph{why} code has hi
 \newpage
 \appendix
 
-\section{Proof of Corollary 1} \label{app:cor1_proof}
+% \section{Proof of Corollary 1} \label{app:cor1_proof}
 
-\begin{proof}
-Let $L_r = \max_\theta \mb E_{\gamma,z} \log q(\gamma| z,\theta, r)$ denote the optimal expected log-likelihood for representation $r$. Note that $H_{CE}(r) = -L_r$.
+% \begin{proof}
+% Let $L_r = \max_\theta \mb E_{\gamma,z} \log q(\gamma| z,\theta, r)$ denote the optimal expected log-likelihood for representation $r$. Note that $H_{CE}(r) = -L_r$.
 
-From \cref{lem:2}, the mutual information is lower bounded by:
-\begin{align}
-    \mc I(\gamma, Z_r) \geq H(\gamma) + L_r.
-\end{align}
+% From \cref{lem:2}, the mutual information is lower bounded by:
+% \begin{align}
+%     \mc I(\gamma, Z_r) \geq H(\gamma) + L_r.
+% \end{align}
 
-Taking the difference between code and NL:
-\begin{align}
-    &\mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}}) \nonumber \\
-    &\quad \geq [H(\gamma) + L_C] - [H(\gamma) + L_{NL}] \nonumber \\
-    &\quad = L_C - L_{NL} = H_{CE}(\mathrm{NL}) - H_{CE}(\mathrm{Code}).
-\end{align}
+% Taking the difference between code and NL:
+% \begin{align}
+%     &\mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}}) \nonumber \\
+%     &\quad \geq [H(\gamma) + L_C] - [H(\gamma) + L_{NL}] \nonumber \\
+%     &\quad = L_C - L_{NL} = H_{CE}(\mathrm{NL}) - H_{CE}(\mathrm{Code}).
+% \end{align}
 
-When $H_{CE}(\mathrm{Code}) < H_{CE}(\mathrm{NL})$, equivalently $L_C > L_{NL}$, the RHS is positive:
-\begin{equation}
-    \mc I(\gamma, Z_{\mathrm{Code}}) > \mc I(\gamma, Z_{\mathrm{NL}}).
-\end{equation}
+% When $H_{CE}(\mathrm{Code}) < H_{CE}(\mathrm{NL})$, equivalently $L_C > L_{NL}$, the RHS is positive:
+% \begin{equation}
+%     \mc I(\gamma, Z_{\mathrm{Code}}) > \mc I(\gamma, Z_{\mathrm{NL}}).
+% \end{equation}
 
-Applying \cref{thm:1}:
-\begin{align}
-    P^*_{\mathrm{NL}} - P^*_{\mathrm{Code}} \geq \frac{\mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}})}{\log_2(K-1)} > 0.
-\end{align}
+% Applying \cref{thm:1}:
+% \begin{align}
+%     P^*_{\mathrm{NL}} - P^*_{\mathrm{Code}} \geq \frac{\mc I(\gamma, Z_{\mathrm{Code}}) - \mc I(\gamma, Z_{\mathrm{NL}})}{\log_2(K-1)} > 0.
+% \end{align}
 
-Therefore, $P^*_{\mathrm{Code}} < P^*_{\mathrm{NL}}$.
-\end{proof}
+% Therefore, $P^*_{\mathrm{Code}} < P^*_{\mathrm{NL}}$.
+% \end{proof}
 
 \end{document}
 
