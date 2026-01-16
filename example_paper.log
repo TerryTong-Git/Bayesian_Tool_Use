@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  10 JAN 2026 20:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  16 JAN 2026 13:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/terrytong/Documents/CCG/ToolProj/Bayesian_Tool_Use/example_paper.tex
-(/Users/terrytong/Documents/CCG/ToolProj/Bayesian_Tool_Use/example_paper.tex
+**/Users/terrytong/Documents/Projects/CCG/ToolProj/Bayesian_Tool_Use/example_paper.tex
+(/Users/terrytong/Documents/Projects/CCG/ToolProj/Bayesian_Tool_Use/example_paper.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -958,8 +958,20 @@ File: fig1(2).png Graphic file (type png)
 Package pdftex.def Info: fig1(2).png  used on input line 175.
 (pdftex.def)             Requested size: 234.8775pt x 110.65575pt.
 
-Underfull \hbox (badness 3108) in paragraph at lines 177--177
-\OT1/ptm/m/it/9 (+20) method-ol-ogy \OT1/ptm/m/n/9 (+20) in Sec-tion [][]4[][]. Given an al-go-rith-mic prob-
+
+LaTeX Warning: Reference `exp:0' on page 1 undefined on input line 177.
+
+
+LaTeX Warning: Reference `exp:0' on page 1 undefined on input line 177.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--177
+[][]\OT1/ptm/m/n/9 (+20) Bayesian In-fer-ence model show-ing the \OT1/ptm/m/it/9 (+20) three
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 177--177
+\OT1/ptm/m/it/9 (+20) arms method-ol-ogy \OT1/ptm/m/n/9 (+20) in []. Given an al-go-rith-mic prob-
  []
 
 
@@ -992,7 +1004,12 @@ Underfull \hbox (badness 5490) in paragraph at lines 177--177
 \OMS/cmsy/m/n/9 f[]\OML/cmm/m/it/9 ; []\OMS/cmsy/m/n/9 g$\OT1/ptm/m/n/9 (+20) . Typ-i-cally, the prob-lem
  []
 
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 186.
+<arm_prompts.png, id=47, 1136.0844pt x 245.718pt>
+File: arm_prompts.png Graphic file (type png)
+<use arm_prompts.png>
+Package pdftex.def Info: arm_prompts.png  used on input line 184.
+(pdftex.def)             Requested size: 487.8225pt x 105.51045pt.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 193.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -1000,124 +1017,83 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+
+Underfull \vbox (badness 4518) has occurred while \output is active []
+
  [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 
  <./fig1(2).png>]
-Underfull \hbox (badness 4967) in paragraph at lines 195--196
+Underfull \hbox (badness 4967) in paragraph at lines 202--203
 []\OT1/ptm/m/n/10 (+20) As a so-lu-tion, we lever-age a Bayesian In-fer-ence
  []
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 195--196
+Underfull \hbox (badness 1881) in paragraph at lines 202--203
 \OT1/ptm/m/n/10 (+20) paradigm to rea-son about the two dif-fer-ent set-tings
  []
 
 
-Underfull \hbox (badness 2617) in paragraph at lines 195--196
+Underfull \hbox (badness 2617) in paragraph at lines 202--203
 \OT1/ptm/m/n/10 (+20) the al-go-rith-mic rea-son-ing pipeline into two dis-tinct
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 195--196
+Underfull \hbox (badness 1259) in paragraph at lines 202--203
 \OT1/ptm/m/n/10 (+20) phases (1) Trans-la-tion $\OMS/cmsy/m/n/10 2 f[]\OML/cmm/m/it/10 ; []\OMS/cmsy/m/n/10 g$ \OT1/ptm/m/n/10 (+20) (2) Ex-e-cu-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
+Underfull \hbox (badness 10000) in paragraph at lines 202--203
 \OT1/ptm/m/n/10 (+20) Arm 2: $\OMS/cmsy/m/n/10 f[]\OML/cmm/m/it/10 ; []\OMS/cmsy/m/n/10 g$\OT1/ptm/m/n/10 (+20) , Arm 3:
  []
 
 
-Underfull \hbox (badness 2735) in paragraph at lines 195--196
+Underfull \hbox (badness 2735) in paragraph at lines 202--203
 \OMS/cmsy/m/n/10 f[]\OML/cmm/m/it/10 ; []\OMS/cmsy/m/n/10 g$\OT1/ptm/m/n/10 (+20) . In-tro-duc-ing Arm 2
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2]
+ [2 <./arm_prompts.png>]
 Underfull \hbox (badness 2644) in paragraph at lines 238--239
 []\OT1/ptm/m/n/10 (+20) We for-mal-ize our cen-tral claim as $[]\OT1/cmr/m/n/10 ([]) \OMS/cmsy/m/n/10 ^^T
  []
 
+<line.png, id=101, 560.8152pt x 346.46239pt>
+File: line.png Graphic file (type png)
+<use line.png>
+Package pdftex.def Info: line.png  used on input line 248.
+(pdftex.def)             Requested size: 234.8775pt x 145.10085pt.
+<main.png, id=102, 865.7946pt x 443.0151pt>
+File: main.png Graphic file (type png)
+<use main.png>
+Package pdftex.def Info: main.png  used on input line 257.
+(pdftex.def)             Requested size: 487.8225pt x 249.61449pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 278.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-Underfull \hbox (badness 1320) in paragraph at lines 286--287
-[]\OT1/ptm/b/n/10 (+20) Models. \OT1/ptm/m/n/10 (+20) We eval-u-ate two instruction-tuned mod-els:
+ [3 <./line.png>]
+Overfull \hbox (21.00249pt too wide) detected at line 306
+[]
  []
 
-[3]
-<main.png, id=244, 867.24pt x 433.62pt>
-File: main.png Graphic file (type png)
-<use main.png>
-Package pdftex.def Info: main.png  used on input line 299.
-(pdftex.def)             Requested size: 234.8775pt x 117.43625pt.
-<line.png, id=245, 394.88329pt x 390.258pt>
-File: line.png Graphic file (type png)
-<use line.png>
-Package pdftex.def Info: line.png  used on input line 306.
-(pdftex.def)             Requested size: 234.8775pt x 232.12599pt.
-<pval.png, id=247, 442.00333pt x 426.393pt>
-File: pval.png Graphic file (type png)
-<use pval.png>
-Package pdftex.def Info: pval.png  used on input line 321.
-(pdftex.def)             Requested size: 234.8775pt x 226.57927pt.
+[4 <./main.png>]
+Overfull \hbox (2.86366pt too wide) detected at line 380
+\U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 `\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Y[]; X\OT1/cmr/m/n/10 )] = \U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 `\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; X\OT1/cmr/m/n/10 )] \OMS/cmsy/m/n/10 ^^T \U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 `\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Y[]; X\OT1/cmr/m/n/10 )] + \OML/cmm/m/it/10 ":
+ []
 
-Underfull \vbox (badness 2894) has occurred while \output is active []
-
- [4 <./main.png> <./line.png> <./pval.png>]
-<vlb.png, id=272, 458.1918pt x 307.8702pt>
-File: vlb.png Graphic file (type png)
-<use vlb.png>
-Package pdftex.def Info: vlb.png  used on input line 382.
-(pdftex.def)             Requested size: 234.8775pt x 157.81972pt.
-<mi_v_acc.png, id=276, 310.761pt x 209.583pt>
-File: mi_v_acc.png Graphic file (type png)
-<use mi_v_acc.png>
-Package pdftex.def Info: mi_v_acc.png  used on input line 391.
-(pdftex.def)             Requested size: 234.8775pt x 158.40848pt.
- [5]
-<recovery_final.png, id=297, 422.0568pt x 277.5168pt>
+<recovery_final.png, id=131, 422.0568pt x 277.5168pt>
 File: recovery_final.png Graphic file (type png)
 <use recovery_final.png>
-Package pdftex.def Info: recovery_final.png  used on input line 400.
+Package pdftex.def Info: recovery_final.png  used on input line 406.
 (pdftex.def)             Requested size: 234.8775pt x 154.44286pt.
-<recovery_powerlaw.png, id=299, 547.0839pt x 239.2137pt>
-File: recovery_powerlaw.png Graphic file (type png)
-<use recovery_powerlaw.png>
-Package pdftex.def Info: recovery_powerlaw.png  used on input line 409.
-(pdftex.def)             Requested size: 234.8775pt x 102.69926pt.
-<kde.png, id=300, 425.6703pt x 173.448pt>
-File: kde.png Graphic file (type png)
-<use kde.png>
-Package pdftex.def Info: kde.png  used on input line 418.
-(pdftex.def)             Requested size: 234.8775pt x 95.70634pt.
+[5 <./recovery_final.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Underfull \vbox (badness 4505) has occurred while \output is active []
-
- [6 <./vlb.png> <./mi_v_acc.png> <./recovery_final.png> <./recovery_powerlaw.png>] [7 <./kde.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 512--513
-[]\OT1/ptm/m/n/10 (+20) Take the dif-fer-ence of $\OML/cmm/m/it/10 P[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 P[] \OMS/cmsy/m/n/10 ^^U
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 516--517
-[]\OT1/ptm/b/n/10 (+20) Corollary 6.1.1. []\OT1/ptm/m/it/10 (+20) Let $\OML/cmm/m/it/10 H[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 r\OT1/cmr/m/n/10 ) =
- []
-
-
-Underfull \hbox (badness 1721) in paragraph at lines 516--517
-\OT1/ptm/m/it/10 (+20) entropy achiev-able for rep-re-sen-ta-tion $\OML/cmm/m/it/10 r$\OT1/ptm/m/it/10 (+20) . When the
- []
-
-[8] (./example_paper.bbl
+ (./example_paper.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 33--39
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www . cambridge . org / core /
  []
@@ -1127,134 +1103,138 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--39
 \OT1/pcr/m/n/10 product / identifier / S0140525X10000853 /
  []
 
-[9]
-Underfull \hbox (badness 4096) in paragraph at lines 110--114
+[6]
+Underfull \hbox (badness 4096) in paragraph at lines 105--109
 []\OT1/ptm/m/n/10 (+20) Hudson, D. A. and Man-ning, C. D.  Com-po-si-
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 110--114
+Underfull \hbox (badness 1648) in paragraph at lines 105--109
 \OT1/ptm/m/n/10 (+20) tional At-ten-tion Net-works for Ma-chine Rea-son-ing,
  []
 
 
-Underfull \hbox (badness 3386) in paragraph at lines 129--133
+Underfull \hbox (badness 3386) in paragraph at lines 124--128
 \OT1/ptm/m/n/10 (+20) tice-ship Learn-ing with Ap-pli-ca-tion to Quadruped
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 129--133
+Underfull \hbox (badness 1460) in paragraph at lines 124--128
 \OT1/ptm/m/n/10 (+20) Lo-co-mo-tion.  In \OT1/ptm/m/it/10 (+20) Ad-vances in Neu-ral In-for-ma-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--133
+Underfull \hbox (badness 10000) in paragraph at lines 124--128
 \OT1/pcr/m/n/10 cc / paper _ files / paper / 2007 / hash /
  []
 
 
-Overfull \hbox (23.42252pt too wide) in paragraph at lines 129--133
+Overfull \hbox (23.42252pt too wide) in paragraph at lines 124--128
 \OT1/pcr/m/n/10 54a367d629152b720749e187b3eaa11b-[]Abstract .
  []
 
-
-Underfull \hbox (badness 4291) in paragraph at lines 164--168
+[7]
+Underfull \hbox (badness 4291) in paragraph at lines 159--163
 []\OT1/ptm/m/n/10 (+20) Merrill, W. and Sab-har-wal, A.  The Ex-pres-sive
  []
 
 
-Underfull \hbox (badness 5274) in paragraph at lines 164--168
+Underfull \hbox (badness 5274) in paragraph at lines 159--163
 \OT1/ptm/m/n/10 (+20) 2024.  URL [][]$\OT1/pcr/m/n/10 http : / / arxiv . org / abs / 2310 .
  []
 
-[10]
-Underfull \hbox (badness 1210) in paragraph at lines 229--235
+
+Underfull \hbox (badness 1210) in paragraph at lines 219--225
 []\OT1/ptm/m/n/10 (+20) Schneider, W. and Chein, J. M.  Con-trolled & au-
  []
 
 
-Underfull \hbox (badness 6691) in paragraph at lines 229--235
+Underfull \hbox (badness 6691) in paragraph at lines 219--225
 \OT1/ptm/m/n/10 (+20) to-matic pro-cess-ing: be-hav-ior, the-ory, and bi-o-
  []
 
 
-Underfull \hbox (badness 5245) in paragraph at lines 229--235
+Underfull \hbox (badness 5245) in paragraph at lines 219--225
 \OT1/ptm/m/n/10 (+20) log-i-cal mech-a-nisms.  \OT1/ptm/m/it/10 (+20) Cog-ni-tive Sci-ence\OT1/ptm/m/n/10 (+20) , 27(3):
  []
 
 
-Underfull \hbox (badness 4266) in paragraph at lines 229--235
+Underfull \hbox (badness 4266) in paragraph at lines 219--225
 \OT1/ptm/m/n/10 (+20) 525--559, May 2003.  ISSN 0364-0213, 1551-
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 229--235
+Underfull \hbox (badness 1178) in paragraph at lines 219--225
 \OT1/ptm/m/n/10 (+20) 6709.  doi: $10 . 1207 / s15516709cog2703[]8$.  URL
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--235
+Underfull \hbox (badness 10000) in paragraph at lines 219--225
 [][]$\OT1/pcr/m/n/10 https : / / onlinelibrary . wiley . com / doi /
  []
 
 
-Underfull \hbox (badness 2495) in paragraph at lines 237--241
+Underfull \hbox (badness 2495) in paragraph at lines 227--231
 []\OT1/ptm/m/n/10 (+20) Shen, Z.  LLM With Tools: A Sur-vey, Septem-
  []
 
 
-Underfull \hbox (badness 2894) in paragraph at lines 243--247
+Underfull \hbox (badness 2894) in paragraph at lines 233--237
 []\OT1/ptm/m/n/10 (+20) Shin, R. and Durme, B. V.  Few-Shot Se-man-tic
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 243--247
+Underfull \hbox (badness 1845) in paragraph at lines 233--237
 \OT1/ptm/m/n/10 (+20) Pars-ing with Lan-guage Mod-els Trained On Code,
  []
 
 
-Underfull \hbox (badness 3503) in paragraph at lines 260--266
+Underfull \hbox (badness 3503) in paragraph at lines 245--251
 []\OT1/ptm/m/n/10 (+20) Veli[]ckovi[]c, P. and Blun-dell, C.  Neu-ral al-go-rith-
  []
 
 
-Underfull \hbox (badness 1173) in paragraph at lines 260--266
+Underfull \hbox (badness 1173) in paragraph at lines 245--251
 \OT1/ptm/m/n/10 (+20) mic rea-son-ing.  \OT1/ptm/m/it/10 (+20) Pat-terns\OT1/ptm/m/n/10 (+20) , 2(7):100273, July 2021.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--266
+Underfull \hbox (badness 10000) in paragraph at lines 245--251
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / linkinghub . elsevier . com /
  []
 
 
-Underfull \hbox (badness 5274) in paragraph at lines 284--288
+Underfull \hbox (badness 5274) in paragraph at lines 269--273
 \OT1/ptm/m/n/10 (+20) 2022.  URL [][]$\OT1/pcr/m/n/10 http : / / arxiv . org / abs / 2203 .
  []
 
-) [11] [12
+[8]) [9
 
 ] (./example_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `example_paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36343 strings out of 474116
- 716865 string characters out of 5743682
- 1953187 words of memory out of 5000000
- 57607 multiletter control sequences out of 15000+600000
- 601929 words of font info for 325 fonts, out of 8000000 for 9000
+ 36160 strings out of 474116
+ 714259 string characters out of 5743682
+ 1954187 words of memory out of 5000000
+ 57515 multiletter control sequences out of 15000+600000
+ 599773 words of font info for 294 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 93i,11n,99p,1473b,643s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on example_paper.pdf (12 pages, 1249886 bytes).
+ 93i,12n,99p,1482b,662s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on example_paper.pdf (9 pages, 959854 bytes).
 PDF statistics:
- 553 PDF objects out of 1000 (max. 8388607)
- 451 compressed objects within 5 object streams
- 118 named destinations out of 1000 (max. 500000)
- 64202 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 454 PDF objects out of 1000 (max. 8388607)
+ 366 compressed objects within 4 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 62134 words of extra memory for PDF output out of 74296 (max. 10000000)
 

@@ -13,11 +13,21 @@
 \newlabel{fig:three_arms@cref}{{[figure][1][]1}{[1][1][]1}}
 \citation{xie2021explanation}
 \citation{lyu2023faithful,pan2023logic}
+\newlabel{fig:arm_prompts}{{2}{2}{Prompt templates for the three-arm evaluation framework. Arm 1 instructs the model to reason purely in natural language without code. Arm 2 instructs the model to generate code and simulate its execution. Arm 3 uses the same code generation prompt but executes the output in a Python runtime rather than simulating}{figure.caption.2}{}}
+\newlabel{fig:arm_prompts@cref}{{[figure][2][]2}{[1][1][]2}}
+\newlabel{method}{{2}{3}{}{section.2}{}}
+\newlabel{method@cref}{{[section][2][]2}{[1][3][]3}}
+\newlabel{fig:line}{{3}{3}{Average accuracy of different models and tasks (Y axis) across different arms (X axis). Code execution (Arm 3) is better than Code simulation (Arm 2) which is better than natural language reasoning (Arm 1) on CLRS$_{30}$ (n=500), NPHardEval (n=270), Fine-Grained evaluation (n=270) benchmarks across 3 seeds. Statistical significance measured by Wilcoxon Signed Rank test between adjacent branches. Analysis uses model-level Boostrappedd Wilson CI}{figure.caption.3}{}}
+\newlabel{fig:line@cref}{{[figure][3][]3}{[1][3][]3}}
+\newlabel{fig:main}{{4}{4}{Different fine-grained tasks as problems get harder}{figure.caption.4}{}}
+\newlabel{fig:main@cref}{{[figure][4][]4}{[1][3][]4}}
 \citation{graves_neural_2014,velickovic_neural_2021,reed_neural_2016,graves_hybrid_2016}
 \citation{schneider_controlled_2003,risko_cognitive_2016,anderson_neural_2010}
 \citation{kolter_hierarchical_2007,dietterich_hierarchical_2000}
 \citation{hudson_compositional_2018,hupkes_compositionality_2020,andreas_neural_2017,poggio2017and}
 \citation{velickovic_neural_2021,mahdavi_towards_2023,ibarz_generalist_2022,yan_neural_2020}
+\newlabel{fig:recovery_final}{{5}{5}{Recovery rate analysis: proportion of cases where LLM simulation (Arm 2) produces the correct answer despite incorrect code (Arm 3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation}{figure.caption.5}{}}
+\newlabel{fig:recovery_final@cref}{{[figure][5][]5}{[1][5][]5}}
 \citation{marra_integrating_2019,olausson_linc_2023,han_folio_2024}
 \citation{altabaa2025cot,zelikman_star_2022,merrill_expressive_2024,altabaa_cot_2025}
 \citation{xie2021explanation,garg2022can,akyurek2022learning,zhang2024trained}
@@ -25,42 +35,6 @@
 \citation{shen_llm_2024,schick_toolformer_nodate,qin_toolllm_2023,tang_toolalpaca_2023,parisi_talm_2022}
 \citation{shin_few-shot_2022,krishnamurthy_neural_2017,berant_semantic_2013,dong_language_2016}
 \citation{puri_codenet_2021,alon_code2vec_2019,chen_neural_2018}
-\newlabel{method}{{3}{3}{}{section.3}{}}
-\newlabel{method@cref}{{[section][3][]3}{[1][3][]3}}
-\newlabel{exp:0}{{4}{3}{}{section.4}{}}
-\newlabel{exp:0@cref}{{[section][4][]4}{[1][3][]3}}
-\newlabel{fig:main}{{2}{4}{Accuracy comparison across the three reasoning arms for Deepseek-Coder and Gemma-2 models. Code execution (Arm 3) consistently outperforms code simulation (Arm 2) and natural language reasoning (Arm 1) across all task families: arithmetic, dynamic programming, and integer linear programming}{figure.caption.2}{}}
-\newlabel{fig:main@cref}{{[figure][2][]2}{[1][4][]4}}
-\newlabel{fig:line}{{3}{4}{Accuracy as a function of problem difficulty (hardness parameter $\tau $). As task complexity increases, the performance gap between arms widens, with code execution maintaining higher accuracy at greater difficulty levels}{figure.caption.3}{}}
-\newlabel{fig:line@cref}{{[figure][3][]3}{[1][4][]4}}
-\newlabel{fig:pval}{{4}{4}{Pairwise $p$-values from McNemar tests comparing accuracy between arms. All comparisons are statistically significant ($p < 0.05$), confirming the ordering Arm 1 $<$ Arm 2 $<$ Arm 3. We use non-parametric tests (Kruskal-Wallis for overall comparison, McNemar for pairwise) to avoid distributional assumptions}{figure.caption.4}{}}
-\newlabel{fig:pval@cref}{{[figure][4][]4}{[1][4][]4}}
-\citation{bai2023transformers}
-\newlabel{exp:1}{{5}{5}{}{section.5}{}}
-\newlabel{exp:1@cref}{{[section][5][]5}{[1][5][]5}}
-\newlabel{exp:2}{{5.2}{5}{}{subsection.5.2}{}}
-\newlabel{exp:2@cref}{{[subsection][2][5]5.2}{[1][5][]5}}
-\newlabel{fig:vlb}{{5}{6}{Cross-entropy comparison between code and natural language representations. Code achieves significantly lower cross-entropy (higher mutual information bound) than NL for both TF-IDF and BERT features, validating \cref {cor:1}}{figure.caption.5}{}}
-\newlabel{fig:vlb@cref}{{[figure][5][]5}{[1][5][]6}}
-\newlabel{fig:mi_v_acc}{{6}{6}{Relationship between estimated mutual information and task accuracy. Each point represents a task-representation pair. Higher mutual information (lower cross-entropy) correlates with improved accuracy ($r = 0.73$, $p < 0.01$), supporting the theoretical prediction that code's informational advantage translates to performance gains}{figure.caption.6}{}}
-\newlabel{fig:mi_v_acc@cref}{{[figure][6][]6}{[1][5][]6}}
-\newlabel{fig:recovery_final}{{7}{6}{Recovery rate analysis: proportion of cases where LLM simulation (Arm 2) produces the correct answer despite incorrect code (Arm 3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation}{figure.caption.7}{}}
-\newlabel{fig:recovery_final@cref}{{[figure][7][]7}{[1][6][]6}}
-\newlabel{fig:recovery_powerlaw}{{8}{6}{Recovery rate as a function of task complexity (hardness parameter $\tau $). Recovery follows a power-law decay, indicating that the advantage of symbolic execution over LLM simulation grows with problem difficulty}{figure.caption.8}{}}
-\newlabel{fig:recovery_powerlaw@cref}{{[figure][8][]8}{[1][6][]6}}
-\citation{xie2021explanation}
-\citation{ton2024understanding,altabaa2025cot}
-\newlabel{fig:kde}{{9}{7}{Kernel density estimation of accuracy distributions across the three arms. Arm 3 (code execution) exhibits a mode near 100\% accuracy, while Arms 1 and 2 show broader, lower-accuracy distributions. The bimodal structure of Arm 3 reflects the dichotomy between correct and incorrect code generation---when code is correct, execution is perfect}{figure.caption.9}{}}
-\newlabel{fig:kde@cref}{{[figure][9][]9}{[1][6][]7}}
-\newlabel{lem:1}{{6.0.1}{7}{}{lemma.6.0.1}{}}
-\newlabel{lem:1@cref}{{[lemma][1][]6.0.1}{[1][7][]7}}
-\citation{poole2019variational}
-\newlabel{lem:2}{{6.0.2}{8}{Variational Lower Bound}{lemma.6.0.2}{}}
-\newlabel{lem:2@cref}{{[lemma][2][]6.0.2}{[1][8][]8}}
-\newlabel{thm:1}{{6.1}{8}{}{theorem.6.1}{}}
-\newlabel{thm:1@cref}{{[theorem][1][6]6.1}{[1][8][]8}}
-\newlabel{cor:1}{{6.1.1}{8}{}{corollary.6.1.1}{}}
-\newlabel{cor:1@cref}{{[corollary][1][]6.1.1}{[1][8][]8}}
 \bibdata{example_paper}
 \bibcite{akyurek2022learning}{{1}{2022}{{Aky{\"u}rek et~al.}}{{Aky{\"u}rek, Schuurmans, Andreas, Ma, and Zhou}}}
 \bibcite{alon_code2vec_2019}{{2}{2019}{{Alon et~al.}}{{Alon, Zilberstein, Levy, and Yahav}}}
@@ -68,48 +42,43 @@
 \bibcite{altabaa_cot_2025}{{4}{2025{b}}{{Altabaa et~al.}}{{Altabaa, Montasser, and Lafferty}}}
 \bibcite{anderson_neural_2010}{{5}{2010}{{Anderson}}{{}}}
 \bibcite{andreas_neural_2017}{{6}{2017}{{Andreas et~al.}}{{Andreas, Rohrbach, Darrell, and Klein}}}
-\bibcite{bai2023transformers}{{7}{2023}{{Bai et~al.}}{{Bai, Chen, Wang, Xiong, and Mei}}}
-\bibcite{berant_semantic_2013}{{8}{2013}{{Berant et~al.}}{{Berant, Chou, Frostig, and Liang}}}
-\bibcite{chen_neural_2018}{{9}{2018}{{Chen \& Zhou}}{{Chen and Zhou}}}
-\bibcite{dietterich_hierarchical_2000}{{10}{2000}{{Dietterich}}{{}}}
-\bibcite{dong_language_2016}{{11}{2016}{{Dong \& Lapata}}{{Dong and Lapata}}}
-\bibcite{gao2023pal}{{12}{2023}{{Gao et~al.}}{{Gao, Madaan, Zhou, Alon, Liu, Yang, Callan, and Neubig}}}
-\bibcite{garg2022can}{{13}{2022}{{Garg et~al.}}{{Garg, Tsipras, Liang, and Valiant}}}
-\bibcite{graves_neural_2014}{{14}{2014}{{Graves et~al.}}{{Graves, Wayne, and Danihelka}}}
-\bibcite{graves_hybrid_2016}{{15}{2016}{{Graves et~al.}}{{Graves, Wayne, Reynolds, Harley, Danihelka, Grabska-Barwińska, Colmenarejo, Grefenstette, Ramalho, Agapiou, Badia, Hermann, Zwols, Ostrovski, Cain, King, Summerfield, Blunsom, Kavukcuoglu, and Hassabis}}}
-\bibcite{han_folio_2024}{{16}{2024}{{Han et~al.}}{{Han, Schoelkopf, Zhao, Qi, Riddell, Zhou, Coady, Peng, Qiao, Benson, Sun, Wardle-Solano, Szabo, Zubova, Burtell, Fan, Liu, Wong, Sailor, Ni, Nan, Kasai, Yu, Zhang, Fabbri, Kryscinski, Yavuz, Liu, Lin, Joty, Zhou, Xiong, Ying, Cohan, and Radev}}}
-\bibcite{hudson_compositional_2018}{{17}{2018}{{Hudson \& Manning}}{{Hudson and Manning}}}
-\bibcite{hupkes_compositionality_2020}{{18}{2020}{{Hupkes et~al.}}{{Hupkes, Dankers, Mul, and Bruni}}}
-\bibcite{ibarz_generalist_2022}{{19}{2022}{{Ibarz et~al.}}{{Ibarz, Kurin, Papamakarios, Nikiforou, Bennani, Csordás, Dudzik, Bošnjak, Vitvitskyi, Rubanova, Deac, Bevilacqua, Ganin, Blundell, and Veličković}}}
-\bibcite{kolter_hierarchical_2007}{{20}{2007}{{Kolter et~al.}}{{Kolter, Abbeel, and Ng}}}
-\bibcite{krishnamurthy_neural_2017}{{21}{2017}{{Krishnamurthy et~al.}}{{Krishnamurthy, Dasigi, and Gardner}}}
-\bibcite{lyu2023faithful}{{22}{2023}{{Lyu et~al.}}{{Lyu, Havaldar, Stein, Zhang, Rao, Wong, Apidianaki, and Callison-Burch}}}
-\bibcite{mahdavi_towards_2023}{{23}{2023}{{Mahdavi et~al.}}{{Mahdavi, Swersky, Kipf, Hashemi, Thrampoulidis, and Liao}}}
-\bibcite{marra_integrating_2019}{{24}{2019}{{Marra et~al.}}{{Marra, Giannini, Diligenti, and Gori}}}
-\bibcite{merrill2023expressive}{{25}{2023}{{Merrill \& Sabharwal}}{{Merrill and Sabharwal}}}
-\bibcite{merrill_expressive_2024}{{26}{2024}{{Merrill \& Sabharwal}}{{Merrill and Sabharwal}}}
-\bibcite{olausson_linc_2023}{{27}{2023}{{Olausson et~al.}}{{Olausson, Gu, Lipkin, Zhang, Solar-Lezama, Tenenbaum, and Levy}}}
-\bibcite{pan2023logic}{{28}{2023}{{Pan et~al.}}{{Pan, Albalak, Wang, and Wang}}}
-\bibcite{parisi_talm_2022}{{29}{2022}{{Parisi et~al.}}{{Parisi, Zhao, and Fiedel}}}
-\bibcite{poggio2017and}{{30}{2017}{{Poggio et~al.}}{{Poggio, Mhaskar, Rosasco, Miranda, and Liao}}}
-\bibcite{poole2019variational}{{31}{2019}{{Poole et~al.}}{{Poole, Ozair, Van Den~Oord, Alemi, and Tucker}}}
-\bibcite{puri_codenet_2021}{{32}{2021}{{Puri et~al.}}{{Puri, Kung, Janssen, Zhang, Domeniconi, Zolotov, Dolby, Chen, Choudhury, Decker, Thost, Buratti, Pujar, Ramji, Finkler, Malaika, and Reiss}}}
-\bibcite{qin_toolllm_2023}{{33}{2023}{{Qin et~al.}}{{Qin, Liang, Ye, Zhu, Yan, Lu, Lin, Cong, Tang, Qian, Zhao, Hong, Tian, Xie, Zhou, Gerstein, Li, Liu, and Sun}}}
-\bibcite{reed_neural_2016}{{34}{2016}{{Reed \& Freitas}}{{Reed and Freitas}}}
-\bibcite{risko_cognitive_2016}{{35}{2016}{{Risko \& Gilbert}}{{Risko and Gilbert}}}
-\bibcite{schick_toolformer_nodate}{{36}{}{{Schick et~al.}}{{Schick, Dessì, Raileanu, Lomeli, Zettlemoyer, Cancedda, and Scialom}}}
-\bibcite{schneider_controlled_2003}{{37}{2003}{{Schneider \& Chein}}{{Schneider and Chein}}}
-\bibcite{shen_llm_2024}{{38}{2024}{{Shen}}{{}}}
-\bibcite{shin_few-shot_2022}{{39}{2022}{{Shin \& Durme}}{{Shin and Durme}}}
-\bibcite{tang_toolalpaca_2023}{{40}{2023}{{Tang et~al.}}{{Tang, Deng, Lin, Han, Liang, Cao, and Sun}}}
-\bibcite{ton2024understanding}{{41}{2024}{{Ton et~al.}}{{Ton, Taufiq, and Liu}}}
-\bibcite{velickovic_neural_2021}{{42}{2021}{{Veličković \& Blundell}}{{Veličković and Blundell}}}
-\bibcite{wei2022chain}{{43}{2022}{{Wei et~al.}}{{Wei, Wang, Schuurmans, Bosma, Xia, Chi, Le, Zhou, et~al.}}}
-\bibcite{xie2021explanation}{{44}{2021}{{Xie et~al.}}{{Xie, Raghunathan, Liang, and Ma}}}
-\bibcite{yan_neural_2020}{{45}{2020}{{Yan et~al.}}{{Yan, Swersky, Koutra, Ranganathan, and Hashemi}}}
-\bibcite{zelikman_star_2022}{{46}{2022}{{Zelikman et~al.}}{{Zelikman, Wu, Mu, and Goodman}}}
-\bibcite{zhang2024trained}{{47}{2024}{{Zhang et~al.}}{{Zhang, Frei, and Bartlett}}}
+\bibcite{berant_semantic_2013}{{7}{2013}{{Berant et~al.}}{{Berant, Chou, Frostig, and Liang}}}
+\bibcite{chen_neural_2018}{{8}{2018}{{Chen \& Zhou}}{{Chen and Zhou}}}
+\bibcite{dietterich_hierarchical_2000}{{9}{2000}{{Dietterich}}{{}}}
+\bibcite{dong_language_2016}{{10}{2016}{{Dong \& Lapata}}{{Dong and Lapata}}}
+\bibcite{gao2023pal}{{11}{2023}{{Gao et~al.}}{{Gao, Madaan, Zhou, Alon, Liu, Yang, Callan, and Neubig}}}
+\bibcite{garg2022can}{{12}{2022}{{Garg et~al.}}{{Garg, Tsipras, Liang, and Valiant}}}
+\bibcite{graves_neural_2014}{{13}{2014}{{Graves et~al.}}{{Graves, Wayne, and Danihelka}}}
+\bibcite{graves_hybrid_2016}{{14}{2016}{{Graves et~al.}}{{Graves, Wayne, Reynolds, Harley, Danihelka, Grabska-Barwińska, Colmenarejo, Grefenstette, Ramalho, Agapiou, Badia, Hermann, Zwols, Ostrovski, Cain, King, Summerfield, Blunsom, Kavukcuoglu, and Hassabis}}}
+\bibcite{han_folio_2024}{{15}{2024}{{Han et~al.}}{{Han, Schoelkopf, Zhao, Qi, Riddell, Zhou, Coady, Peng, Qiao, Benson, Sun, Wardle-Solano, Szabo, Zubova, Burtell, Fan, Liu, Wong, Sailor, Ni, Nan, Kasai, Yu, Zhang, Fabbri, Kryscinski, Yavuz, Liu, Lin, Joty, Zhou, Xiong, Ying, Cohan, and Radev}}}
+\bibcite{hudson_compositional_2018}{{16}{2018}{{Hudson \& Manning}}{{Hudson and Manning}}}
+\bibcite{hupkes_compositionality_2020}{{17}{2020}{{Hupkes et~al.}}{{Hupkes, Dankers, Mul, and Bruni}}}
+\bibcite{ibarz_generalist_2022}{{18}{2022}{{Ibarz et~al.}}{{Ibarz, Kurin, Papamakarios, Nikiforou, Bennani, Csordás, Dudzik, Bošnjak, Vitvitskyi, Rubanova, Deac, Bevilacqua, Ganin, Blundell, and Veličković}}}
+\bibcite{kolter_hierarchical_2007}{{19}{2007}{{Kolter et~al.}}{{Kolter, Abbeel, and Ng}}}
+\bibcite{krishnamurthy_neural_2017}{{20}{2017}{{Krishnamurthy et~al.}}{{Krishnamurthy, Dasigi, and Gardner}}}
+\bibcite{lyu2023faithful}{{21}{2023}{{Lyu et~al.}}{{Lyu, Havaldar, Stein, Zhang, Rao, Wong, Apidianaki, and Callison-Burch}}}
+\bibcite{mahdavi_towards_2023}{{22}{2023}{{Mahdavi et~al.}}{{Mahdavi, Swersky, Kipf, Hashemi, Thrampoulidis, and Liao}}}
+\bibcite{marra_integrating_2019}{{23}{2019}{{Marra et~al.}}{{Marra, Giannini, Diligenti, and Gori}}}
+\bibcite{merrill2023expressive}{{24}{2023}{{Merrill \& Sabharwal}}{{Merrill and Sabharwal}}}
+\bibcite{merrill_expressive_2024}{{25}{2024}{{Merrill \& Sabharwal}}{{Merrill and Sabharwal}}}
+\bibcite{olausson_linc_2023}{{26}{2023}{{Olausson et~al.}}{{Olausson, Gu, Lipkin, Zhang, Solar-Lezama, Tenenbaum, and Levy}}}
+\bibcite{pan2023logic}{{27}{2023}{{Pan et~al.}}{{Pan, Albalak, Wang, and Wang}}}
+\bibcite{parisi_talm_2022}{{28}{2022}{{Parisi et~al.}}{{Parisi, Zhao, and Fiedel}}}
+\bibcite{poggio2017and}{{29}{2017}{{Poggio et~al.}}{{Poggio, Mhaskar, Rosasco, Miranda, and Liao}}}
+\bibcite{puri_codenet_2021}{{30}{2021}{{Puri et~al.}}{{Puri, Kung, Janssen, Zhang, Domeniconi, Zolotov, Dolby, Chen, Choudhury, Decker, Thost, Buratti, Pujar, Ramji, Finkler, Malaika, and Reiss}}}
+\bibcite{qin_toolllm_2023}{{31}{2023}{{Qin et~al.}}{{Qin, Liang, Ye, Zhu, Yan, Lu, Lin, Cong, Tang, Qian, Zhao, Hong, Tian, Xie, Zhou, Gerstein, Li, Liu, and Sun}}}
+\bibcite{reed_neural_2016}{{32}{2016}{{Reed \& Freitas}}{{Reed and Freitas}}}
+\bibcite{risko_cognitive_2016}{{33}{2016}{{Risko \& Gilbert}}{{Risko and Gilbert}}}
+\bibcite{schick_toolformer_nodate}{{34}{}{{Schick et~al.}}{{Schick, Dessì, Raileanu, Lomeli, Zettlemoyer, Cancedda, and Scialom}}}
+\bibcite{schneider_controlled_2003}{{35}{2003}{{Schneider \& Chein}}{{Schneider and Chein}}}
+\bibcite{shen_llm_2024}{{36}{2024}{{Shen}}{{}}}
+\bibcite{shin_few-shot_2022}{{37}{2022}{{Shin \& Durme}}{{Shin and Durme}}}
+\bibcite{tang_toolalpaca_2023}{{38}{2023}{{Tang et~al.}}{{Tang, Deng, Lin, Han, Liang, Cao, and Sun}}}
+\bibcite{velickovic_neural_2021}{{39}{2021}{{Veličković \& Blundell}}{{Veličković and Blundell}}}
+\bibcite{wei2022chain}{{40}{2022}{{Wei et~al.}}{{Wei, Wang, Schuurmans, Bosma, Xia, Chi, Le, Zhou, et~al.}}}
+\bibcite{xie2021explanation}{{41}{2021}{{Xie et~al.}}{{Xie, Raghunathan, Liang, and Ma}}}
+\bibcite{yan_neural_2020}{{42}{2020}{{Yan et~al.}}{{Yan, Swersky, Koutra, Ranganathan, and Hashemi}}}
+\bibcite{zelikman_star_2022}{{43}{2022}{{Zelikman et~al.}}{{Zelikman, Wu, Mu, and Goodman}}}
+\bibcite{zhang2024trained}{{44}{2024}{{Zhang et~al.}}{{Zhang, Frei, and Bartlett}}}
 \bibstyle{icml2025}
-\newlabel{app:cor1_proof}{{A}{12}{}{appendix.A}{}}
-\newlabel{app:cor1_proof@cref}{{[appendix][1][2147483647]A}{[1][12][]12}}
-\gdef \@abspage@last{12}
+\gdef \@abspage@last{9}

@@ -275,30 +275,6 @@ We prompt the LLM in Arm 1 to never use any code in its reasoning, and to give a
 \textbf{Advantages of Arm 3 emerge as tasks get harder.} On fine-grained analysis, Arm 3 (Code execution) scales much better (What is the metric, how much better?) than the other branches at scale for eaach problem. For arithmetic problems where models code simulation performs the best, perhaps because models memorized the relationships between the plus symbol and small digits (explains why natural language is low, because they cannot use symbols).
 
 
-% \textbf{Recovery reduces as tasks get harder.}
-% To further reinforce this result, we rule out the possibilities of recovery as tasks get harder, eliminating any benefit of running Arm 2:
-% \begin{enumerate}[leftmargin=*]
-%     \item Arm 3 produces an incorrect answer (implying incorrect code generation), and
-%     \item Arm 2 produces the correct answer (implying successful LLM recovery).
-% \end{enumerate}
-
-% \cref{fig:recovery_final} presents the recovery analysis across all tasks and models. The recovery rate remains consistently low (typically $< 5\%$), indicating that LLM simulation rarely compensates for code generation errors. This confirms that Arm 3's advantage stems from reliable solver execution rather than Arm 2's inability to reason about code.
-
-% \begin{figure}[t]
-%     \centering
-%     \includegraphics[width=1\linewidth]{recovery_final.png}
-%     \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm 2) produces the correct answer despite incorrect code (Arm 3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
-%     \label{fig:recovery_final}
-% \end{figure}
-
-% \textbf{Weak models} \cref{fig:recovery_powerlaw} examines how recovery rate varies with task difficulty. We observe a power-law decay: as problems become harder, recovery becomes increasingly unlikely. This occurs because complex problems require longer, more intricate reasoning chains where errors compound---the LLM cannot ``guess'' its way to the correct answer when the underlying algorithm is non-trivial.
-
-% \begin{figure}[t]
-%     \centering
-%     \includegraphics[width=1\linewidth]{recovery_powerlaw.png}
-%     \caption{Recovery rate as a function of task complexity (hardness parameter $\tau$). Recovery follows a power-law decay, indicating that the advantage of symbolic execution over LLM simulation grows with problem difficulty.}
-%     \label{fig:recovery_powerlaw}
-% \end{figure}
 
 
 
@@ -405,54 +381,83 @@ Thus,
 
 Since this holds for arbitrary NL rule $\delta_{\mathrm{NL}}$, taking the infimum over $\delta_{\mathrm{NL}}$ on the right-hand side yields $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + \varepsilon$. \qed
 
-\begin{theorem}[Deterministic Solver Dominance under $0$--$1$ Loss]
-    \label{thm:deterministic_solver}
-    Let $X \sim p(x)$ be a task instance and let $Z \sim p_{\mathrm{Code}}(\cdot \mid X)$ be a code representation generated from $X$. 
-    Let $Y^*(X)$ denote the ground-truth answer.
+\subsection{Arm 2  < Arm 3}
+
+Assume:
+1. $Y_3 = g(X,Z) = Y^*(X)$
+2. $Y_2 \sim N(\cdot \mid Y_3, X,Z)$
+3. Under 0-1 loss $\ell ( y, x) = 1\{y \neq Y^*(X)\}$
+    $R_3 = 0 \leq R_2.$
+4. Moreover, since $Pr[Y_2 \neq Y_3] > 0$, therefore $R_2 > 0 $and hence $R_3 < R_2$. 
+
+Since the arm is deterministic, it always outputs the right answer, therefore the performance can only be strictly greater than the other. In the case that the code is wrong, we also experiment with how often the model recovers later on. We show that this quantity is not high. 
+
+\textbf{Recovery reduces as tasks get harder.}
+To further reinforce this result, we rule out the possibilities of recovery as tasks get harder, eliminating any benefit of running Arm 2:
+\begin{enumerate}[leftmargin=*]
+    \item Arm 3 produces an incorrect answer (implying incorrect code generation), and
+    \item Arm 2 produces the correct answer (implying successful LLM recovery).
+\end{enumerate}
+
+\cref{fig:recovery_final} presents the recovery analysis across all tasks and models. The recovery rate remains consistently low (typically $< 5\%$), indicating that LLM simulation rarely compensates for code generation errors. This confirms that Arm 3's advantage stems from reliable solver execution rather than Arm 2's inability to reason about code.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1\linewidth]{recovery_final.png}
+    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm 2) produces the correct answer despite incorrect code (Arm 3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
+    \label{fig:recovery_final}
+\end{figure}
+
+
+
+% \begin{theorem}[Deterministic Solver Dominance under $0$--$1$ Loss]
+%     \label{thm:deterministic_solver}
+%     Let $X \sim p(x)$ be a task instance and let $Z \sim p_{\mathrm{Code}}(\cdot \mid X)$ be a code representation generated from $X$. 
+%     Let $Y^*(X)$ denote the ground-truth answer.
     
-    Consider two execution arms:
+%     Consider two execution arms:
     
-    \begin{itemize}
-        \item \textbf{Arm~2 (Noisy execution).} The final answer is
-        \[
-        Y_2 \sim p_2(\cdot \mid X, Z).
-        \]
+%     \begin{itemize}
+%         \item \textbf{Arm~2 (Noisy execution).} The final answer is
+%         \[
+%         Y_2 \sim p_2(\cdot \mid X, Z).
+%         \]
         
-        \item \textbf{Arm~3 (Deterministic solver).} The final answer is
-        \[
-        Y_3 = g(X, Z).
-        \]
-    \end{itemize}
+%         \item \textbf{Arm~3 (Deterministic solver).} The final answer is
+%         \[
+%         Y_3 = g(X, Z).
+%         \]
+%     \end{itemize}
     
-    Assume:
-    \begin{enumerate}
-        \item (\emph{Solver correctness}) The solver output equals the ground-truth answer almost surely:
-        \[
-        Y_3 = Y^*(X) \quad \text{a.s.}
-        \]
-        \item (\emph{Noisy execution}) The noisy execution is obtained by adding noise to the solver output:
-        \[
-        p_2(y \mid X, Z) = N(y \mid Y_3, X, Z)
-        \]
-        for some stochastic kernel $N$.
-    \end{enumerate}
+%     Assume:
+%     \begin{enumerate}
+%         \item (\emph{Solver correctness}) The solver output equals the ground-truth answer almost surely:
+%         \[
+%         Y_3 = Y^*(X) \quad \text{a.s.}
+%         \]
+%         \item (\emph{Noisy execution}) The noisy execution is obtained by adding noise to the solver output:
+%         \[
+%         p_2(y \mid X, Z) = N(y \mid Y_3, X, Z)
+%         \]
+%         for some stochastic kernel $N$.
+%     \end{enumerate}
     
-    Let the loss be the $0$--$1$ loss,
-    \[
-    \ell(y, x) = \mathbf{1}\{y \neq Y^*(x)\}.
-    \]
+%     Let the loss be the $0$--$1$ loss,
+%     \[
+%     \ell(y, x) = \mathbf{1}\{y \neq Y^*(x)\}.
+%     \]
     
-    Then the risks satisfy
-    \[
-    \boxed{
-    \mathbb{E}[\ell(Y_3, X)] \;\le\; \mathbb{E}[\ell(Y_2, X)],
-    }
-    \]
-    with strict inequality whenever
-    \[
-    \mathbb{P}(Y_2 \neq Y_3) > 0.
-    \]
-    \end{theorem}
+%     Then the risks satisfy
+%     \[
+%     \boxed{
+%     \mathbb{E}[\ell(Y_3, X)] \;\le\; \mathbb{E}[\ell(Y_2, X)],
+%     }
+%     \]
+%     with strict inequality whenever
+%     \[
+%     \mathbb{P}(Y_2 \neq Y_3) > 0.
+%     \]
+%     \end{theorem}
     
 
 % \begin{figure}[h]
