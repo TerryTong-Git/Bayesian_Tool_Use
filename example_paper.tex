@@ -285,7 +285,7 @@ We prompt the LLM in Arm 1 to never use any code in its reasoning, and to give a
 
 \section{Statistical and Information Theoretic Foundations of Algorithmic Reasoning}
 
-We claim that natural language reasoning is a garbling of code under a noisy channel paradigm of inference, leading code reasoning to be at least as good as NL reasoning.
+We claim that natural language reasoning is a garbling of code \cite{blackwell1953equivalent} under a noisy channel paradigm of inference, leading code reasoning to be at least as good as NL reasoning.
 
 \textbf{Setup.}
 Let $X \sim p(x)$ denote the task instance (problem + inputs), drawn from a representative test distribution. Let $\mathcal{Y}$ be an output space (e.g., answer strings), and let $\ell : \mathcal{Y} \times X \to [0,1]$ be a bounded and measurable loss function (0--1 binary loss). In Arm~1 and Arm~2, each arm corresponds to an intermediate representation $Z$ produced by channel $p(z \mid x)$, and then choosing an output $Y$ via a randomized decision rule $\delta(y \mid x, z)$.
@@ -299,7 +299,7 @@ R^*(Z) &:= \inf_{\delta} \, \mathbb{E}[\ell(Y, X)], \\
 In the first arm, we observe $Z_{\mathrm{NL}} \sim p_{\mathrm{NL}}(\cdot \mid X)$.
 For the second arm, we have $Z_{\mathrm{Code}} \sim p_{\mathrm{Code}}(\cdot \mid X)$.
 
-Our goal is to show that $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + \varepsilon$ for some small $\varepsilon$.
+Our goal is to show that $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + O(\varepsilon)$ for some small $\varepsilon$.
 
 \subsection{Assumptions}
 
