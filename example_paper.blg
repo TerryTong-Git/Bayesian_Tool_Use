@@ -6,45 +6,45 @@ Database file #1: example_paper.bib
 Warning--empty journal in schick_toolformer_nodate
 Warning--empty year in schick_toolformer_nodate
 Warning--empty year in schick_toolformer_nodate
-You've used 44 entries,
+You've used 45 entries,
             2773 wiz_defined-function locations,
-            893 strings with 17373 characters,
-and the built_in function-call counts, 27603 in all, are:
-= -- 2329
-> -- 2430
-< -- 20
-+ -- 812
-- -- 767
-* -- 2545
-:= -- 4379
-add.period$ -- 189
-call.type$ -- 44
-change.case$ -- 384
-chr.to.int$ -- 43
-cite$ -- 91
-duplicate$ -- 898
-empty$ -- 1668
-format.name$ -- 831
-if$ -- 5634
+            901 strings with 17536 characters,
+and the built_in function-call counts, 27994 in all, are:
+= -- 2367
+> -- 2440
+< -- 21
++ -- 816
+- -- 770
+* -- 2574
+:= -- 4438
+add.period$ -- 192
+call.type$ -- 45
+change.case$ -- 388
+chr.to.int$ -- 44
+cite$ -- 93
+duplicate$ -- 918
+empty$ -- 1708
+format.name$ -- 835
+if$ -- 5716
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 25
-newline$ -- 279
-num.names$ -- 180
-pop$ -- 790
+missing$ -- 26
+newline$ -- 284
+num.names$ -- 184
+pop$ -- 797
 preamble$ -- 1
-purify$ -- 340
+purify$ -- 343
 quote$ -- 0
-skip$ -- 849
+skip$ -- 862
 stack$ -- 0
-substring$ -- 597
-swap$ -- 145
+substring$ -- 624
+swap$ -- 146
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 484
+type$ -- 495
 warning$ -- 3
-while$ -- 173
+while$ -- 178
 width$ -- 0
-write$ -- 663
+write$ -- 676
 (There were 3 warnings)

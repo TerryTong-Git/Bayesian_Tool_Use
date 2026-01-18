@@ -178,7 +178,7 @@ These results inform the design of compositional AI systems, providing principle
 \begin{figure}[t]
     \centering
     \includegraphics[width=1\linewidth]{fig1(2).png}
-    \caption{Bayesian Inference model showing the \emph{three arms methodology} in \cref{exp:0}. Given an algorithmic problem, we may split it into two steps (1) Translate (2) Execute. The (1) translation $\in \{ \mathrm{Code}, \mathrm{NL }\}$. Then (2) execution $\in \{ \mathrm{LLM \ Reasoning}, \mathrm{Solver \ Execution}\}$. We have three pairs, Arm 1: $\{\mathrm{NL \ Gen},\mathrm{LLM \ Reasoning}\}$, Arm 2: $\{\mathrm{Code \ Gen}, \mathrm{LLM \ Reasoning}\}$, Arm 3: $\{\mathrm{Code \ Gen} , \mathrm{Solver \ Execution}\}$. Typically, the problem is tackled by comparing Arm 1 and Arm 3 in neuro-symbolic literature, which is intractable theoretically, and uncontrolled since multiple variables are changing. By introducing Arm 2, the problem becomes tractable. In the diagram, the \emph{shaded} circles correspond to observed R.V. and \emph{white} correspond to unobserved. The notation for R.V.s is correspondingly used in \cref{method}.
+    \caption{Bayesian Inference model showing the \emph{three arms methodology} in \cref{exp:0}. Given an algorithmic problem, we may split it into two steps (1) Translate (2) Execute. The (1) translation $\in \{\mathrm{Code}, \mathrm{NL}\}$. Then (2) execution $\in \{\mathrm{LLM~Reasoning}, \mathrm{Solver~Execution}\}$. We have three pairs, Arm~1: $\{\mathrm{NL~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~2: $\{\mathrm{Code~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~3: $\{\mathrm{Code~Gen}, \mathrm{Solver~Execution}\}$. Typically, the problem is tackled by comparing Arm~1 and Arm~3 in neuro-symbolic literature, which is intractable theoretically, and uncontrolled since multiple variables are changing. By introducing Arm~2, the problem becomes tractable. In the diagram, the \emph{shaded} circles correspond to observed R.V.\ and \emph{white} correspond to unobserved. The notation for R.V.s is correspondingly used in \cref{method}.
     }
     \label{fig:three_arms}
     \vspace{-5pt}
@@ -187,7 +187,7 @@ These results inform the design of compositional AI systems, providing principle
 \begin{figure*}[t]
     \centering
     \includegraphics[width=\textwidth]{arm_prompts.png}
-    \caption{Prompt templates for the three-arm evaluation framework. Arm 1 instructs the model to reason purely in natural language without code. Arm 2 instructs the model to generate code and simulate its execution. Arm 3 uses the same code generation prompt but executes the output in a Python runtime rather than simulating.}
+    \caption{Prompt templates for the three-arm evaluation framework. Arm~1 instructs the model to reason purely in natural language without code. Arm~2 instructs the model to generate code and simulate its execution. Arm~3 uses the same code generation prompt but executes the output in a Python runtime rather than simulating.}
     \label{fig:arm_prompts}
 \end{figure*}
 
@@ -198,22 +198,22 @@ Consider the algorithmic task of computing arithmetic operations encoded in natu
     p(\texttt{Y=3} | \texttt{X=What is one plus two?})
 \end{equation*}
 \vspace{-5pt}
-The language model forward pass could decide (1) to generate the solution directly with natural language reasoning \cite{wei2022chain} (2) translate the problem into code and use a solver \cite{gao2023pal}. This paper provides empirical evidence that $\text{Arm 1} < \text{Arm 3}$ quantified by end-task accuracy. A body of work shows that this pipeline is generally effective \cite{lyu2023faithful, pan2023logic}, further evidenced by the empirical success of tool-use\footnote{Here we primarily refer to solver-based tool-use as opposed to knowledge-intensive tool-use like RAG}. However, little progress has been made on explaining \emph{why} solver-based tools lead to higher end-task accuracy than natural language reasoning.
+The language model forward pass could decide (1) to generate the solution directly with natural language reasoning \cite{wei2022chain} (2) translate the problem into code and use a solver \cite{gao2023pal}. This paper provides empirical evidence that $\mathrm{Arm~1} < \mathrm{Arm~3}$ quantified by end-task accuracy. A body of work shows that this pipeline is generally effective \cite{lyu2023faithful, pan2023logic}, further evidenced by the empirical success of tool-use\footnote{Here we primarily refer to solver-based tool-use as opposed to knowledge-intensive tool-use like RAG}. However, little progress has been made on explaining \emph{why} solver-based tools lead to higher end-task accuracy than natural language reasoning.
 
 %Why the problem is hard theoretically. 
 One might be tempted to prove a statistical advantage by showing that sample complexity to learn code is less than natural language because code is structured, but will quickly find that this problem becomes intractable due to the hardness of capturing natural language under a mathematical framework. The same problem arises when attempting to use approximation theory to provide evidence that DNNs can better learn compositional or structured languages (like code) than natural language. Broadly speaking, the problem is challenging because the inputs and outputs are different, one is a structured language, the other is an unstructured language. This drastically complicates comparison. Or, one might be tempted to show a computational advantage by showing that code unlocks a new level of expressivity \cite{merrill2023expressive}. However, one will find that whether using a solver or not will not overcome the hardness of the problem. E.g., we can prove by contradiction that using a solver will not allow us to better solve NP-Hard problems, unless P=NP.  
 
 %What we did 
-As a solution, we leverage a Bayesian Inference paradigm to reason about the two different settings \cite{xie2021explanation}. Doing so, enables us to break down the algorithmic reasoning pipeline into two distinct phases (1) Translation $\in \{ \mathrm{Code}, \mathrm{NL }\}$  (2) Execution $\in \{ \mathrm{LLM \ Reasoning}, \mathrm{Solver \ Execution}\}$ \cite{lyu2023faithful, pan2023logic}. Enumerating the valid combinations, we obtain three pairs, Arm 1: $\{\mathrm{NL \ Gen},\mathrm{LLM \ Reasoning}\}$, Arm 2: $\{\mathrm{Code \ Gen}, \mathrm{LLM \ Reasoning}\}$, Arm 3: $\{\mathrm{Code \ Gen} , \mathrm{Solver \ Execution}\}$. Introducing Arm 2 makes the problem tractable. 
+As a solution, we leverage a Bayesian Inference paradigm to reason about the two different settings \cite{xie2021explanation}. Doing so, enables us to break down the algorithmic reasoning pipeline into two distinct phases (1) Translation $\in \{\mathrm{Code}, \mathrm{NL}\}$  (2) Execution $\in \{\mathrm{LLM~Reasoning}, \mathrm{Solver~Execution}\}$ \cite{lyu2023faithful, pan2023logic}. Enumerating the valid combinations, we obtain three pairs, Arm~1: $\{\mathrm{NL~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~2: $\{\mathrm{Code~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~3: $\{\mathrm{Code~Gen}, \mathrm{Solver~Execution}\}$. Introducing Arm~2 makes the problem tractable. 
 
 %Why the problem hasn't been solved empirically. 
-Empirically, this framework enables controlled comparisons. A rigorous comparison has not been instantiated because it is hard to control the experiment and determine what representation is actually being used---whether code, natural language, or something else. We overcome this by verbalizing the representation using Chain-of-Thought. We provide statistical evidence for the alternative hypothesis $\text{Arm 3} > \text{Arm 2} > \text{Arm 1}$ on (Gemma, Deepseek, Llama), we demonstrate that generating code and executing leads to 78\% accuracy on (ILP, DP, Arithmetic) tasks, over 30\% for code simulation and just over 20\% for natural language reasoning across 5 models. Our results are computed over 5 seeds, and a Friedman Chi-square gives results a test statistic of 9277.32 and 8369.34 for deepseek and llama, enabling us to reject the null in favor of the alternative. 
+Empirically, this framework enables controlled comparisons. A rigorous comparison has not been instantiated because it is hard to control the experiment and determine what representation is actually being used---whether code, natural language, or something else. We overcome this by verbalizing the representation using Chain-of-Thought. We provide statistical evidence for the alternative hypothesis $\mathrm{Arm~3} > \mathrm{Arm~2} > \mathrm{Arm~1}$ on (Gemma, Deepseek, Llama), we demonstrate that generating code and executing leads to 78\% accuracy on (ILP, DP, Arithmetic) tasks, over 30\% for code simulation and just over 20\% for natural language reasoning across 5 models. Our results are computed over 5 seeds, and a Friedman Chi-square gives results a test statistic of 9277.32 and 8369.34 for deepseek and llama, enabling us to reject the null in favor of the alternative. 
 
-Theoretically, we first compare $\text{Arm 1} < \text{Arm 2}$. Bayesian Inference shows us that the LLM implicitly does multi-class classification to the right algorithm. We utilize information theory to capture natural language and code under the same framework, forgoing using grammars or other mathematical frameworks that are intractable. We reduce the comparison of Bayes Error to that of comparing cross-entropy. A intermediate step using mutual information makes the proof interpretable: we prove that the mutual information between the CoT and the final answer is higher when conditioned on code representations over natural language representations. We variationally lower bound the mutual information using cross-entropy of a proposal distribution parameterized by a logistic regression. Since we only care about orderings, we subtract to overcome the intractability of estimating the differential entropy, reducing the comparison of mutual information to that of cross-entropy. The cross-entropy is measured empirically using logistic regression on TF-IDF features and Bert-base-uncased features, showing that code has lower cross-entropy than NL and achieves higher accuracy when classifying the correct algorithm. The difference is statistically significant (F-test, $p < 0.05$). %no need to say the details of reduction and not using LLM uncalibrated probs? 
+Theoretically, we first compare $\mathrm{Arm~1} < \mathrm{Arm~2}$. Bayesian Inference shows us that the LLM implicitly does multi-class classification to the right algorithm. We utilize information theory to capture natural language and code under the same framework, forgoing using grammars or other mathematical frameworks that are intractable. We reduce the comparison of Bayes Error to that of comparing cross-entropy. A intermediate step using mutual information makes the proof interpretable: we prove that the mutual information between the CoT and the final answer is higher when conditioned on code representations over natural language representations. We variationally lower bound the mutual information using cross-entropy of a proposal distribution parameterized by a logistic regression. Since we only care about orderings, we subtract to overcome the intractability of estimating the differential entropy, reducing the comparison of mutual information to that of cross-entropy. The cross-entropy is measured empirically using logistic regression on TF-IDF features and Bert-base-uncased features, showing that code has lower cross-entropy than NL and achieves higher accuracy when classifying the correct algorithm. The difference is statistically significant (F-test, $p < 0.05$). %no need to say the details of reduction and not using LLM uncalibrated probs? 
 
-Then we compare $\text{Arm 2} < \text{Arm 3}$. This difference is easily explained using a communication channel model of LLM forward-pass. We show that in the case where Arm 2 > Arm 3, i.e. when the code generated is not executable or wrong, yet the LLM reasoning obtains the correct answer, that this occurs rarely. In other words, generally $\text{Arm 3} > \text{Arm 2}$. 
+Then we compare $\mathrm{Arm~2} < \mathrm{Arm~3}$. This difference is easily explained using a communication channel model of LLM forward-pass. We show that in the case where Arm~2 $>$ Arm~3, i.e. when the code generated is not executable or wrong, yet the LLM reasoning obtains the correct answer, that this occurs rarely. In other words, generally $\mathrm{Arm~3} > \mathrm{Arm~2}$. 
 
-Piecing these results together, we show that $\text{Arm 1} < \text{Arm 2} < \text{Arm 3}$, verifying the hypothesis.
+Piecing these results together, we show that $\mathrm{Arm~1} < \mathrm{Arm~2} < \mathrm{Arm~3}$, verifying the hypothesis.
 
 % % Claim: Statistical Learning and Computational Learning Hard to deal with our setting. Therefore we need 3 arms. Explain why its hard, and what the gap is in literature. 
 %  The reason for this is because comparing structured programming languages and unstructured natural language is challenging. Typically, statistical learning theory is concerned with learning a hypothesis class mapping $\mathcal{X} \to \mathcal{Y}$. We compare two learning algorithms and see how many samples of $\mathcal{X}$ are required to achieve a loss $L$. What if now, the $X$ are different across learning algorithms? This makes comparison between NL (1) and Code (2) \emph{mutually} intractable. 
@@ -227,6 +227,12 @@ Piecing these results together, we show that $\text{Arm 1} < \text{Arm 2} < \tex
 
 
 % Explanation
+\begin{figure*}
+    \centering
+    \includegraphics[width=1\linewidth]{main.png}
+    \caption{Accuracy scaling across task difficulty ($\tau$) for Arithmetic, Dynamic Programming, and ILP tasks. Arm~3 (code execution) maintains high accuracy as problems get harder, while Arms~1 and~2 degrade. The widening gap demonstrates that solver execution becomes increasingly advantageous for challenging algorithmic problems.}
+    \label{fig:main}
+\end{figure*}
 
 Understanding this problem is crucial as we move towards compositional AI systems rather than monolithic architectures.
 
@@ -237,48 +243,102 @@ Our main contributions are:
     \item \textbf{Empirical validation} demonstrating that code execution achieves 78\% accuracy versus 21\% for natural language reasoning across arithmetic, DP, and ILP tasks ($p < 0.05$).
 \end{enumerate}
 
-
-
-\section{Evaluation Framework}\label{method}
-We formalize our central claim as $\text{Acc}(\text{Arm 1}) \leq \text{Acc}(\text{Arm 2}) < \text{Acc}(\text{Arm 3})$. The following sections detail how we break down the problem and evaluate pairwise $\text{Acc}(\text{Arm 1}) \leq \text{Acc}(\text{Arm 2})$ and then $\text{Acc}(\text{Arm 2}) \leq \text{Acc}(\text{Arm 3})$.
-
-\subsection{$\text{Acc}(\text{Arm 2}) \leq \text{Acc}(\text{Arm 3})$}
-Between Arms 2 and 3, the first stage of the inference pipeline is held constant: both arms use identical generated code. We treat LLM-based code simulation (Arm 2) as the baseline and compare it against code execution in a Python runtime (Arm 3). A potential confound arises because code execution does not observe the original prompt, whereas LLM simulation does---the model could shortcut directly from the prompt to the answer without faithfully simulating the code. To control for this, we introduce Arm 2.5, which masks the prompt before simulation, forcing the model to rely solely on the generated code. 
-
-\subsection{$\text{Acc}(\text{Arm 1}) \leq \text{Acc}(\text{Arm 2})$}
-We control the execution part of our inference (both llm simulation), intervening in the first section by replacing natural language (baseline) generation with code generation and observing the differences. Chaining together these results with 3.1, we can validate our claim. 
-
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{line.png}
-    \caption{Average accuracy across arms for all models and tasks. Code execution (Arm 3) outperforms code simulation (Arm 2), which outperforms natural language reasoning (Arm 1) on CLRS$_{30}$ (n=500), NPHardEval (n=270), and Fine-Grained evaluation (n=270) benchmarks across 3 seeds. Statistical significance measured by Wilcoxon signed-rank test between adjacent arms. Error bars show bootstrapped Wilson confidence intervals at the model level.}
+    \caption{Average accuracy across arms for all models and tasks. Code execution (Arm~3) outperforms code simulation (Arm~2), which outperforms natural language reasoning (Arm~1) on CLRS$_{30}$ (n=500), NPHardEval (n=270), and Fine-Grained evaluation (n=270) benchmarks across 3 seeds. Statistical significance measured by Wilcoxon signed-rank test between adjacent arms. Error bars show bootstrapped Wilson confidence intervals at the model level.}
     \label{fig:line}
 \end{figure}
 
-\subsection{Experiments} 
-
 \begin{figure*}
     \centering
-    \includegraphics[width=1\linewidth]{main.png}
-    \caption{Accuracy scaling across task difficulty ($\tau$) for Arithmetic, Dynamic Programming, and ILP tasks. Arm 3 (code execution) maintains high accuracy as problems get harder, while Arms 1 and 2 degrade. The widening gap demonstrates that solver execution becomes increasingly advantageous for challenging algorithmic problems.}
-    \label{fig:main}
+    \includegraphics[width=1\linewidth]{fig_prompts_combined.png}
+    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
+    \label{fig:recovery_final}
 \end{figure*}
+
+
+\section{Evaluation Framework}\label{method}
+We formalize our central claim as $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2}) < \mathrm{Acc}(\mathrm{Arm~3})$. The following sections detail how we break down the problem and evaluate pairwise $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2})$ and then $\mathrm{Acc}(\mathrm{Arm~2}) \leq \mathrm{Acc}(\mathrm{Arm~3})$.
+
+\subsection{$\mathrm{Acc}(\mathrm{Arm~2}) \leq \mathrm{Acc}(\mathrm{Arm~3})$}
+Between Arms~2 and~3, the first stage of the inference pipeline is held constant: both arms use identical generated code. We treat LLM-based code simulation (Arm~2) as the baseline and compare it against code execution in a Python runtime (Arm~3). A potential confound arises because code execution does not observe the original prompt, whereas LLM simulation does---the model could shortcut directly from the prompt to the answer without faithfully simulating the code. To control for this, we introduce Arm~2.5, which masks the prompt before simulation, forcing the model to rely solely on the generated code. 
+
+\subsection{$\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2})$}
+We control the execution part of our inference (both llm simulation), intervening in the first section by replacing natural language (baseline) generation with code generation and observing the differences. Chaining together these results with 3.1, we can validate our claim. 
+
+
+
+\subsection{Experiments} 
 
 \textbf{Data.} We use the CLRS 30 Benchmark (n=500), NPHardEval Benchmark (n=270), and a custom fine-grained evaluation suite (n=270), across three seeds. We define our own task suite---Arithmetic, Dynamic Programming, Integer Linear Programming (ILP)---to modulate hardness with parameter $\tau$. For arithmetic, $\tau$ controls digit length; for DP, it controls table dimensionality; for ILP, it controls the constraint matrix size. These classical algorithms provide sufficient coverage to support general claims. 
 
 \textbf{Models.} We select frontier models (Claude, GPT-4o, Gemini 2.5) as well as open-source models (Mistral, Llama, Qwen). Since we require structured output, we filter out models that give $>$50\% JSON Parse Error, since this is indicative of instruction-following failures, rather than outright lack of coding fidelity. 
 
+\begin{figure*}
+    \centering
+    \includegraphics[width=1\linewidth]{discrimination_by_task.png}
+    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
+    \label{fig:recovery_final}
+\end{figure*}
+
 \textbf{Generating Code and Reasoning Traces.}
-We prompt the LLM in Arm 1 to never use any code in its reasoning, and to give a structured output of the rationale and answer to the algorithmic problem. Similarly for Arm 2, we prompt the LLM to use code in its reasoning, generating a structured output that contains a piece of code, and an attempt at simulating the execution of that piece of code in natural language, followed by a final answer. For Arm 2.5, we mirror the setup of Arm 2 but mask out the prompt, meaning the model must use the generated code and simulate execution to arrive at an answer. For Arm 3, we take the generated function (no prompt), and execute it in a python3 runtime. Models have access to native python packages, and numpy, pandas, scipy, PuLP, and pytorch. \cref{fig:arm_prompts} illustrates the prompt templates used across all three arms.
+We prompt the LLM in Arm~1 to never use any code in its reasoning, and to give a structured output of the rationale and answer to the algorithmic problem. Similarly for Arm~2, we prompt the LLM to use code in its reasoning, generating a structured output that contains a piece of code, and an attempt at simulating the execution of that piece of code in natural language, followed by a final answer. For Arm~3, we take the generated function (no prompt), and execute it in a python3 runtime. Models have access to native python packages, and numpy, pandas, scipy, PuLP, and pytorch. \cref{fig:arm_prompts} illustrates the prompt templates used across all three arms. 
 
 
 
-\textbf{Arm 1 $\leq$ Arm 2 $<$ Arm 3.} \cref{fig:line} demonstrates statistically significant gaps between all three arms ($p < 0.05$, Wilcoxon signed-rank test). Notably, the controlled simulation condition (Arm 2.5, prompt masked) performs worse than the standard simulation (Arm 2), confirming that models exploit prompt information to shortcut directly to answers rather than faithfully simulating code execution. This validates our experimental control: the gap between Arms 2 and 3 reflects genuine differences in execution fidelity, not confounds from prompt access. 
+\textbf{Arm~1 $\leq$ Arm~2 $<$ Arm~3.} \cref{fig:line} demonstrates statistically significant gaps between all three arms ($p < 0.05$, Wilcoxon signed-rank test). Notably, the controlled simulation condition (Arm~2.5, prompt masked) performs worse than the standard simulation (Arm~2), confirming that models exploit prompt information to shortcut directly to answers rather than faithfully simulating code execution. This validates our experimental control: the gap between Arms~2 and~3 reflects genuine differences in execution fidelity, not confounds from prompt access. 
+
+\textbf{Advantages of Arm~3 emerge as tasks get harder.} \cref{fig:main} shows fine-grained scaling behavior across task difficulty. As problem hardness $\tau$ increases, Arm~3 (code execution) maintains robust accuracy while Arms~1 and~2 degrade substantially. The gap widens with difficulty: at the highest $\tau$, Arm~3 outperforms Arm~2 by over 40 percentage points on ILP and DP tasks. For arithmetic, code simulation (Arm~2) performs relatively better at low $\tau$, likely because models have memorized digit-symbol relationships during pretraining. However, this advantage vanishes as digit length increases beyond memorized patterns.
+
+\section{Evaluating Translated NL and NL Distributional Similarity.} 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{translation_additivity_plot.png}
+    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
+    \label{fig:translation_additivity}
+\end{figure}
 
 
 
-\textbf{Advantages of Arm 3 emerge as tasks get harder.} \cref{fig:main} shows fine-grained scaling behavior across task difficulty. As problem hardness $\tau$ increases, Arm 3 (code execution) maintains robust accuracy while Arms 1 and 2 degrade substantially. The gap widens with difficulty: at the highest $\tau$, Arm 3 outperforms Arm 2 by over 40 percentage points on ILP and DP tasks. For arithmetic, code simulation (Arm 2) performs relatively better at low $\tau$, likely because models have memorized digit-symbol relationships during pretraining. However, this advantage vanishes as digit length increases beyond memorized patterns.
 
+One key hypothesis is that natural language reasoning follows a deeper algorithmic procedure encoded in its representations. If this is the case, it would make sense to surface the code and send it to an executor. We test whether natural language reasoning generated by information contained in the code alone can be distributionally similar to natural language reasoning generated from the prompt alone in Arm~1. Then, we test whether they are functionally similar. 
+
+\subsection{Distributional Similarity between Translated NL and original NL}
+We show that the distribution of traces produced directly from the reasoning model can be approximated by post-processing the code with a fixed function across tasks and models. For each task instance $x$ drawn from a held-out test distribution over 21 different algorithmic problems in CLRS, we consider two conditional distributions: Arm~1: $p_{NL} (\cdot \mid x)$, original NL traces generated by an LLM (Gemini 2.0 Flash in our case) and Arm~2 Translated: $p_{Translated} (\cdot \mid x)$, NL traces obtained by first generating code by an LLM, then translating that code into natural language using a fixed translator. 
+
+\textbf{Evaluation Setup}  We formulate a binary classification task in which a powerful judge model (Claude Opus 4.5) is given a problem instance x, and a single reasoning trace z, and must predict whether z was generated by Arm~1, or the translated Arm~2. This setup corresponds to discriminating between the joint distributions $p(x)p_{NL}(z \mid x)$ and $p(x)p_{Translated}(z \mid x)$. For each evaluation task x, we construct two samples $(x, z_{NL})$, where $z_{NL} \sim p_{NL}(\cdot \mid X)$, labelled Original, and $(x, \hat z_{NL})$ where $\hat z_{NL} \sim p_{Translated} ( \cdot \mid x)$, labelled Translated. The label counts are balanced on the test set, and the judge's accuracy, and AUC are computed on held-out tasks (disjoint from any in-context prompting examples).
+
+In the evaluation, all generation parameters are fixed, model, prompt, and decoding hyperparameters, and the only variability is the seed for both the original Arm~1 and translated Arm~2, i.e. we compare samples from two fixed conditionals given a task instance. 
+
+We ensure the judge has enough discriminative power by asking it to classify between raw code and the native NL reasoning. High accuracy would indicate that the performance results on the main evaluation is not due to an underpowered judge. We prompt the judge zero-shot, instructing it that there are original natural language reasoning traces and translated ones that it must distinguish. 
+
+The translator, gemini-2.0 flash, is given 10 in-context pairs between code in Arm~2 and original natural language reasoning in Arm~1, and asked to learn the mapping and apply on new instances. The 10 in-context examples are 10 different tasks, which are disjoint from the 21 other tasks in CLRS benchmark that we evaluate on. 
+
+
+
+\textbf{Results.} Across 2000 samples, we find that the accuracy of the prompt is 49.4\% $\in [47.2\%. 51.5\%]$ Wilson CI, obtaining a 0.479 AUC. The control accuracy is $79.0\%$ so the discriminator is calibrated. We include per-task analysis in the appendix. We see that this is generally true across different models with only a few exceptions between rod cutting and the kruskal algorithm problems. 
+
+% We hypothesize that the natural language reasoning in Arm 1 can be obtained by post-processing Arm 2. We fix a post-processer P, which is an LLM with a fixed prompt in our evaluation. The prompt in P has 10 in-context examples that shows how to translate between code and the original reasoning. We fix these across different tasks, and evaluate on held-out tasks in the CLRS 30 benchmark data (n=1500). We evaluate with a fixed translator (GPT 5.2 Pro) and a fixed evaluator (Claude Opus 4).
+
+\subsection{Functional Similarity between Translated NL and original NL}
+
+We wish to verify whether the translated natural language reaosning from the experiment before has the same functionality as the original natural language reasoning produced in Arm~1.
+
+\textbf{Evaluation Setup}. Given a task instance $x$, we prompt the target language model (gemini) three ways. 1. Baseline: $x$ (question only), 2. Arm~1: $x || z_{NL}$ 3. Translated Arm~2: $x || \hat z_{NL}$ where $\hat z_{NL}$ is obtained by translating code to natural language. If the translated NL loses information relative to the original NL, then conditioning on $\hat z_{NL}$ should yield worse performance than conditioning on $z_{NL}$. We run on 1000 samples and report results on held-out tasks disjoint from the ICL example tasks. The same prompt is used for the translator in the previous experiment as the one used here. 
+
+\textbf{Results}. We fail to reject the null hypothesis on 1000 samples, and see that using the original Arm~1 and the translated Arm~2 concatenated to the same original task prompt yield the same results. 
+
+\textbf{Qualitative Analysis} In observing the LLM responses, we notice the model's have a propensity to follow similar reasoning. This happens across individual models, but problem solving methodology is surprisingly similar across models. Show figure here. 
+
+
+
+
+
+% We wish to verify whether the translated NL and the NL are similar in distribution. By taking a piece of code, then translating and simulating it into natural language reasoning, we get a piece of CoT that is similar to the original. We ask whether this is distinguishable, in order to verify assumption 2. Assumption 1 is validated by design, since we can create a translator T via prompting an LLM. 
+
+% Since the translator $T(Z_nl | Z_code)$ is independent of the task X, we prompt the translator LLM (GPT 5.2) to not see the task, but rather use a fixed prompt with in-context examples from adjacent translating tasks (5-shot). During the translation, test examples' problem tasks are not shown to the translator, only the fixed prompt and piece of code. The evaluation is conducted on held-out tasks not seen during the tuning of the prompt, and the prompt is frozen after tuning. Translator is applied uniformly across tasks, prompts, and decoding params. 
 
 
 
@@ -288,7 +348,7 @@ We prompt the LLM in Arm 1 to never use any code in its reasoning, and to give a
 We claim that natural language reasoning is a garbling of code \cite{blackwell1953equivalent} under a noisy channel paradigm of inference, leading code reasoning to be at least as good as NL reasoning.
 
 \textbf{Setup.}
-Let $X \sim p(x)$ denote the task instance (problem + inputs), drawn from a representative test distribution. Let $\mathcal{Y}$ be an output space (e.g., answer strings), and let $\ell : \mathcal{Y} \times X \to [0,1]$ be a bounded and measurable loss function (0--1 binary loss). In Arm~1 and Arm~2, each arm corresponds to an intermediate representation $Z$ produced by channel $p(z \mid x)$, and then choosing an output $Y$ via a randomized decision rule $\delta(y \mid x, z)$.
+Let $X \sim p(x)$ denote the task instance (problem + inputs), drawn from a representative test distribution. Let $\mathcal{Y}$ be an output space (e.g., answer strings), and let $\ell : \mathcal{Y} \times X \to [0,1]$ be a bounded and measurable loss function (0--1 binary loss). In Arm~1 and Arm~2, each arm corresponds to an intermediate representation $Z$ (e.g. CoT) produced by channel $p(z \mid x)$ (e.g. LLM), and then choosing an output $Y$ via a randomized decision rule $\delta(y \mid x, z)$ (i.e. LLM test-time reasoning).
 
 For any CoT observation $Z$, define the Bayes risk:
 \begin{align*}
@@ -299,15 +359,15 @@ R^*(Z) &:= \inf_{\delta} \, \mathbb{E}[\ell(Y, X)], \\
 In the first arm, we observe $Z_{\mathrm{NL}} \sim p_{\mathrm{NL}}(\cdot \mid X)$.
 For the second arm, we have $Z_{\mathrm{Code}} \sim p_{\mathrm{Code}}(\cdot \mid X)$.
 
-Our goal is to show that $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + O(\varepsilon)$ for some small $\varepsilon$.
+We show that $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + O(\varepsilon)$ for some negligible $\varepsilon$.
 
 \subsection{Assumptions}
 
 \textbf{Assumption 1.}
 We assume there exists a stochastic kernel $T$ such that the Markov chain $X \to Z_{\mathrm{Code}} \to \hat{Z}_{\mathrm{NL}}$ is representative of CoT, with the final decision stage being $\delta(y \mid X, \hat{Z}_{\mathrm{NL}})$. That is,
 \begin{align*}
-\hat{Z}_{\mathrm{NL}} &\sim p_{\mathrm{translation}}(\cdot \mid x), \\
-p_{\mathrm{translation}}(z \mid X) &:= \int T(z \mid z_{\mathrm{Code}}) \, p_{\mathrm{Code}}(z_{\mathrm{Code}} \mid x) \, \mathrm{d}z_{\mathrm{Code}}.
+\hat{Z}_{\mathrm{NL}} &\sim p_{\mathrm{translation}}(\cdot \mid x), \; p_{\mathrm{translation}}(z \mid X)  \\
+&:= \int T(z \mid z_{\mathrm{Code}}) \, p_{\mathrm{Code}}(z_{\mathrm{Code}} \mid x) \, \mathrm{d}z_{\mathrm{Code}}.
 \end{align*}
 
 \textbf{Assumption 2.}
@@ -326,6 +386,7 @@ In other words, averaged over task instances, the NL trace produced by Arm~1 is 
 
 \subsection{Proof}
 
+\begin{proof}
 Under Assumptions~1--2, for the bounded loss $\ell \in [0,1]$,
 \[
 R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + \varepsilon.
@@ -384,11 +445,12 @@ Thus,
 \leq \mathbb{E}[\ell(Y_{\mathrm{NL}}, X)] + \varepsilon.
 \]
 
-Since this holds for arbitrary NL rule $\delta_{\mathrm{NL}}$, taking the infimum over $\delta_{\mathrm{NL}}$ on the right-hand side yields $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + \varepsilon$. \qed
+Since this holds for arbitrary NL rule $\delta_{\mathrm{NL}}$, taking the infimum over $\delta_{\mathrm{NL}}$ on the right-hand side yields $R^*(Z_{\mathrm{Code}}) \leq R^*(Z_{\mathrm{NL}}) + \varepsilon$.
+\end{proof}
 
-\subsection{Arm 2 $<$ Arm 3}
+\subsection{Arm~2 $<$ Arm~3}
 
-We model the comparison between LLM simulation (Arm 2) and solver execution (Arm 3) under the following assumptions:
+We model the comparison between LLM simulation (Arm~2) and solver execution (Arm~3) under the following assumptions:
 \begin{enumerate}[leftmargin=*]
     \item \textbf{Solver correctness.} Given correct code $Z$, the solver deterministically produces the ground-truth answer: $Y_3 = g(X, Z) = Y^*(X)$.
     \item \textbf{Noisy simulation.} LLM simulation adds stochastic noise: $Y_2 \sim N(\cdot \mid Y_3, X, Z)$ for some noise kernel $N$.
@@ -397,24 +459,25 @@ We model the comparison between LLM simulation (Arm 2) and solver execution (Arm
 
 Under these assumptions, the solver achieves zero risk ($R_3 = 0$) whenever the generated code is correct. In contrast, LLM simulation incurs positive risk ($R_2 > 0$) whenever $\Pr[Y_2 \neq Y_3] > 0$, which occurs empirically due to execution errors in mental simulation. Therefore, $R_3 < R_2$.
 
-The only scenario where Arm 2 could outperform Arm 3 is when the generated code is \emph{incorrect}, yet the LLM ``recovers'' by reasoning to the correct answer despite the flawed code. We empirically quantify this recovery rate below. 
+The only scenario where Arm~2 could outperform Arm~3 is when the generated code is \emph{incorrect}, yet the LLM ``recovers'' by reasoning to the correct answer despite the flawed code. We empirically quantify this recovery rate below. 
 
 \textbf{Recovery reduces as tasks get harder.}
-To further reinforce this result, we rule out the possibilities of recovery as tasks get harder, eliminating any benefit of running Arm 2:
+To further reinforce this result, we rule out the possibilities of recovery as tasks get harder, eliminating any benefit of running Arm~2:
 \begin{enumerate}[leftmargin=*]
-    \item Arm 3 produces an incorrect answer (implying incorrect code generation), and
-    \item Arm 2 produces the correct answer (implying successful LLM recovery).
+    \item Arm~3 produces an incorrect answer (implying incorrect code generation), and
+    \item Arm~2 produces the correct answer (implying successful LLM recovery).
 \end{enumerate}
 
-\cref{fig:recovery_final} presents the recovery analysis across all tasks and models. The recovery rate remains consistently low (typically $< 5\%$), indicating that LLM simulation rarely compensates for code generation errors. This confirms that Arm 3's advantage stems from reliable solver execution rather than Arm 2's inability to reason about code.
+\cref{fig:recovery_final} presents the recovery analysis across all tasks and models. The recovery rate remains consistently low (typically $< 5\%$), indicating that LLM simulation rarely compensates for code generation errors. This confirms that Arm~3's advantage stems from reliable solver execution rather than Arm~2's inability to reason about code.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=1\linewidth]{recovery_final.png}
-    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm 2) produces the correct answer despite incorrect code (Arm 3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
+    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
     \label{fig:recovery_final}
 \end{figure}
 
+% Add optimized prompt in appendix. 
 
 
 % \begin{theorem}[Deterministic Solver Dominance under $0$--$1$ Loss]
@@ -493,7 +556,7 @@ To further reinforce this result, we rule out the possibilities of recovery as t
 
 % In this section we explain why the code representations $R = \mathrm{Code}$ has lower Bayes error rate $P^*$ than natural language representations $R = \mathrm{NL}$. This amounts to proving that $\text{Arm 3} > \text{Arm 1}$.
 
-% This section explains a theory that sets up the experiments later that follow. First, we show that $\text{Arm 1} < \text{Arm 2}$, then $\text{Arm 2} < \text{Arm 3}$
+% This section explains a theory that sets up the experiments later that follow. First, we show that $\mathrm{Arm~1} < \mathrm{Arm~2}$, then $\mathrm{Arm~2} < \mathrm{Arm~3}$
 
 % \subsection{Arm 1 $<$ Arm 2}
 
@@ -591,7 +654,7 @@ To further reinforce this result, we rule out the possibilities of recovery as t
 %     Therefore, $P^*_{\mathrm{Code}} < P^*_{\mathrm{NL}}$.
 % \end{proof}
 
-% \subsection{Arm 2 $<$ Arm 3}
+% \subsection{Arm~2 $<$ Arm~3}
 % To explain why Arm 2 $<$ Arm 3, we model LLM forward pass as stochastic inference. The translation stage is the same, and the only difference is the execution stage. We model the inference as communication of information about the problem through a channel. The channel is noisy for LLM execution, and deterministic for solver inference. Therefore, the deterministic solver inference has exactly mutual information of 1 between the CoT Z and Y, and is an upper bound to the stochastic inference. 
 
 % \subsection{Intractability of Direct Comparison and Insight}
@@ -599,7 +662,7 @@ To further reinforce this result, we rule out the possibilities of recovery as t
 % % Why is it mutually intractable. 
 % Directly showing $\text{Arm 3} > \text{Arm 1}$ is mutually intractable, but by introducing an intermediate step in Arm 2, the comparison between Arm 1 and Arm 2 is tractable, and Arm 2 and Arm 3 are tractable. Bayesian inference captures the breakdown nicely via marginalization. Furthermore, by moving into the realm of probabilistic inference, we can introduce information theory \cite{ton2024understanding, altabaa2025cot} as a unifying framework, sidestepping the intractability of mathematical frameworks attempting to capture natural language, e.g. CFG, CCGs. We know that parsing natural language to one of these frameworks optimally is NP-complete.
 
-% \textbf{Insight.} The gap between Arms 1 and 2 is explained by code's higher mutual information with the target algorithm (\cref{cor:1}). The gap between Arms 2 and 3 is explained by the deterministic vs. stochastic execution channel. Together, these provide a principled theoretical account of why code execution outperforms natural language reasoning for algorithmic tasks.
+% \textbf{Insight.} The gap between Arms~1 and~2 is explained by code's higher mutual information with the target algorithm (\cref{cor:1}). The gap between Arms~2 and~3 is explained by the deterministic vs. stochastic execution channel. Together, these provide a principled theoretical account of why code execution outperforms natural language reasoning for algorithmic tasks.
 
 % % \subsection{Summary}
 
@@ -633,7 +696,7 @@ To further reinforce this result, we rule out the possibilities of recovery as t
 
 % We design experiments to test whether code representations yield higher mutual information with target algorithms, thereby explaining the performance gap observed in \cref{exp:0}.
 
-% \subsection{Validating Arm 1 $<$ Arm 2: Mutual Information Estimation}
+% \subsection{Validating Arm 1 $<$ Arm~2: Mutual Information Estimation}
 
 % \textbf{Hypothesis.} According to \cref{cor:1}, if code representations achieve lower cross-entropy when predicting the latent algorithm $\gamma$, then code should yield lower Bayes error. We test this by estimating the cross-entropy for both representations. 
 
@@ -664,9 +727,9 @@ To further reinforce this result, we rule out the possibilities of recovery as t
 
 
 
-% \subsection{Validating Arm 2 $<$ Arm 3: Recovery Analysis} \label{exp:2}
+% \subsection{Validating Arm 2 $<$ Arm~3: Recovery Analysis} \label{exp:2}
 
-% \textbf{Hypothesis.} Solver execution (Arm 3) should outperform LLM simulation (Arm 2) because the solver is deterministic: given correct code, it always produces the correct answer. The only scenario where Arm 2 could outperform Arm 3 is when the generated code is incorrect, yet the LLM ``recovers'' by reasoning its way to the correct answer despite the flawed code. We hypothesize that such recovery events are rare.
+% \textbf{Hypothesis.} Solver execution (Arm~3) should outperform LLM simulation (Arm~2) because the solver is deterministic: given correct code, it always produces the correct answer. The only scenario where Arm 2 could outperform Arm 3 is when the generated code is incorrect, yet the LLM ``recovers'' by reasoning its way to the correct answer despite the flawed code. We hypothesize that such recovery events are rare.
 
 % \textbf{Methodology.} Using the data from \cref{exp:0}, we identify cases where:
 % \begin{enumerate}[leftmargin=*]
@@ -692,7 +755,7 @@ To further reinforce this result, we rule out the possibilities of recovery as t
 % \begin{figure}
 %     \centering
 %     \includegraphics[width=1\linewidth]{kde.png}
-%     \caption{Kernel density estimation of accuracy distributions across the three arms. Arm 3 (code execution) exhibits a mode near 100\% accuracy, while Arms 1 and 2 show broader, lower-accuracy distributions. The bimodal structure of Arm 3 reflects the dichotomy between correct and incorrect code generation---when code is correct, execution is perfect.}
+%     \caption{Kernel density estimation of accuracy distributions across the three arms. Arm 3 (code execution) exhibits a mode near 100\% accuracy, while Arms~1 and~2 show broader, lower-accuracy distributions. The bimodal structure of Arm 3 reflects the dichotomy between correct and incorrect code generation---when code is correct, execution is perfect.}
 %     \label{fig:kde}
 % \end{figure}
 

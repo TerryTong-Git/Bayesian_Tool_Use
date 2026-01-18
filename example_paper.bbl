@@ -5,87 +5,67 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Aky{\"u}rek et~al.(2022)Aky{\"u}rek, Schuurmans, Andreas, Ma, and
-  Zhou]{akyurek2022learning}
+\bibitem[Aky{\"u}rek et~al.(2022)Aky{\"u}rek, Schuurmans, Andreas, Ma, and Zhou]{akyurek2022learning}
 Aky{\"u}rek, E., Schuurmans, D., Andreas, J., Ma, T., and Zhou, D.
-\newblock What learning algorithm is in-context learning? investigations with
-  linear models.
+\newblock What learning algorithm is in-context learning? investigations with linear models.
 \newblock \emph{arXiv preprint arXiv:2211.15661}, 2022.
 
-\bibitem[Alon et~al.(2019)Alon, Zilberstein, Levy, and
-  Yahav]{alon_code2vec_2019}
+\bibitem[Alon et~al.(2019)Alon, Zilberstein, Levy, and Yahav]{alon_code2vec_2019}
 Alon, U., Zilberstein, M., Levy, O., and Yahav, E.
 \newblock code2vec: learning distributed representations of code.
-\newblock \emph{Proceedings of the ACM on Programming Languages}, 3\penalty0
-  (POPL):\penalty0 1--29, January 2019.
+\newblock \emph{Proceedings of the ACM on Programming Languages}, 3\penalty0 (POPL):\penalty0 1--29, January 2019.
 \newblock ISSN 2475-1421.
 \newblock \doi{10.1145/3290353}.
 \newblock URL \url{https://dl.acm.org/doi/10.1145/3290353}.
 
-\bibitem[Altabaa et~al.(2025{\natexlab{a}})Altabaa, Montasser, and
-  Lafferty]{altabaa2025cot}
+\bibitem[Altabaa et~al.(2025{\natexlab{a}})Altabaa, Montasser, and Lafferty]{altabaa2025cot}
 Altabaa, A., Montasser, O., and Lafferty, J.
-\newblock Cot information: Improved sample complexity under chain-of-thought
-  supervision.
+\newblock Cot information: Improved sample complexity under chain-of-thought supervision.
 \newblock \emph{arXiv preprint arXiv:2505.15927}, 2025{\natexlab{a}}.
 
-\bibitem[Altabaa et~al.(2025{\natexlab{b}})Altabaa, Montasser, and
-  Lafferty]{altabaa_cot_2025}
+\bibitem[Altabaa et~al.(2025{\natexlab{b}})Altabaa, Montasser, and Lafferty]{altabaa_cot_2025}
 Altabaa, A., Montasser, O., and Lafferty, J.
-\newblock {CoT} {Information}: {Improved} {Sample} {Complexity} under
-  {Chain}-of-{Thought} {Supervision}, May 2025{\natexlab{b}}.
+\newblock {CoT} {Information}: {Improved} {Sample} {Complexity} under {Chain}-of-{Thought} {Supervision}, May 2025{\natexlab{b}}.
 \newblock URL \url{http://arxiv.org/abs/2505.15927}.
 \newblock arXiv:2505.15927 [stat].
 
 \bibitem[Anderson(2010)]{anderson_neural_2010}
 Anderson, M.~L.
 \newblock Neural reuse: {A} fundamental organizational principle of the brain.
-\newblock \emph{Behavioral and Brain Sciences}, 33\penalty0 (4):\penalty0
-  245--266, August 2010.
+\newblock \emph{Behavioral and Brain Sciences}, 33\penalty0 (4):\penalty0 245--266, August 2010.
 \newblock ISSN 0140-525X, 1469-1825.
 \newblock \doi{10.1017/S0140525X10000853}.
-\newblock URL
-  \url{https://www.cambridge.org/core/product/identifier/S0140525X10000853/type/journal_article}.
+\newblock URL \url{https://www.cambridge.org/core/product/identifier/S0140525X10000853/type/journal_article}.
 
-\bibitem[Andreas et~al.(2017)Andreas, Rohrbach, Darrell, and
-  Klein]{andreas_neural_2017}
+\bibitem[Andreas et~al.(2017)Andreas, Rohrbach, Darrell, and Klein]{andreas_neural_2017}
 Andreas, J., Rohrbach, M., Darrell, T., and Klein, D.
 \newblock Neural {Module} {Networks}, July 2017.
 \newblock URL \url{http://arxiv.org/abs/1511.02799}.
 \newblock arXiv:1511.02799 [cs].
 
-\bibitem[Berant et~al.(2013)Berant, Chou, Frostig, and
-  Liang]{berant_semantic_2013}
+\bibitem[Berant et~al.(2013)Berant, Chou, Frostig, and Liang]{berant_semantic_2013}
 Berant, J., Chou, A., Frostig, R., and Liang, P.
 \newblock Semantic {Parsing} on {Freebase} from {Question}-{Answer} {Pairs}.
-\newblock In Yarowsky, D., Baldwin, T., Korhonen, A., Livescu, K., and Bethard,
-  S. (eds.), \emph{Proceedings of the 2013 {Conference} on {Empirical}
-  {Methods} in {Natural} {Language} {Processing}}, pp.\  1533--1544, Seattle,
-  Washington, USA, October 2013. Association for Computational Linguistics.
+\newblock In Yarowsky, D., Baldwin, T., Korhonen, A., Livescu, K., and Bethard, S. (eds.), \emph{Proceedings of the 2013 {Conference} on {Empirical} {Methods} in {Natural} {Language} {Processing}}, pp.\  1533--1544, Seattle, Washington, USA, October 2013. Association for Computational Linguistics.
 \newblock URL \url{https://aclanthology.org/D13-1160/}.
 
 \bibitem[Blackwell(1953)]{blackwell1953equivalent}
 Blackwell, D.
 \newblock Equivalent comparisons of experiments.
-\newblock \emph{The Annals of Mathematical Statistics}, 24\penalty0
-  (2):\penalty0 265--272, 1953.
+\newblock \emph{The Annals of Mathematical Statistics}, 24\penalty0 (2):\penalty0 265--272, 1953.
 
 \bibitem[Chen \& Zhou(2018)Chen and Zhou]{chen_neural_2018}
 Chen, Q. and Zhou, M.
 \newblock A neural framework for retrieval and summarization of source code.
-\newblock In \emph{Proceedings of the 33rd {ACM}/{IEEE} {International}
-  {Conference} on {Automated} {Software} {Engineering}}, pp.\  826--831,
-  Montpellier France, September 2018. ACM.
+\newblock In \emph{Proceedings of the 33rd {ACM}/{IEEE} {International} {Conference} on {Automated} {Software} {Engineering}}, pp.\  826--831, Montpellier France, September 2018. ACM.
 \newblock ISBN 978-1-4503-5937-5.
 \newblock \doi{10.1145/3238147.3240471}.
 \newblock URL \url{https://dl.acm.org/doi/10.1145/3238147.3240471}.
 
 \bibitem[Dietterich(2000)]{dietterich_hierarchical_2000}
 Dietterich, T.~G.
-\newblock Hierarchical {Reinforcement} {Learning} with the {MAXQ} {Value}
-  {Function} {Decomposition}.
-\newblock \emph{Journal of Artificial Intelligence Research}, 13:\penalty0
-  227--303, November 2000.
+\newblock Hierarchical {Reinforcement} {Learning} with the {MAXQ} {Value} {Function} {Decomposition}.
+\newblock \emph{Journal of Artificial Intelligence Research}, 13:\penalty0 227--303, November 2000.
 \newblock ISSN 1076-9757.
 \newblock \doi{10.1613/jair.639}.
 \newblock URL \url{https://www.jair.org/index.php/jair/article/view/10266}.
@@ -96,20 +76,15 @@ Dong, L. and Lapata, M.
 \newblock URL \url{http://arxiv.org/abs/1601.01280}.
 \newblock arXiv:1601.01280 [cs].
 
-\bibitem[Gao et~al.(2023)Gao, Madaan, Zhou, Alon, Liu, Yang, Callan, and
-  Neubig]{gao2023pal}
-Gao, L., Madaan, A., Zhou, S., Alon, U., Liu, P., Yang, Y., Callan, J., and
-  Neubig, G.
+\bibitem[Gao et~al.(2023)Gao, Madaan, Zhou, Alon, Liu, Yang, Callan, and Neubig]{gao2023pal}
+Gao, L., Madaan, A., Zhou, S., Alon, U., Liu, P., Yang, Y., Callan, J., and Neubig, G.
 \newblock Pal: Program-aided language models.
-\newblock In \emph{International Conference on Machine Learning}, pp.\
-  10764--10799. PMLR, 2023.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  10764--10799. PMLR, 2023.
 
 \bibitem[Garg et~al.(2022)Garg, Tsipras, Liang, and Valiant]{garg2022can}
 Garg, S., Tsipras, D., Liang, P.~S., and Valiant, G.
-\newblock What can transformers learn in-context? a case study of simple
-  function classes.
-\newblock \emph{Advances in neural information processing systems},
-  35:\penalty0 30583--30598, 2022.
+\newblock What can transformers learn in-context? a case study of simple function classes.
+\newblock \emph{Advances in neural information processing systems}, 35:\penalty0 30583--30598, 2022.
 
 \bibitem[Graves et~al.(2014)Graves, Wayne, and Danihelka]{graves_neural_2014}
 Graves, A., Wayne, G., and Danihelka, I.
@@ -117,139 +92,91 @@ Graves, A., Wayne, G., and Danihelka, I.
 \newblock URL \url{http://arxiv.org/abs/1410.5401}.
 \newblock arXiv:1410.5401 [cs].
 
-\bibitem[Graves et~al.(2016)Graves, Wayne, Reynolds, Harley, Danihelka,
-  Grabska-Barwińska, Colmenarejo, Grefenstette, Ramalho, Agapiou, Badia,
-  Hermann, Zwols, Ostrovski, Cain, King, Summerfield, Blunsom, Kavukcuoglu, and
-  Hassabis]{graves_hybrid_2016}
-Graves, A., Wayne, G., Reynolds, M., Harley, T., Danihelka, I.,
-  Grabska-Barwińska, A., Colmenarejo, S.~G., Grefenstette, E., Ramalho, T.,
-  Agapiou, J., Badia, A.~P., Hermann, K.~M., Zwols, Y., Ostrovski, G., Cain,
-  A., King, H., Summerfield, C., Blunsom, P., Kavukcuoglu, K., and Hassabis, D.
+\bibitem[Graves et~al.(2016)Graves, Wayne, Reynolds, Harley, Danihelka, Grabska-Barwińska, Colmenarejo, Grefenstette, Ramalho, Agapiou, Badia, Hermann, Zwols, Ostrovski, Cain, King, Summerfield, Blunsom, Kavukcuoglu, and Hassabis]{graves_hybrid_2016}
+Graves, A., Wayne, G., Reynolds, M., Harley, T., Danihelka, I., Grabska-Barwińska, A., Colmenarejo, S.~G., Grefenstette, E., Ramalho, T., Agapiou, J., Badia, A.~P., Hermann, K.~M., Zwols, Y., Ostrovski, G., Cain, A., King, H., Summerfield, C., Blunsom, P., Kavukcuoglu, K., and Hassabis, D.
 \newblock Hybrid computing using a neural network with dynamic external memory.
 \newblock \emph{Nature}, 538\penalty0 (7626):\penalty0 471--476, October 2016.
 \newblock ISSN 0028-0836, 1476-4687.
 \newblock \doi{10.1038/nature20101}.
 \newblock URL \url{https://www.nature.com/articles/nature20101}.
 
-\bibitem[Han et~al.(2024)Han, Schoelkopf, Zhao, Qi, Riddell, Zhou, Coady, Peng,
-  Qiao, Benson, Sun, Wardle-Solano, Szabo, Zubova, Burtell, Fan, Liu, Wong,
-  Sailor, Ni, Nan, Kasai, Yu, Zhang, Fabbri, Kryscinski, Yavuz, Liu, Lin, Joty,
-  Zhou, Xiong, Ying, Cohan, and Radev]{han_folio_2024}
-Han, S., Schoelkopf, H., Zhao, Y., Qi, Z., Riddell, M., Zhou, W., Coady, J.,
-  Peng, D., Qiao, Y., Benson, L., Sun, L., Wardle-Solano, A., Szabo, H.,
-  Zubova, E., Burtell, M., Fan, J., Liu, Y., Wong, B., Sailor, M., Ni, A., Nan,
-  L., Kasai, J., Yu, T., Zhang, R., Fabbri, A.~R., Kryscinski, W., Yavuz, S.,
-  Liu, Y., Lin, X.~V., Joty, S., Zhou, Y., Xiong, C., Ying, R., Cohan, A., and
-  Radev, D.
-\newblock {FOLIO}: {Natural} {Language} {Reasoning} with {First}-{Order}
-  {Logic}, October 2024.
+\bibitem[Han et~al.(2024)Han, Schoelkopf, Zhao, Qi, Riddell, Zhou, Coady, Peng, Qiao, Benson, Sun, Wardle-Solano, Szabo, Zubova, Burtell, Fan, Liu, Wong, Sailor, Ni, Nan, Kasai, Yu, Zhang, Fabbri, Kryscinski, Yavuz, Liu, Lin, Joty, Zhou, Xiong, Ying, Cohan, and Radev]{han_folio_2024}
+Han, S., Schoelkopf, H., Zhao, Y., Qi, Z., Riddell, M., Zhou, W., Coady, J., Peng, D., Qiao, Y., Benson, L., Sun, L., Wardle-Solano, A., Szabo, H., Zubova, E., Burtell, M., Fan, J., Liu, Y., Wong, B., Sailor, M., Ni, A., Nan, L., Kasai, J., Yu, T., Zhang, R., Fabbri, A.~R., Kryscinski, W., Yavuz, S., Liu, Y., Lin, X.~V., Joty, S., Zhou, Y., Xiong, C., Ying, R., Cohan, A., and Radev, D.
+\newblock {FOLIO}: {Natural} {Language} {Reasoning} with {First}-{Order} {Logic}, October 2024.
 \newblock URL \url{http://arxiv.org/abs/2209.00840}.
 \newblock arXiv:2209.00840 [cs].
 
 \bibitem[Hudson \& Manning(2018)Hudson and Manning]{hudson_compositional_2018}
 Hudson, D.~A. and Manning, C.~D.
-\newblock Compositional {Attention} {Networks} for {Machine} {Reasoning}, April
-  2018.
+\newblock Compositional {Attention} {Networks} for {Machine} {Reasoning}, April 2018.
 \newblock URL \url{http://arxiv.org/abs/1803.03067}.
 \newblock arXiv:1803.03067 [cs].
 
-\bibitem[Hupkes et~al.(2020)Hupkes, Dankers, Mul, and
-  Bruni]{hupkes_compositionality_2020}
+\bibitem[Hupkes et~al.(2020)Hupkes, Dankers, Mul, and Bruni]{hupkes_compositionality_2020}
 Hupkes, D., Dankers, V., Mul, M., and Bruni, E.
-\newblock Compositionality decomposed: how do neural networks generalise?,
-  February 2020.
+\newblock Compositionality decomposed: how do neural networks generalise?, February 2020.
 \newblock URL \url{http://arxiv.org/abs/1908.08351}.
 \newblock arXiv:1908.08351 [cs].
 
-\bibitem[Ibarz et~al.(2022)Ibarz, Kurin, Papamakarios, Nikiforou, Bennani,
-  Csordás, Dudzik, Bošnjak, Vitvitskyi, Rubanova, Deac, Bevilacqua, Ganin,
-  Blundell, and Veličković]{ibarz_generalist_2022}
-Ibarz, B., Kurin, V., Papamakarios, G., Nikiforou, K., Bennani, M., Csordás,
-  R., Dudzik, A.~J., Bošnjak, M., Vitvitskyi, A., Rubanova, Y., Deac, A.,
-  Bevilacqua, B., Ganin, Y., Blundell, C., and Veličković, P.
+\bibitem[Ibarz et~al.(2022)Ibarz, Kurin, Papamakarios, Nikiforou, Bennani, Csordás, Dudzik, Bošnjak, Vitvitskyi, Rubanova, Deac, Bevilacqua, Ganin, Blundell, and Veličković]{ibarz_generalist_2022}
+Ibarz, B., Kurin, V., Papamakarios, G., Nikiforou, K., Bennani, M., Csordás, R., Dudzik, A.~J., Bošnjak, M., Vitvitskyi, A., Rubanova, Y., Deac, A., Bevilacqua, B., Ganin, Y., Blundell, C., and Veličković, P.
 \newblock A {Generalist} {Neural} {Algorithmic} {Learner}.
-\newblock In \emph{Proceedings of the {First} {Learning} on {Graphs}
-  {Conference}}, pp.\  2:1--2:23. PMLR, December 2022.
+\newblock In \emph{Proceedings of the {First} {Learning} on {Graphs} {Conference}}, pp.\  2:1--2:23. PMLR, December 2022.
 \newblock URL \url{https://proceedings.mlr.press/v198/ibarz22a.html}.
 \newblock ISSN: 2640-3498.
 
 \bibitem[Kolter et~al.(2007)Kolter, Abbeel, and Ng]{kolter_hierarchical_2007}
 Kolter, J., Abbeel, P., and Ng, A.
-\newblock Hierarchical {Apprenticeship} {Learning} with {Application} to
-  {Quadruped} {Locomotion}.
-\newblock In \emph{Advances in {Neural} {Information} {Processing} {Systems}},
-  volume~20. Curran Associates, Inc., 2007.
-\newblock URL
-  \url{https://proceedings.neurips.cc/paper_files/paper/2007/hash/54a367d629152b720749e187b3eaa11b-Abstract.html}.
+\newblock Hierarchical {Apprenticeship} {Learning} with {Application} to {Quadruped} {Locomotion}.
+\newblock In \emph{Advances in {Neural} {Information} {Processing} {Systems}}, volume~20. Curran Associates, Inc., 2007.
+\newblock URL \url{https://proceedings.neurips.cc/paper_files/paper/2007/hash/54a367d629152b720749e187b3eaa11b-Abstract.html}.
 
-\bibitem[Krishnamurthy et~al.(2017)Krishnamurthy, Dasigi, and
-  Gardner]{krishnamurthy_neural_2017}
+\bibitem[Krishnamurthy et~al.(2017)Krishnamurthy, Dasigi, and Gardner]{krishnamurthy_neural_2017}
 Krishnamurthy, J., Dasigi, P., and Gardner, M.
-\newblock Neural {Semantic} {Parsing} with {Type} {Constraints} for
-  {Semi}-{Structured} {Tables}.
-\newblock In Palmer, M., Hwa, R., and Riedel, S. (eds.), \emph{Proceedings of
-  the 2017 {Conference} on {Empirical} {Methods} in {Natural} {Language}
-  {Processing}}, pp.\  1516--1526, Copenhagen, Denmark, September 2017.
-  Association for Computational Linguistics.
+\newblock Neural {Semantic} {Parsing} with {Type} {Constraints} for {Semi}-{Structured} {Tables}.
+\newblock In Palmer, M., Hwa, R., and Riedel, S. (eds.), \emph{Proceedings of the 2017 {Conference} on {Empirical} {Methods} in {Natural} {Language} {Processing}}, pp.\  1516--1526, Copenhagen, Denmark, September 2017. Association for Computational Linguistics.
 \newblock \doi{10.18653/v1/D17-1160}.
 \newblock URL \url{https://aclanthology.org/D17-1160/}.
 
-\bibitem[Lyu et~al.(2023)Lyu, Havaldar, Stein, Zhang, Rao, Wong, Apidianaki,
-  and Callison-Burch]{lyu2023faithful}
-Lyu, Q., Havaldar, S., Stein, A., Zhang, L., Rao, D., Wong, E., Apidianaki, M.,
-  and Callison-Burch, C.
+\bibitem[Lyu et~al.(2023)Lyu, Havaldar, Stein, Zhang, Rao, Wong, Apidianaki, and Callison-Burch]{lyu2023faithful}
+Lyu, Q., Havaldar, S., Stein, A., Zhang, L., Rao, D., Wong, E., Apidianaki, M., and Callison-Burch, C.
 \newblock Faithful chain-of-thought reasoning.
-\newblock In \emph{The 13th International Joint Conference on Natural Language
-  Processing and the 3rd Conference of the Asia-Pacific Chapter of the
-  Association for Computational Linguistics (IJCNLP-AACL 2023)}, 2023.
+\newblock In \emph{The 13th International Joint Conference on Natural Language Processing and the 3rd Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics (IJCNLP-AACL 2023)}, 2023.
 
-\bibitem[Mahdavi et~al.(2023)Mahdavi, Swersky, Kipf, Hashemi, Thrampoulidis,
-  and Liao]{mahdavi_towards_2023}
-Mahdavi, S., Swersky, K., Kipf, T., Hashemi, M., Thrampoulidis, C., and Liao,
-  R.
-\newblock Towards {Better} {Out}-of-{Distribution} {Generalization} of {Neural}
-  {Algorithmic} {Reasoning} {Tasks}, March 2023.
+\bibitem[Mahdavi et~al.(2023)Mahdavi, Swersky, Kipf, Hashemi, Thrampoulidis, and Liao]{mahdavi_towards_2023}
+Mahdavi, S., Swersky, K., Kipf, T., Hashemi, M., Thrampoulidis, C., and Liao, R.
+\newblock Towards {Better} {Out}-of-{Distribution} {Generalization} of {Neural} {Algorithmic} {Reasoning} {Tasks}, March 2023.
 \newblock URL \url{http://arxiv.org/abs/2211.00692}.
 \newblock arXiv:2211.00692 [cs].
 
-\bibitem[Marra et~al.(2019)Marra, Giannini, Diligenti, and
-  Gori]{marra_integrating_2019}
+\bibitem[Marra et~al.(2019)Marra, Giannini, Diligenti, and Gori]{marra_integrating_2019}
 Marra, G., Giannini, F., Diligenti, M., and Gori, M.
-\newblock Integrating {Learning} and {Reasoning} with {Deep} {Logic} {Models},
-  January 2019.
+\newblock Integrating {Learning} and {Reasoning} with {Deep} {Logic} {Models}, January 2019.
 \newblock URL \url{http://arxiv.org/abs/1901.04195}.
 \newblock arXiv:1901.04195 [cs].
 
-\bibitem[Merrill \& Sabharwal(2023)Merrill and
-  Sabharwal]{merrill2023expressive}
+\bibitem[Merrill \& Sabharwal(2023)Merrill and Sabharwal]{merrill2023expressive}
 Merrill, W. and Sabharwal, A.
 \newblock The expressive power of transformers with chain of thought.
 \newblock \emph{arXiv preprint arXiv:2310.07923}, 2023.
 
-\bibitem[Merrill \& Sabharwal(2024)Merrill and
-  Sabharwal]{merrill_expressive_2024}
+\bibitem[Merrill \& Sabharwal(2024)Merrill and Sabharwal]{merrill_expressive_2024}
 Merrill, W. and Sabharwal, A.
-\newblock The {Expressive} {Power} of {Transformers} with {Chain} of {Thought},
-  April 2024.
+\newblock The {Expressive} {Power} of {Transformers} with {Chain} of {Thought}, April 2024.
 \newblock URL \url{http://arxiv.org/abs/2310.07923}.
 \newblock arXiv:2310.07923 [cs].
 
-\bibitem[Olausson et~al.(2023)Olausson, Gu, Lipkin, Zhang, Solar-Lezama,
-  Tenenbaum, and Levy]{olausson_linc_2023}
-Olausson, T.~X., Gu, A., Lipkin, B., Zhang, C.~E., Solar-Lezama, A., Tenenbaum,
-  J.~B., and Levy, R.
-\newblock {LINC}: {A} {Neurosymbolic} {Approach} for {Logical} {Reasoning} by
-  {Combining} {Language} {Models} with {First}-{Order} {Logic} {Provers}.
-\newblock In \emph{Proceedings of the 2023 {Conference} on {Empirical}
-  {Methods} in {Natural} {Language} {Processing}}, pp.\  5153--5176, 2023.
+\bibitem[Olausson et~al.(2023)Olausson, Gu, Lipkin, Zhang, Solar-Lezama, Tenenbaum, and Levy]{olausson_linc_2023}
+Olausson, T.~X., Gu, A., Lipkin, B., Zhang, C.~E., Solar-Lezama, A., Tenenbaum, J.~B., and Levy, R.
+\newblock {LINC}: {A} {Neurosymbolic} {Approach} for {Logical} {Reasoning} by {Combining} {Language} {Models} with {First}-{Order} {Logic} {Provers}.
+\newblock In \emph{Proceedings of the 2023 {Conference} on {Empirical} {Methods} in {Natural} {Language} {Processing}}, pp.\  5153--5176, 2023.
 \newblock \doi{10.18653/v1/2023.emnlp-main.313}.
 \newblock URL \url{http://arxiv.org/abs/2310.15164}.
 \newblock arXiv:2310.15164 [cs].
 
 \bibitem[Pan et~al.(2023)Pan, Albalak, Wang, and Wang]{pan2023logic}
 Pan, L., Albalak, A., Wang, X., and Wang, W.~Y.
-\newblock Logic-lm: Empowering large language models with symbolic solvers for
-  faithful logical reasoning.
+\newblock Logic-lm: Empowering large language models with symbolic solvers for faithful logical reasoning.
 \newblock \emph{arXiv preprint arXiv:2305.12295}, 2023.
 
 \bibitem[Parisi et~al.(2022)Parisi, Zhao, and Fiedel]{parisi_talm_2022}
@@ -258,32 +185,20 @@ Parisi, A., Zhao, Y., and Fiedel, N.
 \newblock URL \url{http://arxiv.org/abs/2205.12255}.
 \newblock arXiv:2205.12255 [cs].
 
-\bibitem[Poggio et~al.(2017)Poggio, Mhaskar, Rosasco, Miranda, and
-  Liao]{poggio2017and}
+\bibitem[Poggio et~al.(2017)Poggio, Mhaskar, Rosasco, Miranda, and Liao]{poggio2017and}
 Poggio, T., Mhaskar, H., Rosasco, L., Miranda, B., and Liao, Q.
-\newblock Why and when can deep-but not shallow-networks avoid the curse of
-  dimensionality: a review.
-\newblock \emph{International Journal of Automation and Computing}, 14\penalty0
-  (5):\penalty0 503--519, 2017.
+\newblock Why and when can deep-but not shallow-networks avoid the curse of dimensionality: a review.
+\newblock \emph{International Journal of Automation and Computing}, 14\penalty0 (5):\penalty0 503--519, 2017.
 
-\bibitem[Puri et~al.(2021)Puri, Kung, Janssen, Zhang, Domeniconi, Zolotov,
-  Dolby, Chen, Choudhury, Decker, Thost, Buratti, Pujar, Ramji, Finkler,
-  Malaika, and Reiss]{puri_codenet_2021}
-Puri, R., Kung, D.~S., Janssen, G., Zhang, W., Domeniconi, G., Zolotov, V.,
-  Dolby, J., Chen, J., Choudhury, M., Decker, L., Thost, V., Buratti, L.,
-  Pujar, S., Ramji, S., Finkler, U., Malaika, S., and Reiss, F.
-\newblock {CodeNet}: {A} {Large}-{Scale} {AI} for {Code} {Dataset} for
-  {Learning} a {Diversity} of {Coding} {Tasks}, August 2021.
+\bibitem[Puri et~al.(2021)Puri, Kung, Janssen, Zhang, Domeniconi, Zolotov, Dolby, Chen, Choudhury, Decker, Thost, Buratti, Pujar, Ramji, Finkler, Malaika, and Reiss]{puri_codenet_2021}
+Puri, R., Kung, D.~S., Janssen, G., Zhang, W., Domeniconi, G., Zolotov, V., Dolby, J., Chen, J., Choudhury, M., Decker, L., Thost, V., Buratti, L., Pujar, S., Ramji, S., Finkler, U., Malaika, S., and Reiss, F.
+\newblock {CodeNet}: {A} {Large}-{Scale} {AI} for {Code} {Dataset} for {Learning} a {Diversity} of {Coding} {Tasks}, August 2021.
 \newblock URL \url{http://arxiv.org/abs/2105.12655}.
 \newblock arXiv:2105.12655 [cs].
 
-\bibitem[Qin et~al.(2023)Qin, Liang, Ye, Zhu, Yan, Lu, Lin, Cong, Tang, Qian,
-  Zhao, Hong, Tian, Xie, Zhou, Gerstein, Li, Liu, and Sun]{qin_toolllm_2023}
-Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang,
-  X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M.,
-  Li, D., Liu, Z., and Sun, M.
-\newblock {ToolLLM}: {Facilitating} {Large} {Language} {Models} to {Master}
-  16000+ {Real}-world {APIs}, October 2023.
+\bibitem[Qin et~al.(2023)Qin, Liang, Ye, Zhu, Yan, Lu, Lin, Cong, Tang, Qian, Zhao, Hong, Tian, Xie, Zhou, Gerstein, Li, Liu, and Sun]{qin_toolllm_2023}
+Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., Lin, Y., Cong, X., Tang, X., Qian, B., Zhao, S., Hong, L., Tian, R., Xie, R., Zhou, J., Gerstein, M., Li, D., Liu, Z., and Sun, M.
+\newblock {ToolLLM}: {Facilitating} {Large} {Language} {Models} to {Master} 16000+ {Real}-world {APIs}, October 2023.
 \newblock URL \url{http://arxiv.org/abs/2307.16789}.
 \newblock arXiv:2307.16789 [cs].
 
@@ -296,31 +211,22 @@ Reed, S. and Freitas, N.~d.
 \bibitem[Risko \& Gilbert(2016)Risko and Gilbert]{risko_cognitive_2016}
 Risko, E.~F. and Gilbert, S.~J.
 \newblock Cognitive {Offloading}.
-\newblock \emph{Trends in Cognitive Sciences}, 20\penalty0 (9):\penalty0
-  676--688, September 2016.
+\newblock \emph{Trends in Cognitive Sciences}, 20\penalty0 (9):\penalty0 676--688, September 2016.
 \newblock ISSN 13646613.
 \newblock \doi{10.1016/j.tics.2016.07.002}.
-\newblock URL
-  \url{https://linkinghub.elsevier.com/retrieve/pii/S1364661316300985}.
+\newblock URL \url{https://linkinghub.elsevier.com/retrieve/pii/S1364661316300985}.
 
-\bibitem[Schick et~al.()Schick, Dessì, Raileanu, Lomeli, Zettlemoyer,
-  Cancedda, and Scialom]{schick_toolformer_nodate}
-Schick, T., Dessì, J. D.-Y.~R., Raileanu, R., Lomeli, M., Zettlemoyer, L.,
-  Cancedda, N., and Scialom, T.
-\newblock Toolformer: {Language} {Models} {Can} {Teach} {Themselves} to {Use}
-  {Tools}.
+\bibitem[Schick et~al.()Schick, Dessì, Raileanu, Lomeli, Zettlemoyer, Cancedda, and Scialom]{schick_toolformer_nodate}
+Schick, T., Dessì, J. D.-Y.~R., Raileanu, R., Lomeli, M., Zettlemoyer, L., Cancedda, N., and Scialom, T.
+\newblock Toolformer: {Language} {Models} {Can} {Teach} {Themselves} to {Use} {Tools}.
 
-\bibitem[Schneider \& Chein(2003)Schneider and
-  Chein]{schneider_controlled_2003}
+\bibitem[Schneider \& Chein(2003)Schneider and Chein]{schneider_controlled_2003}
 Schneider, W. and Chein, J.~M.
-\newblock Controlled \& automatic processing: behavior, theory, and biological
-  mechanisms.
-\newblock \emph{Cognitive Science}, 27\penalty0 (3):\penalty0 525--559, May
-  2003.
+\newblock Controlled \& automatic processing: behavior, theory, and biological mechanisms.
+\newblock \emph{Cognitive Science}, 27\penalty0 (3):\penalty0 525--559, May 2003.
 \newblock ISSN 0364-0213, 1551-6709.
 \newblock \doi{10.1207/s15516709cog2703_8}.
-\newblock URL
-  \url{https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog2703_8}.
+\newblock URL \url{https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog2703_8}.
 
 \bibitem[Shen(2024)]{shen_llm_2024}
 Shen, Z.
@@ -330,53 +236,41 @@ Shen, Z.
 
 \bibitem[Shin \& Durme(2022)Shin and Durme]{shin_few-shot_2022}
 Shin, R. and Durme, B.~V.
-\newblock Few-{Shot} {Semantic} {Parsing} with {Language} {Models} {Trained}
-  {On} {Code}, May 2022.
+\newblock Few-{Shot} {Semantic} {Parsing} with {Language} {Models} {Trained} {On} {Code}, May 2022.
 \newblock URL \url{http://arxiv.org/abs/2112.08696}.
 \newblock arXiv:2112.08696 [cs].
 
-\bibitem[Tang et~al.(2023)Tang, Deng, Lin, Han, Liang, Cao, and
-  Sun]{tang_toolalpaca_2023}
+\bibitem[Tang et~al.(2023)Tang, Deng, Lin, Han, Liang, Cao, and Sun]{tang_toolalpaca_2023}
 Tang, Q., Deng, Z., Lin, H., Han, X., Liang, Q., Cao, B., and Sun, L.
-\newblock {ToolAlpaca}: {Generalized} {Tool} {Learning} for {Language} {Models}
-  with 3000 {Simulated} {Cases}, September 2023.
+\newblock {ToolAlpaca}: {Generalized} {Tool} {Learning} for {Language} {Models} with 3000 {Simulated} {Cases}, September 2023.
 \newblock URL \url{http://arxiv.org/abs/2306.05301}.
 \newblock arXiv:2306.05301 [cs].
 
-\bibitem[Veličković \& Blundell(2021)Veličković and
-  Blundell]{velickovic_neural_2021}
+\bibitem[Veličković \& Blundell(2021)Veličković and Blundell]{velickovic_neural_2021}
 Veličković, P. and Blundell, C.
 \newblock Neural algorithmic reasoning.
 \newblock \emph{Patterns}, 2\penalty0 (7):\penalty0 100273, July 2021.
 \newblock ISSN 26663899.
 \newblock \doi{10.1016/j.patter.2021.100273}.
-\newblock URL
-  \url{https://linkinghub.elsevier.com/retrieve/pii/S2666389921000994}.
+\newblock URL \url{https://linkinghub.elsevier.com/retrieve/pii/S2666389921000994}.
 
-\bibitem[Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, Xia, Chi, Le, Zhou,
-  et~al.]{wei2022chain}
-Wei, J., Wang, X., Schuurmans, D., Bosma, M., Xia, F., Chi, E., Le, Q.~V.,
-  Zhou, D., et~al.
-\newblock Chain-of-thought prompting elicits reasoning in large language
-  models.
-\newblock \emph{Advances in neural information processing systems},
-  35:\penalty0 24824--24837, 2022.
+\bibitem[Wei et~al.(2022)Wei, Wang, Schuurmans, Bosma, Xia, Chi, Le, Zhou, et~al.]{wei2022chain}
+Wei, J., Wang, X., Schuurmans, D., Bosma, M., Xia, F., Chi, E., Le, Q.~V., Zhou, D., et~al.
+\newblock Chain-of-thought prompting elicits reasoning in large language models.
+\newblock \emph{Advances in neural information processing systems}, 35:\penalty0 24824--24837, 2022.
 
 \bibitem[Xie et~al.(2021)Xie, Raghunathan, Liang, and Ma]{xie2021explanation}
 Xie, S.~M., Raghunathan, A., Liang, P., and Ma, T.
 \newblock An explanation of in-context learning as implicit bayesian inference.
 \newblock \emph{arXiv preprint arXiv:2111.02080}, 2021.
 
-\bibitem[Yan et~al.(2020)Yan, Swersky, Koutra, Ranganathan, and
-  Hashemi]{yan_neural_2020}
+\bibitem[Yan et~al.(2020)Yan, Swersky, Koutra, Ranganathan, and Hashemi]{yan_neural_2020}
 Yan, Y., Swersky, K., Koutra, D., Ranganathan, P., and Hashemi, M.
-\newblock Neural {Execution} {Engines}: {Learning} to {Execute} {Subroutines},
-  October 2020.
+\newblock Neural {Execution} {Engines}: {Learning} to {Execute} {Subroutines}, October 2020.
 \newblock URL \url{http://arxiv.org/abs/2006.08084}.
 \newblock arXiv:2006.08084 [cs].
 
-\bibitem[Zelikman et~al.(2022)Zelikman, Wu, Mu, and
-  Goodman]{zelikman_star_2022}
+\bibitem[Zelikman et~al.(2022)Zelikman, Wu, Mu, and Goodman]{zelikman_star_2022}
 Zelikman, E., Wu, Y., Mu, J., and Goodman, N.~D.
 \newblock {STaR}: {Bootstrapping} {Reasoning} {With} {Reasoning}, May 2022.
 \newblock URL \url{http://arxiv.org/abs/2203.14465}.
@@ -385,7 +279,6 @@ Zelikman, E., Wu, Y., Mu, J., and Goodman, N.~D.
 \bibitem[Zhang et~al.(2024)Zhang, Frei, and Bartlett]{zhang2024trained}
 Zhang, R., Frei, S., and Bartlett, P.~L.
 \newblock Trained transformers learn linear models in-context.
-\newblock \emph{Journal of Machine Learning Research}, 25\penalty0
-  (49):\penalty0 1--55, 2024.
+\newblock \emph{Journal of Machine Learning Research}, 25\penalty0 (49):\penalty0 1--55, 2024.
 
 \end{thebibliography}
