@@ -191,6 +191,21 @@ These results inform the design of compositional AI systems, providing principle
     \label{fig:arm_prompts}
 \end{figure*}
 
+\yu{Large language models (LLMs) have demonstrated increasingly strong natural-language (NL) reasoning capabilities~\cite{}. In parallel, LLM-based agentic systems advocate tool use, where LLMs invoke external solvers to support reasoning and execution~\cite{}. Despite these trends, for algorithmic reasoning it remains underexplored whether LLMs perform better via the \textbf{direct route}, reasoning end-to-end in NL, or the \textbf{solver route}, translating problems into solver-executable representations and delegating execution (Todo: despite.. add reference for there are many empirical results showing code is better).}
+
+\yu{A principled direct comparison is challenging since the routes operate over different representation spaces (NL traces versus solver-executable programs) and rely on different execution mechanisms, which prevents step-by-step alignment.}
+
+\yu{We propose a three-route Bayesian inference framework that makes this comparison tractable by introducing an intermediate \textbf{simulation route}, where the model performs the same translation but simulates execution in NL. Using this framework, we characterize when and why algorithmic reasoning favors the solver route, and show that solver-based pipelines are generally easier for a broad class of tasks. (This claim is inaccurate for now.) This framework also enables a tractable theoretical comparison of the routes, showing that the simulation route outperforms the direct route.... Finally, we empirically demonstrate that the solver route substantially outperforms the simulation route, highlighting additional gains from reliable external execution.}
+
+\yu{We evaluate our framework on CLRS30~\cite{}, NP-Hard-Eval~\cite{}, and a custom suite of algorithmic problems with controllable difficulty (addition, multiplication, LCS, rod cutting, knapsack, and ILP variants: assignment, production, and partition). Across a broad range of models, spanning weaker open-source LLMs (e.g., Mistral~\cite{}, LLaMA~\cite{}, Qwen~\cite{}) and stronger closed-source systems (e.g., OpenAI~\cite{}, Gemini~\cite{}, Claude~\cite{}), we observe a consistent three-route pattern for closed-source models, where the solver route performs best, followed by the simulation route, and then the direct route. In contrast, for weaker open-source models, the simulation route yields the strongest performance, followed by the solver route and then the direct route. (missing implication here) }
+
+\yu{}
+
+\yu{ talk about the recovery rate experiment to show why execution is better}
+
+\yu{Summarization of contributions: }
+
+
 %Introduce the setting and the problem. Make sure to narrow down the scope. 
 Consider the algorithmic task of computing arithmetic operations encoded in natural language. We wish to compute:
 \vspace{-5pt}
