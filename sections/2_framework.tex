@@ -1,8 +1,41 @@
 \section{Evaluation Framework}\label{method}
 We formalize our central claim as $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2}) < \mathrm{Acc}(\mathrm{Arm~3})$. The following sections detail how we break down the problem and evaluate pairwise $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2})$ and then $\mathrm{Acc}(\mathrm{Arm~2}) \leq \mathrm{Acc}(\mathrm{Arm~3})$.
 
-\subsection{$\mathrm{Acc}(\mathrm{Arm~2}) \leq \mathrm{Acc}(\mathrm{Arm~3})$}
-Between Arms~2 and~3, the first stage of the inference pipeline is held constant: both arms use identical generated code. We treat LLM-based code simulation (Arm~2) as the baseline and compare it against code execution in a Python runtime (Arm~3). A potential confound arises because code execution does not observe the original prompt, whereas LLM simulation does---the model could shortcut directly from the prompt to the answer without faithfully simulating the code. To control for this, we introduce Arm~2.5, which masks the prompt before simulation, forcing the model to rely solely on the generated code. 
+\subsection{Methodology}
+\textbf{Arm~1 $\leq$ Arm~2 Setup.} Similarly, given test input $X_i$ corresponding to instance i, we prompt the LLM to reason about it using natural language in Arm~1, mapping $(X_i) \to Y_i^{(\mathrm{NL})}$. Likewise, Arm 2 can be written as using the same LLM to first $(X_i) \to C_i$ and then $(X_i, C_i) \to Y_i^{(\mathrm{Sim})}$. Example prompts are shown in Figure 2. We control the prompts to be as similar as possible, with the Arm 2 simply concatenating a section that says it should generate code and simulate it.
 
-\subsection{$\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2})$}
-We control the execution part of our inference (both llm simulation), intervening in the first section by replacing natural language (baseline) generation with code generation and observing the differences. Chaining together these results with 3.1, we can validate our claim. 
+\textbf{Arm~2 $<$ Arm~3 Setup.} Let the original problem statement corresponding to instance i be $X_i$, and let $C_i$ be the corresoponding code generated for instance i. Let tuple $(X_i, C_i)$ be fixed inputs in our experimental design. Let Arm~2 denote the output $Y_i^{(\mathrm{Sim})}$ which is mapped to by an LLM $(X_i, C_i) \to Y_i^{(\mathrm{Sim})}$, and let Arm~3 denote the output $Y_i^{(\mathrm{Exec})}$  mapped to by an external python runtime $(X_i, C_i) \to Y_i^{(\mathrm{Exec})}$ \footnote{$X_i$ is ignored by executor, but we include it for notational symmetry}. Example prompts are show in Figure 2.
+
+\textbf{Arm~1 $\leq$ Arm~2 $<$ Arm~3 Setup.}
+We observe bernoulli outcomes $(Y_i^{(\mathrm{NL})}, Y_i^{(\mathrm{Sim})},Y_i^{(\mathrm{Exec})})$. Thus, we run Cochran's Q test across paired binary outcomes with the null $ \mathrm{E}[Y_i^{(NL)}] = \mathrm{E}[Y_i^{(Sim)}] = \mathrm{E}[Y_i^{(Exec)}]$, testing whether at least one arm has a different marginal success accuracy.
+
+Condition on failing to reject the null, following the framework, we break down the tests into Arm 1 and Arm 2 $(Y_i^{(\mathrm{NL})}, Y_i^{(\mathrm{Sim})})$, and Arm 2 and Arm 3 $(Y_i^{(\mathrm{Sim})},Y_i^{(\mathrm{Exec})})$. For these paired bernoulli outcomes, we run the McNemar test under the null that $\Pr(Y^{(\mathrm{Sim})}=1,\,Y^{(\mathrm{Exec})}=0)
+=\Pr(Y^{(\mathrm{Sim})}=0,\,Y^{(\mathrm{Exec})}=1)$, that is, when pairs disagree, each one (Sim > NL) and (NL < Sim) occur equally as often. Similarly, this applies for the null for arm 2 and arm 3. To quantify effect size, we take paired accuracies $\Delta_{\mathrm{Exec - Sim}} = \mathrm{Acc(Exec) - Acc(Sim)}$ and estimate its sampling distribution via cluster bootstrap resampling over instance pairs $(Y_i^{(\mathrm{Sim})},Y_i^{(\mathrm{Exec})})$ corresponding to i. We do this for both Arm 1 vs Arm 2 and Arm 2 vs Arm 3.
+
+Since we apply multiple statistical tests, we add Holm-Bonferoni corrections to control family wise error rate at $ \alpha = 5\%$.
+
+We run a GLMM with fixed effects and random effects, and observe how hardness interacts with the accuracy, and whether code or natural language helps modulate the performance.
+
+\subsection{Experiments}
+
+\textbf{Data and Models. } We use the CLRS 30 Benchmark (n=500), NPHardEval Benchmark (n=540), and a custom fine-grained evaluation suite (n=540), across three seeds. We define our own task suite---Arithmetic, Dynamic Programming, Integer Linear Programming (ILP)---to modulate hardness with parameter $\tau$. For arithmetic, $\tau$ controls digit length; for DP, it controls table dimensionality; for ILP, it controls the constraint matrix size. We assume our algorithms are representative enough of the distribution. We select frontier models (Haiku 4.5, GPT-4o, Gemini 2.0 Flash) as well as open-source models (Mixtral, Codestral). Since we require structured output, we filter out models that give $>$50\% JSON Parse Error, since this is indicative of instruction-following failures, rather than outright lack of coding fidelity.
+
+\textbf{Prompting to generate Code and Reasoning Traces. }
+We prompt the LLM in Arm~1 to never use any code in its reasoning, and to give a structured output of the rationale and answer to the algorithmic problem. Similarly for Arm~2, we prompt the LLM to use code in its reasoning, generating a structured output that contains a piece of code, and an attempt at simulating the execution of that piece of code in natural language, followed by a final answer. For Arm~3, we take the generated function (no prompt), and execute it in a python3 runtime. Models have access to native python packages, and numpy, pandas, scipy, PuLP, and pytorch. \cref{fig:arm_prompts} illustrates the prompt templates used across all three arms.
+
+\textbf{Arm~1 $\leq$ Arm~2 $<$ Arm~3 Results. }  Across 6 different types of models, and 44 algorithmic tasks spanning the CLRS 30 benchmark, NPHardEval benchmark and a custom suite of evals (Appendix), we strongly reject the null hypothesis, observing (p < 0.001) and that the paired accuracy gap is strictly large and positive, excluding zero in 95\% bootstrap confidence interval. Observing the distribution, the result is not driven by outliers, given the tightness of the distribution, indicating advantages over instance pairs and not just the average. This means that LLM execution via natural language reasoning of a piece of code has statistically significantly worse performances than code execution under the representative benchmarks and suites of task.
+
+we run 30,000+ samples total and reject the null (p=0.04). However, the results are inconclusive since, under the cluster bootstrap, we see that the distribution's confidence interval overlaps with 0.0, meaning that natural language reasoning and code simulation are approximately equal, with code simulation occasionally being better (not strict inequality). For the purposes of our framework, instrict inequality is ok.
+
+Conclusive across both open and closed models.
+
+% Similar to the above experiment, we observe paired bernoulli outcomes $(Y_i^{(\mathrm{Sim})},Y_i^{(\mathrm{NL})})$, and thus run a two-sided Mcnemar's test under the null that $\mathrm{E}[Y_i^{(\mathrm{Sim})}] = \mathrm{E}[Y_i^{(\mathrm{NL})}]$, testing whether (1,0) and (0,1) outcomes occur with equal frequency. To quantify effect size, we compute the paired accuracy $\Delta_{\mathrm{NL - Sim}} = \mathrm{Acc(NL) - Acc(Sim)}$ and estimate its sampling distribution via cluster bootstrap resampling over instance pairs $(Y_i^{(\mathrm{Sim})},Y_i^{(\mathrm{NL})})$ corresponding to i.
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=1\linewidth]{images/fig_prompts_combined.png}
+    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
+    \label{fig:recovery_rate}
+\end{figure*}
+
+\textbf{Advantages of Arm~3 emerge as tasks get harder.} \cref{fig:main}
