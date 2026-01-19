@@ -73,7 +73,7 @@ Piecing these results together, we show that $\mathrm{Arm~1} < \mathrm{Arm~2} < 
 % Explanation
 \begin{figure*}
     \centering
-    \includegraphics[width=1\linewidth]{images/main.png}
+    \includegraphics[width=1\linewidth]{images/combined_accuracy_delta.png}
     \caption{Accuracy scaling across task difficulty ($\tau$) for Arithmetic, Dynamic Programming, and ILP tasks. Arm~3 (code execution) maintains high accuracy as problems get harder, while Arms~1 and~2 degrade. The widening gap demonstrates that solver execution becomes increasingly advantageous for challenging algorithmic problems.}
     \label{fig:main}
 \end{figure*}
@@ -87,16 +87,9 @@ Our main contributions are:
     \item A \textbf{theoretical explanation} based on Bayesian inference showing that code yields higher mutual information with target algorithms, leading to lower Bayes error.
 \end{enumerate}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{images/line.png}
-    \caption{Average accuracy across arms for all models and tasks. Code execution (Arm~3) outperforms code simulation (Arm~2), which outperforms natural language reasoning (Arm~1) on CLRS$_{30}$ (n=500), NPHardEval (n=270), and Fine-Grained evaluation (n=270) benchmarks across 3 seeds. Statistical significance measured by Wilcoxon signed-rank test between adjacent arms. Error bars show bootstrapped Wilson confidence intervals at the model level.}
-    \label{fig:line}
-\end{figure}
-
 \begin{figure*}
     \centering
-    \includegraphics[width=1\linewidth]{images/fig_prompts_combined.png}
+    \includegraphics[width=1\linewidth]{images/main_combined.png}
     \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
     \label{fig:prompts_combined}
 \end{figure*}
