@@ -1,0 +1,8 @@
+\section{Evaluation Framework}\label{method}
+We formalize our central claim as $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2}) < \mathrm{Acc}(\mathrm{Arm~3})$. The following sections detail how we break down the problem and evaluate pairwise $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2})$ and then $\mathrm{Acc}(\mathrm{Arm~2}) \leq \mathrm{Acc}(\mathrm{Arm~3})$.
+
+\subsection{$\mathrm{Acc}(\mathrm{Arm~2}) \leq \mathrm{Acc}(\mathrm{Arm~3})$}
+Between Arms~2 and~3, the first stage of the inference pipeline is held constant: both arms use identical generated code. We treat LLM-based code simulation (Arm~2) as the baseline and compare it against code execution in a Python runtime (Arm~3). A potential confound arises because code execution does not observe the original prompt, whereas LLM simulation does---the model could shortcut directly from the prompt to the answer without faithfully simulating the code. To control for this, we introduce Arm~2.5, which masks the prompt before simulation, forcing the model to rely solely on the generated code. 
+
+\subsection{$\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2})$}
+We control the execution part of our inference (both llm simulation), intervening in the first section by replacing natural language (baseline) generation with code generation and observing the differences. Chaining together these results with 3.1, we can validate our claim. 

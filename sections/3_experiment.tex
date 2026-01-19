@@ -1,0 +1,21 @@
+\subsection{Experiments} 
+
+\textbf{Data.} We use the CLRS 30 Benchmark (n=500), NPHardEval Benchmark (n=270), and a custom fine-grained evaluation suite (n=270), across three seeds. We define our own task suite---Arithmetic, Dynamic Programming, Integer Linear Programming (ILP)---to modulate hardness with parameter $\tau$. For arithmetic, $\tau$ controls digit length; for DP, it controls table dimensionality; for ILP, it controls the constraint matrix size. These classical algorithms provide sufficient coverage to support general claims. 
+
+\textbf{Models.} We select frontier models (Claude, GPT-4o, Gemini 2.5) as well as open-source models (Mistral, Llama, Qwen). Since we require structured output, we filter out models that give $>$50\% JSON Parse Error, since this is indicative of instruction-following failures, rather than outright lack of coding fidelity. 
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=1\linewidth]{images/discrimination_by_task.png}
+    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
+    \label{fig:recovery_final}
+\end{figure*}
+
+\textbf{Generating Code and Reasoning Traces.}
+We prompt the LLM in Arm~1 to never use any code in its reasoning, and to give a structured output of the rationale and answer to the algorithmic problem. Similarly for Arm~2, we prompt the LLM to use code in its reasoning, generating a structured output that contains a piece of code, and an attempt at simulating the execution of that piece of code in natural language, followed by a final answer. For Arm~3, we take the generated function (no prompt), and execute it in a python3 runtime. Models have access to native python packages, and numpy, pandas, scipy, PuLP, and pytorch. \cref{fig:arm_prompts} illustrates the prompt templates used across all three arms. 
+
+
+
+\textbf{Arm~1 $\leq$ Arm~2 $<$ Arm~3.} \cref{fig:line} demonstrates statistically significant gaps between all three arms ($p < 0.05$, Wilcoxon signed-rank test). Notably, the controlled simulation condition (Arm~2.5, prompt masked) performs worse than the standard simulation (Arm~2), confirming that models exploit prompt information to shortcut directly to answers rather than faithfully simulating code execution. This validates our experimental control: the gap between Arms~2 and~3 reflects genuine differences in execution fidelity, not confounds from prompt access. 
+
+\textbf{Advantages of Arm~3 emerge as tasks get harder.} \cref{fig:main} shows fine-grained scaling behavior across task difficulty. As problem hardness $\tau$ increases, Arm~3 (code execution) maintains robust accuracy while Arms~1 and~2 degrade substantially. The gap widens with difficulty: at the highest $\tau$, Arm~3 outperforms Arm~2 by over 40 percentage points on ILP and DP tasks. For arithmetic, code simulation (Arm~2) performs relatively better at low $\tau$, likely because models have memorized digit-symbol relationships during pretraining. However, this advantage vanishes as digit length increases beyond memorized patterns.

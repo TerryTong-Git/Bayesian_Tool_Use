@@ -1,0 +1,17 @@
+\begin{abstract}
+\vspace{-2pt}
+% Context: Establish the problem domain
+Large language models can solve algorithmic problems either through direct natural language reasoning or by generating executable code delegated to an external solver. However, little theoretical progress has been made on explaining \emph{why} code-based approaches consistently outperform natural language reasoning.
+
+% Gap + Contribution: What's missing and what we provide
+We introduce a three-arm framework that makes this comparison tractable by introducing an intermediary step---code generation with LLM-based execution---enabling pairwise theoretical analysis via Bayesian inference and information theory.
+
+% Results: Concrete findings
+Empirically, we demonstrate on arithmetic, dynamic programming, and integer linear programming tasks that code execution achieves 78\% accuracy versus 30\% for code simulation and 21\% for natural language reasoning across Deepseek and Gemma models ($p < 0.05$, Friedman test). Theoretically, we prove that code representations yield higher mutual information with the target algorithm, leading to at least 6\% lower Bayes error than natural language.
+
+% Impact: Why it matters
+These results inform the design of compositional AI systems, providing principled guidance on when to use tool-augmented versus monolithic reasoning for algorithmic tasks. Our framework offers a unified perspective on the tool-use versus direct-reasoning tradeoff. 
+
+
+
+\end{abstract}
