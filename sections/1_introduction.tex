@@ -3,7 +3,7 @@
 \begin{figure}[t]
     \centering
     \includegraphics[width=1\linewidth]{images/fig1(2).png}
-    \caption{Bayesian Inference model showing the \emph{three arms methodology} in \cref{exp:0}. Given an algorithmic problem, we may split it into two steps (1) Translate (2) Execute. The (1) translation $\in \{\mathrm{Code}, \mathrm{NL}\}$. Then (2) execution $\in \{\mathrm{LLM~Reasoning}, \mathrm{Solver~Execution}\}$. We have three pairs, Arm~1: $\{\mathrm{NL~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~2: $\{\mathrm{Code~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~3: $\{\mathrm{Code~Gen}, \mathrm{Solver~Execution}\}$. Typically, the problem is tackled by comparing Arm~1 and Arm~3 in neuro-symbolic literature, which is intractable theoretically, and uncontrolled since multiple variables are changing. By introducing Arm~2, the problem becomes tractable. In the diagram, the \emph{shaded} circles correspond to observed R.V.\ and \emph{white} correspond to unobserved. The notation for R.V.s is correspondingly used in \cref{method}.
+    \caption{Bayesian Inference model showing the \emph{three arms methodology} in \cref{method}. Given an algorithmic problem, we may split it into two steps (1) Translate (2) Execute. The (1) translation $\in \{\mathrm{Code}, \mathrm{NL}\}$. Then (2) execution $\in \{\mathrm{LLM~Reasoning}, \mathrm{Solver~Execution}\}$. We have three pairs, Arm~1: $\{\mathrm{NL~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~2: $\{\mathrm{Code~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~3: $\{\mathrm{Code~Gen}, \mathrm{Solver~Execution}\}$. Typically, the problem is tackled by comparing Arm~1 and Arm~3 in neuro-symbolic literature, which is intractable theoretically, and uncontrolled since multiple variables are changing. By introducing Arm~2, the problem becomes tractable. In the diagram, the \emph{shaded} circles correspond to observed R.V.\ and \emph{white} correspond to unobserved. The notation for R.V.s is correspondingly used in \cref{method}.
     }
     \label{fig:three_arms}
     \vspace{-5pt}
@@ -98,5 +98,5 @@ Our main contributions are:
     \centering
     \includegraphics[width=1\linewidth]{images/fig_prompts_combined.png}
     \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
-    \label{fig:recovery_final}
+    \label{fig:prompts_combined}
 \end{figure*}
