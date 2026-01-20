@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  19 JAN 2026 10:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  19 JAN 2026 16:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -838,6 +838,14 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip80
+\fb@frw=\dimen313
+\fb@frh=\dimen314
+\FrameRule=\dimen315
+\FrameSep=\dimen316
+)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
 
@@ -867,7 +875,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count350
 )
-\@linkdim=\dimen313
+\@linkdim=\dimen317
 \Hy@linkcounter=\count351
 \Hy@pagecounter=\count352
 
@@ -895,7 +903,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4446.
 \c@Hy@tempcnt=\count354
 LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen314
+\XeTeXLinkMargin=\dimen318
 
 (/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -905,8 +913,8 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
 \Fld@menulength=\count355
-\Field@Width=\dimen315
-\Fld@charsize=\dimen316
+\Field@Width=\dimen319
+\Fld@charsize=\dimen320
 Package hyperref Info: Hyper figures OFF on input line 6063.
 Package hyperref Info: Link nesting OFF on input line 6068.
 Package hyperref Info: Hyper index ON on input line 6071.
@@ -945,34 +953,34 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
-\Hy@SectionHShift=\skip80
+\Hy@SectionHShift=\skip81
 ) (./icml2025.sty
 Package: icml2025 2023/11/23 v2.0 ICML Conference Style File
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
 ) (./fancyhdr.sty
-\fancy@headwidth=\skip81
-\f@ncyO@elh=\skip82
-\f@ncyO@erh=\skip83
-\f@ncyO@olh=\skip84
-\f@ncyO@orh=\skip85
-\f@ncyO@elf=\skip86
-\f@ncyO@erf=\skip87
-\f@ncyO@olf=\skip88
-\f@ncyO@orf=\skip89
+\fancy@headwidth=\skip82
+\f@ncyO@elh=\skip83
+\f@ncyO@erh=\skip84
+\f@ncyO@olh=\skip85
+\f@ncyO@orh=\skip86
+\f@ncyO@elf=\skip87
+\f@ncyO@erf=\skip88
+\f@ncyO@olf=\skip89
+\f@ncyO@orf=\skip90
 ) (./algorithmic.sty)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip90
-\bibsep=\skip91
+\bibhang=\skip91
+\bibsep=\skip92
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count361
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
-\ESO@tempdima=\dimen317
-\ESO@tempdimb=\dimen318
+\ESO@tempdima=\dimen321
+\ESO@tempdimb=\dimen322
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/forloop/forloop.sty
 Package: forloop 2023/05/03 v3.0 For Loops for LaTeX
@@ -982,12 +990,12 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 153.
 \c@@affiliationcounter=\count362
 \c@@affilnum=\count363
 \newcaptionbox=\box93
-\newcaptionboxwid=\dimen319
+\newcaptionboxwid=\dimen323
 \icmlrulerbox=\box94
 \icmlrulercount=\count364
-\icmlruleroffset=\dimen320
-\cv@lineheight=\dimen321
-\cv@boxheight=\dimen322
+\icmlruleroffset=\dimen324
+\cv@lineheight=\dimen325
+\cv@boxheight=\dimen326
 \cv@tmpbox=\box95
 \cv@refno=\count365
 \cv@tot=\count366
@@ -1042,7 +1050,7 @@ File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \c@@todonotes@numberoftodonotes=\count373
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 9
-6.
+7.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -1055,37 +1063,37 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 (./example_paper.aux)
 \openout1 = `example_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Info: Redefining \microtypecontext on input line 96.
-Package microtype Info: Applying patch `item' on input line 96.
-Package microtype Info: Applying patch `toc' on input line 96.
-Package microtype Info: Applying patch `eqnum' on input line 96.
-Package microtype Info: Applying patch `footnote' on input line 96.
-Package microtype Info: Applying patch `verbatim' on input line 96.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Info: Redefining \microtypecontext on input line 97.
+Package microtype Info: Applying patch `item' on input line 97.
+Package microtype Info: Applying patch `toc' on input line 97.
+Package microtype Info: Applying patch `eqnum' on input line 97.
+Package microtype Info: Applying patch `footnote' on input line 97.
+Package microtype Info: Applying patch `verbatim' on input line 97.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 96.
+LaTeX Info: Redefining \showhyphens on input line 97.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1096,13 +1104,13 @@ File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count375
-\scratchdimen=\dimen323
+\scratchdimen=\dimen327
 \scratchbox=\box97
 \nofMPsegments=\count376
 \nofMParguments=\count377
 \everyMPshowfont=\toks59
 \MPscratchCnt=\count378
-\MPscratchDim=\dimen324
+\MPscratchDim=\dimen328
 \MPnumerator=\count379
 \makeMPintoPDFobject=\count380
 \everyMPtoPDFconversion=\toks60
@@ -1139,7 +1147,7 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 96.
+Package hyperref Info: Link coloring ON on input line 97.
 
 (./example_paper.out) (./example_paper.out)
 \@outlinefile=\write4
@@ -1151,7 +1159,7 @@ Package hyperref Info: Link coloring ON on input line 96.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 144
+LaTeX Font Info:    Trying to load font information for U+msa on input line 145
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1160,7 +1168,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 144
+LaTeX Font Info:    Trying to load font information for U+msb on input line 145
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1170,15 +1178,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 156.
+Package hyperref Warning: Ignoring empty anchor on input line 157.
 
 LaTeX Font Info:    Trying to load font information for OML+ptm on input line 1
-56.
+57.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/omlptm.fd
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 156.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 157.
 
 (./sections/0_abstract.tex) (./sections/1_introduction.tex
 <images/fig1(2).png, id=43, 1320.935pt x 622.325pt>
@@ -1262,75 +1270,81 @@ Underfull \hbox (badness 2277) in paragraph at lines 2--3
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 9--11
+Underfull \hbox (badness 3240) in paragraph at lines 9--11
 []\OT1/ptm/b/n/10 (+20) Arm 1 $\OMS/cmsy/m/n/10 ^^T$ \OT1/ptm/b/n/10 (+20) Arm 
 2 $\OML/cmm/m/it/10 <$ \OT1/ptm/b/n/10 (+20) Arm 3 Setup. \OT1/ptm/m/n/10 (+20)
- We ob-serve
+ For each
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 2401) in paragraph at lines 9--11
+\OT1/ptm/m/n/10 (+20) prob-lem in-stance $\OML/cmm/m/it/10 i$\OT1/ptm/m/n/10 (+
+20) , we ob-serve bernoulli out-comes
+ []
 
- [3 <./images/combined_accuracy_delta.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<images/fig_prompts_combined.png, id=102, 1005.9984pt x 402.7848pt>
+<images/fig_prompts_combined.png, id=86, 1005.9984pt x 402.7848pt>
 File: images/fig_prompts_combined.png Graphic file (type png)
 <use images/fig_prompts_combined.png>
-Package pdftex.def Info: images/fig_prompts_combined.png  used on input line 36
+Package pdftex.def Info: images/fig_prompts_combined.png  used on input line 16
 .
 (pdftex.def)             Requested size: 487.8225pt x 195.31966pt.
-)
-(./sections/3_experiment.tex
+[3 <./images/combined_accuracy_delta.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4 <./images/main_combined.png>]
+ [4 <./images/main_combined.png>]) (./sections/3_experiment.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<images/discrimination_by_task.png, id=112, 1293.3921pt x 391.7034pt>
+<images/discrimination_by_task.png, id=114, 1293.3921pt x 391.7034pt>
 File: images/discrimination_by_task.png Graphic file (type png)
 <use images/discrimination_by_task.png>
 Package pdftex.def Info: images/discrimination_by_task.png  used on input line 
-22.
+24.
 (pdftex.def)             Requested size: 487.8225pt x 147.73712pt.
-<images/translation_additivity_plot.png, id=113, 714.5094pt x 318.4698pt>
+<images/translation_additivity_plot.png, id=115, 714.5094pt x 318.4698pt>
 File: images/translation_additivity_plot.png Graphic file (type png)
 <use images/translation_additivity_plot.png>
 Package pdftex.def Info: images/translation_additivity_plot.png  used on input 
-line 29.
+line 31.
 (pdftex.def)             Requested size: 234.8775pt x 104.68715pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [5 <./images/fig_prompts_combined.png>]) (./sections/4_theory.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6 <./images/discrimination_by_task.png> <./images/translation_additivity_plot
 .png>]
-Overfull \hbox (2.86366pt too wide) detected at line 111
-\U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 `\OT1/cmr/m/n/10 (\OML/cmm/m/i
-t/10 Y[]; X\OT1/cmr/m/n/10 )] = \U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/1
-0 `\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; X\OT1/cmr/m/n/10 )] \OMS/cmsy/m/n/10 ^
-^T \U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 `\OT1/cmr/m/n/10 (\OML/cmm/
-m/it/10 Y[]; X\OT1/cmr/m/n/10 )] + \OML/cmm/m/it/10 ":
+Overfull \hbox (5.23471pt too wide) detected at line 22
+[]
+ []
+
+[7]
+Overfull \hbox (2.67604pt too wide) detected at line 117
+[]
  []
 
 
-Overfull \hbox (0.77434pt too wide) in paragraph at lines 127--128
+Overfull \hbox (4.90065pt too wide) detected at line 122
+[] \U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 `\OT1/cmr/m/n/10 (\OML/cmm/
+m/it/10 Y[]; X\OT1/cmr/m/n/10 )] \OMS/cmsy/m/n/10 ^^T [] \U/msb/m/n/10 E\OT1/cm
+r/m/n/10 [\OML/cmm/m/it/10 `\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Y[]; X\OT1/cmr/m/
+n/10 )] + \OML/cmm/m/it/10 ":
+ []
+
+
+Overfull \hbox (0.77434pt too wide) in paragraph at lines 144--145
 \OT1/ptm/m/n/10 (-20) when the generated code is \OT1/ptm/m/it/10 (-20) incorre
 ct\OT1/ptm/m/n/10 (-20) , yet the LLM ``recovers''
  []
 
-[7]
-<images/recovery_final.png, id=150, 422.0568pt x 277.5168pt>
+<images/recovery_final.png, id=151, 422.0568pt x 277.5168pt>
 File: images/recovery_final.png Graphic file (type png)
 <use images/recovery_final.png>
-Package pdftex.def Info: images/recovery_final.png  used on input line 140.
+Package pdftex.def Info: images/recovery_final.png  used on input line 157.
 (pdftex.def)             Requested size: 234.8775pt x 154.44286pt.
-) (./sections/5_related_work.tex) (./sections/6_conclusion.tex
+) (./sections/5_related_work.tex [8 <./images/recovery_final.png>])
+(./sections/6_conclusion.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./images/recovery_final.png>]) (./example_paper.bbl
+)
+(./example_paper.bbl
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
 9.
 
@@ -1352,7 +1366,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--39
 \OT1/pcr/m/n/10 product / identifier / S0140525X10000853 /
  []
 
-
+[9]
 Underfull \hbox (badness 4096) in paragraph at lines 105--109
 []\OT1/ptm/m/n/10 (+20) Hudson, D. A. and Man-ning, C. D.  Com-po-si-
  []
@@ -1362,7 +1376,7 @@ Underfull \hbox (badness 1648) in paragraph at lines 105--109
 \OT1/ptm/m/n/10 (+20) tional At-ten-tion Net-works for Ma-chine Rea-son-ing,
  []
 
-[9]
+
 Underfull \hbox (badness 3386) in paragraph at lines 124--128
 \OT1/ptm/m/n/10 (+20) tice-ship Learn-ing with Ap-pli-ca-tion to Quadruped
  []
@@ -1383,7 +1397,7 @@ Overfull \hbox (23.42252pt too wide) in paragraph at lines 124--128
 \OT1/pcr/m/n/10 54a367d629152b720749e187b3eaa11b-[]Abstract .
  []
 
-
+[10]
 Underfull \hbox (badness 4291) in paragraph at lines 154--158
 []\OT1/ptm/m/n/10 (+20) Merrill, W. and Sab-har-wal, A.  The Ex-pres-sive
  []
@@ -1425,7 +1439,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 214--220
 [][]$\OT1/pcr/m/n/10 https : / / onlinelibrary . wiley . com / doi /
  []
 
-[10]
+
 Underfull \hbox (badness 2495) in paragraph at lines 222--226
 []\OT1/ptm/m/n/10 (+20) Shen, Z.  LLM With Tools: A Sur-vey, Septem-
  []
@@ -1464,9 +1478,7 @@ Underfull \hbox (badness 5274) in paragraph at lines 259--263
 abs / 2203 .
  []
 
-) [11
-
-] (./example_paper.aux)
+) [11] (./example_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1475,36 +1487,39 @@ Package rerunfilecheck Info: File `example_paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36244 strings out of 474116
- 717104 string characters out of 5743682
- 1953187 words of memory out of 5000000
- 57572 multiletter control sequences out of 15000+600000
- 599068 words of font info for 291 fonts, out of 8000000 for 9000
+ 36301 strings out of 474116
+ 718114 string characters out of 5743682
+ 1956187 words of memory out of 5000000
+ 57632 multiletter control sequences out of 15000+600000
+ 598955 words of font info for 289 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 93i,12n,99p,1478b,644s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,16n,99p,1478b,643s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texliv
-e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/
-2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/20
-24/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texliv
-e/2024/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2024/t
-exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/
-fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
-1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/time
-s/utmri8a.pfb>
-Output written on example_paper.pdf (11 pages, 2365843 bytes).
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
+ype1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/t
+imes/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri
+8a.pfb>
+Output written on example_paper.pdf (11 pages, 2395426 bytes).
 PDF statistics:
- 470 PDF objects out of 1000 (max. 8388607)
- 373 compressed objects within 4 object streams
- 86 named destinations out of 1000 (max. 500000)
+ 484 PDF objects out of 1000 (max. 8388607)
+ 381 compressed objects within 4 object streams
+ 82 named destinations out of 1000 (max. 500000)
  58565 words of extra memory for PDF output out of 61914 (max. 10000000)
 
