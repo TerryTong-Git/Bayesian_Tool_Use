@@ -11,13 +11,6 @@ For each problem instance $i$, we observe bernoulli outcomes $(Y_i^{(\mathrm{NL}
 $$ H_0 = \mathrm{E}[Y_i^{(NL)}] = \mathrm{E}[Y_i^{(Sim)}] = \mathrm{E}[Y_i^{(Exec)}]$$
 i.e. that all arms have marginal success probabilities. Rejection of this null indicates at least one arm differs in accuracy. 
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=1\linewidth]{images/fig_prompts_combined.png}
-    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
-    \label{fig:recovery_rate}
-\end{figure*}
-\subsection{Experiments}
 
 Condition on rejecting the global null, following our framework, we break down the tests into Arm 1 and Arm 2 $(Y_i^{(\mathrm{NL})}, Y_i^{(\mathrm{Sim})})$, and Arm 2 and Arm 3 $(Y_i^{(\mathrm{Sim})},Y_i^{(\mathrm{Exec})})$. For these paired bernoulli outcomes, we run the McNemar test under the null that: 
 \begin{align*}
@@ -36,6 +29,17 @@ Finally, to analyze how task difficulty interacts with different arms, we run a 
 
 \textbf{Prompting to generate Code and Reasoning Traces. }
 We prompt the LLM in Arm~1 to never use any code in its reasoning, and to give a structured output of the rationale and answer to the algorithmic problem \cref{fig:arm_prompts}. Holding all other parts of the prompt the same, we replace the section instructing the model not to use code with another asking it to generaate code first before reasoning through it. Models have access to native python packages, and numpy, pandas, scipy, PuLP, and pytorch. For Arm~3, we take the generated function (no prompt), and execute it in a python3 runtime. We ask model's to output a structured json following a corresponding schema for that arm, and example is show in \cref{fig:arm_prompts}.
+
+\begin{figure*}[t]
+    \centering
+    \vspace{-5pt}
+    \includegraphics[width=0.68\textwidth]{images/fig_prompts_combined.png}
+    \vspace{-5pt}
+    \caption{\textbf{Translation and discrimination prompts.} \textbf{(a) Translator}: Converts code to NL reasoning step-by-step, mimicking native reasoning. \textbf{(b) Discriminator}: Judge models classify traces as ``Native NL'' or ``Translated''. Used in \cref{sec:exp_similarity}.}
+    \label{fig:translator_discriminator}
+\end{figure*}
+\subsection{Experiments}
+
 
 \textbf{Arm~1 $\leq$ Arm~2 $<$ Arm~3 Results. } 
 For Arm~1 = Arm~2 = Arm~3, we strongly reject the global null hypothesis (p $<$ 0.001 after controlling for FWER). 

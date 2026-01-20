@@ -1,34 +1,22 @@
 \section{Introduction} \label{intro}
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=1\linewidth]{images/fig1(2).png}
-    \caption{Bayesian Inference model showing the \emph{three arms methodology} in \cref{method}. Given an algorithmic problem, we may split it into two steps (1) Translate (2) Execute. The (1) translation $\in \{\mathrm{Code}, \mathrm{NL}\}$. Then (2) execution $\in \{\mathrm{LLM~Reasoning}, \mathrm{Solver~Execution}\}$. We have three pairs, Arm~1: $\{\mathrm{NL~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~2: $\{\mathrm{Code~Gen}, \mathrm{LLM~Reasoning}\}$, Arm~3: $\{\mathrm{Code~Gen}, \mathrm{Solver~Execution}\}$. Typically, the problem is tackled by comparing Arm~1 and Arm~3 in neuro-symbolic literature, which is intractable theoretically, and uncontrolled since multiple variables are changing. By introducing Arm~2, the problem becomes tractable. In the diagram, the \emph{shaded} circles correspond to observed R.V.\ and \emph{white} correspond to unobserved. The notation for R.V.s is correspondingly used in \cref{method}.
-    }
-    \label{fig:three_arms}
-    \vspace{-5pt}
-\end{figure}
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=\textwidth]{images/arm_prompts.png}
-    \caption{Prompt templates for the three-arm evaluation framework. Arm~1 instructs the model to reason purely in natural language without code. Arm~2 instructs the model to generate code and simulate its execution. Arm~3 uses the same code generation prompt but executes the output in a Python runtime rather than simulating.}
-    \label{fig:arm_prompts}
-\end{figure*}
-
-Large language models (LLMs) have demonstrated increasingly strong natural-language (NL) reasoning capabilities~\cite{}. In parallel, LLM-based agentic systems advocate tool use, where LLMs invoke external solvers to support reasoning and execution~\cite{}. Recent works~\cite{lyu2023faithful, pan2023logic} suggest that the \textbf{solver route}, translating problems into solver-executable representations and delegating execution, often outperforms the \textbf{direct route}, reasoning end-to-end in NL, on logic- and algorithmic-style complex reasoning tasks. However, for algorithmic reasoning alone, there is still no systematic analysis comparing the two routes, clarifying when and why LLMs perform better via the solver route versus the direct route.
-
+Large language models (LLMs) have demonstrated increasingly strong natural-language (NL) reasoning capabilities~\cite{wei2022chain}. In parallel, LLM-based agentic systems advocate tool use, where LLMs invoke external solvers to support reasoning and execution~\cite{gao2023pal}. Recent works~\cite{lyu2023faithful, pan2023logic} suggest that the \textbf{solver route}, translating problems into solver-executable representations and delegating execution, often outperforms the \textbf{direct route}, reasoning end-to-end in NL, on logic- and algorithmic-style complex reasoning tasks. However, for algorithmic reasoning alone, there is still no systematic analysis comparing the two routes, clarifying when and why LLMs perform better via the solver route versus the direct route.
 
 % Despite these trends, for algorithmic reasoning it remains underexplored whether LLMs perform better via the \textbf{direct route}, reasoning end-to-end in NL, or the \textbf{solver route}, translating problems into solver-executable representations and delegating execution (Todo: despite.. add reference for there are many empirical results showing code is better).}
 
+
 A principled direct comparison is challenging since the routes operate over different representation spaces, i.e., NL traces versus solver-executable programs, and rely on different execution mechanisms, which prevents step-by-step alignment.
-Specifically, sample-complexity comparisons~\cite{} are ill-posed here because the two routes learn fundamentally different objects, so there is no common formal target and metric to compare. Computational-complexity arguments~\cite{} are also not a clean discriminator here because the two routes incur fundamentally different execution-dependent costs. We therefore compare the two routes via statistical difficulty, using optimal achievable end-task Bayes risk~\cite{}.
+Specifically, sample-complexity comparisons~\cite{bai2023transformers} are ill-posed here because the two routes learn fundamentally different objects, so there is no common formal target and metric to compare. Computational-complexity arguments~\cite{merrill2023expressive} are also not a clean discriminator here because the two routes incur fundamentally different execution-dependent costs. We therefore compare the two routes via statistical difficulty, using optimal achievable end-task Bayes risk~\cite{xie2021explanation}.
 
-In this paper, we propose a three-route Bayesian inference framework that makes this comparison tractable by introducing an additional intermediate \textbf{simulation route}, where the model performs the same translation but simulates execution in NL, other than the \textbf{direct route} and \textbf{solver route}, and verbalizes the representation using Chain-of-Thought~\cite{} as shown in Fig.~\ref{fig:three_arms}. Using this framework, we characterize when and why algorithmic reasoning favors the solver route, and show that solver-based pipelines are generally easier for a broad class of tasks. \yu {This claim is inaccurate for now.} This framework also enables a tractable theoretical comparison of the routes, showing that the simulation route outperforms the direct route \yu{....} Finally, we empirically demonstrate that the solver route substantially outperforms the simulation route, highlighting additional gains from reliable external execution.
+In this paper, we propose a three-route Bayesian inference framework that makes this comparison tractable by introducing an additional intermediate \textbf{simulation route}, where the model performs the same translation but simulates execution in NL, other than the \textbf{direct route} and \textbf{solver route}, and verbalizes the representation using Chain-of-Thought~\cite{wei2022chain} as shown in Fig.~\ref{fig:three_arms}. Using this framework, we characterize when and why algorithmic reasoning favors the solver route, and show that solver-based pipelines are generally easier for a broad class of tasks. \yu {This claim is inaccurate for now.} This framework also enables a tractable theoretical comparison of the routes, showing that the simulation route outperforms the direct route \yu{....} Finally, we empirically demonstrate that the solver route substantially outperforms the simulation route, highlighting additional gains from reliable external execution.
 
-Using our framework, we consistently observe a three-route ordering across algorithmic reasoning tasks: the solver route performs best, followed by the simulation route, and then the direct route. Moreover, the solver route’s advantage widens as task difficulty increases. We evaluate our framework on CLRS30~\cite{}, NP-Hard-Eval~\cite{}, and a custom suite of algorithmic problems with controllable difficulty (addition, multiplication, LCS, rod cutting, knapsack, and ILP variants: assignment, production, and partition) across a broad range of models, spanning weaker open-source LLMs (e.g., Mistral~\cite{}, LLaMA~\cite{}, Qwen~\cite{}) and stronger closed-source systems (e.g., OpenAI~\cite{}, Gemini~\cite{}, Claude~\cite{}). We find that, averaged over tasks and models, the solver route achieves XX\% accuracy, outperforming the simulation route (XX\%) and the direct route (XX\%) with statistical significance (XX).
+
+
+Using our framework, we consistently observe a three-route ordering across algorithmic reasoning tasks: the solver route performs best, followed by the simulation route, and then the direct route (\cref{fig:main,fig:per_task_accuracy}). Moreover, the solver route's advantage widens as task difficulty increases, with 4.01$\times$ odds of getting a correct answer for code over natural language reasoning. We evaluate our framework on CLRS30~\cite{velivckovic2022clrs}, NP-Hard-Eval~\cite{fan2023nphardeval}, and a custom suite of algorithmic problems with controllable difficulty (addition, multiplication, LCS, rod cutting, knapsack, and ILP variants: assignment, production, and partition) across a broad range of models, spanning weaker open-source LLMs (e.g., Mistral~\cite{jiang2023mistral}, LLaMA~\cite{touvron2023llama}, Qwen~\cite{yang2024qwen2}) and stronger closed-source systems (e.g., OpenAI~\cite{achiam2023gpt4}, Gemini~\cite{team2023gemini}, Claude~\cite{anthropic2024claude}). We find that, averaged over tasks and models, the solver route achieves XX\% accuracy, outperforming the simulation route (XX\%) and the direct route (XX\%) with statistical significance (XX). 
 
 \yu{theory part}
+Theoretically, we formalize the three reasoning routes as statistical experiments in the sense of Blackwell. We show that, under mild regularity assumptions, natural language reasoning traces can be viewed as a garbling of code-based representations, inducing a Blackwell ordering in which code is at least as informative as natural language for downstream decision-making. This implies that code-based reasoning achieves weakly lower Bayes risk for algorithmic tasks. We further model execution as an information channel and show that delegating execution to an external solver corresponds to a deterministic channel, while LLM-based simulation introduces additional stochastic noise. Together, these results establish a principled ordering—natural language $\leq$ code simulation $<$ code execution—providing an information-theoretic explanation for the empirical advantages of solver-based pipelines.
 
 \yu{ talk about the recovery rate experiment to show why execution is better}
 
@@ -53,28 +41,18 @@ Using our framework, we consistently observe a three-route ordering across algor
 %Why the problem hasn't been solved empirically. 
 % Empirically, this framework enables controlled comparisons. A rigorous comparison has not been instantiated because it is hard to control the experiment and determine what representation is actually being used---whether code, natural language, or something else. We overcome this by verbalizing the representation using Chain-of-Thought. We provide statistical evidence for the alternative hypothesis $\mathrm{Arm~3} > \mathrm{Arm~2} > \mathrm{Arm~1}$ on (Gemma, Deepseek, Llama), we demonstrate that generating code and executing leads to 78\% accuracy on (ILP, DP, Arithmetic) tasks, over 30\% for code simulation and just over 20\% for natural language reasoning across 5 models. Our results are computed over 5 seeds, and a Friedman Chi-square gives results a test statistic of 9277.32 and 8369.34 for deepseek and llama, enabling us to reject the null in favor of the alternative. 
 
-Theoretically, we first compare $\mathrm{Arm~1} < \mathrm{Arm~2}$. Bayesian Inference shows us that the LLM implicitly does multi-class classification to the right algorithm. We utilize information theory to capture natural language and code under the same framework, forgoing using grammars or other mathematical frameworks that are intractable. We reduce the comparison of Bayes Error to that of comparing cross-entropy. A intermediate step using mutual information makes the proof interpretable: we prove that the mutual information between the CoT and the final answer is higher when conditioned on code representations over natural language representations. We variationally lower bound the mutual information using cross-entropy of a proposal distribution parameterized by a logistic regression. Since we only care about orderings, we subtract to overcome the intractability of estimating the differential entropy, reducing the comparison of mutual information to that of cross-entropy. The cross-entropy is measured empirically using logistic regression on TF-IDF features and Bert-base-uncased features, showing that code has lower cross-entropy than NL and achieves higher accuracy when classifying the correct algorithm. The difference is statistically significant (F-test, $p < 0.05$). %no need to say the details of reduction and not using LLM uncalibrated probs? 
+% Theoretically, we first compare $\mathrm{Arm~1} < \mathrm{Arm~2}$. Bayesian Inference shows us that the LLM implicitly does multi-class classification to the right algorithm. We utilize information theory to capture natural language and code under the same framework, forgoing using grammars or other mathematical frameworks that are intractable. We reduce the comparison of Bayes Error to that of comparing cross-entropy. A intermediate step using mutual information makes the proof interpretable: we prove that the mutual information between the CoT and the final answer is higher when conditioned on code representations over natural language representations. We variationally lower bound the mutual information using cross-entropy of a proposal distribution parameterized by a logistic regression. Since we only care about orderings, we subtract to overcome the intractability of estimating the differential entropy, reducing the comparison of mutual information to that of cross-entropy. The cross-entropy is measured empirically using logistic regression on TF-IDF features and Bert-base-uncased features, showing that code has lower cross-entropy than NL and achieves higher accuracy when classifying the correct algorithm. The difference is statistically significant (F-test, $p < 0.05$). %no need to say the details of reduction and not using LLM uncalibrated probs? 
 
-Then we compare $\mathrm{Arm~2} < \mathrm{Arm~3}$. This difference is easily explained using a communication channel model of LLM forward-pass. We show that in the case where Arm~2 $>$ Arm~3, i.e. when the code generated is not executable or wrong, yet the LLM reasoning obtains the correct answer, that this occurs rarely. In other words, generally $\mathrm{Arm~3} > \mathrm{Arm~2}$. 
+% Then we compare $\mathrm{Arm~2} < \mathrm{Arm~3}$. This difference is easily explained using a communication channel model of LLM forward-pass. We show that in the case where Arm~2 $>$ Arm~3, i.e. when the code generated is not executable or wrong, yet the LLM reasoning obtains the correct answer, that this occurs rarely. In other words, generally $\mathrm{Arm~3} > \mathrm{Arm~2}$. 
 
-Piecing these results together, we show that $\mathrm{Arm~1} < \mathrm{Arm~2} < \mathrm{Arm~3}$, verifying the hypothesis.
+% Piecing these results together, we show that $\mathrm{Arm~1} < \mathrm{Arm~2} < \mathrm{Arm~3}$, verifying the hypothesis.
 
-% % Claim: Statistical Learning and Computational Learning Hard to deal with our setting. Therefore we need 3 arms. Explain why its hard, and what the gap is in literature. 
-%  The reason for this is because comparing structured programming languages and unstructured natural language is challenging. Typically, statistical learning theory is concerned with learning a hypothesis class mapping $\mathcal{X} \to \mathcal{Y}$. We compare two learning algorithms and see how many samples of $\mathcal{X}$ are required to achieve a loss $L$. What if now, the $X$ are different across learning algorithms? This makes comparison between NL (1) and Code (2) \emph{mutually} intractable. 
-
-% % Computational Challenges
-% From a computational perspective, we may be curious whether code representations improve expressivity, quantified by less CoT iterations to achieve a certain loss. As it turns out, it is again hard to formalize the comparison, since a fundamental problem is trying to capture natural language in a mathematical structure, e.g. a grammar, which overcomes its ambiguity while maintain expressivity. 
-
-% Solution
-
-% Experimental Results / Phenomenon
-
-
-% Explanation
-\begin{figure*}
+\begin{figure*}[t]
     \centering
-    \includegraphics[width=1\linewidth]{images/combined_accuracy_delta.png}
-    \caption{Accuracy scaling across task difficulty ($\tau$) for Arithmetic, Dynamic Programming, and ILP tasks. Arm~3 (code execution) maintains high accuracy as problems get harder, while Arms~1 and~2 degrade. The widening gap demonstrates that solver execution becomes increasingly advantageous for challenging algorithmic problems.}
+    \vspace{-5pt}
+    \includegraphics[width=0.68\textwidth]{images/combined_accuracy_delta.png}
+    \vspace{-5pt}
+    \caption{\textbf{Accuracy vs.\ task difficulty.} Difficulty $\tau$ controls problem complexity. \textbf{Arm~3} (code execution) maintains $>$80\% accuracy while \textbf{Arm~1} (NL) and \textbf{Arm~2} (simulation) degrade rapidly. Results averaged over 5 models and 3 seeds; shaded: 95\% CI.}
     \label{fig:main}
 \end{figure*}
 
@@ -87,9 +65,11 @@ Our main contributions are:
     \item A \textbf{theoretical explanation} based on Bayesian inference showing that code yields higher mutual information with target algorithms, leading to lower Bayes error.
 \end{enumerate}
 
-\begin{figure*}
+\begin{figure*}[t]
     \centering
-    \includegraphics[width=1\linewidth]{images/main_combined.png}
-    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
-    \label{fig:prompts_combined}
+    \vspace{-5pt}
+    \includegraphics[width=0.68\textwidth]{images/main_combined.png}
+    \vspace{-5pt}
+    \caption{\textbf{Per-task accuracy breakdown.} Each panel shows accuracy vs.\ $\tau$ for arithmetic (add, mul), DP (lcs, rod, knap), and ILP tasks. \textbf{Arm~3} (Code Exec) consistently outperforms \textbf{Arm~2} (Sim) and \textbf{Arm~1} (NL). GLMM panel shows code maintains stability while NL degrades. Rightmost: average over 8 tasks.}
+    \label{fig:per_task_accuracy}
 \end{figure*}

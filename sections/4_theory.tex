@@ -154,8 +154,10 @@ To further reinforce this result, we rule out the possibilities of recovery as t
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=1\linewidth]{images/recovery_final.png}
-    \caption{Recovery rate analysis: proportion of cases where LLM simulation (Arm~2) produces the correct answer despite incorrect code (Arm~3 failure). Recovery rates remain below 5\% across all task families and models, confirming that solver execution dominates LLM simulation.}
+    \vspace{-5pt}
+    \includegraphics[width=0.85\linewidth]{images/recovery_final.png}
+    \vspace{-5pt}
+    \caption{\textbf{Recovery rate.} How often Arm~2 succeeds when Arm~3 fails. Recovery rates are $<$5\% across all tasks, confirming Arm~3's advantage comes from reliable execution, not LLM compensation.}
     \label{fig:recovery_final}
 \end{figure}
 
