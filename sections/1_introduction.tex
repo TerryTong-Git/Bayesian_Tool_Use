@@ -1,5 +1,23 @@
 \section{Introduction} \label{intro}
 
+\begin{figure}[t]
+    \centering
+    \vspace{-5pt}
+    \includegraphics[width=0.85\linewidth]{images/fig1.png}
+    \vspace{-5pt}
+    \caption{\textbf{Three-arm Bayesian framework.} We decompose algorithmic reasoning into: (1) \emph{Translation} into NL or code, and (2) \emph{Execution} via LLM or solver. This yields three arms: \textbf{Arm~1} (NL + LLM), \textbf{Arm~2} (Code + LLM simulation), \textbf{Arm~3} (Code + solver). Prior work compares only Arm~1 vs.\ Arm~3, confounding translation and execution. Our Arm~2 isolates these factors. Shaded nodes: observed; white: latent.}
+    \label{fig:three_arms}
+\end{figure}
+
+\begin{figure*}[t]
+    \centering
+    \vspace{-5pt}
+    \includegraphics[width=0.7\textwidth]{images/arm_prompts_new.png}
+    \vspace{-5pt}
+    \caption{\textbf{Prompt templates for three-arm evaluation.} \textbf{Arm~1 (NL)}: LLM reasons in natural language only, code forbidden. \textbf{Arm~2 (Sim)}: LLM generates Python \texttt{solution()} then simulates execution in NL. \textbf{Arm~3 (Code)}: Same code executed in Python runtime. This isolates execution mechanism while controlling translation.}
+    \label{fig:arm_prompts}
+\end{figure*}
+
 
 Large language models (LLMs) have demonstrated increasingly strong natural-language (NL) reasoning capabilities~\cite{wei2022chain}. In parallel, LLM-based agentic systems advocate tool use, where LLMs invoke external solvers to support reasoning and execution~\cite{gao2023pal}. Recent works~\cite{lyu2023faithful, pan2023logic} suggest that the \textbf{solver route}, translating problems into solver-executable representations and delegating execution, often outperforms the \textbf{direct route}, reasoning end-to-end in NL, on logic- and algorithmic-style complex reasoning tasks. However, for algorithmic reasoning alone, there is still no systematic analysis comparing the two routes, clarifying when and why LLMs perform better via the solver route versus the direct route.
 

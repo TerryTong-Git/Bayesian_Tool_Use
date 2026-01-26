@@ -1,9 +1,8 @@
 \begin{abstract}
-\vspace{-2pt}
 % Context: Establish the problem domain
 Large language models can solve algorithmic problems either through direct natural language (NL) reasoning or by generating executable code delegated to an external solver. However, little theoretical progress has been made on explaining \emph{why} code-based approaches consistently outperform natural language reasoning. Comparing NL reasoning and solver-based pipelines directly is ill-posed: they differ simultaneously in representation space and execution mechanism.
 % Gap + Contribution: What's missing and what we provide
-We introduce a three-arm framework that makes this comparison tractable by introducing an intermediary step---code generation with LLM-based execution. This enables our empirical analysis which showed a statistically significant gap support  code $>$ NL across 44 different algorithmic tasks and 6 models. Empirically, we demonstrate that for evaluated models, NL reasoning does not contain decision-relevant information beyond what is already in code. Building on these observations, we introduce a statistical and information theoretic analysis that proves code $>$ NL under mild assumptions. 
+We introduce a three-arm framework that makes this comparison tractable by introducing an intermediary step---code generation with LLM-based execution. This enables our empirical analysis which shows a statistically significant gap supporting code $>$ NL across 44 different algorithmic tasks and 6 models. Empirically, we demonstrate that for evaluated models, NL reasoning does not contain decision-relevant information beyond what is already in code. Building on these observations, we introduce a statistical and information theoretic analysis that proves code $>$ NL under mild assumptions. 
 
 % These results inform the design of compositional AI systems, providing principled guidance on when to use tool-augmented versus monolithic reasoning for algorithmic tasks. Our framework offers a unified perspective on the tool-use versus direct-reasoning tradeoff. 
 
@@ -19,20 +18,3 @@ We introduce a three-arm framework that makes this comparison tractable by intro
 
 \end{abstract}
 
-\begin{figure}[t]
-    \centering
-    \vspace{-5pt}
-    \includegraphics[width=0.85\linewidth]{images/fig1.png}
-    \vspace{-5pt}
-    \caption{\textbf{Three-arm Bayesian framework.} We decompose algorithmic reasoning into: (1) \emph{Translation} into NL or code, and (2) \emph{Execution} via LLM or solver. This yields three arms: \textbf{Arm~1} (NL + LLM), \textbf{Arm~2} (Code + LLM simulation), \textbf{Arm~3} (Code + solver). Prior work compares only Arm~1 vs.\ Arm~3, confounding translation and execution. Our Arm~2 isolates these factors. Shaded nodes: observed; white: latent.}
-    \label{fig:three_arms}
-\end{figure}
-
-\begin{figure*}[t]
-    \centering
-    \vspace{-5pt}
-    \includegraphics[width=0.7\textwidth]{images/arm_prompts_new.png}
-    \vspace{-5pt}
-    \caption{\textbf{Prompt templates for three-arm evaluation.} \textbf{Arm~1 (NL)}: LLM reasons in natural language only, code forbidden. \textbf{Arm~2 (Sim)}: LLM generates Python \texttt{solution()} then simulates execution in NL. \textbf{Arm~3 (Code)}: Same code executed in Python runtime. This isolates execution mechanism while controlling translation.}
-    \label{fig:arm_prompts}
-\end{figure*}
