@@ -52,20 +52,35 @@ This definition is purely a change of decision rule: the underlying experiment r
 %     & \mathrm{P}(Y \mid X = x) := \int T(z \mid z_{\mathrm{Code}}) \, p_{\mathrm{Code}}(z_{\mathrm{Code}} \mid x) \, \mathrm{d}z_{\mathrm{Code}}
 % \end{align*}
 % In Arm~1 and Arm~2, each arm corresponds to an intermediate representation $Z$ (e.g. CoT) produced by channel $p(z \mid x)$ (e.g. LLM), and then choosing an output $Y$ via a randomized decision rule $\delta(y \mid x, z)$ (i.e. LLM test-time reasoning). 
-We compare arms via a representation-constrained Bayes risk, i.e., Bayes risk optimized over a restricted executor class. For an experiment $E$ with trace $Z \sim p_E(\cdot \mid X)$, define
+\paragraph{Blackwell idealization and Le Cam approximation.}
+In Blackwell’s framework, an experiment $E_2$ is (weakly) more informative than $E_1$ if there exists a state-independent Markov kernel $T$ such that $E_1$ can be obtained by garbling the signal from $E_2$. This \emph{exact} simulability implies that for every bounded-loss decision problem, the Bayes risk achievable under $E_2$ is no worse than under $E_1$ \citep{blackwell1953equivalent}.
+
+In our setting, we do not assume exact equality of trace distributions. Instead, we assume that the native NL experiment is \emph{approximately simulable} from the code experiment via a state-independent kernel, and we quantify this approximation using total variation. This corresponds to a Le Cam–style comparison of experiments: approximate simulation implies an additive $\varepsilon$ bound on achievable risk for bounded losses \citep{lecam1986asymptotic}.
+
+Finally, because our executors are computationally constrained (LLM-style inference), we evaluate these bounds over a restricted executor class $\mathcal{H}$ rather than over all measurable decision rules.
+For an experiment $E$ with trace $Z \sim p_E(\cdot \mid X)$, define
 \[
-R^*(E) \;:=\; \inf_{\rho \in \mathcal{H}} \; \mathbb{E}\!\left[\mathbf{1}\{\hat Y \neq Y^*(X)\}\right],
+R^*_{\mathcal{H}}(E) \;:=\; \inf_{\rho \in \mathcal{H}} \; \mathbb{E}[ \mathbf{1}\{\hat Y \neq Y^*(X)\} ].
+,
 \qquad \hat Y \sim \rho(\cdot \mid X, Z).
 \]
+Here $\mathcal{H}$ denotes a \emph{restricted executor class} (a subset of Markov kernels from $(x,z)$ to $\mathcal{Y}$) capturing the computational mechanism available at inference time. In our setting, $\mathcal{H}$ is the family of executors implementable by the same model family under the fixed prompting and decoding protocol used in our experiments (i.e., LLM-based execution/simulation). We emphasize that $R^*(E)$ is \emph{not} the classical Bayes risk (which would optimize over all measurable decision rules), but a computation-constrained risk appropriate for comparing LLM-style executors.
+
 When $E=E_{\mathrm{NL}}$ we write $R^*(E_{\mathrm{NL}})$, and when $E=E_{\mathrm{Code}}$ we write $R^*(E_{\mathrm{Code}})$. Our goal is to show that
 \[
-R^*(E_{\mathrm{Code}}) \;\le\; R^*(E_{\mathrm{NL}}) + O(\varepsilon).
+R^*(E_{\mathrm{Code}}) \;\le\; R^*(E_{\mathrm{NL}}) + \varepsilon.
 \]
 
 
-\textbf{Assumption 1.}
+\textbf{Assumption 1 (State-independent garbling kernel).}
 \label{assump1}
-We assume there exists a (near Bayes optimal) translator $T$ mapping code to natural language reasoning $Z_{\mathrm{Code}} \to \hat{Z}_{\mathrm{NL}}$ independent of $X$.
+There exists a state-independent Markov kernel (translator) $T(z_{\mathrm{NL}} \mid z_{\mathrm{C}})$ such that the translated experiment
+\[
+p_{\mathrm{translated}}(z_{\mathrm{NL}} \mid x)
+:= \int T(z_{\mathrm{NL}} \mid z_{\mathrm{C}})\, p_{\mathrm{Code}}(z_{\mathrm{C}} \mid x)\, dz_{\mathrm{C}}
+\]
+is well-defined for all $x$. This assumption only asserts the existence of a state-independent post-processing map; it does not require any notion of optimality for translation.
+
 
 \textbf{Assumption 2.}
 \label{assump2}
@@ -79,7 +94,7 @@ where
 \[
 d_{\mathrm{TV}}(P, Q) = \sup_{B} |P(B) - Q(B)|.
 \]
-In other words, averaged over task instances, the NL trace produced by Arm~1 is close in distribution to the NL traces obtained by translating the code trace (Arm~2) using the translator $T$. We empirically verify this in experiment 2. 
+In other words, averaged over task instances, the NL trace produced by Arm~1 is close in distribution to the NL traces obtained by translating the code trace (Arm~2) using the translator $T$. Section~\ref{sec:exp_similarity} provides empirical evidence for this assumption using distributional similarity proxies between native and translated traces.  We only assume approximate simulation of $E_{\mathrm{NL}}$ from $E_{\mathrm{Code}}$; we do not assume (or attempt to show) a reverse simulation of code traces from NL traces. Accordingly, our comparison is one-sided and does not establish Blackwell equivalence (nor zero deficiency in both directions).
 
 \begin{proof}
 We apply Blackwell’s simulation idea at the level of experiments: code traces can be post-processed into translated NL traces via the state-independent kernel $T$. We then relate performance under the native NL experiment to performance under the translated experiment using a total-variation continuity bound.
@@ -103,13 +118,18 @@ Thus,
 \]
 \textbf{Step 2: Substitute translated NL and original NL via TV lemma.} Here we show that if two signals look similar, they perform similarly. Even if translated NL is not exactly native NL, bounded loss decision problems cannot exploit small distributional differences, a property of the continuity property of Bayes Risk. 
 
-\yu{Is there a citation for TV lemma, there should be one?}
-\begin{lemma}[TV Lemma]
-Let $X \sim p(x)$. Let $Z \mid X = x \sim P_x$ and $Z' \mid X = x \sim Q_x$. Let $g(x, z) \in [0, 1]$ be measurable. Then
+\begin{lemma}[Total variation risk continuity]
+\label{lem:tv_continuity}
+Let $X \sim p(x)$. Let $Z \mid X=x \sim P_x$ and $Z' \mid X=x \sim Q_x$. For any measurable $g:\mathcal{X}\times\mathcal{Z}\to[0,1]$,
 \[
-\mathbb{E}[g(X, Z)] - \mathbb{E}[g(X, Z')] \leq \mathbb{E}_X \bigl[ d_{\mathrm{TV}}(P_X, Q_X) \bigr].
+\Bigl|\mathbb{E}[g(X,Z)] - \mathbb{E}[g(X,Z')]\Bigr|
+\;\le\;
+\mathbb{E}_X\!\left[d_{\mathrm{TV}}(P_X,Q_X)\right].
 \]
 \end{lemma}
+We use the convention $d_{\mathrm{TV}}(P,Q):=\sup_{B}|P(B)-Q(B)|$; under this convention, the bound above follows from the dual characterization of total variation (e.g., \citet[Ch. 2, Definition 2.4]{Tsybakov2009}).
+
+
 For each $x$ and trace $z$, define $g(x, z) := \mathbb{E}_{y|x,z}[\ell(y, x)]$. Then $g(x, z) \in [0, 1]$. Note that
 \begin{align*}
 \mathbb{E}_{(Y_{\mathrm{NL}}, X)}[\ell(Y_{\mathrm{NL}}, X)] &= \mathbb{E}_{(X, Z_{\mathrm{NL}})}[g(X, Z_{\mathrm{NL}})], \\
@@ -155,36 +175,37 @@ R^*(E_{\mathrm{NL}}) + \varepsilon.
 \end{framed}
 
 \end{proof}
+This proof follows the standard Le Cam/Blackwell logic: simulation of one experiment from another (exactly in Blackwell, approximately in Le Cam) yields risk bounds for bounded losses.
 
-\vspace{-20pt}
+% \vspace{-20pt}
 \subsection{Arm~2 $<$ Arm~3}
-We prove that deterministic execution in Arm 3 weakly dominates LLM simulation in Arm 2 under restricted decision rules. Crucially, this section does not leverage Blackwell dominance, since the experiment is the same. 
-\yu{why only weakly as we see a large performance gap?}
-
-\textbf{Setup.} Let $X \sim p(x)$ be a task instance and let $Y^*(x)$ denote the corresponding ground-truth. Suppose $Z_{\mathrm{Sim}} \sim p_{\mathrm{Sim}}$ is the code produced by the model. Let $g$ be a deterministic python3 runtime. Define the two arms:
-\begin{align*}
-    & \mathrm{Arm2}: Y_{\mathrm{Sim}} \sim \delta_{\mathrm{Sim}} (\cdot | X, Z_{\mathrm{Sim}}) \\
-    & \mathrm{Arm3}: Y_{\mathrm{Exec}} := g(X, Z_{\mathrm{Sim}})
-\end{align*}
+\textbf{Setup.}
+Both Arm~2 and Arm~3 share the same underlying experiment $E_{\mathrm{Code}}$ that generates code traces $Z_{\mathrm{C}} \sim p_{\mathrm{Code}}(\cdot \mid X)$. They differ only in the executor applied to the same trace. Let $\rho_{\mathrm{Sim}} \in \mathcal{H}$ denote the LLM simulation executor, and let $\rho_{\mathrm{Exec}}$ denote deterministic execution by a Python interpreter $g$:
+\[
+\rho_{\mathrm{Exec}}(y \mid x, z_{\mathrm{C}}) := \mathbf{1}\{y = g(x, z_{\mathrm{C}})\}.
+\]
+We compare the expected 0--1 loss of these two executors under the shared experiment $E_{\mathrm{Code}}$.
 \begin{proof}
 Define the event
 \[
-C := \{ g(X, Z_{\mathrm{Sim}}) = Y^*(X) \},
+C := \{ g(X, Z_{\mathrm{C}}) = Y^*(X) \},
 \]
 corresponding to semantically correct code.
 Under $\ell(y,x)=\mathbf{1}\{y\neq Y^*(x)\}$, on the event $C$ the deterministic executor is correct with probability one:
-\[
-\Pr(Y_{\mathrm{Exec}} \neq Y^* \mid C) = 0.
-\]
-In contrast, even when $C$ holds, LLM simulation may incur error due to stochastic execution or reasoning noise:
-\[
-\Pr(Y_{\mathrm{Sim}} \neq Y^* \mid C) > 0.
-\]
+\begin{align*}
+& \mathbb{E}\!\left[\ell(\hat Y^{(\rho_{\mathrm{Exec}})},X)\mid C\right]=0 \\
+& \mathbb{E}\!\left[\ell(\hat Y^{(\rho_{\mathrm{Sim}})},X)\mid C\right]\ge 0,
+\end{align*}
 
-Therefore, conditional on semantically correct code, Arm~3 weakly dominates Arm~2 under representation-restricted Bayes risk.
+Therefore, conditional on semantically correct code, deterministic execution weakly dominates LLM simulation in terms of conditional expected 0--1 loss under the shared experiment $E_{\mathrm{Code}}$.
+
 \begin{framed}
-\qquad \qquad \quad $R^*_3 \le R^*_2 \quad \text{conditional on } C$
+\qquad \qquad \quad
+$\mathbb{E}[\ell(\hat Y^{(\rho_{\mathrm{Exec}})},X)\mid C]
+\;\le\;
+\mathbb{E}[\ell(\hat Y^{(\rho_{\mathrm{Sim}})},X)\mid C]$
 \end{framed}
+
 \end{proof}
 
 The only scenario where Arm~2 could outperform Arm~3 is when the generated code is \emph{incorrect}, yet the LLM ``recovers'' by reasoning to the correct answer despite the flawed code. We empirically quantify this recovery rate below. 
