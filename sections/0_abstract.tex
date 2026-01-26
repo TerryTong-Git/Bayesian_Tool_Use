@@ -1,13 +1,20 @@
 \begin{abstract}
 \vspace{-2pt}
 % Context: Establish the problem domain
-Large language models can solve algorithmic problems either through direct natural language reasoning or by generating executable code delegated to an external solver. However, little theoretical progress has been made on explaining \emph{why} code-based approaches consistently outperform natural language reasoning. Comparing NL reasoning and solver-based pipelines directly is ill-posed: they differ simultaneously in representation space and execution mechanism.
+Large language models can solve algorithmic problems either through direct natural language (NL) reasoning or by generating executable code delegated to an external solver. However, little theoretical progress has been made on explaining \emph{why} code-based approaches consistently outperform natural language reasoning. Comparing NL reasoning and solver-based pipelines directly is ill-posed: they differ simultaneously in representation space and execution mechanism.
 % Gap + Contribution: What's missing and what we provide
-We introduce a three-arm framework that makes this comparison tractable by introducing an intermediary step---code generation with LLM-based execution---enabling pairwise theoretical analysis via Bayesian inference and information theory. 
+We introduce a three-arm framework that makes this comparison tractable by introducing an intermediary step---code generation with LLM-based execution. This enables our empirical analysis which showed a statistically significant gap support  code $>$ NL across 44 different algorithmic tasks and 6 models. Empirically, we demonstrate that for certain models, natural language reasoning is a projection of deeper algorithmic semantics. Building on these observations, we introduce a statistical and information theoretic analysis that proves code $>$ NL. These results inform the design of compositional AI systems, providing principled guidance on when to use tool-augmented versus monolithic reasoning for algorithmic tasks. Our framework offers a unified perspective on the tool-use versus direct-reasoning tradeoff. 
+
+
+% \dr{Say something about the outcome of this analysis; you jump directly to experiments leaving the reader expecting something.}
+
 % Results: Concrete findings
-Across 44 different algorithmic tasks and 6 models, we observe that there is statistically significant gap (p$<$0.001) between code and natural language reasoning ($>$25\%). We find that code representations scale better, with 4.01$\times$ odds of correctness compared to natural language. Under causal intervention experiments, we indentify natural language reasoning as a projection of deeper underlying algorithmic representations. Using this insight, we leverage Bayesian Inference and the Blackwell Dominance Principle to prove that the code execution route achieves lower Bayes Risk than natural language reasoning route.
+% Across 44 different algorithmic tasks and 6 models, we observe that there is statistically significant gap (p$<$0.001) between code and natural language reasoning ($>$25\%). 
+% \dr{The second part of the abstract is too long. You don't need to say everything. Say that the theoretical framework is supported by extensive experimentation (give the first sentence above) and summarize the rest in 1-2 sentences or drop it, since you want to keep the last, impact, sentence.} 
+
+% We find that code representations scale better, with 4.01$\times$ odds of correctness compared to natural language. Under causal intervention experiments, we identify natural language reasoning as a projection of deeper underlying algorithmic representations. Using this insight, we leverage Bayesian Inference and the Blackwell Dominance Principle to prove that the code execution route achieves lower Bayes Risk than natural language reasoning route.
 % Impact: Why it matters
-These results inform the design of compositional AI systems, providing principled guidance on when to use tool-augmented versus monolithic reasoning for algorithmic tasks. Our framework offers a unified perspective on the tool-use versus direct-reasoning tradeoff. 
+
 \end{abstract}
 
 \begin{figure}[t]

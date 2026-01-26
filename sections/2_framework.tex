@@ -1,5 +1,7 @@
 \section{Evaluation Framework}\label{method}
-We formalize our central claim as $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2}) < \mathrm{Acc}(\mathrm{Arm~3})$. The following sections detail how we break down the problem and evaluate pairwise $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2})$ and then $\mathrm{Acc}(\mathrm{Arm~2}) \leq \mathrm{Acc}(\mathrm{Arm~3})$.
+\yu{Should have a preliminary section to introduce all the basic definitions used in the paper like how $p_{NL}(z|x)$ is defined}
+\yu{Todo: formally introduce arms}
+We formalize our central claim as \yu{$Arm 1 \simeq Arm 2 < Arm 3$} so that $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2}) < \mathrm{Acc}(\mathrm{Arm~3})$. The following sections detail how we break down the problem and evaluate pairwise $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2})$ and then $\mathrm{Acc}(\mathrm{Arm~2}) \leq \mathrm{Acc}(\mathrm{Arm~3})$.
 
 \subsection{Methodology}
 \textbf{Arm~1 $\leq$ Arm~2 Setup.} Similarly, given test input $X_i$ corresponding to instance i, we prompt the LLM to reason about it using natural language in Arm~1, mapping $(X_i) \to Y_i^{(\mathrm{NL})}$. Likewise, Arm 2 can be written as using the same LLM to first $(X_i) \to C_i$ and then $(X_i, C_i) \to Y_i^{(\mathrm{Sim})}$. Example prompts are shown in Figure 2. We control the prompts to be as similar as possible, with the Arm 2 simply concatenating a section that says it should generate code and simulate it.
