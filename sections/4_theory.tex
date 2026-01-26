@@ -90,9 +90,9 @@ Here we first translate the input problem into CoT, then execute the CoT via LLM
 Then, we can apply the law of iterated expectation on Arm 2 to get Arm 2.5:
 \begin{align*}
 & P( Y_{\mathrm{Sim}}|X=x) := \int \underbrace{\delta_{\mathrm{Sim}}(y | x, z)}_{\text{Execute}}  \, 
-\underbrace{p_{\mathrm{Code}}(\mathrm{d}z | x)}_{\text{Generate}} \, \mathrm{d}z \\ 
-& = \int \int [ \underbrace{\delta_{\mathrm{NL}}(y | x, \hat z)}_{\text{Execute}} \, \underbrace{T(\mathrm{d} \hat z | z)}_{\text{Translate}}] \, 
-\underbrace{p_{\mathrm{Code}}(\mathrm{d}z | x)}_{\text{Generate}} \, \mathrm{d}z \\
+\underbrace{p_{\mathrm{Code}}(z | x)}_{\text{Generate}} \, \mathrm{d}z \\ 
+& = \int \int [ \underbrace{\delta_{\mathrm{NL}}(y | x, \hat z)}_{\text{Execute}} \, \underbrace{T(\hat z | z)}_{\text{Translate}}] \, 
+\underbrace{p_{\mathrm{Code}}(z | x)}_{\text{Generate}} \, \mathrm{d}z \\
 &= P(\hat Y_{\mathrm{Tr}}|X=x) 
 \end{align*}
 The joint distributions $(X, Y_{\mathrm{Sim}})$ and $(X, \hat{Y}_{\mathrm{translated}})$ are the same. Thus,
