@@ -1,57 +1,102 @@
-\section{Evaluation Framework}\label{method}
-\yu{Should have a preliminary section to introduce all the basic definitions used in the paper like how $p_{NL}(z|x)$ is defined}
-\yu{Todo: formally introduce arms}
-We formalize our central claim as \yu{$Arm 1 \simeq Arm 2 < Arm 3$} so that $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2}) < \mathrm{Acc}(\mathrm{Arm~3})$. The following sections detail how we break down the problem and evaluate pairwise $\mathrm{Acc}(\mathrm{Arm~1}) \leq \mathrm{Acc}(\mathrm{Arm~2})$ and then $\mathrm{Acc}(\mathrm{Arm~2}) \leq \mathrm{Acc}(\mathrm{Arm~3})$.
+\section{Three Arms Framework}
+\label{sec:framework}
 
-\subsection{Methodology}
-\textbf{Arm~1 $\leq$ Arm~2 Setup.} Similarly, given test input $X_i$ corresponding to instance i, we prompt the LLM to reason about it using natural language in Arm~1, mapping $(X_i) \to Y_i^{(\mathrm{NL})}$. Likewise, Arm 2 can be written as using the same LLM to first $(X_i) \to C_i$ and then $(X_i, C_i) \to Y_i^{(\mathrm{Sim})}$. Example prompts are shown in Figure 2. We control the prompts to be as similar as possible, with the Arm 2 simply concatenating a section that says it should generate code and simulate it.
+We introduce a unified framework for comparing natural-language reasoning and code-based reasoning in algorithmic tasks. The framework explicitly separates differences in \emph{information representation} from differences in \emph{execution}, enabling tractable and interpretable comparisons.
 
-\textbf{Arm~2 $<$ Arm~3 Setup.} Let the original problem statement corresponding to instance i be $X_i$, and let $C_i$ be the corresoponding code generated for instance i. Let tuple $(X_i, C_i)$ be fixed inputs in our experimental design. Let Arm~2 denote the output $Y_i^{(\mathrm{Sim})}$ which is mapped to by an LLM $(X_i, C_i) \to Y_i^{(\mathrm{Sim})}$, and let Arm~3 denote the output $Y_i^{(\mathrm{Exec})}$  mapped to by an external python runtime $(X_i, C_i) \to Y_i^{(\mathrm{Exec})}$ \footnote{$X_i$ is ignored by executor, but we include it for notational symmetry}. Example prompts are show in Figure 2.
+\subsection{Task and Loss}
 
-\textbf{Arm~1 $\leq$ Arm~2 $<$ Arm~3 Setup.}
-For each problem instance $i$, we observe bernoulli outcomes $(Y_i^{(\mathrm{NL})}, Y_i^{(\mathrm{Sim})},Y_i^{(\mathrm{Exec})})$. We first test the overall arm effect using Cochran's Q test, evaluating the global null: 
-$$ H_0 = \mathrm{E}[Y_i^{(NL)}] = \mathrm{E}[Y_i^{(Sim)}] = \mathrm{E}[Y_i^{(Exec)}]$$
-i.e. that all arms have marginal success probabilities. Rejection of this null indicates at least one arm differs in accuracy. 
+Let $X \sim p(x)$ denote a task instance (problem statement and inputs), and let $Y^*(X) \in \mathcal{Y}$ denote the ground-truth output. We evaluate performance under $0$--$1$ loss
+\[
+\ell(y,x) := \mathbf{1}\{y \neq Y^*(x)\}.
+\]
 
+All risks are taken with respect to the test distribution $p(x)$.
 
-Condition on rejecting the global null, following our framework, we break down the tests into Arm 1 and Arm 2 $(Y_i^{(\mathrm{NL})}, Y_i^{(\mathrm{Sim})})$, and Arm 2 and Arm 3 $(Y_i^{(\mathrm{Sim})},Y_i^{(\mathrm{Exec})})$. For these paired bernoulli outcomes, we run the McNemar test under the null that: 
+\subsection{Trace Generators and Executors}
+
+We model each reasoning pipeline as a two-stage stochastic process:
+
+\paragraph{Trace generation (information structure).}
+A trace (i.e. Chain-of-Thought) generator is a Markov kernel
+\[
+E : \mathcal{X} \to \Delta(\mathcal{Z}), \qquad
+Z \sim p_E(z \mid x),
+\]
+which produces an auxiliary trace $Z$ given the task instance.
+
+\paragraph{Execution (decision rule).}
+An executor is a (possibly randomized) Markov kernel
+\[
+\rho : \mathcal{X} \times \mathcal{Z} \to \Delta(\mathcal{Y}),
+\]
+mapping the observed instance and trace to a final output.
+
+The induced conditional output distribution is
+\[
+P_{\rho,E}(Y = y \mid X = x)
+= \int \rho(y \mid x, z)\, p_E(z \mid x)\, dz .
+\]
+
+The population risk of a pipeline $(E,\rho)$ is
 \begin{align*}
-& H_0: \Pr(Y^{(\mathrm{Sim})}=1,\,Y^{(\mathrm{Exec})}=0) \\
-& =\Pr(Y^{(\mathrm{Sim})}=0,\,Y^{(\mathrm{Exec})}=1)
+& R(E,\rho)
+:= \mathbb{E}\bigl[\ell(\hat{Y}, X)\bigr],
+\qquad \\
+& Z \sim p_E(\cdot \mid X),\;
+\hat{Y} \sim \rho(\cdot \mid X, Z).
 \end{align*}
- that is, when pairs disagree, each one (Sim $>$ NL) and (NL $<$ Sim) occur equally as often. We test an analogous null for Arm 2 and Arm 3. To quantify effect size, we take paired accuracies $$\Delta_{\mathrm{Sim - NL}} = \mathrm{Acc(Sim) - Acc(NL)}$$ and estimate its sampling distribution and 95\% confidence interval via a cluster bootstrap, resampling over instances $i$ with preserved pair outcomes $(Y_i^{(\mathrm{NL})},Y_i^{(\mathrm{Sim})})$. We run the same procedure for Arm 2 and Arm 3. 
 
-Since we apply multiple statistical tests, we add Holm-Bonferoni corrections to control family wise error rate at $ \alpha = 5\%$.
+\subsection{Computation-Constrained Optimal Risk}
 
-Finally, to analyze how task difficulty interacts with different arms, we run a generalized linear mixed-effects model (GLMM) with a logistic link. $$ Y_i = \alpha + \beta_{\mathrm{arm}_i} + \gamma\,\tau_i + \delta_{\mathrm{arm}_i}\tau_i + \varepsilon_i,
-\quad
-\varepsilon_i \sim \text{Bernoulli noise}$$ We model arm and task hardness as fixed effects, along with their interaction, with problem instance and seed as random effects. 
+To reflect inference-time computational constraints, we evaluate executors within restricted families.
+For a trace space $\mathcal{Z}$ (e.g. code or NL), let
+\[
+\mathcal{H}_{\mathcal{Z}} \subseteq
+\{ \rho : \mathcal{X} \times \mathcal{Z} \to \Delta(\mathcal{Y}) \}
+\]
+denote a class of executors realizable under a fixed model family and bounded inference protocol.
 
-\textbf{Data and Models. } We use the CLRS 30 Benchmark (n=500), NPHardEval Benchmark (n=540), and a custom fine-grained evaluation suite (n=540), across three seeds. We define our own task suite---Arithmetic, Dynamic Programming, Integer Linear Programming (ILP)---to modulate hardness with parameter $\tau$. For arithmetic, $\tau$ controls digit length; for DP, it controls table dimensionality; for ILP, it controls the constraint matrix size. We assume our algorithms are representative enough of the distribution. We select frontier models (Haiku 4.5, GPT-4o, Gemini 2.0 Flash) as well as open-source models (Mixtral, Codestral). Since we require structured output, we filter out models that give $>$50\% JSON Parse Error, since this is indicative of instruction-following failures, rather than lack of coding fidelity.
+We define the computation-constrained optimal risk of a trace generator $E$ as
+\[
+R^*_{\mathcal{H}}(E)
+:= \inf_{\rho \in \mathcal{H}} R(E,\rho).
+\]
+This differs from classical Bayes risk, which optimizes over all measurable decision rules.
 
-\textbf{Prompting to generate Code and Reasoning Traces. }
-We prompt the LLM in Arm~1 to never use any code in its reasoning, and to give a structured output of the rationale and answer to the algorithmic problem \cref{fig:arm_prompts}. Holding all other parts of the prompt the same, we replace the section instructing the model not to use code with another asking it to generaate code first before reasoning through it. Models have access to native python packages, and numpy, pandas, scipy, PuLP, and pytorch. For Arm~3, we take the generated function (no prompt), and execute it in a python3 runtime. We ask model's to output a structured json following a corresponding schema for that arm, and example is show in \cref{fig:arm_prompts}.
+\subsection{The Three Arms}
 
-\begin{figure*}[t]
-    \centering
-    \vspace{-5pt}
-    \includegraphics[width=0.68\textwidth]{images/fig_prompts_combined.png}
-    \vspace{-5pt}
-    \caption{\textbf{Translation and discrimination prompts.} \textbf{(a) Translator}: Converts code to NL reasoning step-by-step, mimicking native reasoning. \textbf{(b) Discriminator}: Judge models classify traces as ``Native NL'' or ``Translated''. Used in \cref{sec:exp_similarity}.}
-    \label{fig:translator_discriminator}
-\end{figure*}
-\subsection{Experiments}
+We consider three reasoning pipelines (``arms''), each defined by a trace generator and an executor family.
 
+\paragraph{Arm 1 (Natural Language).}
+A natural-language trace generator $E_{\mathrm{NL}}$ produces traces
+$Z_{\mathrm{NL}} \sim p_{\mathrm{NL}}(\cdot \mid X)$,
+paired with an executor family
+\[
+\mathcal{H}_{\mathrm{NL}}
+\subseteq
+\{ \rho : \mathcal{X} \times \mathcal{Z}_{\mathrm{NL}} \to \Delta(\mathcal{Y}) \}.
+\]
 
-\textbf{Arm~1 $\leq$ Arm~2 $<$ Arm~3 Results. } 
-For Arm~1 = Arm~2 = Arm~3, we strongly reject the global null hypothesis (p $<$ 0.001 after controlling for FWER). 
+\paragraph{Arm 2 (Code + Simulation).}
+A code trace generator $E_{\mathrm{Code}}$ produces executable representations
+$Z_{\mathrm{C}} \sim p_{\mathrm{Code}}(\cdot \mid X)$,
+paired with an executor family
+\[
+\mathcal{H}_{\mathrm{C}}
+\subseteq
+\{ \rho : \mathcal{X} \times \mathcal{Z}_{\mathrm{C}} \to \Delta(\mathcal{Y}) \}
+\]
+corresponding to language-model-based simulation of code execution.
 
-Our post-hoc paired tests Arm~2 $<$ Arm~3, strongly reject the null hypothesis too (p $<$ 0.001). We observe the paired accuracy gap is strictly large and positive, excluding zero in 95\% bootstrap confidence interval. Observing the distribution, the result is not driven by outliers, given the tightness of the distribution, indicating advantages over instance pairs and not just the average. This means that LLM execution via natural language reasoning of a piece of code has statistically significantly worse performances than code execution under the representative benchmarks and suites of task.
+\paragraph{Arm 3 (Code + Execution).}
+Arm~3 uses the same code trace generator $E_{\mathrm{Code}}$ as Arm~2, but pairs it with a deterministic executor corresponding to external code execution.
 
-For post-hoc paired test Arm~1 $\leq$ Arm~2, despite running 30,000+ samples total and rejecting the null (p=0.04), our cluster bootstraps' 95\% confidence interval overlaps with 0.0, indicating that we cannot conclude that code simulation performs differently than natural language under our test benchmarks and sampling experimental design. This leads us to conclude that code and natural language are approximately the same. 
+\subsection{Interpretation of Comparisons}
 
-Observing \cref{fig:main}, we see that the dominance trends for Arm~2 $<$ Arm~3 and Arm~2 $\simeq$ Arm~3 holds across both open and closed models.
+In all arms, the executor observes the full task instance $X$; the trace $Z$ provides auxiliary information. Accordingly, comparisons between arms are conditional on $X$ and should be interpreted as statements about what auxiliary representations can be simulated from others, and how execution mechanisms affect achievable risk.
 
+Performance comparisons are expressed in terms of computation-constrained optimal risks $R^*_{\mathcal{H}}(E)$, which isolate differences due to representation and execution under fixed inference constraints.
 
+\subsection{Roadmap}
 
-\textbf{Advantages of Arm~3 emerge as tasks get harder.} Observing \cref{fig:main}, we see that across 8 different algorithmic tasks, code execution strongly outperforms NL both on average and individually. Using the GLMM, we extrapolate the data on a log scale and observe that code and NL correctness probabilities diverges as tasks get harder, code remains stable whereas NL diverges to 0. Code has $4.1\times$ odds of getting the answer correct compared to natural language. 
+Section~\ref{sec:eval} instantiates this framework with concrete models, prompts, datasets, and statistical tests. Section~\ref{sec:exp_similarity} provides empirical evidence motivating assumptions about the relationship between natural-language and code traces. Section~\ref{sec:theory} analyzes the three arms theoretically within this framework.

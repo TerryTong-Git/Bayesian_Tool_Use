@@ -9,14 +9,6 @@
     \label{fig:three_arms}
 \end{figure}
 
-\begin{figure*}[t]
-    \centering
-    \vspace{-5pt}
-    \includegraphics[width=0.7\textwidth]{images/arm_prompts_new.png}
-    \vspace{-5pt}
-    \caption{\textbf{Prompt templates for three-arm evaluation.} \textbf{Arm~1 (NL)}: LLM reasons in natural language only, code forbidden. \textbf{Arm~2 (Sim)}: LLM generates Python \texttt{solution()} then simulates execution in NL. \textbf{Arm~3 (Code)}: Same code executed in Python runtime. This isolates execution mechanism while controlling translation.}
-    \label{fig:arm_prompts}
-\end{figure*}
 
 
 Large language models (LLMs) have demonstrated increasingly strong natural-language (NL) reasoning capabilities~\cite{wei2022chain}. In parallel, LLM-based agentic systems advocate tool use, where LLMs invoke external solvers to support reasoning and execution~\cite{gao2023pal}. Recent works~\cite{lyu2023faithful, pan2023logic} suggest that the \textbf{solver route}, translating problems into solver-executable representations and delegating execution, often outperforms the \textbf{direct route}, reasoning end-to-end in NL, on logic- and algorithmic-style complex reasoning tasks. However, for algorithmic reasoning alone, there is still no systematic analysis comparing the two routes, clarifying when and why LLMs perform better via the solver route versus the direct route.
@@ -58,6 +50,15 @@ Theoretically, we formalize the three reasoning routes as statistical experiment
 % Then we compare $\mathrm{Arm~2} < \mathrm{Arm~3}$. This difference is easily explained using a communication channel model of LLM forward-pass. We show that in the case where Arm~2 $>$ Arm~3, i.e. when the code generated is not executable or wrong, yet the LLM reasoning obtains the correct answer, that this occurs rarely. In other words, generally $\mathrm{Arm~3} > \mathrm{Arm~2}$. 
 
 % Piecing these results together, we show that $\mathrm{Arm~1} < \mathrm{Arm~2} < \mathrm{Arm~3}$, verifying the hypothesis.
+\begin{figure*}[t]
+    \centering
+    \vspace{-5pt}
+    \includegraphics[width=0.7\textwidth]{images/arm_prompts_new.png}
+    \vspace{-5pt}
+    \caption{\textbf{Prompt templates for three-arm evaluation.} \textbf{Arm~1 (NL)}: LLM reasons in natural language only, code forbidden. \textbf{Arm~2 (Sim)}: LLM generates Python \texttt{solution()} then simulates execution in NL. \textbf{Arm~3 (Code)}: Same code executed in Python runtime. This isolates execution mechanism while controlling translation.}
+    \label{fig:arm_prompts}
+\end{figure*}
+
 
 \begin{figure*}[t]
     \centering
