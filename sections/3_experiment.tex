@@ -2,7 +2,7 @@
 \label{sec:empirical}
 Our evaluation aims to answer the research questions (RQ): 
 \begin{enumerate}
-    \item[1)] Does $\text{Route~1} \simeq \text{Route~2} < \text{Route~3}$ hold? (\S\ref{sec:instantiation}, \S\ref{sec:performance})
+    \item[1)] Does $\text{Route~1} \leq \text{Route~2} < \text{Route~3}$ hold? (\S\ref{sec:instantiation}, \S\ref{sec:performance})
 \end{enumerate}
  % RQ 1 is central to the main thesis, and RQ 2 provides motivation to offload to an executor, as well as empirical foundations for the assumptions in  Section~\ref{sec:theory}.
 
@@ -122,8 +122,7 @@ Across all benchmarks (\cref{fig:main}), we reject the global null hypothesis
 \emph{Post-hoc tests show a statistically significant advantage of Route~3
 over Route~2}, with a positive paired accuracy gap excluding zero in the
 95\% confidence interval.
-For Route~1 vs.\ Route~2, although the null is rejected ($p = 0.04$), the
-bootstrap confidence interval overlaps zero, indicating that we cannot
+For Route~1 vs.\ Route~2 we do not reject the null, indicating that we cannot
 conclude a meaningful difference between natural-language reasoning
 and code simulation under this evaluation.
 Performance gaps widen with increasing task difficulty (\cref{fig:per_task_accuracy}): Route~3 remains
@@ -317,7 +316,7 @@ As a calibration control, we also ask the same judges to discriminate \emph{raw 
 \end{figure}
 
 \paragraph{Results.}
-Across $\sim$2000 samples per judge ($\sim$6000 total across three judges), discrimination accuracy is near chance (50\%), with 50\% included in the Wilson CI (\cref{fig:judge_barplot,fig:embedding_scatter}). The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$79\%), indicating the judges can detect obvious representation differences but \emph{fail to distinguish translated vs.\ native NL}.
+Across $\sim$2000 samples per judge ($\sim$6000 total across three judges), discrimination accuracy is near chance (50\%), with 50\% included in the Wilson CI (\cref{fig:judge_barplot,fig:embedding_scatter}). The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$82\%), indicating the judges can detect obvious representation differences but \emph{fail to distinguish translated vs.\ native NL}.
 
 % (49.4\% with 95\% Wilson CI [47.2\%, 51.5\%]; Figure~\ref{fig:discrimination_by_task}).
 
@@ -341,7 +340,7 @@ If translated NL loses decision-relevant information relative to native NL, we w
 \]
 
 \paragraph{Protocol and models.}
-We run this test on 1000 held-out instances across multiple translator models (\texttt{Claude Haiku 4.5, Gemini-2.5-Flash, Mixtral-8x22B-Instruct}).
+We run this test on 1000 held-out instances across multiple translator models (\texttt{Claude-Haiku-4.5, Gemini-2.5-Flash, Mixtral-8x22B-Instruct}).
 Crucially, in this experiment the translator model is matched to the original code generator (i.e., we translate code produced by the same model family), to avoid confounding functional losses with cross-model stylistic mismatch.
 
 \paragraph{Results.}
