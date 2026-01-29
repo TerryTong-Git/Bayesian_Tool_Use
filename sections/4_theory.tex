@@ -1,206 +1,180 @@
-\section{Theoretical Analysis}
-\label{sec:theory}
+% \subsection{Statistical Interpretation of Results}
+% \label{sec:theory}
+% Our theoretical section aims to address two central questions:
+% \begin{enumerate}
+%     \item[1)] Under the assumptions in \cref{assump1}, can we prove that the compute-constrained optimal risk for code $\leq$ NL + $\varepsilon$? (\cref{arm1varm2})
+%     \item[2)] Can we prove the expected loss is less for code execution (Arm 3) than code reasoning via LLM (Arm 2) when the code is correct, and when the code is wrong, the chances of Arm 2 > Arm 3 is small?
+% \end{enumerate}
+% \yu{It is better to have declarative statements here: 
 
-We adopt the three-arms framework introduced in
-Section~\ref{sec:framework}. Each arm is represented as a pair
-$(E,\rho)$ consisting of a trace generator $E$ and an executor $\rho$,
-evaluated via the risk $R(E,\rho)$ and the computation-constrained
-optimal risk $R^*_{\mathcal H}(E)$.
-Our theoretical contribution is to relate the three arms by
-(i) formalizing when natural-language (NL) traces are simulable from
-code traces under executor-aligned notions of approximation, and
-(ii) decomposing the performance gap between simulation and execution
-when both arms share the same code trace.
+% We adopt the three-arm framework introduced in \S\ref{sec:framework}. Each arm is represented as a pair
+% $(E,\rho)$ consisting of a trace generator $E$ and an executor $\rho$,
+% evaluated via the risk $R(E,\rho)$ and the computation-constrained
+% optimal risk $R^*_{\mathcal H}(E)$.
+% Our theory section establishes two main results.
+% \begin{enumerate}
+%     \item[1)] we prove that there exists a trace generator such that compute-constrained optimal risk of LLM-based code execution (Arm 2) is at most the compute-constrained optimal risk (up to $\varepsilon$) of pure NL-based reasoning (Arm 1) (\S\ref{theory: arm1varm2})
+% \item[2)] (\S\ref{theory: arm2varm3}).
+% \end{enumerate}
 
-Unlike classical Blackwell comparisons, the executor observes the full
-task instance $X$ in all arms (Section~\ref{sec:framework}); traces
-provide auxiliary side information.
-Accordingly, all comparisons below are conditional on $X$ and should
-be interpreted as statements about the relative usefulness of auxiliary
-traces and execution mechanisms under shared observation of $X$.
+% We adopt the three-arm framework introduced in \S\ref{sec:framework}. Each arm is represented as a pair
+% $(E,\rho)$ consisting of a trace generator $E$ and an executor $\rho$,
+% evaluated via the risk $R(E,\rho)$ and the computation-constrained
+% optimal risk $R^*_{\mathcal H}(E)$.
+% \yu{move to beginning}
 
-\subsection{Arm~1 vs.\ Arm~2: One-Sided Simulation from Code to NL}
+% Our theoretical contribution is to relate the three arms by
+% (i) formalizing when NL traces are simulatable from
+% code traces under executor-aligned notions of approximation, and
+% (ii) decomposing the performance gap between simulation and execution
+% when both arms share the same code trace.
 
-\paragraph{Conditional garbling with observed side information.}
-The empirical results in Section~\ref{sec:rep_analysis} suggest that
-natural-language reasoning traces can be approximately obtained by
-post-processing code traces.
-In classical Blackwell theory, such post-processing is modeled as a
-state-independent garbling kernel.
-Because the executor already observes $X$, we allow the translator to
-depend on $x$ without changing the information available at decision
-time; this captures the practical fact that translating code into an NL
-reasoning trace often uses problem context.
+% Unlike classical Blackwell comparisons, the executor observes the full
+% task instance $X$ in all arms (Section~\ref{sec:framework}); traces
+% provide auxiliary side information.
+% Accordingly, all comparisons below are conditional on $X$ and should
+% be interpreted as statements about the relative usefulness of auxiliary
+% traces and execution mechanisms under shared observation of $X$. \yu{Make this paragraph shorter and put it in the footnote.} Deleted since we do not condition on X. 
 
-\textbf{Assumption 1 (Translator / conditional garbling kernel).}
-\label{assump1}
-There exists a (possibly stochastic) Markov kernel
-\[
-T:\ (x,z_{\mathrm{C}})\mapsto T(\cdot\mid x,z_{\mathrm{C}})
-\in \Delta(\mathcal{Z}_{\mathrm{NL}})
-\]
-such that the translated NL trace distribution induced by
-$E_{\mathrm{Code}}$ is
-\[
-p_{\mathrm{tr}}(z_{\mathrm{NL}}\mid x)
-:= \int T(z_{\mathrm{NL}}\mid x,z_{\mathrm{C}})
-\, p_{\mathrm{Code}}(z_{\mathrm{C}}\mid x)\, dz_{\mathrm{C}}.
-\]
-We denote by $E_{\mathrm{tr}}$ the corresponding translated trace
-generator.
-This is a one-sided simulation assumption: we do not assume that code
-traces are simulable from NL traces, nor do we claim Blackwell
-equivalence.
 
-\paragraph{Executor-aligned discrepancy.}
-Total variation distance on raw text distributions is often overly
-stringent and difficult to estimate reliably for long sequences.
-Instead, we require that native and translated NL traces be
-approximately indistinguishable \emph{to executors in}
-$\mathcal{H}_{\mathrm{NL}}$ under bounded loss.
+% \subsection{Statistical Interpretation of Results}
+% We begin by introducing three assumptions, with each assumption referencing empirical support from the previous results. We conclude with a theorem that answers the main research question with the following conclusion: code is always as good as natural language for trace generation up to a small error bound, and thus the bottleneck that explains the gap between code and NL is not in the trace generation. 
+% % \paragraph{Unconditional garbling of code traces.}
 
-\textbf{Assumption 2 (Executor-aligned discrepancy bound).}
-\label{assump2}
-Define the worst-case risk discrepancy
-\[
-\Delta_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}},E_{\mathrm{tr}})
-:= \sup_{\rho\in\mathcal{H}_{\mathrm{NL}}}
-\Bigl|
-R(E_{\mathrm{NL}},\rho)
--
-R(E_{\mathrm{tr}},\rho)
-\Bigr|.
-\]
-Assume
-\[
-\Delta_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}},E_{\mathrm{tr}})
-\le \varepsilon .
-\]
-Section~\ref{sec:rep_analysis} provides empirical evidence for a small
-executor-aligned discrepancy.
-Importantly, $\varepsilon$ should be interpreted as an
-executor-aligned approximation error, not as a certified total-variation
-bound on raw traces.
+% \paragraph{Assumption 1 (Translator / garbling kernel).}
+% \label{assump1}
+% \label{theory: route1vroute2}
+% The empirical results in Section~\ref{sec:rep_analysis} suggest that
+% natural-language reasoning traces in Route 1 can be approximately obtained by
+% post-processing code traces in Route 2 alone, without access to the original task instance.
+% Accordingly, we model translation
+% % \yu{be specific what is the translation here}
+% as an unconditional garbling of the
+% code trace, in the sense of classical Blackwell theory \cite{blackwell1953equivalent}. There exists a (possibly stochastic) Markov kernel
+% \[
+% T:\ z_{\mathrm{C}} \mapsto T(\cdot \mid z_{\mathrm{C}})
+% \in \Delta(\mathcal{Z}_{\mathrm{NL}})
+% \]
+% such that the translated NL trace distribution induced by
+% $E_{\mathrm{Code}}$ is
+% \[
+% p_{\mathrm{Tran}}(z_{\mathrm{NL}} \mid x)
+% := \int T(z_{\mathrm{NL}} \mid z_{\mathrm{C}})
+% \, p_{\mathrm{Code}}(z_{\mathrm{C}} \mid x)\, dz_{\mathrm{C}}.
+% \]
+% % \yu{$tr$ seems to be short for trace, suggest use $tran$ here}
+% We denote by $E_{\mathrm{Tran}}$ the corresponding translated trace
+% generator.
+% % \yu{Add a sentence to explain the formula: Therefore, any NL trace can be simulated from a code trace through the translator?} I'm not confident about this claim, since I think it might be conditional on the model, best to just omit since its not too relevant to the claim anyway. Which formula are you talking abt (line number helps). 
+% This is a one-sided simulation assumption: we do not assume that code
+% traces are simulable from NL traces, nor do we claim Blackwell
+% equivalence.
 
-\paragraph{Closure under translation.}
-To compare optimal risks across trace types, we require that code-side
-executors can implement ``translate then apply an NL executor'' under
-comparable computational constraints.
 
-\textbf{Assumption 3 (Executor closure under translation).}
-\label{assump3}
-For every $\rho_{\mathrm{NL}}\in\mathcal{H}_{\mathrm{NL}}$, the composed
-executor
-\[
-\rho_{T\circ \mathrm{NL}}(y\mid x,z_{\mathrm{C}})
-:=
-\int \rho_{\mathrm{NL}}(y\mid x,z_{\mathrm{NL}})
-\, T(z_{\mathrm{NL}}\mid x,z_{\mathrm{C}})
-\, dz_{\mathrm{NL}}
-\]
-belongs to $\mathcal{H}_{\mathrm{C}}$.
+% % \paragraph{Executor-aligned discrepancy.}
 
-\paragraph{Main comparison.}
-Under these assumptions, code traces are sufficient (up to $\varepsilon$)
-to reproduce the performance of the best NL-trace executor.
 
-\begin{theorem}[One-sided simulation bound]
-\label{thm:code_ge_nl}
-Under Assumptions~\ref{assump1}--\ref{assump3},
-\[
-R^*_{\mathcal{H}_{\mathrm{C}}}(E_{\mathrm{Code}})
-\;\le\;
-R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}})
-+
-\varepsilon .
-\]
-\end{theorem}
-\begin{proof}
-Fix any $\delta>0$ and choose $\rho^{\delta}_{\mathrm{NL}}\in\mathcal{H}_{\mathrm{NL}}$ such that
-\[
-R(E_{\mathrm{NL}},\rho^{\delta}_{\mathrm{NL}})
-\le
-R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}}) + \delta,
-\]
-which is possible by the definition of the infimum.
 
-Define the composed code-side executor
-\[
-\rho^{\delta}_{T\circ \mathrm{NL}}(y\mid x,z_{\mathrm{C}})
-:=
-\int \rho^{\delta}_{\mathrm{NL}}(y\mid x,z_{\mathrm{NL}})
-\, T(z_{\mathrm{NL}}\mid x,z_{\mathrm{C}})
-\, dz_{\mathrm{NL}} .
-\]
-By Assumption~\ref{assump3}, we have $\rho^{\delta}_{T\circ \mathrm{NL}}\in\mathcal{H}_{\mathrm{C}}$.
+% \paragraph{Assumption 2 (Executor-aligned discrepancy bound).}
+% \label{assump2}
+% Rather than requiring closeness in total variation over raw text, we
+% only require that native and translated NL traces be approximately
+% indistinguishable to executors in $\mathcal{H}_{\mathrm{NL}}$ under
+% bounded loss. Define
+% \[
+% \Delta_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}},E_{\mathrm{Tran}})
+% := \sup_{\rho\in\mathcal{H}_{\mathrm{NL}}}
+% \Bigl|
+% R(E_{\mathrm{NL}},\rho)
+% -
+% R(E_{\mathrm{Tran}},\rho)
+% \Bigr|.
+% \]
+% Assume
+% \[
+% \Delta_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}},E_{\mathrm{Tran}})
+% \le \varepsilon.
+% \]
+% Section~\ref{sec:rep_analysis} provides empirical evidence for a small
+% executor-aligned discrepancy.
+% The parameter $\varepsilon$ should be interpreted as an
+% executor-aligned approximation error, not as a certified
+% total-variation bound.
 
-Now consider the pipeline that samples $Z_{\mathrm{C}}\sim p_{\mathrm{Code}}(\cdot\mid X)$,
-then samples $Z_{\mathrm{NL}}\sim T(\cdot\mid X,Z_{\mathrm{C}})$, and finally outputs
-$\hat Y\sim \rho^{\delta}_{\mathrm{NL}}(\cdot\mid X,Z_{\mathrm{NL}})$.
-By construction of $E_{\mathrm{tr}}$ (Assumption~\ref{assump1}), the marginal conditional law of
-$Z_{\mathrm{NL}}$ given $X$ is exactly $p_{\mathrm{tr}}(\cdot\mid X)$; hence this procedure induces the same joint law over $(X,Z_{\mathrm{NL}},\hat Y)$ as sampling
-$Z_{\mathrm{NL}}\sim p_{\mathrm{tr}}(\cdot\mid X)$ and applying $\rho^{\delta}_{\mathrm{NL}}$.
-Equivalently,
-\[
-R(E_{\mathrm{Code}},\rho^{\delta}_{T\circ \mathrm{NL}})
-=
-R(E_{\mathrm{tr}},\rho^{\delta}_{\mathrm{NL}}).
-\]
+% % \paragraph{Closure under translation.}
 
-By Assumption~\ref{assump2},
-\[
-R(E_{\mathrm{tr}},\rho^{\delta}_{\mathrm{NL}})
-\le
-R(E_{\mathrm{NL}},\rho^{\delta}_{\mathrm{NL}}) + \varepsilon
-\le
-R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}}) + \delta + \varepsilon.
-\]
-Finally, since $R^*_{\mathcal{H}_{\mathrm{C}}}(E_{\mathrm{Code}})$ is the infimum over all executors in $\mathcal{H}_{\mathrm{C}}$,
-\[
-R^*_{\mathcal{H}_{\mathrm{C}}}(E_{\mathrm{Code}})
-\le
-R(E_{\mathrm{Code}},\rho^{\delta}_{T\circ \mathrm{NL}})
-\le
-R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}}) + \delta + \varepsilon.
-\]
-Letting $\delta\to 0$ completes the proof.
-\end{proof}
 
-\paragraph{Interpretation and scope.}
-Theorem~\ref{thm:code_ge_nl} is existential: it guarantees the existence
-of a code-side executor matching the best NL-side executor up to
-$\varepsilon$.
-It does not assert that any fixed Arm~2 simulation prompt is optimal;
-the gap between existence and the specific Arm~2 instantiation is
-addressed empirically in Section~\ref{sec:performance}.
+% \paragraph{Assumption 3 (Executor closure under translation).}
+% \label{assump3}
+% To compare optimal risks across trace types, we require that code-side
+% executors can implement ``translate then apply an NL executor'' under
+% comparable computational constraints. For every $\rho_{\mathrm{NL}}\in\mathcal{H}_{\mathrm{NL}}$, the composed
+% executor
+% \[
+% \rho_{T\circ \mathrm{NL}}(y \mid x, z_{\mathrm{C}})
+% :=
+% \int \rho_{\mathrm{NL}}(y \mid x, z_{\mathrm{NL}})
+% \, T(z_{\mathrm{NL}} \mid z_{\mathrm{C}})
+% \, dz_{\mathrm{NL}}
+% \]
+% belongs to $\mathcal{H}_{\mathrm{C}}$, i.e. a composed executor behaves as if it is a regular LLM reasoning model. Our empirical insights in the functionality experiments (\cref{sec:func_similarity}) support this claim. 
 
-\subsection{Arm~2 vs.\ Arm~3: Simulation vs.\ Execution on the Same Code Trace}
+% Under these assumptions, code traces are sufficient (up to $\varepsilon$)
+% to reproduce the performance of the best NL-trace executor.
 
-As defined in Section~\ref{sec:framework}, Arm~2 and Arm~3 share the same
+% \begin{theorem}[One-sided simulation bound]
+% \label{thm:code_ge_nl}
+% Under Assumptions~1--3,
+% \[
+% R^*_{\mathcal{H}_{\mathrm{C}}}(E_{\mathrm{Code}})
+% \;\le\;
+% R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}})
+% +
+% \varepsilon.
+% \]
+% \end{theorem}
+
+
+% \paragraph{Interpretation.}
+% Our analysis suggests that code is always as good as natural language for trace generation up to an $\varepsilon$ difference which we empirically demonstrated was small, and therefore the bottleneck is not code in the trace generation stage. 
+
+% Theorem~\ref{thm:code_ge_nl} is existential: it guarantees the existence
+% of a code-side executor that matches the best NL-side executor up to
+% $\varepsilon$.
+% It does not assert that any fixed Route~2 simulation prompt is optimal;
+% the gap between existence and the specific Route~2 instantiation is
+% addressed empirically in Section~\ref{sec:performance}.
+
+
+\section{Route~2 vs.\ Route~3 Analysis}
+\label{theory: route2vroute3}
+The key research question in this section is: \textbf{Is execution the bottleneck for language-based reasoning?}
+To address this question, we also ask two sub-questions:
+\begin{enumerate}
+    \item[1)] When code is \emph{correct}, does external code execution (Route 3) have lower expected loss than LLM-based code execution (Route 2)?
+    \item[2)] When code is \emph{incorrect}, is the probability that Route 2 outperforms Route 3 small?
+\end{enumerate}
+We pinpoint execution as the bottleneck, highlighting how using LLMs to generate code plans and then delegating to an external solver is the optimal policy among the 3 routes. We find that when code is correct, external code execution always has lower expected loss than LLM-based code execution. Moreover, when code is incorrect, we find the recovery rate, where Route 2 $>$ Route 3, is small. 
+
+\subsection{Setup}
+As defined in Section~\ref{sec:framework}, Route~2 and Route~3 share the same
 trace generator $E_{\mathrm{Code}}$ and differ only in the executor.
 
 Let $\rho_{\mathrm{Sim}}\in\mathcal{H}_{\mathrm{C}}$ denote the fixed
-LLM-based simulation executor used in Arm~2.
+LLM-based simulation executor used in Route~2.
 Let $g$ be a deterministic interpreter mapping $(x,z_{\mathrm{C}})$ to
-$\mathcal{Y}\cup\{\bot\}$, where $\bot$ denotes execution failure.
-Arm~3 uses
-\[
-\rho_{\mathrm{Exec}}(y\mid x,z_{\mathrm{C}})
-:= \mathbf{1}\{y=g(x,z_{\mathrm{C}})\}.
-\]
-
-Define the instance-correct execution event
+$\mathcal{Y}\cup\{\bot\}$, where $\bot$ denotes execution failure. Define the instance-correct execution event
 \[
 C := \{ g(X,Z_{\mathrm{C}}) = Y^*(X) \}.
 \]
 
 \paragraph{Risk decomposition.}
 Let
-\[
-e_C := \Pr(\hat Y_{\mathrm{Sim}}\neq Y^*(X)\mid C),
-\qquad
-r := \Pr(\hat Y_{\mathrm{Sim}}=Y^*(X)\mid \neg C).
-\]
+\begin{align*}
+& e_C := \Pr(\hat Y_{\mathrm{Sim}}\neq Y^*(X)\mid C),
+\qquad \\
+& r := \Pr(\hat Y_{\mathrm{Sim}}=Y^*(X)\mid \neg C).
+\end{align*}
 Then
 \begin{align*}
 R(E_{\mathrm{Code}},\rho_{\mathrm{Exec}}) &= \Pr(\neg C),\\
@@ -219,14 +193,14 @@ R(E_{\mathrm{Code}},\rho_{\mathrm{Exec}})
 
 \paragraph{Implications.}
 Simulation noise on correct-execution instances ($\Pr(C)e_C$) harms
-Arm~2, while recovery on incorrect or failed executions
-($\Pr(\neg C)r$) helps Arm~2.
-Arm~3 dominates whenever the recovery mass is insufficient to offset
+Route~2, while recovery on incorrect or failed executions
+($\Pr(\neg C)r$) helps Route~2.
+Route~3 dominates whenever the recovery mass is insufficient to offset
 simulation noise, a condition quantified empirically in
 Section~\ref{sec:performance}.
 
 \paragraph{Empirical recovery as an upper bound.}
-A direct way to operationalize the ``recovery'' term in the decomposition is to measure the frequency with which Arm~2 succeeds while Arm~3 fails on the \emph{same} generated code trace, i.e.,
+A direct way to operationalize the ``recovery'' term in the decomposition is to measure the frequency with which Route~2 succeeds while Route~3 fails on the \emph{same} generated code trace, i.e.,
 \[
 \Pr\!\left(
 \hat Y_{\mathrm{Sim}} = Y^*(X),
@@ -234,31 +208,53 @@ A direct way to operationalize the ``recovery'' term in the decomposition is to 
 g(X,Z_{\mathrm{C}})\neq Y^*(X)
 \right).
 \]
-This quantity corresponds to the \emph{recovery mass} $\Pr(\neg C)\,r$ appearing in the risk gap
-\[
-R(E_{\mathrm{Code}},\rho_{\mathrm{Sim}})
--
-R(E_{\mathrm{Code}},\rho_{\mathrm{Exec}})
-=
-\Pr(C)\,e_C
--
-\Pr(\neg C)\,r.
-\]
+This quantity corresponds to the \emph{recovery mass} $\Pr(\neg C)\,r$ appearing in the above risk gap.
+% \[
+% R(E_{\mathrm{Code}},\rho_{\mathrm{Sim}})
+% -
+% R(E_{\mathrm{Code}},\rho_{\mathrm{Exec}})
+% =
+% \Pr(C)\,e_C
+% -
+% \Pr(\neg C)\,r.
+% \]
 It aggregates both (i) genuine recovery from incorrect code and (ii) cases where execution fails (e.g., $g(X,Z_{\mathrm{C}})=\bot$) but the simulator still answers correctly.
 Because the simulator may partially ignore $Z_{\mathrm{C}}$ and answer directly from $X$, this statistic should be interpreted as an \emph{upper bound} on mechanistic ``recovery from flawed code.''
 
 \paragraph{Interpretation.}
-Arm~2 can outperform Arm~3 only if the recovery mass $\Pr(\neg C)\,r$ is large enough to offset simulation noise on correct-execution instances $\Pr(C)\,e_C$.
-Empirically, we find that recovery mass is consistently small across tasks and models, indicating that Arm~2 rarely compensates for execution failures via recovery.
-Combined with the fact that $e_C$ is nonzero in practice (LLM simulation is not perfectly faithful even when execution would be correct), this explains why deterministic execution typically achieves lower end-to-end error than simulation on the same generated code traces.
+Route~2 can outperform Route~3 only if the recovery mass $\Pr(\neg C)\,r$ is large enough to offset simulation noise on correct-execution instances $\Pr(C)\,e_C$.
+Empirically, we find that recovery mass is consistently small across tasks and models, indicating that Route~2 rarely compensates for execution failures via recovery.
+Combined with the fact that $e_C$ is very high in practice, this explains why deterministic execution typically achieves lower end-to-end error than simulation on the same generated code traces. %what is the actual num rather than very high. 
+
+% \paragraph{Theory--Empirics Connection.}
+% Although Theorem 1 is stated in terms of optimal (existential) risk, it provides a reduction: under empirically-motivated assumptions, any NL-trace decision rule in 
+%  can be implemented on code traces by “translate-then-decode,” implying code traces are not inherently less informative than NL traces for our executor families (up to ε). Consequently, performance gaps between Arm1 and Arm2 should be attributed to executor suboptimality rather than representational insufficiency. The Arm2–Arm3 decomposition then isolates where strict gains arise: external execution eliminates simulation noise on correct code, while empirically the probability of recovery from incorrect code is small, explaining the observed ordering Arm1 ≈ Arm2 < Arm3.
+% Our theoretical analysis provides an explanatory framework for the empirical ordering
+% $\text{Arm~1} \simeq \text{Arm~2} < \text{Arm~3}$ observed in Section~\ref{sec:empirical}.
+% The theory is intentionally stated in terms of computation-constrained optimal risk and
+% makes existential claims, while the experiments evaluate specific instantiations of the
+% arms under fixed models, prompts, and algorithmic tasks.
+% Empirically, the distributional and functional similarity experiments show that, for the
+% evaluated settings, natural-language reasoning traces can be closely approximated by
+% post-processing code alone and do not appear to contain additional decision-relevant
+% information beyond code representations, motivating the one-sided simulation assumptions
+% used in the theory.
+% Separately, the execution analysis isolates the effect of simulation versus execution on
+% the same generated code traces, and the observed small recovery mass together with
+% nonzero simulation noise places the experiments in the regime where the theoretical
+% decomposition predicts deterministic execution to outperform simulation.
+% Taken together, these results support interpreting the theory as an explanation for why
+% delegating execution to an external runtime improves algorithmic reasoning performance in
+% practice, while clarifying that both the empirical findings and the theoretical guarantees
+% are conditional on the evaluated task class, model families, and executor constraints.
 
 \begin{figure}[t]
     \centering
     \vspace{-5pt}
-    \includegraphics[width=0.85\linewidth]{images/recovery_final.png}
+    \includegraphics[width=\linewidth]{images/recovery_final.png}
     \vspace{-5pt}
-    \caption{\textbf{Recovery mass.} Frequency with which Arm~2 is correct while Arm~3 is incorrect on the \emph{same generated code trace}. This estimates $\Pr(\neg C)\,r$ in the decomposition above (and is an upper bound on ``recovery from flawed code'' due to possible solve-from-$X$ behavior). Recovery remains $<5\%$ across tasks and models.}
+    \caption{\textbf{Recovery mass.} Frequency with which Route~2 is correct while Route~3 is incorrect on the \emph{same generated code trace}. This estimates $\Pr(\neg C)\,r$ in the decomposition above (and is an upper bound on ``recovery from flawed code'' due to possible solve-from-$X$ behavior). Recovery remains $<5\%$ across tasks and models.}
     \label{fig:recovery_final}
 \end{figure}
 
-\subsection{Relating Theory and Empirical Observations}
+% \subsection{Relating Theory and Empirical Observations}

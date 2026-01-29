@@ -1,90 +1,71 @@
-\section{Empirical Evaluation}
+\section{Evaluating the Three-Route Framework}
 \label{sec:empirical}
+Our evaluation aims to answer the research questions (RQ): 
+\begin{enumerate}
+    \item[1)] Does $\text{Route~1} \simeq \text{Route~2} < \text{Route~3}$ hold? (\S\ref{sec:instantiation}, \S\ref{sec:performance})
+\end{enumerate}
+ % RQ 1 is central to the main thesis, and RQ 2 provides motivation to offload to an executor, as well as empirical foundations for the assumptions in  Section~\ref{sec:theory}.
 
-This section instantiates the three-arms framework introduced in
-Section~\ref{sec:framework} and evaluates the central ordering
-\[
-\text{Arm~1} \simeq \text{Arm~2} < \text{Arm~3}.
-\]
-We proceed in two stages. First, we compare end-to-end task accuracy
-across the three arms under a controlled experimental design.
-Second, we analyze whether natural-language reasoning traces contain
-decision-relevant information beyond what is present in code
-representations, providing empirical motivation for the assumptions
-used in Section~\ref{sec:theory}.
 
-\subsection{Experimental Instantiation of the Three Arms}
+\subsection{Experimental Instantiation of the Three Routes}
 \label{sec:instantiation}
 
-\paragraph{Arm~1 vs.\ Arm~2.}
-Given a test input $X_i$ corresponding to instance $i$, Arm~1 prompts
-the language model to reason using natural language only, producing
-an output
-$
-(X_i) \;\mapsto\; Y_i^{(\mathrm{NL})}.
-$
-Arm~2 uses the same language model to first generate code
-$(X_i) \;\mapsto\; C_i,$
-and then reason about the code and prompt in natural language,
-$(X_i, C_i) \;\mapsto\; Y_i^{(\mathrm{Sim})}.$
-Prompt templates are controlled to be as similar as possible, with
-Arm~2 differing only by the inclusion of a code-generation and
-simulation instruction (Figure~\ref{fig:arm_prompts}).
+To draw  conclusions about the effect of modality in the trace generation or different execution methods, we ensure one stage is always fixed. For Route 1 vs Route 2, we fix the execution phase by using the same LLM reasoning model forward pass, but use different modalities in the trace generator. For Route 2 vs Route 3, we fix the trace generator which outputs code, then use different execution methods, either LLM reasoning model forward pass, or a python3 runtime. Below, let $X_i$ be the task instantiation of instance $i$. Structured JSON outputs are enforced for sampling in all routes
+(\cref{fig:route_prompts}). 
 
-\paragraph{Arm~2 vs.\ Arm~3.}
-Let $X_i$ denote the original problem instance and $C_i$ the generated
-code for instance $i$. The tuple $(X_i, C_i)$ is held fixed across both
-arms. Arm~2 produces
-$(X_i, C_i) \;\mapsto\; Y_i^{(\mathrm{Sim})}$
-via language-model-based simulation, while Arm~3 executes the same code
-using an external Python runtime,
-$(X_i, C_i) \;\mapsto\; Y_i^{(\mathrm{Exec})}.$
-For notational symmetry, $X_i$ is included in both mappings, although it
-is ignored by the external executor.
-
+\paragraph{Sampling Route 1.}  Route 1 prompts an LLM $E_{NL} $ to function as a trace generator $Z_{NL} := E_{NL}(X_i)$. The trace is then fed into the same LLM $\rho_{NL} = E_{NL}$ to produce an answer $Y_{i}^{(NL)} := \rho_{NL} (Z_{NL})$. The prompt instructs the model to never use code, and to output a structured rationale and answer (see \cref{fig:route_prompts}). Operationalized, one experimental run for Route 1 is encapsulated in a single LLM reasoning model's forward pass without pause. 
+\paragraph{Sampling Route 2.} Similarly, Route 2 uses a LLM $E_{Code}$ as a trace generator for code modality $Z_{Code} := E_{Code}(X_i)$. The trace is then fed into the same LLM $\rho_{Sim} = E_{Code}$ to produce an answer $Y_{i}^{(Sim)} := \rho_{Sim} (Z_{Code})$. Operationalized, one experimental run for Route 2 is encapsulated in a single LLM reasoning model's forward pass without pause. Prompt templates are controlled to be as similar as possible, with
+Route~2 differing only by the inclusion of a code-generation and
+simulation instruction (\cref{fig:route_prompts}). We prompt the model to output a program snippet, structured reasoning over the code, followed by an answer. 
+\paragraph{Sampling Route 3.} Route 3 takes the exact same code trace $Z_{Code}$ as Route 2, except it runs it through a python3 runtime $\rho_{Exec}$, and retrieves the solution $Y_i^{(Exec)} = \rho_{Exec}(Z_{Code})$. The python3 runtime has access to 5 standard scientific libraries: \texttt{Scipy, Numpy, Pandas, PuLP,} and \texttt{Pytorch}. 
 \paragraph{Observed outcomes.}
-For each problem instance $i$, we observe paired Bernoulli outcomes
-\[
-\bigl(Y_i^{(\mathrm{NL})},\; Y_i^{(\mathrm{Sim})},\; Y_i^{(\mathrm{Exec})}\bigr).
-\]
-
+For each problem instance $i$, we observe paired Bernoulli outcomes \[\bigl(Y_i^{(\mathrm{NL})},\; Y_i^{(\mathrm{Sim})},\; Y_i^{(\mathrm{Exec})}\bigr).\]
+% Let $X_i$ denote the original problem instance and $C_i$ the generated
+% code for instance $i$. The tuple $(X_i, C_i)$ is held fixed across both
+% arms. Arm~2 produces
+% $(X_i, C_i) \;\mapsto\; Y_i^{(\mathrm{Sim})}$
+% via language-model-based simulation, while Arm~3 executes the same code
+% using an external Python runtime,
+% $(X_i, C_i) \;\mapsto\; Y_i^{(\mathrm{Exec})}.$
+% For notational symmetry, $X_i$ is included in both mappings, although it
+% is ignored by the external executor.
 \paragraph{Data and models.}
 We evaluate on the CLRS-30 benchmark ($n=500$), the NP-Hard-Eval
 benchmark ($n=540$), and a custom fine-grained evaluation suite
-($n=540$), across three random seeds. Tasks span Arithmetic, Dynamic
+($n=540$), across three random seeds $\{0,1,2 \}$. Tasks span Arithmetic, Dynamic
 Programming, and Integer Linear Programming (ILP), with difficulty
 controlled by a parameter $\tau$.
-We evaluate both frontier models (Haiku~4.5, GPT-4o, Gemini~2.0 Flash)
-and open-source models (Mixtral, Codestral). 
+We evaluate both closed-source models (\texttt{Claude Haiku~4.5, GPT-4o-mini, Gemini~2.5 Pro})
+and open-source models (\texttt{Mixtral-8x22b-Instruct, Codestral-22B}). 
 
 % Models with more than
 % 50\% JSON parse failures are excluded to avoid confounding instruction
 % following with reasoning ability.
 
-\paragraph{Prompting and execution.}
-In Arm~1, models are instructed to reason without using code and to
-output a structured rationale and answer.
-In Arm~2, the same prompt is augmented with instructions to generate
-code and simulate its execution.
-In Arm~3, the generated function is executed directly in a Python~3
-runtime with access to standard scientific libraries.
-Structured JSON outputs are enforced for all arms
-(Figure~\ref{fig:arm_prompts}).
+% \paragraph{Prompting and execution.}
+% In Arm~1, models are instructed to reason without using code and to
+% output a structured rationale and answer.
+% In Arm~2, the same prompt is augmented with instructions to generate
+% code and simulate its execution.
+% In Arm~3, the generated function is executed directly in a Python~3
+% runtime with access to standard scientific libraries.
+
+
 
 \subsection{End-to-End Performance Comparison}
 \label{sec:performance}
 
 \paragraph{Pairwise statistical tests.}
-We evaluate pairwise arm differences using McNemar tests on paired
+We evaluate pairwise route differences using McNemar tests on paired
 Bernoulli outcomes.
-For Arm~1 vs.\ Arm~2, the null hypothesis is
+For Route~1 vs.\ Route~2, the null hypothesis is
 \begin{align*}
 & H_0:\;
 \Pr(Y^{(\mathrm{NL})}=1,\,Y^{(\mathrm{Sim})}=0) \\
 & =
 \Pr(Y^{(\mathrm{NL})}=0,\,Y^{(\mathrm{Sim})}=1),
 \end{align*}
-with an analogous null for Arm~2 vs.\ Arm~3.
+with an analogous null for Route~2 vs.\ Route~3.
 
 Effect sizes are reported as paired accuracy differences, e.g.,
 \[
@@ -94,42 +75,59 @@ Effect sizes are reported as paired accuracy differences, e.g.,
 \]
 with 95\% confidence intervals estimated via cluster bootstrap
 resampling over instances.
-Holm--Bonferroni correction is applied to control family-wise error rate
+Holm--Bonferroni correction is applied to control family-wise error rate of the above 2 marginal pairwise tests on fully pooled data
 at $\alpha=5\%$. %what family wise? Across difficulties? Add tau analysis later. 
 
 \paragraph{Difficulty scaling.}
-To analyze how performance varies with task difficulty, we fit a
-generalized linear mixed-effects model (GLMM) with a logistic link:
+To analyze how performance varies with task difficulty, we fit a generalized linear mixed-effects model (GLMM)
+for binary accuracy $Y_i \in \{0,1\}$ with a logistic link:
 \[
-Y_i
+Y_i \mid u_{\text{inst}[i]}, u_{\text{seed}[i]} \sim \mathrm{Bernoulli}(p_i),
+\]
+\[
+\mathrm{logit}(p_i)
 =
 \alpha
 +
-\beta_{\mathrm{arm}_i}
+\beta_{\mathrm{route}_i}
 +
 \gamma\,\tau_i
 +
-\delta_{\mathrm{arm}_i}\tau_i
+\delta_{\mathrm{route}_i}\,\tau_i
 +
-\varepsilon_i,
-\qquad
-\varepsilon_i \sim \mathrm{Bernoulli}.
+u_{\text{inst}[i]}
++
+u_{\text{seed}[i]},
 \]
-Arm and difficulty are modeled as fixed effects, with instance and seed
-as random effects.
+where $u_{\text{inst}[i]} \sim \mathcal{N}(0,\sigma^2_{\text{inst}})$ and
+$u_{\text{seed}[i]} \sim \mathcal{N}(0,\sigma^2_{\text{seed}})$ are random intercepts.
+Route and difficulty are modeled as fixed effects (including an route $\times$ difficulty interaction),
+with instance and seed modeled as random effects.
+
+\begin{figure*}[t]
+    \centering
+    \vspace{-5pt}
+    \includegraphics[width=\textwidth]{images/CleanShot 2026-01-27 at 11.05.15@2x.png}
+    \vspace{-25pt}
+    \caption{\textbf{Translation and discrimination prompts.}
+    \textbf{(a) Translator}: Converts code to NL reasoning step-by-step, mimicking native reasoning.
+    \textbf{(b) Discriminator}: Judge models classify traces as ``Native NL'' or ``Translated''.
+    Used in Section~\ref{sec:rep_analysis}.}
+    \label{fig:translator_discriminator}
+\end{figure*}
 
 \paragraph{Results.}
 Across all benchmarks, we reject the global null hypothesis
 ($p < 0.001$ after correction).
-Post-hoc tests show a statistically significant advantage of Arm~3
-over Arm~2, with a positive paired accuracy gap excluding zero in the
+\emph{Post-hoc tests show a statistically significant advantage of Route~3
+over Route~2}, with a positive paired accuracy gap excluding zero in the
 95\% confidence interval.
-For Arm~1 vs.\ Arm~2, although the null is rejected ($p = 0.04$), the
+For Route~1 vs.\ Route~2, although the null is rejected ($p = 0.04$), the
 bootstrap confidence interval overlaps zero, indicating that we cannot
 conclude a meaningful difference between natural-language reasoning
 and code simulation under this evaluation.
-Performance gaps widen with increasing task difficulty: Arm~3 remains
-stable while Arm~1 degrades sharply, with code execution achieving
+Performance gaps widen with increasing task difficulty: Route~3 remains
+stable while Route~1 degrades sharply, with code execution achieving
 approximately $4.1\times$ higher odds of correctness.
 
 % \subsection{Representation-Level Analysis: Does Language Add Information?}
@@ -142,32 +140,117 @@ approximately $4.1\times$ higher odds of correctness.
 % We empirically evaluate this premise by analyzing both distributional
 % and functional similarity between native NL reasoning and NL obtained
 % by translating code.
-\subsection{Representation-Level Analysis: Does Language Add Information?}
+\section{Route 1 vs Route 2 Analysis}
 \label{sec:rep_analysis}
+The key research question in this section is: \textbf{In the scenario when our NL reasoning and Code reasoning are optimal, do NL reasoning traces contain decision-relevant information beyond what is present in code representations? (\S\ref{sec:dist_similarity}, \S\ref{sec:func_similarity})} One might argue that, when optimizing a code-execution pipeline end to end, the trace generation stage could benefit from representational properties unique to natural language, and that improving NL trace generation could therefore outperform code-based traces. Our analysis rules out this possibility at the level of computation-constrained optimal performance. Specifically, we show that
+\[
+R^*_{\mathcal{H}_{\mathrm{C}}}(E_{\mathrm{Code}})
+\;\le\;
+R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}})
++
+\varepsilon.
+\]
+implying that, up to a small approximation error \S\ref{sec:func_similarity}, code traces are sufficient to match the best achievable performance of NL traces. Consequently, any performance gap between code-based and NL-based pipelines cannot be attributed to limitations of trace generation, but must arise from downstream execution.
 
-The end-to-end results in Section~\ref{sec:performance} are consistent with the hypothesis that, for the evaluated tasks, models, and prompts, natural-language chain-of-thought (NL CoT) does not provide decision-relevant information beyond what is already present in code representations.
-Under this hypothesis, delegating execution to an external runtime is well-motivated: NL simulation offers no systematic benefit over code representations, while direct execution avoids simulation noise and can achieve strictly lower error when the generated code is correct.
-We test this hypothesis in two steps.
-First, we test whether NL traces translated from code are \emph{distributionally similar} to native NL CoT (\S\ref{sec:dist_similarity}).
-Second, we test whether translated NL is \emph{functionally similar} to native NL in the sense of preserving decision-relevant information for downstream accuracy (\S\ref{sec:func_similarity}).
-These results empirically motivate assumptions used in Section~\ref{sec:theory}.
 
-\begin{figure*}[t]
-    \centering
-    \vspace{-5pt}
-    \includegraphics[width=0.68\textwidth]{images/fig_prompts_combined.png}
-    \vspace{-5pt}
-    \caption{\textbf{Translation and discrimination prompts.}
-    \textbf{(a) Translator}: Converts code to NL reasoning step-by-step, mimicking native reasoning.
-    \textbf{(b) Discriminator}: Judge models classify traces as ``Native NL'' or ``Translated''.
-    Used in Section~\ref{sec:rep_analysis}.}
-    \label{fig:translator_discriminator}
-\end{figure*}
+\paragraph{Condition 1. ($\varepsilon$-garbling)}
+\label{cond:simulability}
+We say that NL traces are $\varepsilon$-simulable from code traces (for the executor family $\mathcal{H}_{\mathrm{NL}}$)
+if there exists a translation kernel $T:\mathcal{Z}_{\mathrm C}\to\Delta(\mathcal{Z}_{\mathrm{NL}})$ such that,
+letting $E_{\mathrm{Tran}} := T\circ E_{\mathrm{Code}}$,
+\begin{align*}
+& \Delta_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}},E_{\mathrm{Tran}})
+:= \\
+& \sup_{\rho\in\mathcal{H}_{\mathrm{NL}}}
+\left|
+R(E_{\mathrm{NL}},\rho)-R(E_{\mathrm{Tran}},\rho)
+\right|
+\le \varepsilon,
+\end{align*}
+and such that $\mathcal{H}_{\mathrm{C}}$ is closed under composition with $T$
+(i.e., for each $\rho_{\mathrm{NL}}\in\mathcal{H}_{\mathrm{NL}}$,
+$\rho_{T\circ \mathrm{NL}}\in\mathcal{H}_{\mathrm{C}}$).
+In Section~\ref{sec:rep_analysis} and Section~\ref{sec:func_similarity} we estimate these quantities and find $\varepsilon$ is small. 
 
-\subsubsection{Distributional Similarity between Translated NL and Native NL}
+\begin{proposition}[Consequence of $\varepsilon$-garbling]
+\label{prop:dominance}
+If Condition~\ref{cond:simulability} holds, then
+\[
+R^*_{\mathcal{H}_{\mathrm{C}}}(E_{\mathrm{Code}})
+\le
+R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}})
++\varepsilon.
+\]
+\end{proposition}
+\begin{proof}
+Fix any $\delta>0$ and choose
+$\rho^{\delta}_{\mathrm{NL}}\in\mathcal{H}_{\mathrm{NL}}$ such that
+\[
+R(E_{\mathrm{NL}},\rho^{\delta}_{\mathrm{NL}})
+\le
+R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}}) + \delta.
+\]
+
+By Condition~1, the composed executor that ``translates then decodes,''
+\[
+\rho^{\delta}_{T\circ \mathrm{NL}}(y \mid x, z_{\mathrm{C}})
+:=
+\int \rho^{\delta}_{\mathrm{NL}}(y \mid x, z_{\mathrm{NL}})
+\,T(z_{\mathrm{NL}}\mid z_{\mathrm{C}})\,dz_{\mathrm{NL}},
+\]
+is realizable in the code-executor class, i.e.,
+$\rho^{\delta}_{T\circ \mathrm{NL}} \in \mathcal{H}_{\mathrm{C}}$.
+
+Now consider the following stochastic computation graph: first sample a code trace
+$Z_{\mathrm{C}} \sim p_{\mathrm{Code}}(\cdot \mid X)$; then translate it to an NL trace
+$Z_{\mathrm{NL}} \sim T(\cdot \mid Z_{\mathrm{C}})$; finally sample the answer
+$\hat Y \sim \rho^{\delta}_{\mathrm{NL}}(\cdot \mid X, Z_{\mathrm{NL}})$.
+This is exactly what $\rho^{\delta}_{T\circ \mathrm{NL}}$ implements: it performs the
+translation step inside the executor and then applies the NL executor.
+
+Equivalently, we may ``push'' the translation step into the trace generator.
+By construction of the translated generator $E_{\mathrm{Tran}} := T \circ E_{\mathrm{Code}}$,
+the marginal conditional distribution of $Z_{\mathrm{NL}}$ given $X$ is
+\[
+p_{\mathrm{Tran}}(z_{\mathrm{NL}} \mid x)
+=
+\int T(z_{\mathrm{NL}} \mid z_{\mathrm{C}})\,p_{\mathrm{Code}}(z_{\mathrm{C}} \mid x)\,dz_{\mathrm{C}}.
+\]
+Therefore, the joint distribution of $(X, Z_{\mathrm{NL}}, \hat Y)$ induced by
+(i) $(E_{\mathrm{Code}}, \rho^{\delta}_{T\circ \mathrm{NL}})$ and
+(ii) $(E_{\mathrm{Tran}}, \rho^{\delta}_{\mathrm{NL}})$ is the same, and hence they have
+identical risk:
+\[
+R(E_{\mathrm{Code}},\rho^{\delta}_{T\circ \mathrm{NL}})
+=
+R(E_{\mathrm{Tran}},\rho^{\delta}_{\mathrm{NL}}).
+\]
+
+
+By Condition 1,
+\[
+R(E_{\mathrm{Tran}},\rho^{\delta}_{\mathrm{NL}})
+\le
+R(E_{\mathrm{NL}},\rho^{\delta}_{\mathrm{NL}}) + \varepsilon
+\le
+R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}}) + \delta + \varepsilon.
+\]
+Taking the infimum over $\mathcal{H}_{\mathrm{C}}$ and letting
+$\delta\to 0$ completes the proof.
+\end{proof}
+
+\subsection{Validating Condition 1.}
+\label{sec:cond1}
+Condition 1 requires natural language to be an approximate garbling of code. To verify this, we ask the sub-questions as a proxy: 
+\begin{enumerate}
+    \item[1)] Does there exist a translator LLM such that the NL traces translated from code \emph{look} like the original NL traces (existence of $\varepsilon$-Translator)?  (\S\ref{sec:cond1})
+    \item[2)] Does there exist a translator LLM such that the NL traces translated from code \emph{function} like the original NL traces quantified by end-task accuracy (closure under composition)? (\S\ref{sec:func_similarity})
+\end{enumerate}
+In essence, these questions ask whether translation during inference really can be done in either trace generation or execution interchangeably (equal after marginalizing over code traces), similar to the ideas presented in the proof. We find that a translator LLM does exist (e.g. \texttt{GPT-4o} as an example), such that the NL traces translated from code look and function like the original NL traces. This provides support for Condition 1 and suggests that NL does not provide decision-relevant information beyond code in the optimal risk regime. 
+
+\subsubsection{Existence of $\varepsilon$-Translator}
 \label{sec:dist_similarity}
-
-We test whether the distribution of reasoning traces produced in Arm~1 can be approximated by post-processing code traces with a fixed transformation.
+We find that the distribution of reasoning traces produced in Route~1 can be approximated by post-processing code traces with a fixed transformation (\texttt{GPT-4o} with prompting).
 Concretely, for each task instance $x$ and corresponding code $c$, we form two trace conditions:
 \begin{align*}
     & (x, z_{\mathrm{NL}}), \quad z_{\mathrm{NL}} \sim p_{\mathrm{NL}}(\cdot \mid x), \quad \text{(\emph{Native})},\\
@@ -187,45 +270,70 @@ p(x)p_{\mathrm{Tr}}(z\mid x).
 We use multiple judge models (e.g., Claude Opus 4.0, Gemini 2.5 Pro, Grok 4.1 Fast) to reduce dependence on a single discriminator.
 
 \paragraph{Sampling and controls.}
-We sample problem instances $x$ from a pool of previously collected CoT examples spanning different models, seeds, tasks, and difficulties, and construct paired examples with balanced labels.
+We sample problem instances $x$ from a pool of previously collected CoT examples spanning different models\footnote{In our experiments, when we conditioned on the models for the source inputs, we find that they become more distinguishable. This suggests that between models, there are stylistic artifacts that are significant enough to differentiate them. Since this is orthogonal to the native vs translated signal, we did not condition on models. } , seeds, tasks, and difficulties, and construct paired examples with balanced labels.
 Tasks used for discrimination are held out from the translator’s in-context examples to avoid trivial leakage.
 As a calibration control, we also ask the same judges to discriminate \emph{raw code} vs.\ \emph{native NL} traces; high control accuracy indicates the judges are not underpowered.
 
-\paragraph{Metrics.}
-We report judge accuracy with Wilson confidence intervals, both overall and stratified by task/model when informative.
+% \paragraph{Metrics.}
+% We report judge accuracy with Wilson confidence intervals, both overall and stratified by task/model when informative.
 
-\begin{figure*}[t]
+% \begin{figure*}[t]
+%     \centering
+%     \vspace{-5pt}
+%     \includegraphics[width=0.68\textwidth]{images/discrimination_by_task.png}
+%     \vspace{-5pt}
+%     \caption{\textbf{Discrimination results.}
+%     Judge models classify traces as Native vs.\ Translated.
+%     Accuracy near chance indicates translated NL is distributionally similar to native NL.
+%     The control task (code vs.\ NL) remains high, indicating calibrated judges.}
+%     \label{fig:discrimination_by_task}
+% \end{figure*}
+
+
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{images/judge_discrimination_barplot.png}
+    \vspace{-15pt}
+    \caption{\textbf{Translated NL from code is indistinguishable to original NL traces, supporting the hypothesis that NL contains no more decision-related information than code.} Judges run zero-shot and are prompted to discriminate between native and translated, the translator is GPT-4o which gets 10-shot examples. Original data sources are pooled data from \cref{fig:route_prompts}. }
+    \label{fig:judge_barplot}
+\end{figure}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{images/native_vs_translated_scatter.png}
+    \vspace{-25pt}
+    \caption{\textbf{Translated NL and Native NL form local clusters in the embedding space and have high cosine similarity, explaining distributional indistinguishability.} We randomly sample and embed 200 native NL reasoning traces and 200 code-to-NL translations (produced by GPT-4o) using OpenAI's text-embedding-3-large and project them via t-SNE. Cosine similarities between Native-Native and Translated-Translated sample pairs from the same task.}
+    \label{fig:translation_additivity}
+\end{figure}
+
+\begin{figure}[t]
     \centering
     \vspace{-5pt}
-    \includegraphics[width=0.68\textwidth]{images/discrimination_by_task.png}
-    \vspace{-5pt}
-    \caption{\textbf{Discrimination results.}
-    Judge models classify traces as Native vs.\ Translated.
-    Accuracy near chance indicates translated NL is distributionally similar to native NL.
-    The control task (code vs.\ NL) remains high, indicating calibrated judges.}
-    \label{fig:discrimination_by_task}
-\end{figure*}
+    \includegraphics[width=\linewidth]{images/translation_additivity.png}
+    \vspace{-25pt}
+    \caption{\textbf{Translated NL has the same functionality as the original native NL quantified by end-task accuracy. }. When concatenating the reasoning traces to the prompt, we get much higher accuracy as opposed to the baseline with just the prompt, indicating the model is using the reasoning. There are statistically significant differences between the baseline and concatenated prompts, but no statistically significant difference between the Translated NL and Native NL concatenations. Source data is randomly sampled from existing data used to generate \cref{fig:three_routes}, we use 1000 samples per model. }
+    \label{fig:translation_additivity}
+\end{figure}
 
 \paragraph{Results.}
-Across 2000 samples per judge (6000 total across three judges), discrimination accuracy is near chance (49.4\% with 95\% Wilson CI [47.2\%, 51.5\%]; Figure~\ref{fig:discrimination_by_task}).
-The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$79\%), indicating the judges can detect obvious representation differences but fail to distinguish translated vs.\ native NL.
-This suggests that, under our translation procedure, code-derived NL traces are distributionally similar to native NL CoT for most tasks.
-We observe a small number of task-level exceptions (e.g., rod-cutting and Kruskal-style MST) where discrimination may exceed chance, which we treat as potential failure modes of a single fixed translator or as task-specific stylistic artifacts.
+Across $\sim$2000 samples per judge ($\sim$6000 total across three judges), discrimination accuracy is near chance (50\%), with 50\% included in the Wilson CI. The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$79\%), indicating the judges can detect obvious representation differences but \emph{fail to distinguish translated vs.\ native NL}.
 
-\subsubsection{Functional Similarity between Translated NL and Native NL}
+% (49.4\% with 95\% Wilson CI [47.2\%, 51.5\%]; Figure~\ref{fig:discrimination_by_task}).
+
+% This suggests that, under our translation procedure, code-derived NL traces are distributionally similar to native NL CoT for most tasks.
+% We observe a small number of task-level exceptions (e.g., rod-cutting and Kruskal-style MST) where discrimination may exceed chance, which we treat as potential failure modes of a single fixed translator or as task-specific stylistic artifacts. 
+
+\subsubsection{Closure under Translation}
 \label{sec:func_similarity}
+We wish to show that whatever NL-executor can do after seeing an NL trace, the NL-executor can do after seeing a code trace, by first translating the code trace into an NL trace then behaving like the original NL-executor. We therefore test functional similarity using a downstream accuracy intervention.
 
-Distributional similarity alone does not guarantee that translated NL preserves \emph{decision-relevant} information.
-We therefore test functional similarity using a downstream accuracy intervention.
 
 \paragraph{Intervention setup.}
 For a task instance $x$, we prompt a target language model in three conditions:
-\begin{align*}
-    & \text{(1) Baseline:} && x,\\
-    & \text{(2) Native:} && x \,\|\, z_{\mathrm{NL}},\\
-    & \text{(3) Translated:} && x \,\|\, \hat z_{\mathrm{NL}},
-\end{align*}
-where $z_{\mathrm{NL}} \sim p_{\mathrm{NL}}(\cdot\mid x)$ is the native Arm~1 trace and
+(1) Baseline:  x,
+(2) Native: $ x \,\|\, z_{\mathrm{NL}},$
+(3) Translated:  x $\,\|\, \hat z_{\mathrm{NL}},$ where $z_{\mathrm{NL}} \sim p_{\mathrm{NL}}(\cdot\mid x)$ is the native Route~1 trace and
 $\hat z_{\mathrm{NL}}$ is obtained by translating the corresponding code to NL using the same translator procedure as in \S\ref{sec:dist_similarity}.
 If translated NL loses decision-relevant information relative to native NL, we would expect
 \[
@@ -233,20 +341,18 @@ If translated NL loses decision-relevant information relative to native NL, we w
 \]
 
 \paragraph{Protocol and models.}
-We run this test on 1000 held-out instances across multiple target models (e.g., Claude Opus 4.0, Gemini 2.5 Pro, Grok 4.1 Fast), using tasks disjoint from the translator’s in-context examples.
-The translator prompt is fixed (frozen) across all runs.
+We run this test on 1000 held-out instances across multiple translator models (\texttt{Claude Haiku 4.5, Gemini-2.5-Flash, Mixtral-8x22B-Instruct}).
 Crucially, in this experiment the translator model is matched to the original code generator (i.e., we translate code produced by the same model family), to avoid confounding functional losses with cross-model stylistic mismatch.
 
 \paragraph{Results.}
 We fail to reject the null hypothesis of equal performance, and observe overlapping 95\% confidence intervals between the Native and Translated conditions (Figure~\ref{fig:translation_additivity}).
-This suggests that, under our evaluated settings, translating code into NL does not destroy decision-relevant information for downstream answering, consistent with the claim that NL CoT does not systematically add algorithmic advantage beyond what is in code.
+This suggests that, under our evaluated settings, translating code into NL does not destroy decision-relevant information for downstream answering, consistent with the claim that NL CoT does not systematically add algorithmic advantage beyond what is in code. Qualitatively, we notice that the translated results are quite similar to the originals, though this seems heavily reliant on the translating prompt. 
 
-\begin{figure}[t]
-    \centering
-    \vspace{-5pt}
-    \includegraphics[width=0.85\linewidth]{images/translation_additivity_plot.png}
-    \vspace{-5pt}
-    \caption{\textbf{Functional equivalence.}
-    Overlapping 95\% confidence intervals between Native and Translated conditions indicate code-to-NL translation preserves decision-relevant information for end-task accuracy.}
-    \label{fig:translation_additivity}
-\end{figure}
+
+\paragraph{Interpretation.} Interpretation. Our empirical results indicate that Condition 1 holds in the settings we study, implying that the best achievable performance using code traces matches that of natural-language traces up to a small error $\varepsilon$. In particular, we find no evidence that natural-language reasoning introduces novel algorithmic strategies beyond those already captured by code representations on algorithmic tasks. As a result, replacing NL traces with code traces in the generation stage does not constitute a performance bottleneck when optimizing the end-to-end reasoning pipeline. Instead, the remaining limitations are best attributed to the execution mechanism rather than the trace representation.
+
+% The end-to-end results in Section~\ref{sec:performance} are consistent with the hypothesis. If true, the hypothesis would imply little benefits of NL over code for the trace generation stage. Thus, using code in the trace generation stage, and delegating to an external runtime in the execution stage which also avoids simulation noise would be the optimal choice (Arm 3). We test the hypothesis by answering two research questions.
+
+
+% This section finds that NL does not contain decision-relevant information beyond what is present in NL, since translated NL looks both distributionally similar and functionally similar. Our statistical interpretation concludes that code is always as good as language for trace generation up to a $\varepsilon$ bound, which we empirically demonstrate is small via the functional similarity experiment. This suggests trace generation is not the bottleneck for language reasoning, pointing towards execution as the bottleneck (\cref{theory: route2vroute3}).
+% The answers to these questions are themselves interesting, but also empirically motivate assumptions used in Section~\ref{sec:theory}.

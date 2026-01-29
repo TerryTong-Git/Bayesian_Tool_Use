@@ -1,31 +1,32 @@
-\section{Three Arms Framework}
+\section{Three-Route Framework}
 \label{sec:framework}
+Our central research question (RQ) is: \emph{Is code $>$ NL for algorithmic reasoning?} To begin to answer this question, we first introduce our three-route framework which enables tractable comparison by disentangling \emph{reasoning representation} (hereafter called Traces) and \emph{reasoning execution} (hereafter called Executors) and constructing an intermediary bridge (Route 2) for pairwise comparison. This section introduces the task (\cref{def:task}), notation (\cref{def:trace}), and definitions (\cref{def:risk}, \cref{def:route}).
 
-We introduce a unified framework for comparing natural-language reasoning and code-based reasoning in algorithmic tasks. The framework explicitly separates differences in \emph{information representation} from differences in \emph{execution}, enabling tractable and interpretable comparisons.
+% \yu{It's not only information representation, reasoning modality/formalization might be a better word, since it includes both representation and intermediate reasoning} from differences in \emph{execution}, enabling tractable and interpretable comparisons. \yu{We first present basic definitions in the paper through \S\ref{def:task} to \S\ref{def:risk} and then introduce the three-arms framework in \S\ref{def:arm}. Note: always try to conclude/foresee the section in the first paragraph} 
 
 \subsection{Task and Loss}
-
-Let $X \sim p(x)$ denote a task instance (problem statement and inputs), and let $Y^*(X) \in \mathcal{Y}$ denote the ground-truth output. We evaluate performance under $0$--$1$ loss
-\[
-\ell(y,x) := \mathbf{1}\{y \neq Y^*(x)\}.
-\]
-
-All risks are taken with respect to the test distribution $p(x)$.
+\label{def:task}
+% \yu{Let $p(x)$ be the test distribution over task instances, and let $X \sim p(x)$ denote a sampled instance (problem statement and inputs). Q: test distribution across all possible algorithmic tasks or just one?}
+For a gold evaluation distribution over task instances $i$ specified by (algorithm, input variables, seed), let $X \sim p(x)$ denote a task instance (problem statement and inputs), and let $Y^*(X) \in \mathcal{Y}$ denote the ground-truth output that is unique, fixed, and externally verifiable. 
+% \yu{, where 
+% $\mathcal{Y}$ is the set of possible outputs. Q: is the output fixed/unique/verifiable, if so, add unique, fixed, and externally verifiable ground-truth output}
+We evaluate performance under $0$--$1$ loss:
+$$\ell(y,x) := \mathbf{1}\{y \neq Y^*(x)\}.$$
+All risks are taken with respect to the evaluation distribution $p(x)$.
 
 \subsection{Trace Generators and Executors}
-
-We model each reasoning pipeline as a two-stage stochastic process:
-
-\paragraph{Trace generation (information structure).}
-A trace (i.e. Chain-of-Thought) generator is a Markov kernel
+\label{def:trace}
+We model each reasoning pipeline as a two-stage stochastic process with \emph{(1) trace generation} and \emph{(2) execution}. 
+\paragraph{Trace generation.} We define a \emph{trace} as an object that stores intermediate reasoning used to solve a corresponding task (e.g. NL Chain-of-Thought or a program). A \emph{trace generator} is a Markov kernel
 \[
 E : \mathcal{X} \to \Delta(\mathcal{Z}), \qquad
 Z \sim p_E(z \mid x),
 \]
+% \yu{$p_E$ looks a bit wierd}
 which produces an auxiliary trace $Z$ given the task instance.
 
-\paragraph{Execution (decision rule).}
-An executor is a (possibly randomized) Markov kernel
+ 
+\paragraph{Execution.} We define \emph{execution} as a procedure that consumes a trace, e.g. an LLM forward pass that takes as input a reasoning trace and outputs an answer, or executing a program in an external runtime. An \emph{executor} is a (possibly randomized) Markov kernel
 \[
 \rho : \mathcal{X} \times \mathcal{Z} \to \Delta(\mathcal{Y}),
 \]
@@ -47,15 +48,15 @@ The population risk of a pipeline $(E,\rho)$ is
 \end{align*}
 
 \subsection{Computation-Constrained Optimal Risk}
-
+\label{def:risk}
 To reflect inference-time computational constraints, we evaluate executors within restricted families.
 For a trace space $\mathcal{Z}$ (e.g. code or NL), let
 \[
 \mathcal{H}_{\mathcal{Z}} \subseteq
 \{ \rho : \mathcal{X} \times \mathcal{Z} \to \Delta(\mathcal{Y}) \}
 \]
-denote a class of executors realizable under a fixed model family and bounded inference protocol.
-
+denote a class of executors realizable under a fixed model family, e.g. Mistral (see \cref{sec:cond1}).
+% and bounded inference protocol\yu{which will be introduce in \S\ref{} add a reference here}.
 We define the computation-constrained optimal risk of a trace generator $E$ as
 \[
 R^*_{\mathcal{H}}(E)
@@ -63,12 +64,16 @@ R^*_{\mathcal{H}}(E)
 \]
 This differs from classical Bayes risk, which optimizes over all measurable decision rules.
 
-\subsection{The Three Arms}
 
-We consider three reasoning pipelines (``arms''), each defined by a trace generator and an executor family.
 
-\paragraph{Arm 1 (Natural Language).}
-A natural-language trace generator $E_{\mathrm{NL}}$ produces traces
+\subsection{The Three Routes}
+\label{def:route}
+We consider three reasoning pipelines (``routes''). Each route is represented as a pair $(E,\rho)$ consisting of a trace generator $E$ and an executor $\rho$, evaluated via the risk $R(E,\rho)$ and the computation-constrained
+optimal risk $R^*_{\mathcal H}(E)$.
+% \yu{A concrete example of the three routes can be referred to in Figure~\ref{fig:main}.}
+% \yu{I will add some NL descriptions which can be referred to in other sections. }
+\paragraph{Route 1 (Direct Natural Language).}
+Route~1 represents standard NL reasoning: the model first produces a natural-language (Chain-of-thought) trace and then the same model is used as the LLM-based executor, conditioning on the trace to generate a final answer. Formally, a natural-language trace generator $E_{\mathrm{NL}}$ produces traces
 $Z_{\mathrm{NL}} \sim p_{\mathrm{NL}}(\cdot \mid X)$,
 paired with an executor family
 \[
@@ -76,9 +81,8 @@ paired with an executor family
 \subseteq
 \{ \rho : \mathcal{X} \times \mathcal{Z}_{\mathrm{NL}} \to \Delta(\mathcal{Y}) \}.
 \]
-
-\paragraph{Arm 2 (Code + Simulation).}
-A code trace generator $E_{\mathrm{Code}}$ produces executable representations
+\paragraph{Route 2 (Code + NL Simulation).}
+Route~2 uses \emph{code} as the trace modality, but keeps execution ``in-model'': the LLM instead simulates the generated code in natural language, rather than executing it in an external environment. This route isolates the effect of using a code trace while holding the LLM-based executor class fixed. Formally, a code trace generator $E_{\mathrm{Code}}$ produces executable representations
 $Z_{\mathrm{C}} \sim p_{\mathrm{Code}}(\cdot \mid X)$,
 paired with an executor family
 \[
@@ -87,16 +91,33 @@ paired with an executor family
 \{ \rho : \mathcal{X} \times \mathcal{Z}_{\mathrm{C}} \to \Delta(\mathcal{Y}) \}
 \]
 corresponding to language-model-based simulation of code execution.
+\paragraph{Route 3 (Code + Solver Execution).}
+Route~3 uses the same code trace generator $E_{\mathrm{Code}}$ as Route~2, producing
+$Z_{\mathrm{C}} \sim p_{\mathrm{Code}}(\cdot \mid X)$,
+but pairs it with a deterministic executor corresponding to external code execution.
+Let $\mathrm{Exec} : \mathcal{X} \times \mathcal{Z}_{\mathrm{C}} \to \mathcal{Y}$ denote the (fixed) external runtime
+that executes the code trace $z$ on instance $x$ and returns an output.
+Our executor is
+\begin{align*}
+& \rho_{\mathrm{Exec}}(y \mid x,z) := \mathbf{1}\{y = \mathrm{Exec}(x,z)\}.
+\end{align*}
+The corresponding executor family is the singleton $\mathcal{H}_{\mathrm{Exec}} := \{\rho_{\mathrm{Exec}}\}.$
 
-\paragraph{Arm 3 (Code + Execution).}
-Arm~3 uses the same code trace generator $E_{\mathrm{Code}}$ as Arm~2, but pairs it with a deterministic executor corresponding to external code execution.
+% \subsection{Interpreting the Three routes}
 
-\subsection{Interpretation of Comparisons}
+% In all arms, the executor observes the full task instance $X$; the trace $Z$ provides auxiliary information. Accordingly, comparisons between arms are conditional on $X$ and should be interpreted as statements about what auxiliary representations can be simulated from others, and how execution mechanisms affect achievable risk.
 
-In all arms, the executor observes the full task instance $X$; the trace $Z$ provides auxiliary information. Accordingly, comparisons between arms are conditional on $X$ and should be interpreted as statements about what auxiliary representations can be simulated from others, and how execution mechanisms affect achievable risk.
+% Performance comparisons are expressed in terms of computation-constrained optimal risks $R^*_{\mathcal{H}}(E)$, which isolate differences due to representation and execution under fixed inference constraints.
 
-Performance comparisons are expressed in terms of computation-constrained optimal risks $R^*_{\mathcal{H}}(E)$, which isolate differences due to representation and execution under fixed inference constraints.
+% \subsection{Roadmap}
+% \label{roadmap}
+% Section~\ref{sec:empirical} instantiates this framework with concrete models, prompts, datasets, and statistical tests. Section~\ref{sec:performance} provides empirical evidence motivating assumptions about the relationship between natural-language and code traces. Section~\ref{sec:theory} analyzes the three arms theoretically within this framework.
 
-\subsection{Roadmap}
-
-Section~\ref{sec:eval} instantiates this framework with concrete models, prompts, datasets, and statistical tests. Section~\ref{sec:exp_similarity} provides empirical evidence motivating assumptions about the relationship between natural-language and code traces. Section~\ref{sec:theory} analyzes the three arms theoretically within this framework.
+\begin{figure*}[t]
+    \centering
+    \vspace{-5pt}
+    \includegraphics[width=1\textwidth]{images/main_combined.png}
+    \vspace{-25pt}
+    \caption{ \textbf{Code + Solver Execution scales better than natural language reasoning when problems get harder, both within-task and on average, interpolating and extrapolating.} $\tau$ is used to control digit length for arithmetic, table dimensionality for dynamic programming, and constraint matrix dimensionality for integer linear programming. The same data and setup is used from \cref{fig:three_routes}. }
+    \label{fig:per_task_accuracy}
+\end{figure*}
