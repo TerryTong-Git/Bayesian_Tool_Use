@@ -147,14 +147,14 @@
 
 
 \section{Route~2 vs.\ Route~3 Analysis}
-\label{theory: route2vroute3}
+\label{sec:route2v3}
 The key research question in this section is: \textbf{Is execution the bottleneck for language-based reasoning?}
 To address this question, we also ask two sub-questions:
 \begin{enumerate}
     \item[1)] When code is \emph{correct}, does external code execution (Route 3) have lower expected loss than LLM-based code execution (Route 2)?
     \item[2)] When code is \emph{incorrect}, is the probability that Route 2 outperforms Route 3 small?
 \end{enumerate}
-We pinpoint execution as the bottleneck, highlighting how using LLMs to generate code plans and then delegating to an external solver is the optimal policy among the 3 routes. We find that when code is correct, external code execution always has lower expected loss than LLM-based code execution. Moreover, when code is incorrect, we find the recovery rate, where Route 2 $>$ Route 3, is small. 
+We pinpoint execution as the bottleneck (cf.\ \cref{sec:rep_analysis}), highlighting how using LLMs to generate code plans and then delegating to an external solver is the optimal policy among the 3 routes (\cref{sec:performance}). We find that when code is correct, external code execution always has lower expected loss than LLM-based code execution. Moreover, when code is incorrect, we find the recovery rate, where Route 2 $>$ Route 3, is small. 
 
 \subsection{Setup}
 As defined in Section~\ref{sec:framework}, Route~2 and Route~3 share the same
@@ -223,8 +223,8 @@ Because the simulator may partially ignore $Z_{\mathrm{C}}$ and answer directly 
 
 \paragraph{Interpretation.}
 Route~2 can outperform Route~3 only if the recovery mass $\Pr(\neg C)\,r$ is large enough to offset simulation noise on correct-execution instances $\Pr(C)\,e_C$.
-Empirically, we find that recovery mass is consistently small across tasks and models, indicating that Route~2 rarely compensates for execution failures via recovery.
-Combined with the fact that $e_C$ is very high in practice, this explains why deterministic execution typically achieves lower end-to-end error than simulation on the same generated code traces. %what is the actual num rather than very high. 
+Empirically, we find that recovery mass is consistently small across tasks and models (\cref{fig:recovery_final}), indicating that Route~2 rarely compensates for execution failures via recovery.
+Combined with the fact that $e_C$ is very high in practice, this explains why deterministic execution typically achieves lower end-to-end error than simulation on the same generated code traces (\cref{fig:main}). %what is the actual num rather than very high. 
 
 % \paragraph{Theory--Empirics Connection.}
 % Although Theorem 1 is stated in terms of optimal (existential) risk, it provides a reduction: under empirically-motivated assumptions, any NL-trace decision rule in 

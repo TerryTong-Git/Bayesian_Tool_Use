@@ -117,7 +117,7 @@ with instance and seed modeled as random effects.
 \end{figure*}
 
 \paragraph{Results.}
-Across all benchmarks, we reject the global null hypothesis
+Across all benchmarks (\cref{fig:main}), we reject the global null hypothesis
 ($p < 0.001$ after correction).
 \emph{Post-hoc tests show a statistically significant advantage of Route~3
 over Route~2}, with a positive paired accuracy gap excluding zero in the
@@ -126,7 +126,7 @@ For Route~1 vs.\ Route~2, although the null is rejected ($p = 0.04$), the
 bootstrap confidence interval overlaps zero, indicating that we cannot
 conclude a meaningful difference between natural-language reasoning
 and code simulation under this evaluation.
-Performance gaps widen with increasing task difficulty: Route~3 remains
+Performance gaps widen with increasing task difficulty (\cref{fig:per_task_accuracy}): Route~3 remains
 stable while Route~1 degrades sharply, with code execution achieving
 approximately $4.1\times$ higher odds of correctness.
 
@@ -150,7 +150,7 @@ R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}})
 +
 \varepsilon.
 \]
-implying that, up to a small approximation error \S\ref{sec:func_similarity}, code traces are sufficient to match the best achievable performance of NL traces. Consequently, any performance gap between code-based and NL-based pipelines cannot be attributed to limitations of trace generation, but must arise from downstream execution.
+implying that, up to a small approximation error \S\ref{sec:func_similarity}, code traces are sufficient to match the best achievable performance of NL traces. Consequently, any performance gap between code-based and NL-based pipelines cannot be attributed to limitations of trace generation, but must arise from downstream execution (\cref{sec:route2v3}).
 
 
 \paragraph{Condition 1. ($\varepsilon$-garbling)}
@@ -170,11 +170,11 @@ R(E_{\mathrm{NL}},\rho)-R(E_{\mathrm{Tran}},\rho)
 and such that $\mathcal{H}_{\mathrm{C}}$ is closed under composition with $T$
 (i.e., for each $\rho_{\mathrm{NL}}\in\mathcal{H}_{\mathrm{NL}}$,
 $\rho_{T\circ \mathrm{NL}}\in\mathcal{H}_{\mathrm{C}}$).
-In Section~\ref{sec:rep_analysis} and Section~\ref{sec:func_similarity} we estimate these quantities and find $\varepsilon$ is small. 
+In \S\ref{sec:dist_similarity} and \S\ref{sec:func_similarity} we estimate these quantities and find $\varepsilon$ is small. 
 
 \begin{proposition}[Consequence of $\varepsilon$-garbling]
 \label{prop:dominance}
-If Condition~\ref{cond:simulability} holds, then
+If Condition~1 holds, then
 \[
 R^*_{\mathcal{H}_{\mathrm{C}}}(E_{\mathrm{Code}})
 \le
@@ -243,14 +243,14 @@ $\delta\to 0$ completes the proof.
 \label{sec:cond1}
 Condition 1 requires natural language to be an approximate garbling of code. To verify this, we ask the sub-questions as a proxy: 
 \begin{enumerate}
-    \item[1)] Does there exist a translator LLM such that the NL traces translated from code \emph{look} like the original NL traces (existence of $\varepsilon$-Translator)?  (\S\ref{sec:cond1})
+    \item[1)] Does there exist a translator LLM such that the NL traces translated from code \emph{look} like the original NL traces (existence of $\varepsilon$-Translator)?  (\S\ref{sec:dist_similarity})
     \item[2)] Does there exist a translator LLM such that the NL traces translated from code \emph{function} like the original NL traces quantified by end-task accuracy (closure under composition)? (\S\ref{sec:func_similarity})
 \end{enumerate}
-In essence, these questions ask whether translation during inference really can be done in either trace generation or execution interchangeably (equal after marginalizing over code traces), similar to the ideas presented in the proof. We find that a translator LLM does exist (e.g. \texttt{GPT-4o} as an example), such that the NL traces translated from code look and function like the original NL traces. This provides support for Condition 1 and suggests that NL does not provide decision-relevant information beyond code in the optimal risk regime. 
+In essence, these questions ask whether translation during inference really can be done in either trace generation or execution interchangeably (equal after marginalizing over code traces), similar to the ideas presented in the proof of \cref{prop:dominance}. We find that a translator LLM does exist (e.g. \texttt{GPT-4o} as an example), such that the NL traces translated from code look and function like the original NL traces. This provides support for Condition 1 and suggests that NL does not provide decision-relevant information beyond code in the optimal risk regime. 
 
 \subsubsection{Existence of $\varepsilon$-Translator}
 \label{sec:dist_similarity}
-We find that the distribution of reasoning traces produced in Route~1 can be approximated by post-processing code traces with a fixed transformation (\texttt{GPT-4o} with prompting).
+We find that the distribution of reasoning traces produced in Route~1 (cf.\ \cref{def:route}) can be approximated by post-processing code traces with a fixed transformation (\texttt{GPT-4o} with prompting).
 Concretely, for each task instance $x$ and corresponding code $c$, we form two trace conditions:
 \begin{align*}
     & (x, z_{\mathrm{NL}}), \quad z_{\mathrm{NL}} \sim p_{\mathrm{NL}}(\cdot \mid x), \quad \text{(\emph{Native})},\\
@@ -304,7 +304,7 @@ As a calibration control, we also ask the same judges to discriminate \emph{raw 
     \includegraphics[width=\linewidth]{images/native_vs_translated_scatter.png}
     \vspace{-25pt}
     \caption{\textbf{Translated NL and Native NL form local clusters in the embedding space and have high cosine similarity, explaining distributional indistinguishability.} We randomly sample and embed 200 native NL reasoning traces and 200 code-to-NL translations (produced by GPT-4o) using OpenAI's text-embedding-3-large and project them via t-SNE. Cosine similarities between Native-Native and Translated-Translated sample pairs from the same task.}
-    \label{fig:translation_additivity}
+    \label{fig:embedding_scatter}
 \end{figure}
 
 \begin{figure}[t]
@@ -317,7 +317,7 @@ As a calibration control, we also ask the same judges to discriminate \emph{raw 
 \end{figure}
 
 \paragraph{Results.}
-Across $\sim$2000 samples per judge ($\sim$6000 total across three judges), discrimination accuracy is near chance (50\%), with 50\% included in the Wilson CI. The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$79\%), indicating the judges can detect obvious representation differences but \emph{fail to distinguish translated vs.\ native NL}.
+Across $\sim$2000 samples per judge ($\sim$6000 total across three judges), discrimination accuracy is near chance (50\%), with 50\% included in the Wilson CI (\cref{fig:judge_barplot,fig:embedding_scatter}). The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$79\%), indicating the judges can detect obvious representation differences but \emph{fail to distinguish translated vs.\ native NL}.
 
 % (49.4\% with 95\% Wilson CI [47.2\%, 51.5\%]; Figure~\ref{fig:discrimination_by_task}).
 
@@ -349,10 +349,10 @@ We fail to reject the null hypothesis of equal performance, and observe overlapp
 This suggests that, under our evaluated settings, translating code into NL does not destroy decision-relevant information for downstream answering, consistent with the claim that NL CoT does not systematically add algorithmic advantage beyond what is in code. Qualitatively, we notice that the translated results are quite similar to the originals, though this seems heavily reliant on the translating prompt. 
 
 
-\paragraph{Interpretation.} Interpretation. Our empirical results indicate that Condition 1 holds in the settings we study, implying that the best achievable performance using code traces matches that of natural-language traces up to a small error $\varepsilon$. In particular, we find no evidence that natural-language reasoning introduces novel algorithmic strategies beyond those already captured by code representations on algorithmic tasks. As a result, replacing NL traces with code traces in the generation stage does not constitute a performance bottleneck when optimizing the end-to-end reasoning pipeline. Instead, the remaining limitations are best attributed to the execution mechanism rather than the trace representation.
+\paragraph{Interpretation.} Interpretation. Our empirical results indicate that Condition 1 holds in the settings we study, implying that the best achievable performance using code traces matches that of natural-language traces up to a small error $\varepsilon$. In particular, we find no evidence that natural-language reasoning introduces novel algorithmic strategies beyond those already captured by code representations on algorithmic tasks. As a result, replacing NL traces with code traces in the generation stage does not constitute a performance bottleneck when optimizing the end-to-end reasoning pipeline. Instead, the remaining limitations are best attributed to the execution mechanism rather than the trace representation (\cref{sec:route2v3}).
 
 % The end-to-end results in Section~\ref{sec:performance} are consistent with the hypothesis. If true, the hypothesis would imply little benefits of NL over code for the trace generation stage. Thus, using code in the trace generation stage, and delegating to an external runtime in the execution stage which also avoids simulation noise would be the optimal choice (Arm 3). We test the hypothesis by answering two research questions.
 
 
-% This section finds that NL does not contain decision-relevant information beyond what is present in NL, since translated NL looks both distributionally similar and functionally similar. Our statistical interpretation concludes that code is always as good as language for trace generation up to a $\varepsilon$ bound, which we empirically demonstrate is small via the functional similarity experiment. This suggests trace generation is not the bottleneck for language reasoning, pointing towards execution as the bottleneck (\cref{theory: route2vroute3}).
+% This section finds that NL does not contain decision-relevant information beyond what is present in NL, since translated NL looks both distributionally similar and functionally similar. Our statistical interpretation concludes that code is always as good as language for trace generation up to a $\varepsilon$ bound, which we empirically demonstrate is small via the functional similarity experiment. This suggests trace generation is not the bottleneck for language reasoning, pointing towards execution as the bottleneck (\cref{sec:route2v3}).
 % The answers to these questions are themselves interesting, but also empirically motivate assumptions used in Section~\ref{sec:theory}.
