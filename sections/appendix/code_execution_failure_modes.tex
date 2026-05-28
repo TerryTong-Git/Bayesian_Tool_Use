@@ -1,0 +1,28 @@
+\subsection{Code Execution Failure Modes}
+\label{app:code_execution_failure_modes}
+
+When Route~3 fails, failures are mostly semantic wrong answers rather than syntax or timeout failures. This supports the interpretation that code execution errors often originate in the generated program specification rather than in the Python runtime itself.
+
+\begin{center}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Model & Wrong answer & Syntax error & Runtime error & Time limit \\
+\midrule
+Haiku & 50.60\% & 16.37\% & 2.80\% & 30.23\% \\
+Codestral & 63.58\% & 4.36\% & 28.62\% & 3.44\% \\
+Gemini 2.0 & 71.79\% & 19.34\% & 2.46\% & 6.41\% \\
+Gemini 2.5 & 73.36\% & 15.62\% & 3.38\% & 7.64\% \\
+GPT-4o mini & 65.82\% & 3.60\% & 26.73\% & 3.85\% \\
+Mixtral & 45.77\% & 5.56\% & 46.04\% & 2.63\% \\
+Total & 61.06\% & 10.54\% & 19.23\% & 9.17\% \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Distribution of Route~3 code-execution failures.}
+\label{tab:appendix_code_failure_modes}
+\end{center}
+
+\appendixresult{\Cref{tab:appendix_code_failure_modes} is conditional on Route~3 failures and
+excludes parse-only rows where execution completed but the returned value failed
+parsing or type checks. This keeps the diagnostic focused on what happened after
+code execution was actually attempted.}

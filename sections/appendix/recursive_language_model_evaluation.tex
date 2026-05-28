@@ -1,0 +1,25 @@
+\subsection{Recursive Language Model Evaluation}
+\label{app:recursive_language_model_evaluation}
+
+To broaden coverage beyond standard LLM forward passes, we evaluate recursive
+language model execution on a 25\% subset at seed~0. Route~1 and Route~2 remain
+close under this executor family.
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Model & RLM Code Acc & RLM NL Acc & Better Arm \\
+\midrule
+Claude Haiku 4.5 & 29.4\% & 30.9\% & NL \\
+Gemini 2.5 Pro & 47.5\% & 45.2\% & Code \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Recursive language model results on the 25\% subset, seed 0.}
+\label{tab:appendix_rlm}
+\end{center}
+
+\appendixresult{The corresponding counts are 202/686 code-correct vs. 212/686 NL-correct for
+Claude Haiku 4.5, and 326/686 code-correct vs. 310/686 NL-correct for Gemini
+2.5 Pro. Because this is a 25\% subset, we use it as model-coverage evidence
+rather than as the main route estimate.}

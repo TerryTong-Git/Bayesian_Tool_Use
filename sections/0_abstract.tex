@@ -1,0 +1,31 @@
+\begin{abstract}
+% Context: Establish the problem domain
+
+For tool-augmented language models, direct comparison between natural-language reasoning and code-execution pipelines are difficult to interpret because they conflate the intermediate representation and execution mechanisms. We resolve this ambiguity by inserting an intermediate counterfactual: the model expresses its reasoning as executable code, which is simulated in-context by the language model to produce an answer. Evaluations on 48 verifiable algorithmic benchmark tasks replicate the results in the literature where tool-calling language models outperform purely natural language reasoning models (+28.9pp). However, the latter performs similar to our intermediate counterfactual model, suggesting that, in our evaluated setting, interventions on the intermediate representation do not sufficiently explain the tool-use advantage. The results are consistent with the observation that gains in performance appear in conjunction with reliable external execution methods. A reconstruction intervention experiment using a proxy LM to infer the prompt + NL reasoning from the code representations performs similarly to the original NL reasoning on our algorithmic benchmark tasks. This provides qualitative (and statistical) evidence against the null hypothesis that representations cause better performance. We find that changes in execution mechanism explains most of the observed accuracy uplift. We formalize this intuition with a simple statistical decision-theoretic model that characterizes when execution dominates the end-to-end risk in our disentangled trace generation-execution regime. All experiments are at \url{https://github.com/TerryTong-Git/ToolProj}.
+
+% What is surprising is the observation that when we attempt to infer the prompt
+
+% Large language models can solve verifiable algorithmic benchmark tasks either through direct natural language (NL) reasoning or by generating executable code delegated to an external solver. However, little progress has been made on \emph{understanding why}. Directly comparing NL Reasoning and delegation-based methods conflate intermediate representation and execution mechanism. 
+% % Gap + Contribution: What's missing and what we provide
+% We introduce a three-route framework that makes this comparison tractable by introducing an intermediary step---code generation with LLM-based execution. This enables our empirical analysis which shows a statistically significant gap supporting code $>$ NL by +28.9 percentage points across 48 different algorithmic tasks and 6 models. A downstream-evaluation probe find no clear accuracy advantage for NL Reasoning over code-derived NL traces in our tested settings. In our evaluated settings, 
+
+% A statistical analysis indicates that natural-language reasoning does not provide additional decision-relevant information beyond what is already captured by code representations. Replacing NL traces with code traces incurs minimal performance loss, while enabling deterministic execution. These results suggest that, for the evaluated verifiable algorithmic tasks, the unreliable in-model execution explains the observed gap more than the tested trace modalities. 
+
+% A statistical interpretation of  Route 1 v.s. Route 2 \yu{Route 1 and 2 are not defined here}reveals that NL reasoning does not contain decision-relevant information beyond what is already in code, indicating reasoning trace generation is not the bottleneck for language\yu{bottleneck for what, for accurately solving the task?}. Rather, a systematic study on how language reasoning and code function elucidates trace execution as the bottleneck.   
+
+
+% Building on these observations, we introduce a statistical and information theoretic analysis that proves code $>$ NL under mild assumptions. 
+
+% These results inform the design of compositional AI systems, providing principled guidance on when to use tool-augmented versus monolithic reasoning for algorithmic tasks. Our framework offers a unified perspective on the tool-use versus direct-reasoning tradeoff. 
+
+
+% \dr{Say something about the outcome of this analysis; you jump directly to experiments leaving the reader expecting something.}
+
+% Results: Concrete findings
+% Across 44 different algorithmic tasks and 6 models, we observe that there is statistically significant gap (p$<$0.001) between code and natural language reasoning ($>$25\%). 
+% \dr{The second part of the abstract is too long. You don't need to say everything. Say that the theoretical framework is supported by extensive experimentation (give the first sentence above) and summarize the rest in 1-2 sentences or drop it, since you want to keep the last, impact, sentence.} 
+
+% We find that code representations scale better, with 4.01$\times$ odds of correctness compared to natural language. Under causal intervention experiments, we identify natural language reasoning as a projection of deeper underlying algorithmic representations. Using this insight, we leverage Bayesian Inference and the Blackwell Dominance Principle to prove that the code execution route achieves lower Bayes Risk than natural language reasoning route.
+% Impact: Why it matters
+
+\end{abstract}

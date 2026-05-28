@@ -1,0 +1,19 @@
+\section{Conclusion}
+\label{sec:conclusion}
+We introduced a three-route framework (\cref{sec:framework}) for comparing code and natural language representations in algorithmic reasoning. By introducing an intermediate route---code generation with LLM-based simulation---we isolate translation effects from execution effects, enabling tractable pairwise analysis. Empirically, code execution achieves +28.9\% v.s. NL across 48 algorithmic tasks and 6 models (\cref{sec:performance}). In our analysis (\cref{sec:rep_analysis}), we first show that under the optimal risk regime, code is at least as good as NL up to a small $\varepsilon$ bound. Thus,  when designing near-optimal end-to-end reasoning pipelines, trace generation with code will never be a bottleneck w.r.t. to natural language. We further verify in the second part of our analysis that execution is the bottleneck by showing that when the code is correct, execution always beats language reasoning ($>$ 60\%), and when code is correct, language reasoning seldom beats execution ($<$2\%), as shown in \cref{fig:recovery_final}. Overall, when designing stronger AI systems that solve harder tasks, understanding that language reasoning struggles to scale with hardness should motivate us to design compositional AI systems that plan and reason in code and delegate execution to external solvers, as opposed to monolithic architectures. 
+
+
+% Our causal intervention experiments (\cref{sec:rep_analysis}) demonstrate that NL reasoning traces are distributionally and functionally equivalent to code-translated traces, supporting the hypothesis that NL reasoning implicitly simulates underlying algorithmic computations for specific models, tasks and prompts. Theoretically, we prove that code-based reasoning achieves lower Bayes risk via Blackwell dominance (\cref{prop:dominance}), providing an information-theoretic explanation for the empirical advantages of solver-based pipelines.
+
+\textbf{Limitations.} (1)~\emph{Empirical approximations}: Our distributional similarity tests use finite samples and specific judge models, introducing estimation variance. Furthermore, there is room for optimization with the prompts of both judges and translators. (2)~\emph{Model coverage}: While we evaluate both frontier (GPT-4o, Claude, Gemini) and open-source models (Mistral, Codestral), we cannot guarantee findings generalize to all architectures or future models. (3)~\emph{Theoretical assumptions}: The statistical analysis result assumes the existence of a garbling channel from code to NL, which we validate empirically but do not prove from first principles.
+
+
+% \paragraph{Limitations}
+
+% \paragraph{Future Work}
+
+\section{Impact Statement}
+This paper presents work whose goal is to advance the field of machine learning. There are many potential societal consequences of our work, none of which we feel must be specifically highlighted here.
+
+
+

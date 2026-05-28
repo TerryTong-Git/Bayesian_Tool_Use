@@ -1,0 +1,40 @@
+\subsection{Complexity-Stratified Route Accuracy}
+\label{app:complexity_stratified_route_accuracy}
+
+We stratify the main route-accuracy evaluation by the asymptotic complexity
+class of each task. Across classes, Route~3 remains the main source of
+improvement over Route~2, while Route~2 is close to Route~1.
+
+\begin{center}
+\footnotesize
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrr@{}}
+\toprule
+Complexity & Tasks & Inst. & R1 & R2 & R3 & R2--R1 & $p_{2,1}$ & R3--R2 \\
+\midrule
+$O(1)$ & 4 & 227 & 49.8 & 49.4 & 85.0 & -0.4 & 0.52 & 35.6 \\
+$O(\log n)$ & 1 & 35 & 22.4 & 28.6 & 32.9 & 6.2 & 2.7e-04 & 4.3 \\
+$O(n)$ & 4 & 135 & 4.8 & 5.0 & 7.5 & 0.2 & 0.635 & 2.5 \\
+$O(n \log n)$ & 5 & 68 & 0.0 & 0.0 & 0.0 & 0.0 & 1 & 0.0 \\
+$O(n^2)$ & 17 & 357 & 12.4 & 12.0 & 49.0 & -0.4 & 0.157 & 37.0 \\
+$O(n^2 \log n)$ & 1 & 1 & 0.0 & 0.0 & 0.0 & 0.0 & 1 & 0.0 \\
+$O(n^3)$ & 4 & 37 & 0.0 & 0.0 & 0.0 & 0.0 & 1 & 0.0 \\
+NP-hard & 8 & 480 & 23.8 & 21.7 & 59.2 & -2.1 & 5.0e-09 & 37.5 \\
+\bottomrule
+\end{tabular*}
+\captionof{table}{Route accuracy grouped by asymptotic complexity.}
+\label{tab:appendix_complexity_routes}
+\end{center}
+
+\appendixresult{Accuracies and deltas in \cref{tab:appendix_complexity_routes} are percentages
+or percentage points. McNemar tests are exact two-sided tests on paired outcomes.
+The main route pattern is not an artifact of averaging together easy and hard
+task families: the Route~3--Route~2 gain remains the largest observed change in
+the high-support classes, while Route~2 stays close to Route~1.}
+
+\paragraph{Task mapping.}
+The largest strata are $O(n^2)$ dynamic-programming, sorting, string, graph, and
+shortest-path tasks; and NP-hard ILP, graph coloring, edge-disjoint paths,
+shortest path, and TSP tasks. The smaller strata cover constant-time arithmetic
+and geometry, logarithmic binary search, linear selection/string matching,
+$O(n \log n)$ scheduling/sorting/hulls, $O(n^2 \log n)$ Kruskal MST, and cubic
+dynamic-programming/shortest-path routines.
