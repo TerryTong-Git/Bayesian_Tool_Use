@@ -329,12 +329,16 @@ R^*_{\mathcal{H}_{\mathrm{NL}}}(E_{\mathrm{NL}})
 % This suggests that, under our translation procedure, code-derived NL traces are distributionally similar to native NL CoT for most tasks.
 % We observe a small number of task-level exceptions (e.g., rod-cutting and Kruskal-style MST) where discrimination may exceed chance, which we treat as potential failure modes of a single fixed translator or as task-specific stylistic artifacts. 
 
-\subsubsection{Reconstruction Intervention}
+\subsubsection{Decision Intervention Reduction}
 \label{sec:func_similarity}
-We wish to show that whatever NL-executor can do after seeing an NL trace, the NL-executor can do after seeing a code trace, by first translating the code trace into an NL trace then behaving like the original NL-executor. We therefore test functional similarity using a downstream accuracy intervention.
-
+When the theory breaks down due to non-linearity and high-dimensionality, we find that the non-inferiority assertion still holds in practice. The implications are that representation does not explain as much of the observed performance uplift as execution. 
 
 \paragraph{Intervention setup.}
+Our goal is to provide evidence that code is non-inferior to NL in expected loss in the LLM regime. In our proof, we modelled NL as a fixed transformation (linearly additive projection) of a code latent. Similarly, we apply a fixed transformation of the code (i.e. permutations, syntactic shifts etc) to simulate NL. We expect it to yield nothing worse, since the underlying assumption is that code contains all decision-relevant information. The following experiment demonstrates that this is indeed the case. 
+
+
+We show that a fixed transformation of code (to natural language) behaves functionally similar to original natural language reasoning. Here, our estimand is the final accuracy, and treatment is the different inputs $\in \{\text{translated natural language reasoning, original natural language reasoning, baseline prompt (no reasoning) }\}$ to our LLM executor. 
+
 For a task instance $x$, we prompt a target language model in three conditions:
 (1) Baseline:  x,
 (2) Native: $ x \,\|\, z_{\mathrm{NL}},$
