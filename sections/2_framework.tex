@@ -1,6 +1,6 @@
 \section{Three-Route Framework}
 \label{sec:framework}
-Our central research question (RQ) is: \emph{Is code $>$ NL for algorithmic reasoning?} To begin to answer this question, we first introduce our three-route framework which enables tractable comparison by disentangling \emph{reasoning representation} (hereafter called Traces) and \emph{reasoning execution} (hereafter called Executors) and constructing an intermediary bridge (Route 2) for pairwise comparison. This section introduces the task (\cref{def:task}), notation (\cref{def:trace}), and definitions (\cref{def:risk}, \cref{def:route}).
+Our central research question (RQ) is: \emph{Is code $>$ NL for algorithmic reasoning?} To begin to answer this question, we first introduce our three-route framework which enables tractable comparison by disentangling \emph{reasoning representation} (hereafter called Traces) and \emph{reasoning execution} (hereafter called Executors) and constructing an intermediary bridge (Route 2) for pairwise comparison. This section introduces the task (\cref{def:task}), notation (\cref{def:trace}), and route definitions (\cref{def:route}).
 
 % \yu{It's not only information representation, reasoning modality/formalization might be a better word, since it includes both representation and intermediate reasoning} from differences in \emph{execution}, enabling tractable and interpretable comparisons. \yu{We first present basic definitions in the paper through \S\ref{def:task} to \S\ref{def:risk} and then introduce the three-arms framework in \S\ref{def:arm}. Note: always try to conclude/foresee the section in the first paragraph} 
 
@@ -17,7 +17,7 @@ All risks are taken with respect to the evaluation distribution $p(x)$.
 \subsection{Trace Generators and Executors}
 \label{def:trace}
 We model each reasoning pipeline as a two-stage stochastic process with \emph{(1) trace generation} and \emph{(2) execution}. 
-\paragraph{Trace generation.} We define a \emph{trace} as an object that stores intermediate reasoning used to solve a corresponding task (e.g. NL Chain-of-Thought or a program). A \emph{trace generator} is a Markov kernel
+\paragraph{Trace generation.} We define a \emph{trace} as an object that stores intermediate reasoning used to solve a corresponding task (e.g. NL Chain-of-Thought or a program). A \emph{trace generator} is a (stochastic) mapping
 \[
 E : \mathcal{X} \to \Delta(\mathcal{Z}), \qquad
 Z \sim p_E(z \mid x),
@@ -26,50 +26,49 @@ Z \sim p_E(z \mid x),
 which produces an auxiliary trace $Z$ given the task instance.
 
  
-\paragraph{Execution.} We define \emph{execution} as a procedure that consumes a trace, e.g. an LLM forward pass that takes as input a reasoning trace and outputs an answer, or executing a program in an external runtime. An \emph{executor} is a (possibly randomized) Markov kernel
+\paragraph{Execution.} We define \emph{execution} as a procedure that consumes a trace, e.g. an LLM forward pass that takes as input a reasoning trace and outputs an answer, or executing a program in an external runtime. An \emph{executor} is a (stochastic) mapping
 \[
 \rho : \mathcal{X} \times \mathcal{Z} \to \Delta(\mathcal{Y}),
 \]
 mapping the observed instance and trace to a final output.
 
-The induced conditional output distribution is
-\[
-P_{\rho,E}(Y = y \mid X = x)
-= \int \rho(y \mid x, z)\, p_E(z \mid x)\, dz .
-\]
+% The induced conditional output distribution is
+% \[
+% P_{\rho,E}(Y = y \mid X = x)
+% = \int \rho(y \mid x, z)\, p_E(z \mid x)\, dz .
+% \]
 
-The population risk of a pipeline $(E,\rho)$ is
-\begin{align*}
-& R(E,\rho)
-:= \mathbb{E}\bigl[\ell(\hat{Y}, X)\bigr],
-\qquad \\
-& Z \sim p_E(\cdot \mid X),\;
-\hat{Y} \sim \rho(\cdot \mid X, Z).
-\end{align*}
+% The population risk of a pipeline $(E,\rho)$ is
+% \begin{align*}
+% & R(E,\rho)
+% := \mathbb{E}\bigl[\ell(\hat{Y}, X)\bigr],
+% \qquad \\
+% & Z \sim p_E(\cdot \mid X),\;
+% \hat{Y} \sim \rho(\cdot \mid X, Z).
+% \end{align*}
 
-\subsection{Computation-Constrained Optimal Risk}
-\label{def:risk}
-To reflect inference-time computational constraints, we evaluate executors within restricted families.
-For a trace space $\mathcal{Z}$ (e.g. code or NL), let
-\[
-\mathcal{H}_{\mathcal{Z}} \subseteq
-\{ \rho : \mathcal{X} \times \mathcal{Z} \to \Delta(\mathcal{Y}) \}
-\]
-denote a class of executors realizable under a fixed model family, e.g. Mistral (see \cref{sec:cond1}).
-% and bounded inference protocol\yu{which will be introduce in \S\ref{} add a reference here}.
-We define the computation-constrained optimal risk of a trace generator $E$ as
-\[
-R^*_{\mathcal{H}}(E)
-:= \inf_{\rho \in \mathcal{H}} R(E,\rho).
-\]
-This differs from classical Bayes risk, which optimizes over all measurable decision rules.
+% \subsection{Computation-Constrained Optimal Risk}
+% \label{def:risk}
+% To reflect inference-time computational constraints, we evaluate executors within restricted families.
+% For a trace space $\mathcal{Z}$ (e.g. code or NL), let
+% \[
+% \mathcal{H}_{\mathcal{Z}} \subseteq
+% \{ \rho : \mathcal{X} \times \mathcal{Z} \to \Delta(\mathcal{Y}) \}
+% \]
+% denote a class of executors realizable under a fixed model family, e.g. Mistral (see \cref{sec:cond1}).
+% % and bounded inference protocol\yu{which will be introduce in \S\ref{} add a reference here}.
+% We define the computation-constrained optimal risk of a trace generator $E$ as
+% \[
+% R^*_{\mathcal{H}}(E)
+% := \inf_{\rho \in \mathcal{H}} R(E,\rho).
+% \]
+% This differs from classical Bayes risk, which optimizes over all measurable decision rules.
 
 
 
 \subsection{The Three Routes}
 \label{def:route}
-We consider three reasoning pipelines (``routes''), illustrated in \cref{fig:three_routes}. Each route is represented as a pair $(E,\rho)$ consisting of a trace generator $E$ and an executor $\rho$, evaluated via the risk $R(E,\rho)$ (\cref{def:trace}) and the computation-constrained
-optimal risk $R^*_{\mathcal H}(E)$ (\cref{def:risk}).
+We consider three reasoning pipelines (``routes''), illustrated in \cref{fig:three_routes}. Each route is represented as a pair $(E,\rho)$ consisting of a trace generator $E$ and an executor $\rho$.
 % \yu{A concrete example of the three routes can be referred to in Figure~\ref{fig:main}.}
 % \yu{I will add some NL descriptions which can be referred to in other sections. }
 \paragraph{Route 1 (Direct Natural Language).}

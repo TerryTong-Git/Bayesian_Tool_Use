@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex example_paper"] 1780007913.14925 "example_paper.aux" "example_paper.bbl" "example_paper" 1780007915.08234 0
+["bibtex example_paper"] 1780010440.98218 "example_paper.aux" "example_paper.bbl" "example_paper" 1780010442.90793 0
   "./example_paper.bib" 1779428338 118796 10379d62111382c2c647f05266bcabf3 ""
   "./icml2025.bst" 1779428338 27147 88eb4aed280e585571f8eac50f39a681 ""
-  "example_paper.aux" 1780007914.71137 16261 1bf12edd1fe422cc8c1982eccc993f29 "pdflatex"
+  "example_paper.aux" 1780010442.52464 15613 1041253430d50b755acaf470a4b498af "pdflatex"
   (generated)
   "example_paper.bbl"
   "example_paper.blg"
   (rewritten before read)
-["pdflatex"] 1780007913.27126 "example_paper.tex" "example_paper.pdf" "example_paper" 1780007915.0825 0
+["pdflatex"] 1780010441.11641 "example_paper.tex" "example_paper.pdf" "example_paper" 1780010442.9081 0
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -61,7 +61,6 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb" 1248133631 32442 c975af247b6702f7ca0c299af3616b80 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb" 1248133631 36310 f5ddc6715cc60deb16d9db5ded6a9391 ""
-  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb" 1136849748 45758 19968a0990191524e34e1994d4a31cb6 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1136849748 44729 811d6c62865936705a31c797a1d5dada ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb" 1136849748 46026 6dab18b61c907687b520c72847215a68 ""
@@ -273,9 +272,9 @@
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "algorithm.sty" 1779428338 2223 ada3eaa0c1bd465a639433dfafc2fc4e ""
   "algorithmic.sty" 1779428338 7784 49b44dd4deab911352f92235b9fcffff ""
-  "example_paper.aux" 1780007914.71137 16261 1bf12edd1fe422cc8c1982eccc993f29 "pdflatex"
-  "example_paper.bbl" 1780007913.26736 21130 ab9a2a10df265a177e3e2d34e8600f03 "bibtex example_paper"
-  "example_paper.out" 1780007914.10546 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "example_paper.aux" 1780010442.52464 15613 1041253430d50b755acaf470a4b498af "pdflatex"
+  "example_paper.bbl" 1780010441.11211 21130 ab9a2a10df265a177e3e2d34e8600f03 "bibtex example_paper"
+  "example_paper.out" 1780010441.94629 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "example_paper.tex" 1780004312.70133 8946 0f6c4486764142189f29470daa7e6b50 ""
   "fancyhdr.sty" 1779428338 20521 e5d13d98d57bd53d4fed3aa61bd29c86 ""
   "icml2025.sty" 1779916397.09798 28208 40333541e46c0c324686c524f57b49c2 ""
@@ -286,11 +285,11 @@
   "images/final/fig5_additivity.pdf" 1780007215.93478 30615 f033bde7027b8721d942adf656c1f369 ""
   "images/final/fig6_recovery.pdf" 1780007215.93679 26818 bbc8ad1a7026446711526973d5e87d92 ""
   "sections/0_abstract.tex" 1780001306.38198 5232 b504961a4b8728a11305cc3dba61ff7a ""
-  "sections/1_introduction.tex" 1780007907.61765 17129 ae3ded987a10317738fde25b035cd290 ""
-  "sections/2_framework.tex" 1780007238.89756 8295 5979ac29ff29a92cee20066b8fe0cb4b ""
-  "sections/3_experiment.tex" 1780007238.89815 25633 6adabe1808b2f9180989a5a0ffc9f43f ""
+  "sections/1_introduction.tex" 1780010427.23699 17066 9de971c8a7f76379930ac575de62b6f9 ""
+  "sections/2_framework.tex" 1780009888.98404 8194 0dee9644fa24594e6c11676b25b10772 ""
+  "sections/3_experiment.tex" 1780010427.23977 24083 62250794516cf01ae6d72d171fdc944a ""
   "sections/4_theory.tex" 1780007238.89856 14292 3f70417620a459dc08c354c87646e430 ""
-  "sections/5_related_work.tex" 1780001306.38331 3414 c6a4dba78e641e19ea0db988811bcc26 ""
+  "sections/5_related_work.tex" 1780010427.24214 3449 a63f68a4cc22b9266e94ecb6b0a575e6 ""
   "sections/6_conclusion.tex" 1780001306.38349 2909 5a798f400b834b14dec1f87d7b9960af ""
   "sections/appendix.tex" 1779945713 2135 6a90222d3471b0c384650b68d5aeea36 ""
   "sections/appendix/code_execution_failure_modes.tex" 1779945672 1273 ec01abb64ae14bded8a5f8fae07ba6f1 ""
