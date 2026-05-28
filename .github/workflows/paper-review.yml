@@ -1,25 +1,20 @@
-name: Paper Review
+name: Scientific Manuscript Review
 
 on:
-  pull_request:
-    branches: [main, master]
+  push:
+    branches:
+      - '**'
     paths:
-      - '*.tex'
-      - '*.bib'
-
-permissions:
-  contents: read
-  pull-requests: write
-  id-token: write
-
-concurrency:
-  group: paper-review-${{ github.ref }}
-  cancel-in-progress: true
+      - 'example_paper.tex'
+      - '**/*.tex'
 
 jobs:
-  paper-review:
-    name: Academic Paper Review
+  review-paper:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
 
     steps:
       - name: Checkout repository
@@ -27,174 +22,79 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get changed files
-        id: changed-files
+      - name: Find Pull Request
+        id: find-pr
+        uses: 8BitJonny/gh-get-current-pr@3.0.0
+        with:
+          filterOutClosed: true
+          sha: ${{ github.sha }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check Paper Exists
+        id: paper-content
         run: |
-          BASE_SHA=${{ github.event.pull_request.base.sha }}
-          HEAD_SHA=${{ github.event.pull_request.head.sha }}
-
-          echo "base_sha=$BASE_SHA" >> $GITHUB_OUTPUT
-          echo "head_sha=$HEAD_SHA" >> $GITHUB_OUTPUT
-
-          CHANGED_TEX=$(git diff --name-only $BASE_SHA $HEAD_SHA -- '*.tex' | tr '\n' ' ')
-          CHANGED_BIB=$(git diff --name-only $BASE_SHA $HEAD_SHA -- '*.bib' | tr '\n' ' ')
-
-          echo "tex_files=$CHANGED_TEX" >> $GITHUB_OUTPUT
-          echo "bib_files=$CHANGED_BIB" >> $GITHUB_OUTPUT
-
-          if [ -z "$CHANGED_TEX" ] && [ -z "$CHANGED_BIB" ]; then
-            echo "no_changes=true" >> $GITHUB_OUTPUT
+          if [ -f "example_paper.tex" ]; then
+            echo "paper_exists=true" >> $GITHUB_OUTPUT
           else
-            echo "no_changes=false" >> $GITHUB_OUTPUT
+            echo "paper_exists=false" >> $GITHUB_OUTPUT
           fi
 
-          echo "::notice::Changed LaTeX files: $CHANGED_TEX"
-          echo "::notice::Changed BibTeX files: $CHANGED_BIB"
-
-      - name: Skip if no relevant changes
-        if: steps.changed-files.outputs.no_changes == 'true'
-        run: |
-          echo "::notice::No LaTeX or BibTeX changes detected. Skipping review."
-          exit 0
-
-      - name: Run Paper Review
-        id: review
-        if: steps.changed-files.outputs.no_changes != 'true'
+      - name: Claude Scientific Manuscript Review
+        if: steps.find-pr.outputs.pr_found == 'true' && steps.paper-content.outputs.paper_exists == 'true'
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: |
-            You are an expert academic paper reviewer specializing in machine learning,
-            AI safety, and Bayesian methods. Your task is to provide constructive feedback
-            on this research paper to help improve its quality before submission.
+            You are reviewing a scientific manuscript for ICML 2025.
 
-            ## Changed Files in This PR
-            - LaTeX files: ${{ steps.changed-files.outputs.tex_files }}
-            - BibTeX files: ${{ steps.changed-files.outputs.bib_files }}
+            ## Task
+            Review `example_paper.tex` using systematic scientific manuscript review.
 
-            ## Review Instructions
+            ## Review Framework
 
-            ### Step 1: Read the Paper
-            Read the main LaTeX file (example_paper.tex) to understand the full paper content.
-            Pay attention to:
-            - Title, abstract, and introduction
-            - Related work and positioning
-            - Methodology and technical approach
-            - Experiments and results
-            - Discussion and conclusions
+            1. **Core Message**: Identify the ONE central finding
+            2. **Structure**: Evaluate IMRaD organization
+            3. **Scientific Clarity**: Check claims, statistics, hedging
+            4. **ICML Criteria**: Novelty, technical correctness, rigor
 
-            ### Step 2: Evaluate Key Aspects
+            ## Output Format
 
-            **1. Clarity & Writing Quality**
-            - Is the writing clear and concise?
-            - Are technical terms properly defined?
-            - Is the paper well-organized?
-            - Are there grammatical or spelling issues?
+            ## Summary
+            [1-2 sentence overview]
 
-            **2. Technical Soundness**
-            - Are claims properly supported by evidence?
-            - Is the methodology clearly described and reproducible?
-            - Are mathematical notations consistent?
-            - Are there any logical gaps in the arguments?
+            ## Strengths
+            - [Key strengths]
 
-            **3. Novelty & Contribution**
-            - Is the contribution clearly stated?
-            - How does this work differ from prior work?
-            - Is the significance of the work clearly motivated?
+            ## Weaknesses
+            - [Areas for improvement]
 
-            **4. Experiments & Results**
-            - Are experiments well-designed?
-            - Are baselines appropriate and fairly compared?
-            - Are results presented clearly (tables, figures)?
-            - Are limitations discussed?
+            ## Section Feedback
 
-            **5. Related Work & Citations**
-            - Is the related work comprehensive?
-            - Are key papers cited?
-            - Is the positioning with respect to prior work accurate?
+            ### Introduction
+            [Feedback on gap statement and structure]
 
-            **6. Presentation**
-            - Are figures and tables properly labeled and referenced?
-            - Is the paper within page limits?
-            - Does it follow the conference style guide (ICML 2025)?
+            ### Methods
+            [Feedback on clarity and reproducibility]
 
-            ### Step 3: Generate Review Report
+            ### Results
+            [Feedback on presentation and interpretation]
 
-            Create a structured review with the following format:
+            ### Discussion
+            [Feedback on claims and limitations]
 
-            ## Paper Review Summary
-
-            **Overall Assessment**: [Strong Accept / Accept / Weak Accept / Borderline / Weak Reject / Reject]
-            **Confidence**: [High / Medium / Low]
-
-            ### Strengths
-            - [List 3-5 key strengths]
-
-            ### Weaknesses
-            - [List 3-5 key weaknesses or areas for improvement]
-
-            ### Detailed Comments
-
-            #### Major Issues (if any)
-            [Issues that need to be addressed before publication]
-
-            #### Minor Issues
-            [Smaller improvements that would enhance the paper]
-
-            #### Questions for Authors
-            [Clarification questions that would help understand the contribution]
-
-            ### Specific Suggestions
-            [Line-by-line or section-by-section suggestions for improvement]
-
-            ### Missing References (if any)
-            [Papers that should be cited but are missing]
+            ## Recommendations
+            [Prioritized improvements before submission]
 
             ---
+            *Review by Claude using scientific-manuscript-review methodology*
+          claude_args: |
+            --max-turns 20
+            --allowedTools Read,Glob,Grep,Bash(cat),Bash(head)
 
-            Be constructive and specific. Reference specific sections, equations,
-            or line numbers when providing feedback. The goal is to help improve
-            the paper, not just criticize it.
-
-      - name: Comment on PR
-        if: steps.changed-files.outputs.no_changes != 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const reviewSummary = `## Paper Review by Claude
-
-            A paper review has been completed for this PR. Check the workflow summary for detailed feedback.
-
-            **Files reviewed**: ${{ steps.changed-files.outputs.tex_files }} ${{ steps.changed-files.outputs.bib_files }}
-
-            ---
-            *Automated review by Claude Paper Reviewer*
-            *Commit: ${{ github.sha }}*`;
-
-            // Find existing comment to update
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-            });
-
-            const botComment = comments.find(comment =>
-              comment.user.type === 'Bot' &&
-              comment.body.includes('Paper Review by Claude')
-            );
-
-            if (botComment) {
-              await github.rest.issues.updateComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                comment_id: botComment.id,
-                body: reviewSummary
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.issue.number,
-                body: reviewSummary
-              });
-            }
+      - name: Review Summary
+        run: |
+          echo "## Paper Review Complete"
+          echo "- PR Found: ${{ steps.find-pr.outputs.pr_found }}"
+          echo "- Paper Exists: ${{ steps.paper-content.outputs.paper_exists }}"
