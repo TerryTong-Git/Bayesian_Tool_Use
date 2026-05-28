@@ -435,12 +435,6 @@ INPUT ./sections/1_introduction.tex
 INPUT ./sections/1_introduction.tex
 INPUT ./sections/1_introduction.tex
 INPUT sections/1_introduction.tex
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm
-INPUT ./images/CleanShot 2026-01-28 at 08.37.18@2x.png
-INPUT ./images/CleanShot 2026-01-28 at 08.37.18@2x.png
-INPUT ./images/CleanShot 2026-01-28 at 08.37.18@2x.png
-INPUT ./images/CleanShot 2026-01-28 at 08.37.18@2x.png
-INPUT ./images/CleanShot 2026-01-28 at 08.37.18@2x.png
 INPUT ./images/review_20260528_files1/fig1_framework.pdf
 INPUT ./images/review_20260528_files1/fig1_framework.pdf
 INPUT ./images/review_20260528_files1/fig1_framework.pdf
@@ -448,11 +442,6 @@ INPUT ./images/review_20260528_files1/fig1_framework.pdf
 INPUT ./images/review_20260528_files1/fig1_framework.pdf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmro7t.tfm
-INPUT ./images/CleanShot 2026-01-28 at 16.25.56@2x.png
-INPUT ./images/CleanShot 2026-01-28 at 16.25.56@2x.png
-INPUT ./images/CleanShot 2026-01-28 at 16.25.56@2x.png
-INPUT ./images/CleanShot 2026-01-28 at 16.25.56@2x.png
-INPUT ./images/CleanShot 2026-01-28 at 16.25.56@2x.png
 INPUT ./images/review_20260528/fig2_prompts.pdf
 INPUT ./images/review_20260528/fig2_prompts.pdf
 INPUT ./images/review_20260528/fig2_prompts.pdf
@@ -479,16 +468,11 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
-INPUT ./images/combined_accuracy_delta.png
-INPUT ./images/combined_accuracy_delta.png
-INPUT ./images/combined_accuracy_delta.png
-INPUT ./images/combined_accuracy_delta.png
-INPUT ./images/combined_accuracy_delta.png
-INPUT ./images/review_20260528/fig3_main.pdf
-INPUT ./images/review_20260528/fig3_main.pdf
-INPUT ./images/review_20260528/fig3_main.pdf
-INPUT ./images/review_20260528/fig3_main.pdf
-INPUT ./images/review_20260528/fig3_main.pdf
+INPUT ./images/review_20260528_downloads/fig3_main.png
+INPUT ./images/review_20260528_downloads/fig3_main.png
+INPUT ./images/review_20260528_downloads/fig3_main.png
+INPUT ./images/review_20260528_downloads/fig3_main.png
+INPUT ./images/review_20260528_downloads/fig3_main.png
 INPUT ./sections/2_framework.tex
 INPUT ./sections/2_framework.tex
 INPUT ./sections/2_framework.tex
@@ -499,24 +483,17 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmro7t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmro8r.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
-INPUT ./images/main_combined.png
-INPUT ./images/main_combined.png
-INPUT ./images/main_combined.png
-INPUT ./images/main_combined.png
-INPUT ./images/main_combined.png
-INPUT ./images/review_20260528_files1/fig4_per_task.pdf
-INPUT ./images/review_20260528_files1/fig4_per_task.pdf
-INPUT ./images/review_20260528_files1/fig4_per_task.pdf
-INPUT ./images/review_20260528_files1/fig4_per_task.pdf
-INPUT ./images/review_20260528_files1/fig4_per_task.pdf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
+INPUT ./images/review_20260528_downloads/fig4_per_task.png
+INPUT ./images/review_20260528_downloads/fig4_per_task.png
+INPUT ./images/review_20260528_downloads/fig4_per_task.png
+INPUT ./images/review_20260528_downloads/fig4_per_task.png
+INPUT ./images/review_20260528_downloads/fig4_per_task.png
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT ./sections/3_experiment.tex
@@ -530,61 +507,21 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf
-INPUT ./images/CleanShot 2026-01-27 at 11.05.15@2x.png
-INPUT ./images/CleanShot 2026-01-27 at 11.05.15@2x.png
-INPUT ./images/CleanShot 2026-01-27 at 11.05.15@2x.png
-INPUT ./images/CleanShot 2026-01-27 at 11.05.15@2x.png
-INPUT ./images/CleanShot 2026-01-27 at 11.05.15@2x.png
-INPUT ./images/review_20260528/fig5_translator_judge.pdf
-INPUT ./images/review_20260528/fig5_translator_judge.pdf
-INPUT ./images/review_20260528/fig5_translator_judge.pdf
-INPUT ./images/review_20260528/fig5_translator_judge.pdf
-INPUT ./images/review_20260528/fig5_translator_judge.pdf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
-INPUT ./images/judge_discrimination_barplot.png
-INPUT ./images/judge_discrimination_barplot.png
-INPUT ./images/judge_discrimination_barplot.png
-INPUT ./images/judge_discrimination_barplot.png
-INPUT ./images/judge_discrimination_barplot.png
-INPUT ./images/review_20260528/fig6_judge.pdf
-INPUT ./images/review_20260528/fig6_judge.pdf
-INPUT ./images/review_20260528/fig6_judge.pdf
-INPUT ./images/review_20260528/fig6_judge.pdf
-INPUT ./images/review_20260528/fig6_judge.pdf
-INPUT ./images/native_vs_translated_scatter.png
-INPUT ./images/native_vs_translated_scatter.png
-INPUT ./images/native_vs_translated_scatter.png
-INPUT ./images/native_vs_translated_scatter.png
-INPUT ./images/native_vs_translated_scatter.png
-INPUT ./images/review_20260528/fig7_tsne.pdf
-INPUT ./images/review_20260528/fig7_tsne.pdf
-INPUT ./images/review_20260528/fig7_tsne.pdf
-INPUT ./images/review_20260528/fig7_tsne.pdf
-INPUT ./images/review_20260528/fig7_tsne.pdf
-INPUT ./images/translation_additivity.png
-INPUT ./images/translation_additivity.png
-INPUT ./images/translation_additivity.png
-INPUT ./images/translation_additivity.png
-INPUT ./images/translation_additivity.png
 INPUT ./images/review_20260528/fig8_additivity.pdf
 INPUT ./images/review_20260528/fig8_additivity.pdf
 INPUT ./images/review_20260528/fig8_additivity.pdf
 INPUT ./images/review_20260528/fig8_additivity.pdf
 INPUT ./images/review_20260528/fig8_additivity.pdf
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT ./sections/4_theory.tex
 INPUT ./sections/4_theory.tex
 INPUT ./sections/4_theory.tex
 INPUT ./sections/4_theory.tex
 INPUT sections/4_theory.tex
-INPUT ./images/recovery_vs_digits_overall.png
-INPUT ./images/recovery_vs_digits_overall.png
-INPUT ./images/recovery_vs_digits_overall.png
-INPUT ./images/recovery_vs_digits_overall.png
-INPUT ./images/recovery_vs_digits_overall.png
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT ./images/review_20260528/fig9_recovery.pdf
 INPUT ./images/review_20260528/fig9_recovery.pdf
 INPUT ./images/review_20260528/fig9_recovery.pdf

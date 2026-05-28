@@ -5,7 +5,7 @@ Many agentic systems orchestrate symbolic solvers, LLMs, and other tools, demons
 \begin{figure*}[t]
     \centering
     \vspace{-5pt}
-    \reviewfigurepair{images/CleanShot 2026-01-28 at 08.37.18@2x.png}{images/review_20260528_files1/fig1_framework.pdf}
+    \includegraphics[width=\textwidth]{images/review_20260528_files1/fig1_framework.pdf}
     \vspace{-3pt}
     \caption{\textbf{Three-Route Framework.} We decompose algorithmic reasoning into: (1) \emph{Translation} into NL or code, and (2) \emph{Execution} via LLM or solver. This yields three routes: \textbf{Route~1} (Direct NL), \textbf{Route~2} (Code + NL simulation), \textbf{Route~3} (Code + Solver Execution). Prior work compares only Route~1 vs.\ Route~3, confounding translation and execution. Our Route~2 isolates these factors. }
     \label{fig:three_routes}
@@ -15,7 +15,8 @@ Many agentic systems orchestrate symbolic solvers, LLMs, and other tools, demons
 \begin{figure*}[t]
     \centering
     \vspace{-5pt}
-    \reviewfigurepair{images/CleanShot 2026-01-28 at 16.25.56@2x.png}{images/review_20260528/fig2_prompts.pdf}
+    % \includegraphics[width=\textwidth]{images/CleanShot 2026-01-28 at 16.25.56@2x.png}
+    \includegraphics[width=\textwidth]{images/review_20260528/fig2_prompts.pdf}
     \vspace{-3pt}
     \caption{\textbf{Prompt templates for three-route evaluation.} \textbf{Route~1 (NL)}: LLM reasons in natural language only, code forbidden. \textbf{Route~2 (Sim)}: LLM generates Python \texttt{solution()} then simulates execution in NL. \textbf{Route~3 (Code)}: Same code executed in Python runtime. This isolates execution mechanism while controlling translation.}
     \label{fig:route_prompts}
@@ -88,7 +89,8 @@ Our main contributions are:
 \begin{figure*}[t]
     \centering
     \vspace{-5pt}
-    \reviewfigurepair{images/combined_accuracy_delta.png}{images/review_20260528/fig3_main.pdf}
+    % \includegraphics[width=\textwidth]{images/combined_accuracy_delta.png}
+    \includegraphics[width=\textwidth]{images/review_20260528_downloads/fig3_main.png}
     \vspace{-3pt}
     \caption{\textbf{Code + Solver Execution performs better than Direct NL reasoning quantified by end-task accuracy overall and within paired instances.} Paired instance contrasts are shown in the bootstrap distributions. Results are averaged over CLRS30, NPHardEval, Custom Eval Suite, 3 seeds and 6 models. }
     \label{fig:main}

@@ -104,17 +104,17 @@ $u_{\text{seed}[i]} \sim \mathcal{N}(0,\sigma^2_{\text{seed}})$ are random inter
 Route and difficulty are modeled as fixed effects (including a route $\times$ difficulty interaction),
 with instance and seed modeled as random effects.
 
-\begin{figure*}[t]
-    \centering
-    \vspace{-5pt}
-    \reviewfigurepair{images/CleanShot 2026-01-27 at 11.05.15@2x.png}{images/review_20260528/fig5_translator_judge.pdf}
-    \vspace{-3pt}
-    \caption{\textbf{Translation and discrimination prompts.}
-    \textbf{(a) Translator}: Converts code to NL reasoning step-by-step, mimicking native reasoning.
-    \textbf{(b) Discriminator}: Judge models classify traces as ``Native NL'' or ``Translated''.
-    Used in Section~\ref{sec:rep_analysis}.}
-    \label{fig:translator_discriminator}
-\end{figure*}
+% \begin{figure*}[t]
+%     \centering
+%     \vspace{-5pt}
+%     \reviewfigurepair{images/CleanShot 2026-01-27 at 11.05.15@2x.png}{images/review_20260528/fig5_translator_judge.pdf}
+%     \vspace{-3pt}
+%     \caption{\textbf{Translation and discrimination prompts.}
+%     \textbf{(a) Translator}: Converts code to NL reasoning step-by-step, mimicking native reasoning.
+%     \textbf{(b) Discriminator}: Judge models classify traces as ``Native NL'' or ``Translated''.
+%     Used in Section~\ref{sec:rep_analysis}.}
+%     \label{fig:translator_discriminator}
+% \end{figure*}
 
 \paragraph{Results.}
 Across all benchmarks (\cref{fig:main}), we reject the global null hypothesis
@@ -324,10 +324,10 @@ Concretely, for each task instance $x$ and corresponding code $c$, we form two t
     & (x, \hat z_{\mathrm{NL}}), \quad \hat z_{\mathrm{NL}} \sim p_{\mathrm{Tr}}(\cdot \mid c), \quad \text{(\emph{Translated})},
 \end{align*}
 where $p_{\mathrm{Tr}}(\cdot\mid c)$ is induced by a fixed translator $T$ applied to code, i.e.,
-$\hat z_{\mathrm{NL}} = T(c)$ with fixed prompting/in-context examples (Figure~\ref{fig:translator_discriminator}a).
+$\hat z_{\mathrm{NL}} = T(c)$ with fixed prompting/in-context examples.
 
 \paragraph{Discrimination task.}
-We formulate a binary classification task: a powerful zero-shot judge model is given $(x, z)$ and must predict whether $z$ is \emph{Native} or \emph{Translated} (Figure~\ref{fig:translator_discriminator}b).
+We formulate a binary classification task: a powerful zero-shot judge model is given $(x, z)$ and must predict whether $z$ is \emph{Native} or \emph{Translated}.
 This corresponds to distinguishing the joint distributions
 \[
 p(x)p_{\mathrm{NL}}(z\mid x)
@@ -358,33 +358,34 @@ As a calibration control, we also ask the same judges to discriminate \emph{raw 
 
 
 
-\begin{figure*}[t]
-    \centering
-    \reviewfigurepair{images/judge_discrimination_barplot.png}{images/review_20260528/fig6_judge.pdf}
-    \vspace{-3pt}
-    \caption{\textbf{Translated NL from code is indistinguishable to original NL traces, supporting the hypothesis that NL contains no more decision-related information than code.} Judges run zero-shot and are prompted to discriminate between native and translated, the translator is GPT-4o which gets 10-shot examples. Original data sources are pooled data from \cref{fig:route_prompts}. }
-    \label{fig:judge_barplot}
-\end{figure*}
-
-\begin{figure*}[t]
-    \centering
-    \reviewfigurepair{images/native_vs_translated_scatter.png}{images/review_20260528/fig7_tsne.pdf}
-    \vspace{-3pt}
-    \caption{\textbf{Translated NL and Native NL form local clusters in the embedding space and have high cosine similarity, explaining distributional indistinguishability.} We randomly sample and embed 200 native NL reasoning traces and 200 code-to-NL translations (produced by GPT-4o) using OpenAI's text-embedding-3-large and project them via t-SNE. Cosine similarities between Native-Native and Translated-Translated sample pairs from the same task.}
-    \label{fig:embedding_scatter}
-\end{figure*}
+% \begin{figure*}[t]
+%     \centering
+%     \reviewfigurepair{images/judge_discrimination_barplot.png}{images/review_20260528/fig6_judge.pdf}
+%     \vspace{-3pt}
+%     \caption{\textbf{Translated NL from code is indistinguishable to original NL traces, supporting the hypothesis that NL contains no more decision-related information than code.} Judges run zero-shot and are prompted to discriminate between native and translated, the translator is GPT-4o which gets 10-shot examples. Original data sources are pooled data from \cref{fig:route_prompts}. }
+%     \label{fig:judge_barplot}
+% \end{figure*}
+%
+% \begin{figure*}[t]
+%     \centering
+%     \reviewfigurepair{images/native_vs_translated_scatter.png}{images/review_20260528/fig7_tsne.pdf}
+%     \vspace{-3pt}
+%     \caption{\textbf{Translated NL and Native NL form local clusters in the embedding space and have high cosine similarity, explaining distributional indistinguishability.} We randomly sample and embed 200 native NL reasoning traces and 200 code-to-NL translations (produced by GPT-4o) using OpenAI's text-embedding-3-large and project them via t-SNE. Cosine similarities between Native-Native and Translated-Translated sample pairs from the same task.}
+%     \label{fig:embedding_scatter}
+% \end{figure*}
 
 \begin{figure*}[t]
     \centering
     \vspace{-5pt}
-    \reviewfigurepair{images/translation_additivity.png}{images/review_20260528/fig8_additivity.pdf}
+    % \includegraphics[width=\textwidth]{images/translation_additivity.png}
+    \includegraphics[width=\textwidth]{images/review_20260528/fig8_additivity.pdf}
     \vspace{-3pt}
     \caption{\textbf{Translated NL has the same functionality as the original native NL quantified by end-task accuracy. } When concatenating the reasoning traces to the prompt, we get much higher accuracy as opposed to the baseline with just the prompt, indicating the model is using the reasoning. There are statistically significant differences between the baseline and concatenated prompts, but no statistically significant difference between the Translated NL and Native NL concatenations. Source data is randomly sampled from existing data used to generate \cref{fig:main}, we use 1000 samples per model. }
     \label{fig:translation_additivity}
 \end{figure*}
 
 \paragraph{Results.}
-Across $\sim$2000 samples per judge ($\sim$6000 total across three judges), discrimination accuracy is near chance (50\%), with 50\% included in the Wilson CI (\cref{fig:judge_barplot,fig:embedding_scatter}). The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$82\%), indicating the judges can detect obvious representation differences but \emph{fail to distinguish translated vs.\ native NL}.
+Across $\sim$2000 samples per judge ($\sim$6000 total across three judges), discrimination accuracy is near chance (50\%), with 50\% included in the Wilson CI. The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$82\%), indicating the judges can detect obvious representation differences but \emph{fail to distinguish translated vs.\ native NL}.
 
 % (49.4\% with 95\% Wilson CI [47.2\%, 51.5\%]; Figure~\ref{fig:discrimination_by_task}).
 
