@@ -248,14 +248,14 @@ Combined with the fact that $e_C$ is very high in practice, this explains why de
 % practice, while clarifying that both the empirical findings and the theoretical guarantees
 % are conditional on the evaluated task class, model families, and executor constraints.
 
-\begin{figure*}[t]
+\begin{figure}[t]
     \centering
     \vspace{-5pt}
-    % \includegraphics[width=\textwidth]{images/recovery_vs_digits_overall.png}
-    \includegraphics[width=\textwidth]{images/review_20260528/fig9_recovery.pdf}
+    % \includegraphics[width=\linewidth]{images/recovery_vs_digits_overall.png}
+    \includegraphics[width=\linewidth]{images/final/fig6_recovery.pdf}
     \vspace{-3pt}
     \caption{\textbf{Recovery mass (blue) $<$ 2\% on average and reduces as tasks get harder. On the other hand, LLM execution gets noisier compared to python execution (red) }. Recovery rate $\Pr(\neg C)\,r$ (Code Execution Fails but LLM Reasoning succeeds $|$ Incorrect Code) in blue trends down. Exec wins $\Pr(C)e_C$ (Code Execution succeeds and LLM reasoning fails $|$ Correct Code) increases as tasks get harder.}
     \label{fig:recovery_final}
-\end{figure*}
+\end{figure}
 
 % \subsection{Relating Theory and Empirical Observations}

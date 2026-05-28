@@ -11,33 +11,33 @@
 \citation{anthropic2024claude}
 \citation{velivckovic2022clrs}
 \citation{fan2023nphardeval}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:three_routes}{{1}{1}{\textbf {Three-Route Framework.} We decompose algorithmic reasoning into: (1) \emph {Translation} into NL or code, and (2) \emph {Execution} via LLM or solver. This yields three routes: \textbf {Route~1} (Direct NL), \textbf {Route~2} (Code + NL simulation), \textbf {Route~3} (Code + Solver Execution). Prior work compares only Route~1 vs.\ Route~3, confounding translation and execution. Our Route~2 isolates these factors}{figure.caption.1}{}}
+\newlabel{fig:three_routes@cref}{{[figure][1][]1}{[1][1][]1}}
 \newlabel{sec:intro}{{1}{1}{}{section.1}{}}
 \newlabel{sec:intro@cref}{{[section][1][]1}{[1][1][]1}}
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:three_routes}{{1}{2}{\textbf {Three-Route Framework.} We decompose algorithmic reasoning into: (1) \emph {Translation} into NL or code, and (2) \emph {Execution} via LLM or solver. This yields three routes: \textbf {Route~1} (Direct NL), \textbf {Route~2} (Code + NL simulation), \textbf {Route~3} (Code + Solver Execution). Prior work compares only Route~1 vs.\ Route~3, confounding translation and execution. Our Route~2 isolates these factors}{figure.caption.1}{}}
-\newlabel{fig:three_routes@cref}{{[figure][1][]1}{[1][1][]2}}
+\newlabel{fig:route_prompts}{{2}{2}{\textbf {Prompt templates for three-route evaluation.} \textbf {Route~1 (NL)}: LLM reasons in natural language only, code forbidden. \textbf {Route~2 (Sim)}: LLM generates Python \texttt {solution()} then simulates execution in NL. \textbf {Route~3 (Code)}: Same code executed in Python runtime. This isolates execution mechanism while controlling translation}{figure.caption.2}{}}
+\newlabel{fig:route_prompts@cref}{{[figure][2][]2}{[1][1][]2}}
 \newlabel{sec:framework}{{2}{2}{}{section.2}{}}
 \newlabel{sec:framework@cref}{{[section][2][]2}{[1][2][]2}}
-\newlabel{def:task}{{2.1}{2}{}{subsection.2.1}{}}
-\newlabel{def:task@cref}{{[subsection][1][2]2.1}{[1][2][]2}}
-\newlabel{def:trace}{{2.2}{2}{}{subsection.2.2}{}}
-\newlabel{def:trace@cref}{{[subsection][2][2]2.2}{[1][2][]2}}
-\newlabel{fig:route_prompts}{{2}{3}{\textbf {Prompt templates for three-route evaluation.} \textbf {Route~1 (NL)}: LLM reasons in natural language only, code forbidden. \textbf {Route~2 (Sim)}: LLM generates Python \texttt {solution()} then simulates execution in NL. \textbf {Route~3 (Code)}: Same code executed in Python runtime. This isolates execution mechanism while controlling translation}{figure.caption.2}{}}
-\newlabel{fig:route_prompts@cref}{{[figure][2][]2}{[1][1][]3}}
+\newlabel{fig:main}{{3}{3}{\textbf {Code + Solver Execution performs better than Direct NL reasoning quantified by end-task accuracy overall and within paired instances.} Paired instance contrasts are shown in the bootstrap distributions. Results are averaged over CLRS30, NPHardEval, Custom Eval Suite, 3 seeds and 6 models}{figure.caption.3}{}}
+\newlabel{fig:main@cref}{{[figure][3][]3}{[1][2][]3}}
+\newlabel{def:task}{{2.1}{3}{}{subsection.2.1}{}}
+\newlabel{def:task@cref}{{[subsection][1][2]2.1}{[1][2][]3}}
+\newlabel{def:trace}{{2.2}{3}{}{subsection.2.2}{}}
+\newlabel{def:trace@cref}{{[subsection][2][2]2.2}{[1][3][]3}}
 \newlabel{def:risk}{{2.3}{3}{}{subsection.2.3}{}}
 \newlabel{def:risk@cref}{{[subsection][3][2]2.3}{[1][3][]3}}
 \newlabel{def:route}{{2.4}{3}{}{subsection.2.4}{}}
 \newlabel{def:route@cref}{{[subsection][4][2]2.4}{[1][3][]3}}
-\newlabel{fig:main}{{3}{4}{\textbf {Code + Solver Execution performs better than Direct NL reasoning quantified by end-task accuracy overall and within paired instances.} Paired instance contrasts are shown in the bootstrap distributions. Results are averaged over CLRS30, NPHardEval, Custom Eval Suite, 3 seeds and 6 models}{figure.caption.3}{}}
-\newlabel{fig:main@cref}{{[figure][3][]3}{[1][2][]4}}
 \newlabel{sec:empirical}{{3}{4}{}{section.3}{}}
 \newlabel{sec:empirical@cref}{{[section][3][]3}{[1][4][]4}}
 \newlabel{sec:instantiation}{{3.1}{4}{}{subsection.3.1}{}}
 \newlabel{sec:instantiation@cref}{{[subsection][1][3]3.1}{[1][4][]4}}
+\newlabel{sec:performance}{{3.2}{4}{}{subsection.3.2}{}}
+\newlabel{sec:performance@cref}{{[subsection][2][3]3.2}{[1][4][]4}}
 \newlabel{fig:per_task_accuracy}{{4}{5}{\textbf {Code + Solver Execution scales better than natural language reasoning when problems get harder, both within-task and on average, interpolating and extrapolating (grey) .} $\tau $ is used to control digit length for arithmetic, table dimensionality for dynamic programming, and constraint matrix dimensionality for integer linear programming. The same data and setup is used from \cref {fig:main}}{figure.caption.4}{}}
 \newlabel{fig:per_task_accuracy@cref}{{[figure][4][]4}{[1][4][]5}}
-\newlabel{sec:performance}{{3.2}{5}{}{subsection.3.2}{}}
-\newlabel{sec:performance@cref}{{[subsection][2][3]3.2}{[1][5][]5}}
 \newlabel{sec:rep_analysis}{{4}{5}{}{section.4}{}}
 \newlabel{sec:rep_analysis@cref}{{[section][4][]4}{[1][5][]5}}
 \newlabel{cond:simulability}{{4}{6}{}{theorem.4.1}{}}
@@ -46,17 +46,23 @@
 \newlabel{prop:dominance@cref}{{[proposition][2][4]4.2}{[1][6][]6}}
 \newlabel{sec:cond1}{{4.1}{6}{}{subsection.4.1}{}}
 \newlabel{sec:cond1@cref}{{[subsection][1][4]4.1}{[1][6][]6}}
-\newlabel{sec:dist_similarity}{{4.1.1}{7}{}{subsubsection.4.1.1}{}}
-\newlabel{sec:dist_similarity@cref}{{[subsubsection][1][4,1]4.1.1}{[1][6][]7}}
+\newlabel{sec:dist_similarity}{{4.1.1}{6}{}{subsubsection.4.1.1}{}}
+\newlabel{sec:dist_similarity@cref}{{[subsubsection][1][4,1]4.1.1}{[1][6][]6}}
+\newlabel{fig:translation_additivity}{{5}{7}{\textbf {Translated NL has the same functionality as the original native NL quantified by end-task accuracy. } When concatenating the reasoning traces to the prompt, we get much higher accuracy as opposed to the baseline with just the prompt, indicating the model is using the reasoning. There are statistically significant differences between the baseline and concatenated prompts, but no statistically significant difference between the Translated NL and Native NL concatenations. Source data is randomly sampled from existing data used to generate \cref {fig:main}, we use 1000 samples per model}{figure.caption.5}{}}
+\newlabel{fig:translation_additivity@cref}{{[figure][5][]5}{[1][7][]7}}
 \newlabel{sec:func_similarity}{{4.1.2}{7}{}{subsubsection.4.1.2}{}}
 \newlabel{sec:func_similarity@cref}{{[subsubsection][2][4,1]4.1.2}{[1][7][]7}}
-\newlabel{sec:route2v3}{{5}{7}{}{section.5}{}}
-\newlabel{sec:route2v3@cref}{{[section][5][]5}{[1][7][]7}}
 \citation{graves_neural_2014,velickovic_neural_2021,reed_neural_2016,graves_hybrid_2016}
 \citation{schneider_controlled_2003,risko_cognitive_2016,anderson_neural_2010}
 \citation{kolter_hierarchical_2007,dietterich_hierarchical_2000}
 \citation{hudson_compositional_2018,hupkes_compositionality_2020,andreas_neural_2017,poggio2017and}
 \citation{velickovic_neural_2021,mahdavi_towards_2023,ibarz_generalist_2022,yan_neural_2020}
+\newlabel{sec:route2v3}{{5}{8}{}{section.5}{}}
+\newlabel{sec:route2v3@cref}{{[section][5][]5}{[1][8][]8}}
+\newlabel{fig:recovery_final}{{6}{8}{\textbf {Recovery mass (blue) $<$ 2\% on average and reduces as tasks get harder. On the other hand, LLM execution gets noisier compared to python execution (red) }. Recovery rate $\Pr (\neg C)\,r$ (Code Execution Fails but LLM Reasoning succeeds $|$ Incorrect Code) in blue trends down. Exec wins $\Pr (C)e_C$ (Code Execution succeeds and LLM reasoning fails $|$ Correct Code) increases as tasks get harder}{figure.caption.6}{}}
+\newlabel{fig:recovery_final@cref}{{[figure][6][]6}{[1][8][]8}}
+\newlabel{sec:related_work}{{6}{8}{}{section.6}{}}
+\newlabel{sec:related_work@cref}{{[section][6][]6}{[1][8][]8}}
 \citation{marra_integrating_2019,olausson_linc_2023,han_folio_2024}
 \citation{altabaa2025cot,zelikman_star_2022,merrill_expressive_2024,altabaa_cot_2025}
 \citation{xie2021explanation,garg2022can,akyurek2022learning,zhang2024trained}
@@ -64,14 +70,8 @@
 \citation{shen_llm_2024,10.5555/3666122.3669119,qin_toolllm_2023,tang_toolalpaca_2023,parisi_talm_2022}
 \citation{shin_few-shot_2022,krishnamurthy_neural_2017,berant_semantic_2013,dong_language_2016}
 \citation{puri_codenet_2021,alon_code2vec_2019,chen_neural_2018}
-\newlabel{sec:related_work}{{6}{8}{}{section.6}{}}
-\newlabel{sec:related_work@cref}{{[section][6][]6}{[1][8][]8}}
-\newlabel{sec:conclusion}{{7}{8}{}{section.7}{}}
-\newlabel{sec:conclusion@cref}{{[section][7][]7}{[1][8][]8}}
-\newlabel{fig:translation_additivity}{{5}{10}{\textbf {Translated NL has the same functionality as the original native NL quantified by end-task accuracy. } When concatenating the reasoning traces to the prompt, we get much higher accuracy as opposed to the baseline with just the prompt, indicating the model is using the reasoning. There are statistically significant differences between the baseline and concatenated prompts, but no statistically significant difference between the Translated NL and Native NL concatenations. Source data is randomly sampled from existing data used to generate \cref {fig:main}, we use 1000 samples per model}{figure.caption.5}{}}
-\newlabel{fig:translation_additivity@cref}{{[figure][5][]5}{[1][7][]10}}
-\newlabel{fig:recovery_final}{{6}{11}{\textbf {Recovery mass (blue) $<$ 2\% on average and reduces as tasks get harder. On the other hand, LLM execution gets noisier compared to python execution (red) }. Recovery rate $\Pr (\neg C)\,r$ (Code Execution Fails but LLM Reasoning succeeds $|$ Incorrect Code) in blue trends down. Exec wins $\Pr (C)e_C$ (Code Execution succeeds and LLM reasoning fails $|$ Correct Code) increases as tasks get harder}{figure.caption.6}{}}
-\newlabel{fig:recovery_final@cref}{{[figure][6][]6}{[1][8][]11}}
+\newlabel{sec:conclusion}{{7}{9}{}{section.7}{}}
+\newlabel{sec:conclusion@cref}{{[section][7][]7}{[1][9][]9}}
 \bibdata{example_paper}
 \bibcite{achiam2023gpt4}{{1}{2023}{{Achiam et~al.}}{{Achiam, Adler, Agarwal, Ahmad, Akkaya, Aleman, Almeida, Altenschmidt, Altman, Anadkat, et~al.}}}
 \bibcite{akyurek2022learning}{{2}{2022}{{Aky{\"u}rek et~al.}}{{Aky{\"u}rek, Schuurmans, Andreas, Ma, and Zhou}}}
@@ -126,42 +126,42 @@
 \bibcite{zelikman_star_2022}{{51}{2022}{{Zelikman et~al.}}{{Zelikman, Wu, Mu, and Goodman}}}
 \bibcite{zhang2024trained}{{52}{2024}{{Zhang et~al.}}{{Zhang, Frei, and Bartlett}}}
 \bibstyle{icml2025}
-\newlabel{app:route_robustness}{{A}{15}{}{appendix.A}{}}
-\newlabel{app:route_robustness@cref}{{[appendix][1][2147483647]A}{[1][15][]15}}
-\newlabel{app:complexity_stratified_route_accuracy}{{A.1}{15}{}{subsection.A.1}{}}
-\newlabel{app:complexity_stratified_route_accuracy@cref}{{[subappendix][1][2147483647,1]A.1}{[1][15][]15}}
-\newlabel{tab:appendix_complexity_routes}{{1}{15}{Route accuracy grouped by asymptotic complexity}{table.1}{}}
-\newlabel{tab:appendix_complexity_routes@cref}{{[table][1][2147483647]1}{[1][15][]15}}
-\newlabel{app:model_stratified_route_accuracy}{{A.2}{15}{}{subsection.A.2}{}}
-\newlabel{app:model_stratified_route_accuracy@cref}{{[subappendix][2][2147483647,1]A.2}{[1][15][]15}}
-\newlabel{tab:appendix_model_routes}{{2}{15}{Route accuracy grouped by model}{table.2}{}}
-\newlabel{tab:appendix_model_routes@cref}{{[table][2][2147483647]2}{[1][15][]15}}
-\newlabel{app:functional_similarity_checks}{{B}{15}{}{appendix.B}{}}
-\newlabel{app:functional_similarity_checks@cref}{{[appendix][2][2147483647]B}{[1][15][]15}}
-\newlabel{app:prompt_translation_shot_ablation}{{B.1}{15}{}{subsection.B.1}{}}
-\newlabel{app:prompt_translation_shot_ablation@cref}{{[subappendix][1][2147483647,2]B.1}{[1][15][]15}}
-\newlabel{tab:appendix_shot_ablation}{{3}{16}{Translation-additivity shot ablation for Claude Haiku 4.5}{table.3}{}}
-\newlabel{tab:appendix_shot_ablation@cref}{{[table][3][2147483647]3}{[1][16][]16}}
-\newlabel{app:recursive_language_model_evaluation}{{B.2}{16}{}{subsection.B.2}{}}
-\newlabel{app:recursive_language_model_evaluation@cref}{{[subappendix][2][2147483647,2]B.2}{[1][16][]16}}
-\newlabel{tab:appendix_rlm}{{4}{16}{Recursive language model results on the 25\% subset, seed 0}{table.4}{}}
-\newlabel{tab:appendix_rlm@cref}{{[table][4][2147483647]4}{[1][16][]16}}
-\newlabel{app:additional_model_evaluations}{{C}{16}{}{appendix.C}{}}
-\newlabel{app:additional_model_evaluations@cref}{{[appendix][3][2147483647]C}{[1][16][]16}}
-\newlabel{app:coding_specialized_model_evaluation}{{C.1}{16}{}{subsection.C.1}{}}
-\newlabel{app:coding_specialized_model_evaluation@cref}{{[subappendix][1][2147483647,3]C.1}{[1][16][]16}}
-\newlabel{tab:appendix_coding_models}{{5}{16}{Route accuracy for coding-specialized models. Each cell reports accuracy over correct / denominator}{table.5}{}}
-\newlabel{tab:appendix_coding_models@cref}{{[table][5][2147483647]5}{[1][16][]16}}
-\newlabel{app:frontier_model_sanity_checks}{{C.2}{16}{}{subsection.C.2}{}}
-\newlabel{app:frontier_model_sanity_checks@cref}{{[subappendix][2][2147483647,3]C.2}{[1][16][]16}}
-\newlabel{tab:appendix_frontier_nopatch}{{6}{16}{Frontier controlled-subset route accuracy. Entries are accuracy (correct / denominator)}{table.6}{}}
-\newlabel{tab:appendix_frontier_nopatch@cref}{{[table][6][2147483647]6}{[1][16][]16}}
-\newlabel{app:failure_analysis}{{D}{17}{}{appendix.D}{}}
-\newlabel{app:failure_analysis@cref}{{[appendix][4][2147483647]D}{[1][16][]17}}
-\newlabel{app:code_execution_failure_modes}{{D.1}{17}{}{subsection.D.1}{}}
-\newlabel{app:code_execution_failure_modes@cref}{{[subappendix][1][2147483647,4]D.1}{[1][16][]17}}
-\newlabel{tab:appendix_code_failure_modes}{{7}{17}{Distribution of Route~3 code-execution failures}{table.7}{}}
-\newlabel{tab:appendix_code_failure_modes@cref}{{[table][7][2147483647]7}{[1][17][]17}}
-\newlabel{app:reproducibility_notes}{{E}{17}{}{appendix.E}{}}
-\newlabel{app:reproducibility_notes@cref}{{[appendix][5][2147483647]E}{[1][17][]17}}
-\gdef \@abspage@last{17}
+\newlabel{app:route_robustness}{{A}{13}{}{appendix.A}{}}
+\newlabel{app:route_robustness@cref}{{[appendix][1][2147483647]A}{[1][13][]13}}
+\newlabel{app:complexity_stratified_route_accuracy}{{A.1}{13}{}{subsection.A.1}{}}
+\newlabel{app:complexity_stratified_route_accuracy@cref}{{[subappendix][1][2147483647,1]A.1}{[1][13][]13}}
+\newlabel{tab:appendix_complexity_routes}{{1}{13}{Route accuracy grouped by asymptotic complexity}{table.1}{}}
+\newlabel{tab:appendix_complexity_routes@cref}{{[table][1][2147483647]1}{[1][13][]13}}
+\newlabel{app:model_stratified_route_accuracy}{{A.2}{13}{}{subsection.A.2}{}}
+\newlabel{app:model_stratified_route_accuracy@cref}{{[subappendix][2][2147483647,1]A.2}{[1][13][]13}}
+\newlabel{tab:appendix_model_routes}{{2}{13}{Route accuracy grouped by model}{table.2}{}}
+\newlabel{tab:appendix_model_routes@cref}{{[table][2][2147483647]2}{[1][13][]13}}
+\newlabel{app:functional_similarity_checks}{{B}{13}{}{appendix.B}{}}
+\newlabel{app:functional_similarity_checks@cref}{{[appendix][2][2147483647]B}{[1][13][]13}}
+\newlabel{app:prompt_translation_shot_ablation}{{B.1}{13}{}{subsection.B.1}{}}
+\newlabel{app:prompt_translation_shot_ablation@cref}{{[subappendix][1][2147483647,2]B.1}{[1][13][]13}}
+\newlabel{tab:appendix_shot_ablation}{{3}{14}{Translation-additivity shot ablation for Claude Haiku 4.5}{table.3}{}}
+\newlabel{tab:appendix_shot_ablation@cref}{{[table][3][2147483647]3}{[1][14][]14}}
+\newlabel{app:recursive_language_model_evaluation}{{B.2}{14}{}{subsection.B.2}{}}
+\newlabel{app:recursive_language_model_evaluation@cref}{{[subappendix][2][2147483647,2]B.2}{[1][14][]14}}
+\newlabel{tab:appendix_rlm}{{4}{14}{Recursive language model results on the 25\% subset, seed 0}{table.4}{}}
+\newlabel{tab:appendix_rlm@cref}{{[table][4][2147483647]4}{[1][14][]14}}
+\newlabel{app:additional_model_evaluations}{{C}{14}{}{appendix.C}{}}
+\newlabel{app:additional_model_evaluations@cref}{{[appendix][3][2147483647]C}{[1][14][]14}}
+\newlabel{app:coding_specialized_model_evaluation}{{C.1}{14}{}{subsection.C.1}{}}
+\newlabel{app:coding_specialized_model_evaluation@cref}{{[subappendix][1][2147483647,3]C.1}{[1][14][]14}}
+\newlabel{tab:appendix_coding_models}{{5}{14}{Route accuracy for coding-specialized models. Each cell reports accuracy over correct / denominator}{table.5}{}}
+\newlabel{tab:appendix_coding_models@cref}{{[table][5][2147483647]5}{[1][14][]14}}
+\newlabel{app:frontier_model_sanity_checks}{{C.2}{14}{}{subsection.C.2}{}}
+\newlabel{app:frontier_model_sanity_checks@cref}{{[subappendix][2][2147483647,3]C.2}{[1][14][]14}}
+\newlabel{tab:appendix_frontier_nopatch}{{6}{14}{Frontier controlled-subset route accuracy. Entries are accuracy (correct / denominator)}{table.6}{}}
+\newlabel{tab:appendix_frontier_nopatch@cref}{{[table][6][2147483647]6}{[1][14][]14}}
+\newlabel{app:failure_analysis}{{D}{15}{}{appendix.D}{}}
+\newlabel{app:failure_analysis@cref}{{[appendix][4][2147483647]D}{[1][14][]15}}
+\newlabel{app:code_execution_failure_modes}{{D.1}{15}{}{subsection.D.1}{}}
+\newlabel{app:code_execution_failure_modes@cref}{{[subappendix][1][2147483647,4]D.1}{[1][14][]15}}
+\newlabel{tab:appendix_code_failure_modes}{{7}{15}{Distribution of Route~3 code-execution failures}{table.7}{}}
+\newlabel{tab:appendix_code_failure_modes@cref}{{[table][7][2147483647]7}{[1][15][]15}}
+\newlabel{app:reproducibility_notes}{{E}{15}{}{appendix.E}{}}
+\newlabel{app:reproducibility_notes@cref}{{[appendix][5][2147483647]E}{[1][15][]15}}
+\gdef \@abspage@last{15}

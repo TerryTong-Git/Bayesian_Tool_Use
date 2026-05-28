@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 14:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 15:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1204,18 +1204,16 @@ Package microtype Info: Loading generic protrusion settings for font family
 (./sections/1_introduction.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<images/review_20260528_files1/fig1_framework.pdf, id=58, 396.02449pt x 169.834
-5pt>
-File: images/review_20260528_files1/fig1_framework.pdf Graphic file (type pdf)
-<use images/review_20260528_files1/fig1_framework.pdf>
-Package pdftex.def Info: images/review_20260528_files1/fig1_framework.pdf  used
- on input line 8.
-(pdftex.def)             Requested size: 487.8225pt x 209.21393pt.
-<images/review_20260528/fig2_prompts.pdf, id=59, 394.95557pt x 192.09367pt>
-File: images/review_20260528/fig2_prompts.pdf Graphic file (type pdf)
-<use images/review_20260528/fig2_prompts.pdf>
-Package pdftex.def Info: images/review_20260528/fig2_prompts.pdf  used on input
- line 19.
+<images/final/fig1_framework.pdf, id=58, 396.02449pt x 169.8345pt>
+File: images/final/fig1_framework.pdf Graphic file (type pdf)
+<use images/final/fig1_framework.pdf>
+Package pdftex.def Info: images/final/fig1_framework.pdf  used on input line 8.
+
+(pdftex.def)             Requested size: 234.8775pt x 100.72754pt.
+<images/final/fig2_prompts.pdf, id=59, 394.95557pt x 192.09367pt>
+File: images/final/fig2_prompts.pdf Graphic file (type pdf)
+<use images/final/fig2_prompts.pdf>
+Package pdftex.def Info: images/final/fig2_prompts.pdf  used on input line 19.
 (pdftex.def)             Requested size: 487.8225pt x 237.27039pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1225,31 +1223,29 @@ local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 
-]
-<images/review_20260528_downloads/fig3_main.png, id=128, 522.15076pt x 220.4235
-pt>
-File: images/review_20260528_downloads/fig3_main.png Graphic file (type png)
-<use images/review_20260528_downloads/fig3_main.png>
-Package pdftex.def Info: images/review_20260528_downloads/fig3_main.png  used o
-n input line 93.
-(pdftex.def)             Requested size: 487.8225pt x 205.94019pt.
-) (./sections/2_framework.tex
+ <./images/final/fig1_framework.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2 <./images/review_20260528_files1/fig1_framework.pdf>] [3 <./images/review_2
-0260528/fig2_prompts.pdf>]
+<images/final/fig3_main.png, id=132, 522.15076pt x 220.4235pt>
+File: images/final/fig3_main.png Graphic file (type png)
+<use images/final/fig3_main.png>
+Package pdftex.def Info: images/final/fig3_main.png  used on input line 93.
+(pdftex.def)             Requested size: 487.8225pt x 205.94019pt.
+)
+(./sections/2_framework.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <./images/final/fig2_prompts.pdf>] [3 <./images/final/fig3_main.png>]
 Underfull \hbox (badness 2990) in paragraph at lines 103--105
 \OT1/ptm/m/n/10 (+20) The cor-re-spond-ing ex-ecu-tor fam-ily is the sin-gle-to
 n
  []
 
-<images/review_20260528_downloads/fig4_per_task.png, id=211, 464.6961pt x 262.3
-401pt>
-File: images/review_20260528_downloads/fig4_per_task.png Graphic file (type png
-)
-<use images/review_20260528_downloads/fig4_per_task.png>
-Package pdftex.def Info: images/review_20260528_downloads/fig4_per_task.png  us
-ed on input line 120.
+<images/final/fig4_per_task.png, id=211, 464.6961pt x 262.3401pt>
+File: images/final/fig4_per_task.png Graphic file (type png)
+<use images/final/fig4_per_task.png>
+Package pdftex.def Info: images/final/fig4_per_task.png  used on input line 120
+.
 (pdftex.def)             Requested size: 487.8225pt x 275.39717pt.
 ) (./sections/3_experiment.tex
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 5
@@ -1268,8 +1264,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--40
 \OT1/pcr/m/n/10 Haiku 4.5, GPT-4o-mini, Gemini 2.5 Pro\OT1/ptm/m/n/10 (+20) )
  []
 
-[4 <./images/review_20260528_downloads/fig3_main.png>] [5 <./images/review_2026
-0528_downloads/fig4_per_task.png>]
+[4]
+Underfull \vbox (badness 1231) has occurred while \output is active []
+
+ [5 <./images/final/fig4_per_task.png>]
 Overfull \hbox (3.26704pt too wide) detected at line 267
 \OML/cmm/m/it/10 ^^Z[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y \OMS/cmsy/m/n/10 j \O
 ML/cmm/m/it/10 x; z[]\OT1/cmr/m/n/10 ) := [] \OML/cmm/m/it/10 ^^Z[]\OT1/cmr/m/n
@@ -1279,13 +1277,12 @@ ML/cmm/m/it/10 x; z[]\OT1/cmr/m/n/10 ) := [] \OML/cmm/m/it/10 ^^Z[]\OT1/cmr/m/n
  []
 
 [6]
-<images/review_20260528/fig8_additivity.pdf, id=248, 268.96297pt x 243.49957pt>
-
-File: images/review_20260528/fig8_additivity.pdf Graphic file (type pdf)
-<use images/review_20260528/fig8_additivity.pdf>
-Package pdftex.def Info: images/review_20260528/fig8_additivity.pdf  used on in
-put line 381.
-(pdftex.def)             Requested size: 487.8225pt x 441.67625pt.
+<images/final/fig5_additivity.pdf, id=248, 268.96297pt x 243.49957pt>
+File: images/final/fig5_additivity.pdf Graphic file (type pdf)
+<use images/final/fig5_additivity.pdf>
+Package pdftex.def Info: images/final/fig5_additivity.pdf  used on input line 3
+81.
+(pdftex.def)             Requested size: 234.8775pt x 212.64545pt.
 
 Underfull \hbox (badness 3601) in paragraph at lines 412--414
  \OT1/ptm/b/n/10 (+20) Pro-to-col and mod-els. \OT1/ptm/m/n/10 (+20) We run thi
@@ -1309,7 +1306,7 @@ Underfull \hbox (badness 3713) in paragraph at lines 412--414
 his
  []
 
-) (./sections/4_theory.tex [7]
+[7 <./images/final/fig5_additivity.pdf>]) (./sections/4_theory.tex
 Overfull \hbox (7.72076pt too wide) detected at line 192
 \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 E[]; ^^Z[]\OT1/cmr/m/n/10 )
  \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 E[]; 
@@ -1318,20 +1315,20 @@ Overfull \hbox (7.72076pt too wide) detected at line 192
 0 C\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 r:
  []
 
-<images/review_20260528/fig9_recovery.pdf, id=267, 293.9877pt x 241.17754pt>
-File: images/review_20260528/fig9_recovery.pdf Graphic file (type pdf)
-<use images/review_20260528/fig9_recovery.pdf>
-Package pdftex.def Info: images/review_20260528/fig9_recovery.pdf  used on inpu
-t line 255.
-(pdftex.def)             Requested size: 487.8225pt x 400.21475pt.
-) (./sections/5_related_work.tex) (./sections/6_conclusion.tex
+<images/final/fig6_recovery.pdf, id=289, 293.9877pt x 241.17754pt>
+File: images/final/fig6_recovery.pdf Graphic file (type pdf)
+<use images/final/fig6_recovery.pdf>
+Package pdftex.def Info: images/final/fig6_recovery.pdf  used on input line 255
+.
+(pdftex.def)             Requested size: 234.8775pt x 192.68468pt.
+) (./sections/5_related_work.tex
+Underfull \vbox (badness 2065) has occurred while \output is active []
+
+ [8 <./images/final/fig6_recovery.pdf>]) (./sections/6_conclusion.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8])
-[9
-
-] [10 <./images/review_20260528/fig8_additivity.pdf>] [11 <./images/review_2026
-0528/fig9_recovery.pdf>] (./example_paper.bbl
+) [9]
+(./example_paper.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 48--56
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www . cambridge . or
 g / core /
@@ -1352,8 +1349,7 @@ Underfull \hbox (badness 1648) in paragraph at lines 163--168
 \OT1/ptm/m/n/10 (+20) tional At-ten-tion Net-works for Ma-chine Rea-son-ing,
  []
 
-[12
-
+[10
 
 ]
 Underfull \hbox (badness 3386) in paragraph at lines 197--204
@@ -1387,7 +1383,7 @@ Underfull \hbox (badness 5274) in paragraph at lines 245--250
 abs / 2310 .
  []
 
-[13]
+[11]
 Underfull \hbox (badness 1210) in paragraph at lines 331--340
 []\OT1/ptm/m/n/10 (+20) Schneider, W. and Chein, J. M.  Con-trolled & au-
  []
@@ -1457,20 +1453,20 @@ Underfull \hbox (badness 5274) in paragraph at lines 436--440
 abs / 2203 .
  []
 
-) [14] (./sections/appendix.tex
+) [12] (./sections/appendix.tex
 (./sections/appendix/complexity_stratified_route_accuracy.tex)
 (./sections/appendix/model_stratified_route_accuracy.tex)
 (./sections/appendix/prompt_translation_shot_ablation.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15
+ [13
 
 
 ])
 (./sections/appendix/recursive_language_model_evaluation.tex)
 (./sections/appendix/coding_specialized_model_evaluation.tex)
 (./sections/appendix/frontier_model_sanity_checks.tex)
-(./sections/appendix/code_execution_failure_modes.tex [16])) [17]
+(./sections/appendix/code_execution_failure_modes.tex [14])) [15]
 (./example_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1480,11 +1476,11 @@ Package rerunfilecheck Info: File `example_paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36632 strings out of 474116
- 726368 string characters out of 5743682
+ 36652 strings out of 474116
+ 725959 string characters out of 5743682
  1958187 words of memory out of 5000000
- 57794 multiletter control sequences out of 15000+600000
- 607766 words of font info for 360 fonts, out of 8000000 for 9000
+ 57796 multiletter control sequences out of 15000+600000
+ 608530 words of font info for 373 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  93i,12n,99p,1798b,748s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -1510,10 +1506,10 @@ fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on example_paper.pdf (17 pages, 651429 bytes).
+Output written on example_paper.pdf (15 pages, 650308 bytes).
 PDF statistics:
- 718 PDF objects out of 1000 (max. 8388607)
- 575 compressed objects within 6 object streams
- 120 named destinations out of 1000 (max. 500000)
+ 711 PDF objects out of 1000 (max. 8388607)
+ 570 compressed objects within 6 object streams
+ 118 named destinations out of 1000 (max. 500000)
  70331 words of extra memory for PDF output out of 74296 (max. 10000000)
 

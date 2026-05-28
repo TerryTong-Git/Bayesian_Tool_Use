@@ -374,15 +374,15 @@ As a calibration control, we also ask the same judges to discriminate \emph{raw 
 %     \label{fig:embedding_scatter}
 % \end{figure*}
 
-\begin{figure*}[t]
+\begin{figure}[t]
     \centering
     \vspace{-5pt}
-    % \includegraphics[width=\textwidth]{images/translation_additivity.png}
-    \includegraphics[width=\textwidth]{images/review_20260528/fig8_additivity.pdf}
+    % \includegraphics[width=\linewidth]{images/translation_additivity.png}
+    \includegraphics[width=\linewidth]{images/final/fig5_additivity.pdf}
     \vspace{-3pt}
     \caption{\textbf{Translated NL has the same functionality as the original native NL quantified by end-task accuracy. } When concatenating the reasoning traces to the prompt, we get much higher accuracy as opposed to the baseline with just the prompt, indicating the model is using the reasoning. There are statistically significant differences between the baseline and concatenated prompts, but no statistically significant difference between the Translated NL and Native NL concatenations. Source data is randomly sampled from existing data used to generate \cref{fig:main}, we use 1000 samples per model. }
     \label{fig:translation_additivity}
-\end{figure*}
+\end{figure}
 
 \paragraph{Results.}
 Across $\sim$2000 samples per judge ($\sim$6000 total across three judges), discrimination accuracy is near chance (50\%), with 50\% included in the Wilson CI. The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$82\%), indicating the judges can detect obvious representation differences but \emph{fail to distinguish translated vs.\ native NL}.
