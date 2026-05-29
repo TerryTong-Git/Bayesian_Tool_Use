@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex example_paper"] 1780021120.63256 "example_paper.aux" "example_paper.bbl" "example_paper" 1780021122.38059 0
+["bibtex example_paper"] 1780022018.56308 "example_paper.aux" "example_paper.bbl" "example_paper" 1780022020.32281 0
   "./example_paper.bib" 1780012490 124388 081eaf541d43f88845366f88aedd077c ""
   "./icml2025.bst" 1779428338 27147 88eb4aed280e585571f8eac50f39a681 ""
-  "example_paper.aux" 1780021121.99885 20165 a0ff415151852c6eb1f5cae14aed1ae2 "pdflatex"
+  "example_paper.aux" 1780022019.93856 20165 f23c43c55af3c05cd787803e5587a72a "pdflatex"
   (generated)
   "example_paper.bbl"
   "example_paper.blg"
   (rewritten before read)
-["pdflatex"] 1780021120.75753 "example_paper.tex" "example_paper.pdf" "example_paper" 1780021122.38076 0
+["pdflatex"] 1780022018.70807 "example_paper.tex" "example_paper.pdf" "example_paper" 1780022020.32299 0
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -273,9 +273,9 @@
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "algorithm.sty" 1779428338 2223 ada3eaa0c1bd465a639433dfafc2fc4e ""
   "algorithmic.sty" 1779428338 7784 49b44dd4deab911352f92235b9fcffff ""
-  "example_paper.aux" 1780021121.99885 20165 a0ff415151852c6eb1f5cae14aed1ae2 "pdflatex"
-  "example_paper.bbl" 1780021120.75369 24778 9769bc93e6675728fdce5fcad4ae2ece "bibtex example_paper"
-  "example_paper.out" 1780021121.60196 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "example_paper.aux" 1780022019.93856 20165 f23c43c55af3c05cd787803e5587a72a "pdflatex"
+  "example_paper.bbl" 1780022018.70413 24778 9769bc93e6675728fdce5fcad4ae2ece "bibtex example_paper"
+  "example_paper.out" 1780022019.54941 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "example_paper.tex" 1780021105.29327 9437 c744d64386bcc5393eff76c9378df814 ""
   "fancyhdr.sty" 1779428338 20521 e5d13d98d57bd53d4fed3aa61bd29c86 ""
   "icml2025.sty" 1779916397.09798 28208 40333541e46c0c324686c524f57b49c2 ""
@@ -285,7 +285,7 @@
   "images/final/fig4_per_task.pdf" 1780013361 58944 63ffb30e1e3606fbfde81de8cc38ed85 ""
   "images/final/fig5_additivity.pdf" 1780013361 30144 924ab26a04024dede41f3e2910773234 ""
   "images/final/fig6_recovery.pdf" 1780013361 30344 e74963b4212bfc258ea2e145e96d6e78 ""
-  "sections/0_abstract.tex" 1779937140 5232 b504961a4b8728a11305cc3dba61ff7a ""
+  "sections/0_abstract.tex" 1780022011.19502 4940 0e4baf30bcc1524526b9cd7eb7d51b46 ""
   "sections/1_introduction.tex" 1780020430 18057 64ab291b48b65ad5c7b7c23ed668d49b ""
   "sections/2_framework.tex" 1780013365 8194 750d1aed0f1cbbdf6a842b7bb9cacfc1 ""
   "sections/3_experiment.tex" 1780020430 45295 09809a443b52bb56b43bf1d23510a4a9 ""

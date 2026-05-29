@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 19:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 19:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1200,8 +1200,6 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 )
 (./sections/1_introduction.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 <images/final/fig1_framework.pdf, id=58, 562.9833pt x 125.31618pt>
 File: images/final/fig1_framework.pdf Graphic file (type pdf)
 <use images/final/fig1_framework.pdf>
@@ -1213,30 +1211,27 @@ File: images/final/fig2_prompts.pdf Graphic file (type pdf)
 <use images/final/fig2_prompts.pdf>
 Package pdftex.def Info: images/final/fig2_prompts.pdf  used on input line 19.
 (pdftex.def)             Requested size: 487.8225pt x 116.30626pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/
 local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 
  <./images/final/fig1_framework.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<images/final/fig3_main.pdf, id=149, 611.34772pt x 182.72516pt>
+<images/final/fig3_main.pdf, id=156, 611.34772pt x 182.72516pt>
 File: images/final/fig3_main.pdf Graphic file (type pdf)
 <use images/final/fig3_main.pdf>
 Package pdftex.def Info: images/final/fig3_main.pdf  used on input line 95.
 (pdftex.def)             Requested size: 487.8225pt x 145.80391pt.
-)
-(./sections/2_framework.tex [2 <./images/final/fig2_prompts.pdf>]
+) (./sections/2_framework.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <./images/final/fig2_prompts.pdf>]
 Underfull \hbox (badness 2990) in paragraph at lines 102--104
 \OT1/ptm/m/n/10 (+20) The cor-re-spond-ing ex-ecu-tor fam-ily is the sin-gle-to
 n
  []
 
-<images/final/fig4_per_task.pdf, id=218, 654.17715pt x 211.10066pt>
+<images/final/fig4_per_task.pdf, id=216, 654.17715pt x 211.10066pt>
 File: images/final/fig4_per_task.pdf Graphic file (type pdf)
 <use images/final/fig4_per_task.pdf>
 Package pdftex.def Info: images/final/fig4_per_task.pdf  used on input line 119
@@ -1248,7 +1243,10 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 5
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [3 <./images/final/fig3_main.pdf>]
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3 <./images/final/fig3_main.pdf>]
 Underfull \hbox (badness 3965) in paragraph at lines 33--40
  \OT1/ptm/b/n/10 (+20) Data and mod-els. \OT1/ptm/m/n/10 (+20) We eval-u-ate on
  the CLRS-30
@@ -1259,17 +1257,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--40
 \OT1/pcr/m/n/10 Haiku 4.5, GPT-4o-mini, Gemini 2.5 Pro\OT1/ptm/m/n/10 (+20) )
  []
 
-
-Underfull \vbox (badness 2538) has occurred while \output is active []
-
- [4 <./images/final/fig4_per_task.pdf>]
-<images/final/fig5_additivity.pdf, id=308, 317.56644pt x 210.64885pt>
+[4 <./images/final/fig4_per_task.pdf>]
+<images/final/fig5_additivity.pdf, id=306, 317.56644pt x 210.64885pt>
 File: images/final/fig5_additivity.pdf Graphic file (type pdf)
 <use images/final/fig5_additivity.pdf>
 Package pdftex.def Info: images/final/fig5_additivity.pdf  used on input line 3
 16.
 (pdftex.def)             Requested size: 234.8775pt x 155.80055pt.
- [5 <./images/final/fig5_additivity.pdf>] [6]
+ [5 <./images/final/fig5_additivity.pdf>]
 Overfull \hbox (202.80815pt too wide) in paragraph at lines 604--605
 \OMS/cmsy/m/n/10 f[]g$
  []
@@ -1297,7 +1292,7 @@ Underfull \hbox (badness 3713) in paragraph at lines 617--619
 his
  []
 
-) (./sections/4_theory.tex
+[6]) (./sections/4_theory.tex
 Overfull \hbox (7.72076pt too wide) detected at line 192
 \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 E[]; ^^Z[]\OT1/cmr/m/n/10 )
  \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 E[]; 
@@ -1306,17 +1301,20 @@ Overfull \hbox (7.72076pt too wide) detected at line 192
 0 C\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 r:
  []
 
-[7]
-<images/final/fig6_recovery.pdf, id=442, 311.79486pt x 196.65921pt>
+<images/final/fig6_recovery.pdf, id=434, 311.79486pt x 196.65921pt>
 File: images/final/fig6_recovery.pdf Graphic file (type pdf)
 <use images/final/fig6_recovery.pdf>
 Package pdftex.def Info: images/final/fig6_recovery.pdf  used on input line 255
 .
 (pdftex.def)             Requested size: 234.8775pt x 148.14821pt.
-) (./sections/5_related_work.tex) (./sections/6_conclusion.tex
+) (./sections/5_related_work.tex [7]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./images/final/fig6_recovery.pdf>]) (./example_paper.bbl
+)
+(./sections/6_conclusion.tex) (./example_paper.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./images/final/fig6_recovery.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 55--63
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www . cambridge . or
 g / core /
@@ -1489,7 +1487,7 @@ Here is how much of TeX's memory you used:
  57848 multiletter control sequences out of 15000+600000
  608635 words of font info for 386 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 93i,13n,99p,1798b,686s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,13n,99p,1671b,690s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -1513,10 +1511,10 @@ fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on example_paper.pdf (15 pages, 564651 bytes).
+Output written on example_paper.pdf (15 pages, 564242 bytes).
 PDF statistics:
- 879 PDF objects out of 1000 (max. 8388607)
- 691 compressed objects within 7 object streams
+ 877 PDF objects out of 1000 (max. 8388607)
+ 689 compressed objects within 7 object streams
  154 named destinations out of 1000 (max. 500000)
  66235 words of extra memory for PDF output out of 74296 (max. 10000000)
 
