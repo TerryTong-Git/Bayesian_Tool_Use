@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 21:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 22:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -128,10 +128,13 @@ Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
 \backup@length=\skip58
 \ar@cellbox=\box53
 )
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xurl/xurl.sty
+Package: xurl 2022/01/09 v 0.10 modify URL breaks
+
 (/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
+))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
 
@@ -1049,7 +1052,7 @@ File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \c@@todonotes@numberoftodonotes=\count373
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
-41.
+45.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -1062,37 +1065,37 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 (./example_paper.aux)
 \openout1 = `example_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Info: Redefining \microtypecontext on input line 141.
-Package microtype Info: Applying patch `item' on input line 141.
-Package microtype Info: Applying patch `toc' on input line 141.
-Package microtype Info: Applying patch `eqnum' on input line 141.
-Package microtype Info: Applying patch `footnote' on input line 141.
-Package microtype Info: Applying patch `verbatim' on input line 141.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 145.
+LaTeX Font Info:    ... okay on input line 145.
+LaTeX Info: Redefining \microtypecontext on input line 145.
+Package microtype Info: Applying patch `item' on input line 145.
+Package microtype Info: Applying patch `toc' on input line 145.
+Package microtype Info: Applying patch `eqnum' on input line 145.
+Package microtype Info: Applying patch `footnote' on input line 145.
+Package microtype Info: Applying patch `verbatim' on input line 145.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 141.
+LaTeX Info: Redefining \showhyphens on input line 145.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1146,7 +1149,7 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 141.
+Package hyperref Info: Link coloring ON on input line 145.
 
 (./example_paper.out) (./example_paper.out)
 \@outlinefile=\write4
@@ -1158,7 +1161,7 @@ Package hyperref Info: Link coloring ON on input line 141.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 184
+LaTeX Font Info:    Trying to load font information for U+msa on input line 188
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1167,7 +1170,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 184
+LaTeX Font Info:    Trying to load font information for U+msb on input line 188
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1177,15 +1180,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 196.
+Package hyperref Warning: Ignoring empty anchor on input line 200.
 
-LaTeX Font Info:    Trying to load font information for OML+ptm on input line 1
-96.
+LaTeX Font Info:    Trying to load font information for OML+ptm on input line 2
+00.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/omlptm.fd
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 196.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 200.
 
 (./sections/0_abstract.tex
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
@@ -1198,12 +1201,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-Underfull \hbox (badness 1087) in paragraph at lines 4--5
-\OT1/ptm/m/n/10 (+20) language rea-son-ing pipeline. We for-mal-ize
- []
-
-) (./sections/1_introduction.tex
+)
+(./sections/1_introduction.tex
 <images/final/fig1_framework.pdf, id=58, 396.02449pt x 169.8345pt>
 File: images/final/fig1_framework.pdf Graphic file (type pdf)
 <use images/final/fig1_framework.pdf>
@@ -1227,7 +1226,7 @@ local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
 <images/final/fig3_main.pdf, id=135, 611.34772pt x 182.72516pt>
 File: images/final/fig3_main.pdf Graphic file (type pdf)
 <use images/final/fig3_main.pdf>
-Package pdftex.def Info: images/final/fig3_main.pdf  used on input line 95.
+Package pdftex.def Info: images/final/fig3_main.pdf  used on input line 94.
 (pdftex.def)             Requested size: 487.8225pt x 145.80391pt.
 ) (./sections/2_framework.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1254,6 +1253,12 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./images/final/fig3_main.pdf>]
+Underfull \hbox (badness 1406) in paragraph at lines 33--43
+\OT1/ptm/m/n/10 (+20) e-ter $\OML/cmm/m/it/10 ^^\$ \OT1/ptm/m/n/10 (+20) when a
+p-pli-ca-ble. We eval-u-ate closed-source
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 33--43
 \OT1/ptm/m/n/10 (+20) mod-els (\OT1/pcr/m/n/10 Claude Haiku 4.5, GPT-4o-mini,
  []
@@ -1270,7 +1275,7 @@ ct,
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 128--139
+Underfull \hbox (badness 1221) in paragraph at lines 127--138
  \OT1/ptm/b/n/10 (+20) Re-sults. \OT1/ptm/m/n/10 (+20) Across the 40-task anal-
 y-sis set (Fig-ure [][]3[][]),
  []
@@ -1280,182 +1285,45 @@ y-sis set (Fig-ure [][]3[][]),
 File: images/final/fig5_additivity.pdf Graphic file (type pdf)
 <use images/final/fig5_additivity.pdf>
 Package pdftex.def Info: images/final/fig5_additivity.pdf  used on input line 3
-29.
+27.
 (pdftex.def)             Requested size: 234.8775pt x 155.80055pt.
+
+Underfull \vbox (badness 2326) has occurred while \output is active []
+
  [5 <./images/final/fig5_additivity.pdf>] [6]
-Overfull \hbox (202.80815pt too wide) in paragraph at lines 624--625
-\OMS/cmsy/m/n/10 f[]g$
- []
-
-
-Underfull \hbox (badness 3601) in paragraph at lines 637--639
+Underfull \hbox (badness 3601) in paragraph at lines 734--736
  \OT1/ptm/b/n/10 (+20) Pro-to-col and mod-els. \OT1/ptm/m/n/10 (+20) We run thi
 s test on 1000
  []
 
 
-Underfull \hbox (badness 3068) in paragraph at lines 637--639
-\OT1/ptm/m/n/10 (+20) held-out in-stances across mul-ti-ple trans-la-tor mod-el
-s
+Underfull \hbox (badness 10000) in paragraph at lines 734--736
+\OT1/ptm/m/n/10 (+20) held-out in-stances across mul-ti-ple trans-la-tor mod-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 637--639
-\OT1/ptm/m/n/10 (+20) (\OT1/pcr/m/n/10 Claude-Haiku-4.5, Gemini-2.5-Flash,
+Underfull \hbox (badness 10000) in paragraph at lines 734--736
+\OT1/ptm/m/n/10 (+20) els (\OT1/pcr/m/n/10 Claude-Haiku-4.5, Gemini-2.5-Flash,
  []
 
-
-Underfull \hbox (badness 3713) in paragraph at lines 637--639
-\OT1/pcr/m/n/10 Mixtral-8x22B-Instruct\OT1/ptm/m/n/10 (+20) ). Cru-cially, in t
-his
- []
-
-) (./sections/4_theory.tex
-Overfull \hbox (7.72076pt too wide) detected at line 192
-\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 E[]; ^^Z[]\OT1/cmr/m/n/10 )
- \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 E[]; 
-^^Z[]\OT1/cmr/m/n/10 ) = [](\OML/cmm/m/it/10 C\OT1/cmr/m/n/10 ) \OML/cmm/m/it/1
-0 e[] \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 :\OML/cmm/m/it/1
-0 C\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 r:
- []
-
-[7]
-<images/final/fig6_recovery.pdf, id=412, 311.79486pt x 196.65921pt>
+) (./sections/4_theory.tex [7]
+<images/final/fig6_recovery.pdf, id=417, 311.79486pt x 196.65921pt>
 File: images/final/fig6_recovery.pdf Graphic file (type pdf)
 <use images/final/fig6_recovery.pdf>
-Package pdftex.def Info: images/final/fig6_recovery.pdf  used on input line 255
+Package pdftex.def Info: images/final/fig6_recovery.pdf  used on input line 254
 .
 (pdftex.def)             Requested size: 234.8775pt x 148.14821pt.
 
-Underfull \hbox (badness 3219) in paragraph at lines 257--257
+Underfull \hbox (badness 3219) in paragraph at lines 256--256
 [][]\OT1/ptm/b/n/9 (+20) Recovery mass (blue) is 1.61% over-all, while
  []
 
-) (./sections/5_related_work.tex) (./sections/6_conclusion.tex
+) (./sections/5_related_work.tex [8 <./images/final/fig6_recovery.pdf>])
+(./sections/6_conclusion.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./images/final/fig6_recovery.pdf>]) (./example_paper.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 41--49
-\OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www . cambridge . or
-g / core /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 41--49
-\OT1/pcr/m/n/10 product / identifier / S0140525X10000853 /
- []
-
-
-Underfull \hbox (badness 3068) in paragraph at lines 68--76
-\OT1/ptm/m/n/10 (+20) 831, Mont-pel-lier France, Septem-ber 2018. ACM.
- []
-
-
-Underfull \hbox (badness 2809) in paragraph at lines 78--86
-\OT1/ptm/m/n/10 (+20) ing with the MAXQ Value Func-tion De-com-po-si-
- []
-
-[9]
-Underfull \hbox (badness 2134) in paragraph at lines 163--167
-\OT1/ptm/m/it/10 (+20) e-ments of Sta-tis-ti-cal Learn-ing\OT1/ptm/m/n/10 (+20)
- .  Springer, 2 edi-
- []
-
-
-Underfull \hbox (badness 4096) in paragraph at lines 169--174
-[]\OT1/ptm/m/n/10 (+20) Hudson, D. A. and Man-ning, C. D.  Com-po-si-
- []
-
-
-Underfull \hbox (badness 1648) in paragraph at lines 169--174
-\OT1/ptm/m/n/10 (+20) tional At-ten-tion Net-works for Ma-chine Rea-son-ing,
- []
-
-
-Underfull \hbox (badness 3386) in paragraph at lines 196--203
-\OT1/ptm/m/n/10 (+20) tice-ship Learn-ing with Ap-pli-ca-tion to Quadruped
- []
-
-
-Underfull \hbox (badness 1460) in paragraph at lines 196--203
-\OT1/ptm/m/n/10 (+20) Lo-co-mo-tion.  In \OT1/ptm/m/it/10 (+20) Ad-vances in Ne
-u-ral In-for-ma-tion
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 196--203
-\OT1/pcr/m/n/10 cc / paper _ files / paper / 2007 / hash /
- []
-
-
-Overfull \hbox (23.42252pt too wide) in paragraph at lines 196--203
-\OT1/pcr/m/n/10 54a367d629152b720749e187b3eaa11b-[]Abstract .
- []
-
-
-Underfull \hbox (badness 4291) in paragraph at lines 267--272
-[]\OT1/ptm/m/n/10 (+20) Merrill, W. and Sab-har-wal, A.  The Ex-pres-sive
- []
-
-
-Underfull \hbox (badness 5274) in paragraph at lines 267--272
-\OT1/ptm/m/n/10 (+20) 2024.  URL [][]$\OT1/pcr/m/n/10 http : / / arxiv . org / 
-abs / 2310 .
- []
-
-[10]
-Underfull \hbox (badness 1102) in paragraph at lines 343--351
-\OT1/pcr/m/n/10 002$[][]\OT1/ptm/m/n/10 (+20) .  URL [][]$\OT1/pcr/m/n/10 https
- : / / linkinghub . elsevier .
- []
-
-
-Underfull \hbox (badness 1072) in paragraph at lines 364--371
-\OT1/ptm/m/n/10 (+20) matic pro-cess-ing: be-hav-ior, the-ory, and bi-o-log-i-c
-al
- []
-
-
-Underfull \hbox (badness 2495) in paragraph at lines 373--377
-[]\OT1/ptm/m/n/10 (+20) Shen, Z.  LLM With Tools: A Sur-vey, Septem-
- []
-
-
-Underfull \hbox (badness 2894) in paragraph at lines 379--384
-[]\OT1/ptm/m/n/10 (+20) Shin, R. and Durme, B. V.  Few-Shot Se-man-tic
- []
-
-
-Underfull \hbox (badness 1845) in paragraph at lines 379--384
-\OT1/ptm/m/n/10 (+20) Pars-ing with Lan-guage Mod-els Trained On Code,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 395--402
-[][]\OT1/ptm/m/n/10 (+20) doi: $\OT1/pcr/m/n/10 10 . 1016 / j . patter . 2021 .
- 100273$[][]\OT1/ptm/m/n/10 (+20) .
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 395--402
-\OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / linkinghub . elsevie
-r . com /
- []
-
-[11]
-Underfull \hbox (badness 5274) in paragraph at lines 461--465
-\OT1/ptm/m/n/10 (+20) 2022.  URL [][]$\OT1/pcr/m/n/10 http : / / arxiv . org / 
-abs / 2203 .
- []
-
-
-Underfull \hbox (badness 1112) in paragraph at lines 475--481
-[]\OT1/ptm/m/n/10 (+20) Zhao, T. Z., Wal-lace, E., Feng, S., Klein, D., and
- []
-
-) (./sections/appendix.tex [12
-
-]
+)
+(./example_paper.bbl [9] [10] [11]) [12] (./sections/appendix.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [13
@@ -1471,13 +1339,13 @@ Package rerunfilecheck Info: File `example_paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36693 strings out of 474116
- 724701 string characters out of 5743682
- 1962187 words of memory out of 5000000
- 57820 multiletter control sequences out of 15000+600000
- 607858 words of font info for 379 fonts, out of 8000000 for 9000
+ 36744 strings out of 474116
+ 726190 string characters out of 5743682
+ 1970187 words of memory out of 5000000
+ 57870 multiletter control sequences out of 15000+600000
+ 606275 words of font info for 375 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 93i,13n,99p,1671b,671s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,13n,99p,1678b,657s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -1501,10 +1369,10 @@ fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on example_paper.pdf (15 pages, 566382 bytes).
+Output written on example_paper.pdf (15 pages, 569399 bytes).
 PDF statistics:
- 893 PDF objects out of 1000 (max. 8388607)
- 704 compressed objects within 8 object streams
- 145 named destinations out of 1000 (max. 500000)
- 66235 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 894 PDF objects out of 1000 (max. 8388607)
+ 705 compressed objects within 8 object streams
+ 149 named destinations out of 1000 (max. 500000)
+ 62139 words of extra memory for PDF output out of 74296 (max. 10000000)
 

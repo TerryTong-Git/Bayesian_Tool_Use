@@ -8,7 +8,7 @@
 \usepackage{subfigure}
 \usepackage{booktabs} % for professional tables
 \usepackage{array}
-\usepackage{url}
+\usepackage{xurl}
 \usepackage[most]{tcolorbox}
 \usepackage{wrapfig}
 \usepackage{enumitem} %for leftmargin
@@ -68,6 +68,8 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{assumption}[theorem]{Assumption}
+\crefname{assumption}{Assumption}{Assumptions}
+\Crefname{assumption}{Assumption}{Assumptions}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
@@ -108,6 +110,8 @@
 \providecommand{\supp}{\operatorname{supp}}
 \providecommand{\Cov}{\operatorname{Cov}}
 \providecommand{\diag}{\operatorname{diag}}
+\Urlmuskip=0mu plus 1mu
+\emergencystretch=2em
 
 
 \newcommand{\Sig}{|\Sigma|} %alphabet

@@ -5,7 +5,7 @@ We introduced a three-route framework (\cref{sec:framework}) for comparing code 
 
 % Our causal intervention experiments (\cref{sec:rep_analysis}) demonstrate that NL reasoning traces are distributionally and functionally equivalent to code-translated traces, supporting the hypothesis that NL reasoning implicitly simulates underlying algorithmic computations for specific models, tasks and prompts. Theoretically, we prove that code-based reasoning achieves lower Bayes risk via Blackwell dominance (\cref{prop:dominance}), providing an information-theoretic explanation for the empirical advantages of solver-based pipelines.
 
-\textbf{Limitations.} (1)~\emph{Empirical approximations}: Our distributional similarity tests use finite samples and specific judge models, introducing estimation variance. Furthermore, there is room for optimization with the prompts of both judges and translators. (2)~\emph{Model coverage}: While we evaluate both frontier (GPT-4o, Claude, Gemini) and open-source models (Mistral, Codestral), we cannot guarantee findings generalize to all architectures or future models. (3)~\emph{Theoretical assumptions}: The statistical analysis result assumes the existence of a garbling channel from code to NL, which we validate empirically but do not prove from first principles.
+\textbf{Limitations.} (1)~\emph{Empirical approximations}: Our distributional similarity tests use finite samples and specific judge models, introducing estimation variance. Furthermore, there is room for optimization with the prompts of both judges and translators. (2)~\emph{Model coverage}: While we evaluate both frontier (GPT-4o, Claude, Gemini) and open-source models (Mistral, Codestral), we cannot guarantee findings generalize to all architectures or future models. (3)~\emph{Theoretical assumptions}: The statistical analysis result assumes that code traces can be translated into natural-language traces without losing decision-relevant information, which we validate empirically but do not prove from first principles.
 
 
 % \paragraph{Limitations}
@@ -14,5 +14,4 @@ We introduced a three-route framework (\cref{sec:framework}) for comparing code 
 
 \section{Impact Statement}
 This paper presents work whose goal is to advance the field of machine learning. There are many potential societal consequences of our work, none of which we feel must be specifically highlighted here.
-
 

@@ -39,9 +39,9 @@
 
 % \subsection{Statistical Interpretation of Results}
 % We begin by introducing three assumptions, with each assumption referencing empirical support from the previous results. We conclude with a theorem that answers the main research question with the following conclusion: code is always as good as natural language for trace generation up to a small error bound, and thus the bottleneck that explains the gap between code and NL is not in the trace generation. 
-% % \paragraph{Unconditional garbling of code traces.}
+% % \paragraph{Unconditional translation of code traces.}
 
-% \paragraph{Assumption 1 (Translator / garbling kernel).}
+% \paragraph{Assumption 1 (Translator / trace translation kernel).}
 % \label{assump1}
 % \label{theory: route1vroute2}
 % The empirical results in Section~\ref{sec:rep_analysis} suggest that
@@ -49,7 +49,7 @@
 % post-processing code traces in Route 2 alone, without access to the original task instance.
 % Accordingly, we model translation
 % % \yu{be specific what is the translation here}
-% as an unconditional garbling of the
+% as an unconditional translation of the
 % code trace, in the sense of classical Blackwell theory \cite{blackwell1953equivalent}. There exists a (possibly stochastic) Markov kernel
 % \[
 % T:\ z_{\mathrm{C}} \mapsto T(\cdot \mid z_{\mathrm{C}})
@@ -181,15 +181,14 @@ R(E_{\mathrm{Code}},\rho_{\mathrm{Exec}}) &= \Pr(\neg C),\\
 R(E_{\mathrm{Code}},\rho_{\mathrm{Sim}}) &= \Pr(C)\,e_C + \Pr(\neg C)(1-r),
 \end{align*}
 and hence
-\[
-R(E_{\mathrm{Code}},\rho_{\mathrm{Sim}})
--
-R(E_{\mathrm{Code}},\rho_{\mathrm{Exec}})
-=
+\begin{align*}
+&R(E_{\mathrm{Code}},\rho_{\mathrm{Sim}})
+ -R(E_{\mathrm{Code}},\rho_{\mathrm{Exec}})\\
+&\qquad =
 \Pr(C)\,e_C
 -
 \Pr(\neg C)\,r .
-\]
+\end{align*}
 
 \paragraph{Implications.}
 Simulation noise on correct-execution instances ($\Pr(C)e_C$) harms
