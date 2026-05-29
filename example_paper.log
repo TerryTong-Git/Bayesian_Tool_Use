@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 21:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 21:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1270,7 +1270,7 @@ ct,
  []
 
 
-Underfull \hbox (badness 1221) in paragraph at lines 123--134
+Underfull \hbox (badness 1221) in paragraph at lines 128--139
  \OT1/ptm/b/n/10 (+20) Re-sults. \OT1/ptm/m/n/10 (+20) Across the 40-task anal-
 y-sis set (Fig-ure [][]3[][]),
  []
@@ -1280,32 +1280,32 @@ y-sis set (Fig-ure [][]3[][]),
 File: images/final/fig5_additivity.pdf Graphic file (type pdf)
 <use images/final/fig5_additivity.pdf>
 Package pdftex.def Info: images/final/fig5_additivity.pdf  used on input line 3
-19.
+29.
 (pdftex.def)             Requested size: 234.8775pt x 155.80055pt.
- [5 <./images/final/fig5_additivity.pdf>]
-Overfull \hbox (202.80815pt too wide) in paragraph at lines 607--608
+ [5 <./images/final/fig5_additivity.pdf>] [6]
+Overfull \hbox (202.80815pt too wide) in paragraph at lines 624--625
 \OMS/cmsy/m/n/10 f[]g$
  []
 
-[6]
-Underfull \hbox (badness 3601) in paragraph at lines 620--622
+
+Underfull \hbox (badness 3601) in paragraph at lines 637--639
  \OT1/ptm/b/n/10 (+20) Pro-to-col and mod-els. \OT1/ptm/m/n/10 (+20) We run thi
 s test on 1000
  []
 
 
-Underfull \hbox (badness 3068) in paragraph at lines 620--622
+Underfull \hbox (badness 3068) in paragraph at lines 637--639
 \OT1/ptm/m/n/10 (+20) held-out in-stances across mul-ti-ple trans-la-tor mod-el
 s
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 620--622
+Underfull \hbox (badness 10000) in paragraph at lines 637--639
 \OT1/ptm/m/n/10 (+20) (\OT1/pcr/m/n/10 Claude-Haiku-4.5, Gemini-2.5-Flash,
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 620--622
+Underfull \hbox (badness 3713) in paragraph at lines 637--639
 \OT1/pcr/m/n/10 Mixtral-8x22B-Instruct\OT1/ptm/m/n/10 (+20) ). Cru-cially, in t
 his
  []
@@ -1320,7 +1320,7 @@ Overfull \hbox (7.72076pt too wide) detected at line 192
  []
 
 [7]
-<images/final/fig6_recovery.pdf, id=420, 311.79486pt x 196.65921pt>
+<images/final/fig6_recovery.pdf, id=412, 311.79486pt x 196.65921pt>
 File: images/final/fig6_recovery.pdf Graphic file (type pdf)
 <use images/final/fig6_recovery.pdf>
 Package pdftex.def Info: images/final/fig6_recovery.pdf  used on input line 255
@@ -1362,100 +1362,94 @@ Underfull \hbox (badness 2134) in paragraph at lines 163--167
  []
 
 
-Underfull \hbox (badness 4096) in paragraph at lines 175--180
+Underfull \hbox (badness 4096) in paragraph at lines 169--174
 []\OT1/ptm/m/n/10 (+20) Hudson, D. A. and Man-ning, C. D.  Com-po-si-
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 175--180
+Underfull \hbox (badness 1648) in paragraph at lines 169--174
 \OT1/ptm/m/n/10 (+20) tional At-ten-tion Net-works for Ma-chine Rea-son-ing,
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 202--206
-[]\OT1/ptm/m/n/10 (+20) Kallenberg, O.  \OT1/ptm/m/it/10 (+20) Foun-da-tions of
- Mod-ern Prob-a-bil-
- []
-
-
-Underfull \hbox (badness 3386) in paragraph at lines 208--215
+Underfull \hbox (badness 3386) in paragraph at lines 196--203
 \OT1/ptm/m/n/10 (+20) tice-ship Learn-ing with Ap-pli-ca-tion to Quadruped
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 208--215
+Underfull \hbox (badness 1460) in paragraph at lines 196--203
 \OT1/ptm/m/n/10 (+20) Lo-co-mo-tion.  In \OT1/ptm/m/it/10 (+20) Ad-vances in Ne
 u-ral In-for-ma-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--215
+Underfull \hbox (badness 10000) in paragraph at lines 196--203
 \OT1/pcr/m/n/10 cc / paper _ files / paper / 2007 / hash /
  []
 
 
-Overfull \hbox (23.42252pt too wide) in paragraph at lines 208--215
+Overfull \hbox (23.42252pt too wide) in paragraph at lines 196--203
 \OT1/pcr/m/n/10 54a367d629152b720749e187b3eaa11b-[]Abstract .
  []
 
 
-Underfull \hbox (badness 4291) in paragraph at lines 279--284
+Underfull \hbox (badness 4291) in paragraph at lines 267--272
 []\OT1/ptm/m/n/10 (+20) Merrill, W. and Sab-har-wal, A.  The Ex-pres-sive
  []
 
 
-Underfull \hbox (badness 5274) in paragraph at lines 279--284
+Underfull \hbox (badness 5274) in paragraph at lines 267--272
 \OT1/ptm/m/n/10 (+20) 2024.  URL [][]$\OT1/pcr/m/n/10 http : / / arxiv . org / 
 abs / 2310 .
  []
 
 [10]
-Underfull \hbox (badness 1102) in paragraph at lines 355--363
+Underfull \hbox (badness 1102) in paragraph at lines 343--351
 \OT1/pcr/m/n/10 002$[][]\OT1/ptm/m/n/10 (+20) .  URL [][]$\OT1/pcr/m/n/10 https
  : / / linkinghub . elsevier .
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 376--383
+Underfull \hbox (badness 1072) in paragraph at lines 364--371
 \OT1/ptm/m/n/10 (+20) matic pro-cess-ing: be-hav-ior, the-ory, and bi-o-log-i-c
 al
  []
 
 
-Underfull \hbox (badness 2495) in paragraph at lines 385--389
+Underfull \hbox (badness 2495) in paragraph at lines 373--377
 []\OT1/ptm/m/n/10 (+20) Shen, Z.  LLM With Tools: A Sur-vey, Septem-
  []
 
 
-Underfull \hbox (badness 2894) in paragraph at lines 391--396
+Underfull \hbox (badness 2894) in paragraph at lines 379--384
 []\OT1/ptm/m/n/10 (+20) Shin, R. and Durme, B. V.  Few-Shot Se-man-tic
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 391--396
+Underfull \hbox (badness 1845) in paragraph at lines 379--384
 \OT1/ptm/m/n/10 (+20) Pars-ing with Lan-guage Mod-els Trained On Code,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 407--414
+Underfull \hbox (badness 10000) in paragraph at lines 395--402
 [][]\OT1/ptm/m/n/10 (+20) doi: $\OT1/pcr/m/n/10 10 . 1016 / j . patter . 2021 .
  100273$[][]\OT1/ptm/m/n/10 (+20) .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 407--414
+Underfull \hbox (badness 10000) in paragraph at lines 395--402
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / linkinghub . elsevie
 r . com /
  []
 
 [11]
-Underfull \hbox (badness 5274) in paragraph at lines 473--477
+Underfull \hbox (badness 5274) in paragraph at lines 461--465
 \OT1/ptm/m/n/10 (+20) 2022.  URL [][]$\OT1/pcr/m/n/10 http : / / arxiv . org / 
 abs / 2203 .
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 487--493
+Underfull \hbox (badness 1112) in paragraph at lines 475--481
 []\OT1/ptm/m/n/10 (+20) Zhao, T. Z., Wal-lace, E., Feng, S., Klein, D., and
  []
 
@@ -1477,13 +1471,13 @@ Package rerunfilecheck Info: File `example_paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36689 strings out of 474116
- 724821 string characters out of 5743682
+ 36693 strings out of 474116
+ 724701 string characters out of 5743682
  1962187 words of memory out of 5000000
- 57826 multiletter control sequences out of 15000+600000
- 607309 words of font info for 371 fonts, out of 8000000 for 9000
+ 57820 multiletter control sequences out of 15000+600000
+ 607858 words of font info for 379 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 93i,13n,99p,1671b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,13n,99p,1671b,671s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -1507,10 +1501,10 @@ fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on example_paper.pdf (15 pages, 566051 bytes).
+Output written on example_paper.pdf (15 pages, 566382 bytes).
 PDF statistics:
- 904 PDF objects out of 1000 (max. 8388607)
- 715 compressed objects within 8 object streams
- 147 named destinations out of 1000 (max. 500000)
+ 893 PDF objects out of 1000 (max. 8388607)
+ 704 compressed objects within 8 object streams
+ 145 named destinations out of 1000 (max. 500000)
  66235 words of extra memory for PDF output out of 74296 (max. 10000000)
 

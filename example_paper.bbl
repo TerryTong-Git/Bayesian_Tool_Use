@@ -1,4 +1,4 @@
-\begin{thebibliography}{57}
+\begin{thebibliography}{55}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -165,12 +165,6 @@ Hastie, T., Tibshirani, R., and Friedman, J.
 \newblock Springer, 2 edition, 2009.
 \newblock URL \url{https://hastie.su.domains/ElemStatLearn/}.
 
-\bibitem[Horn \& Johnson(2012)Horn and Johnson]{horn2012matrix}
-Horn, R.~A. and Johnson, C.~R.
-\newblock \emph{Matrix Analysis}.
-\newblock Cambridge University Press, 2 edition, 2012.
-\newblock \doi{10.1017/CBO9781139020411}.
-
 \bibitem[Hudson \& Manning(2018)Hudson and Manning]{hudson_compositional_2018}
 Hudson, D.~A. and Manning, C.~D.
 \newblock Compositional {Attention} {Networks} for {Machine} {Reasoning}, April
@@ -197,12 +191,6 @@ Ibarz, B., Kurin, V., Papamakarios, G., Nikiforou, K., Bennani, M., Csordás,
   {Conference}}, pp.\  2:1--2:23. PMLR, December 2022.
 \newblock URL \url{https://proceedings.mlr.press/v198/ibarz22a.html}.
 \newblock ISSN: 2640-3498.
-
-\bibitem[Kallenberg(2021)]{kallenberg2021foundations}
-Kallenberg, O.
-\newblock \emph{Foundations of Modern Probability}.
-\newblock Springer, 3 edition, 2021.
-\newblock \doi{10.1007/978-3-030-61871-1}.
 
 \bibitem[Kolter et~al.(2007)Kolter, Abbeel, and Ng]{kolter_hierarchical_2007}
 Kolter, J., Abbeel, P., and Ng, A.

@@ -58,6 +58,11 @@ Gemini~2.0 Flash, Gemini~2.5 Flash}) and open-source models
 \subsection{End-to-End Performance Comparison}
 \label{sec:performance}
 
+\paragraph{Roadmap.}
+We first define the paired tests used to compare the three routes, then report
+the pooled route accuracies and paired differences, and finally summarize how
+the gaps change with task difficulty.
+
 \paragraph{Pairwise statistical tests.}
 We evaluate pairwise route differences using McNemar tests on paired
 Bernoulli outcomes.
@@ -131,6 +136,11 @@ difference between natural-language reasoning and code simulation under
 this evaluation. Performance gaps widen with increasing task difficulty
 (\cref{fig:per_task_accuracy}): Route~3 remains substantially higher as
 the language-based routes degrade.
+
+\paragraph{Takeaway.}
+The main empirical result is therefore not that code simulation reliably beats
+natural-language reasoning, but that deterministic execution is the source of
+the large route-level gain.
 
 % \subsection{Representation-Level Analysis: Does Language Add Information?}
 % \label{sec:rep_analysis}
@@ -405,7 +415,7 @@ where $R^\star=\sigma^2$. Fitting irrelevant coordinates increases finite-sample
 
 
 
-% No norm bound is needed for the exact theorem, because Loewner covariance domination controls $v^\top\Sigma v$ for every vector $v$. For the approximate-margin corollary we use the bounded nuisance-sensitivity subclass
+% No norm bound is needed for the exact theorem, because Loewner covariance ordering controls $v^\top\Sigma v$ for every vector $v$. For the approximate-margin corollary we use a Lipschitz-bounded subclass
 % \begin{equation}
 % \cH_L=\big\{h_{a,v}\in\cH_{\rm lin}:\ \|v\|_2\le L\big\}.
 % \label{eq:bounded-nuisance-class}
@@ -414,7 +424,7 @@ where $R^\star=\sigma^2$. Fitting irrelevant coordinates increases finite-sample
 % \begin{equation}
 %     |h(b,u)-h(b,u')|\le L\|u-u'\|_2 .
 % \end{equation}
-% We use this as a standard norm-bounded linear-class restriction, not as a classical nuisance-parameter assumption. It is load-bearing only for \Cref{cor:approx-cov-dominance}, where it converts approximate covariance slack into a finite margin \citep{shalev2014understanding,wainwright2019high}.
+% We use this as a standard Lipschitz restriction in the nuisance coordinates, not as a classical nuisance-parameter assumption. It is load-bearing only for \Cref{cor:approx-cov-ordering}, where it converts approximate covariance slack into a finite margin.
 
 
 % The core notation is a sufficiency-style abstraction. It says that the label-relevant signal is shared, while the two routes differ through nuisance coordinates. This use follows the statistical role of sufficient summaries; it is not a claim that code and natural-language trace distributions are equivalent in the Blackwell or Le Cam sense \citep{fisher1922mathematical,lehmann1998theory,blackwell1953equivalent,lecam1986asymptotic}. Lower nuisance complexity is useful only when the representation preserves the core. A constant representation has zero nuisance and no answer signal. The results below therefore require both shared signal and smaller code-side nuisance.
@@ -430,7 +440,7 @@ where $R^\star=\sigma^2$. Fitting irrelevant coordinates increases finite-sample
 %     R_C(h)\le R_N(h)+\tau_{\rm rep}.
 %     \label{eq:ni-fixed-h}
 % \end{equation}
-% A uniform version asks whether \eqref{eq:ni-fixed-h} holds for every member of one common hypothesis class. \Cref{thm:cov-dominance} proves this statement for the unrestricted linear class under exact covariance domination; \Cref{cor:approx-cov-dominance} gives the corresponding bounded-nuisance version when covariance domination holds only approximately. There is no infimum over route-specific executors and no comparison between different model classes. If the route also changed the executor, a risk difference would mix representation and model-capability effects; the present setup removes that confound by holding $\cH$ fixed.
+% A uniform version asks whether \eqref{eq:ni-fixed-h} holds for every member of one common hypothesis class. \Cref{thm:cov-ordering} proves this statement for the unrestricted linear class under exact covariance ordering; \Cref{cor:approx-cov-ordering} gives the corresponding Lipschitz-bounded version when covariance ordering holds only approximately. There is no infimum over route-specific executors and no comparison between different model classes. If the route also changed the executor, a risk difference would mix representation and model-capability effects; the present setup removes that confound by holding $\cH$ fixed.
 
 % For the later language-interface reduction, fix a target model $M$ and a stochastic trace generator $G$. If $W_G$ is the text presented to $M$, define
 % \begin{equation}
@@ -442,7 +452,7 @@ where $R^\star=\sigma^2$. Fitting irrelevant coordinates increases finite-sample
 % \subsubsection{Linear Model: From Extra Native-Language Nuisance to Uniform Risk Dominance}
 % \label{sec:linear-main}
 
-% This section proves the representation claim in the simplest setting where all objects are explicit. We first specify the linear signal-plus-nuisance model and the common hypothesis class. We then impose the extra native-language nuisance assumption, show that it implies covariance domination, and use that covariance order to prove a uniform risk comparison for every linear predictor. We also state an approximate version; this is the only place where a norm bound on the nuisance coefficient is needed to turn covariance slack into a non-inferiority margin. The OLS calculation in the first subsection is included only as intuition for finite-sample learning with irrelevant coordinates; the main theorem is a fixed-class risk comparison. The goal is not to model LLMs as linear regressors. The goal is to isolate a standard sufficient condition under which code, viewed as an input distribution to the same predictor class, has no larger representation risk than native natural language.
+% This section proves the representation claim in the simplest setting where all objects are explicit. We first specify the linear signal-plus-nuisance model and the common hypothesis class. We then impose the extra native-language nuisance assumption, show that it implies covariance ordering, and use that covariance order to prove a uniform risk comparison for every linear predictor. We also state an approximate version; this is the only place where a Lipschitz bound in the nuisance coordinates is needed to turn covariance slack into a non-inferiority margin. The OLS calculation in the first subsection is included only as intuition for finite-sample learning with irrelevant coordinates; the main theorem is a fixed-class risk comparison. The goal is not to model LLMs as linear regressors. The goal is to isolate a standard sufficient condition under which code, viewed as an input distribution to the same predictor class, has no larger representation risk than native natural language.
 
 
 
@@ -455,26 +465,33 @@ where $R^\star=\sigma^2$. Fitting irrelevant coordinates increases finite-sample
 % \end{assumption}
 
 \subsubsection{Results}
-\paragraph{Covariance domination.}
-\label{sec:covariance-domination}
+We now make the representation claim precise in the linear model. The argument
+has three steps: define a nuisance covariance ordering, show that the
+extra-native-language-nuisance assumption implies that ordering, and then use
+the ordering to compare the risk of every linear predictor under the two route
+distributions. The approximate version replaces exact covariance ordering with
+an explicit $\varepsilon$ margin on a Lipschitz-bounded linear class.
+
+\paragraph{Covariance ordering.}
+\label{sec:covariance-ordering}
 
 Let
 \begin{equation}
     \Sigma_{U,r}=\E[U_rU_r^\top]
 \end{equation}
-be the nuisance covariance. We use the Loewner order on positive semidefinite matrices: $A\preceq B$ means $B-A$ is positive semidefinite, equivalently $v^\top A v\le v^\top Bv$ for every vector $v$ \citep{horn2012matrix}.
+be the nuisance covariance. We use the Loewner order on positive semidefinite matrices: $A\preceq B$ means $B-A$ is positive semidefinite, equivalently $v^\top A v\le v^\top Bv$ for every vector $v$.
 
-\begin{definition}[\textbf{Nuisance covariance dominance}]
-\label{def:cov-dominance}
+\begin{definition}[\textbf{Nuisance covariance ordering}]
+\label{def:cov-ordering}
 The code route has no larger nuisance covariance than native natural language if
 \begin{equation}
     \Sigma_{U,C}\preceq \Sigma_{U,N}.
     \label{eq:cov-order}
 \end{equation}
-This term is introduced here; the underlying Loewner order is standard.
+This terminology refers only to the route-specific nuisance covariance order.
 \end{definition}
 
-\begin{proposition}[Extra nuisance implies covariance dominance]
+\begin{proposition}[Extra nuisance implies covariance ordering]
 \label{prop:extra-implies-cov}
 Under \eqref{eq:centered-section3} and \cref{ass:extra-nuisance},
 \begin{equation}
@@ -499,7 +516,7 @@ and similarly for its transpose. Hence
 \begin{equation}
     \Sigma_{U,N}-\Sigma_{U,C}=\E[\eta_N\eta_N^\top]\succeq 0.
 \end{equation}
-This is the covariance addition formula for conditionally uncorrelated components, written in positive-semidefinite order \citep{horn2012matrix,kallenberg2021foundations}.
+This is the covariance addition formula for conditionally uncorrelated components, written in positive-semidefinite order.
 \end{proof}
 
 
@@ -509,14 +526,14 @@ This is the covariance addition formula for conditionally uncorrelated component
 
 The covariance order gives the desired uniform statement for the unrestricted linear class.
 
-\begin{theorem}[Uniform representation non-inferiority under covariance dominance]
-\label{thm:cov-dominance}
+\begin{theorem}[Uniform representation non-inferiority under covariance ordering]
+\label{thm:cov-ordering}
 Assume \eqref{eq:linear-label-section3}, \eqref{eq:centered-section3}, and \eqref{eq:cov-order}. Also assume $\E[BU_r^\top]=0$ and $\E[\varepsilon U_r]=0$ for $r\in\{C,N\}$. Then, for squared loss and the common class $\cH_{\rm lin}$ in \eqref{eq:linear-class-section3},
 \begin{equation}
     \sup_{h\in\cH_{\rm lin}}\{R_C(h)-R_N(h)\}\le 0.
-    \label{eq:uniform-dominance}
+    \label{eq:uniform-ordering}
 \end{equation}
-Consequently code is representation-non-inferior to native natural language with margin $\tau_{\rm rep}=0$ in this linear model.
+Consequently code is representation-non-inferior to native natural language with margin $\varepsilon=0$ in this linear model.
 \end{theorem}
 
 \begin{proof}
@@ -533,39 +550,39 @@ where $R_{\rm core}(a)=\E[((a-\theta)^\top B-\varepsilon)^2]$ does not depend on
     R_C(h_{a,v})-R_N(h_{a,v})
     =v^\top(\Sigma_{U,C}-\Sigma_{U,N})v\le 0
 \end{equation}
-by \eqref{eq:cov-order}. Taking the supremum over $h\in\cH_{\rm lin}$ proves \eqref{eq:uniform-dominance}.
+by \eqref{eq:cov-order}. Taking the supremum over $h\in\cH_{\rm lin}$ proves \eqref{eq:uniform-ordering}.
 \end{proof}
 
-\begin{corollary}[Approximate covariance dominance on a bounded nuisance class]
-\label{cor:approx-cov-dominance}
-Under the assumptions of \Cref{thm:cov-dominance}, suppose exact covariance dominance is relaxed to
+\begin{corollary}[Approximate covariance ordering on a Lipschitz-bounded class]
+\label{cor:approx-cov-ordering}
+Under the assumptions of \Cref{thm:cov-ordering}, suppose exact covariance ordering is relaxed to
 \begin{equation}
     \Sigma_{U,C}\preceq \Sigma_{U,N}+\kappa I_{d_U}
     \label{eq:approx-cov-order}
 \end{equation}
-for some \(\kappa\ge0\). Fix a finite nuisance-sensitivity radius \(L<\infty\) and restrict the predictor class to
+for some \(\kappa\ge0\). Fix a Lipschitz bound \(L<\infty\) on sensitivity to nuisance coordinates and restrict the predictor class to
 \begin{equation}
     \cH_L=\{h_{a,v}\in\cH_{\rm lin}:\|v\|_2\le L\}.
 \end{equation}
 Then
 \begin{equation}
     \sup_{h\in\cH_L}\{R_C(h)-R_N(h)\}\le L^2\kappa .
-    \label{eq:approx-uniform-dominance}
+    \label{eq:approx-uniform-ordering}
 \end{equation}
-Thus code is uniformly representation-non-inferior with margin \(\tau_{\rm rep}=L^2\kappa\) on the bounded class \(\cH_L\). Without the bound \(\|v\|_2\le L\), approximate covariance domination alone does not give a finite uniform margin.
+For this linear class, the condition \(\|v\|_2\le L\) is exactly the statement that \(h_{a,v}\) is \(L\)-Lipschitz in \(u\). Thus code is uniformly representation-non-inferior with margin \(\varepsilon=L^2\kappa\) on the bounded class \(\cH_L\). Without this Lipschitz bound, approximate covariance ordering alone does not give a finite uniform margin.
 \end{corollary}
 
 \begin{proof}
-For \(h_{a,v}\in\cH_L\), the proof of \Cref{thm:cov-dominance} gives
+For \(h_{a,v}\in\cH_L\), the proof of \Cref{thm:cov-ordering} gives
 \begin{equation}
     R_C(h_{a,v})-R_N(h_{a,v})
     =v^\top(\Sigma_{U,C}-\Sigma_{U,N})v.
 \end{equation}
-By \eqref{eq:approx-cov-order}, this is at most \(\kappa\|v\|_2^2\), and \(\|v\|_2\le L\) by definition of \(\cH_L\). Taking the supremum over \(h\in\cH_L\) proves \eqref{eq:approx-uniform-dominance}.
+By \eqref{eq:approx-cov-order}, this is at most \(\kappa\|v\|_2^2\), and \(\|v\|_2\le L\) by definition of \(\cH_L\). Taking the supremum over \(h\in\cH_L\) proves \eqref{eq:approx-uniform-ordering}.
 \end{proof}
-In the case where the exact version is too strong, the approximate version shows that we can relax the decomposition and the non-inferiority results still hold.
+In the case where the exact version is too strong, the approximate version shows that the same comparison survives with an explicit \(\varepsilon=L^2\kappa\) margin.
 
-Overall, this shows that representation explains little in the worst-case risk sense.
+Overall, the linear result isolates a narrow representation-level claim: once both routes preserve the same core, extra native-language nuisance can only increase risk for this predictor class, and approximate ordering converts directly into an \(\varepsilon\)-non-inferiority margin.
 
 % The approximate version is useful when the extra-nuisance decomposition is only a first-order model. Small translation artifacts, weak residual correlation between $U_C$ and $\eta_N$, or finite estimation error in the covariance comparison can be absorbed into $\kappa$. Unlike the exact theorem, the approximate result needs a bound on $\|v\|_2$; otherwise an arbitrarily nuisance-sensitive linear predictor could amplify the covariance slack without bound. The conclusion then becomes non-inferiority with an explicit margin rather than exact dominance.
 
@@ -580,7 +597,7 @@ Overall, this shows that representation explains little in the worst-case risk s
 % \Longrightarrow\ \text{no worse code representation risk}
 % \end{gathered}
 % \end{equation}
-% for the linear predictor class in the exact case, and for a bounded nuisance-sensitivity subclass in the approximate case.
+% for the linear predictor class in the exact case, and for a Lipschitz-bounded subclass in the approximate case.
 
 % In the nonlinear LLM setting, we do not apply the linear proof directly. The theoretical comparison is between code and native natural language as representations. The experiment tests a language-interface consequence of that comparison. Let $G_N$ be the native natural-language trace generator, let $G_C$ be the code trace generator, and let $G_T=T\circ G_C$ be the natural-language translation of the code trace. For a fixed target model $M$, define $R_M(G)=\E[\ell\{M(X,W_G),Y^\star\}]$. The representation test asks whether
 % \begin{equation}
@@ -592,7 +609,7 @@ Overall, this shows that representation explains little in the worst-case risk s
 % \subsubsection{Caveats}
 % \label{sec:caveats}
 
-% The theorem relies on covariance dominance, not on a bare claim that code is simpler. The extra-nuisance assumption in \cref{ass:extra-nuisance} is a sufficient condition, not an empirical fact. If exact dominance is too strong, \cref{cor:approx-cov-dominance} gives the corresponding margin statement for predictors with bounded nuisance coefficient norm. If the code route has nuisance covariance in directions to which a predictor is especially sensitive, or if no nuisance-sensitivity bound is imposed in the approximate case, the margin can be loose or vacuous.
+% The theorem relies on covariance ordering, not on a bare claim that code is simpler. The extra-nuisance assumption in \cref{ass:extra-nuisance} is a sufficient condition, not an empirical fact. If exact ordering is too strong, \cref{cor:approx-cov-ordering} gives the corresponding margin statement for predictors with bounded Lipschitz sensitivity to nuisance coordinates. If the code route has nuisance covariance in directions to which a predictor is especially sensitive, or if no Lipschitz bound is imposed in the approximate case, the margin can be loose or vacuous.
 
 % The common-core assumption is also essential. Lower entropy or lower covariance alone is not enough: a constant representation has zero nuisance but may discard the answer. The theory therefore requires both signal preservation and lower nuisance burden. The translated-code-to-NL experiment is best read as a direct test of the language-interface decision claim, not as a verification of every modeling assumption.
 

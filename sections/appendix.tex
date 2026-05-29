@@ -19,7 +19,7 @@
 \noindent\textbf{Route definitions.}~Across all route tables, \RouteOne{} denotes natural-language reasoning,
 \RouteTwo{} denotes natural-language simulation over a code trace, and
 \RouteThree{} denotes deterministic code execution. Captions and result notes
-state when a table uses the full evaluation set, a 25\% subset, a single seed,
+state when a table uses the 40-task analysis set, a 25\% subset, a single seed,
 or per-arm parse-normalized denominators. Unless otherwise stated, accuracies
 are percentages and route differences are percentage points.
 
@@ -47,7 +47,7 @@ $O(n^3)$ & 4 & 37 & 0.0 & 0.0 & 0.0 & 0.0 & 1 & 0.0 \\
 NP-hard & 6 & 360 & 17.6 & 16.8 & 69.7 & -0.8 & 0.0278 & 53.0 \\
 \bottomrule
 \end{tabular*}
-\captionof{table}{Route accuracy grouped by asymptotic complexity in the main route evaluation. Tasks and Inst. report task and instance counts; $p_{2,1}$ is the exact two-sided McNemar test for \RouteTwo{} vs. \RouteOne{} on paired outcomes.}
+\captionof{table}{Route accuracy grouped by asymptotic complexity on the 40-task analysis set in the main route evaluation. Tasks and Inst. report task and instance counts; $p_{2,1}$ is the exact two-sided McNemar test for \RouteTwo{} vs. \RouteOne{} on paired outcomes.}
 \label{tab:appendix_complexity_routes}
 \end{appendixtableblock}
 
@@ -155,9 +155,9 @@ Gemini 2.5 Pro & 47.5\% & 45.2\% & Code \\
 \label{app:coding_specialized_model_evaluation}
 
 We evaluate coding-specialized models to test whether models trained on code
-show a different \RouteTwo{} pattern. Even for these models, replacing
-natural-language traces with code traces changes little compared with replacing
-LLM simulation by actual code execution.
+change the \RouteTwo{}--\RouteOne{} pattern. Even for these models, replacing
+natural-language reasoning with simulation over code traces changes little
+relative to replacing simulation with actual code execution.
 
 \begin{appendixtableblock}
 \footnotesize
@@ -171,7 +171,7 @@ Model & NL & Sim & Code Exec \\
 \path{codestral-2508} (original) & 19.89\% (943/4740) & 23.14\% (1097/4740) & 59.65\% (2266/3799) \\
 \bottomrule
 \end{tabular*}
-\captionof{table}{Route accuracy for coding-specialized models. Each cell reports accuracy with correct/denominator counts; denominators are parse-normalized per arm.}
+\captionof{table}{Route accuracy for coding-specialized models. NL, Sim, and Code Exec correspond to \RouteOne{}, \RouteTwo{}, and \RouteThree{}; each cell reports accuracy with correct/denominator counts, and denominators are parse-normalized per arm.}
 \label{tab:appendix_coding_models}
 \end{appendixtableblock}
 
