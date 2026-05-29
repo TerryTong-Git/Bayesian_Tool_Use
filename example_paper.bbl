@@ -1,4 +1,4 @@
-\begin{thebibliography}{52}
+\begin{thebibliography}{64}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -18,6 +18,13 @@ Aky{\"u}rek, E., Schuurmans, D., Andreas, J., Ma, T., and Zhou, D.
 \newblock What learning algorithm is in-context learning? investigations with
   linear models.
 \newblock \emph{arXiv preprint arXiv:2211.15661}, 2022.
+
+\bibitem[Allamanis et~al.(2018)Allamanis, Barr, Devanbu, and
+  Sutton]{allamanis2018survey}
+Allamanis, M., Barr, E.~T., Devanbu, P., and Sutton, C.
+\newblock A survey of machine learning for big code and naturalness.
+\newblock \emph{ACM Computing Surveys}, 51\penalty0 (4):\penalty0 1--37, 2018.
+\newblock \doi{10.1145/3212695}.
 
 \bibitem[Alon et~al.(2019)Alon, Zilberstein, Levy, and
   Yahav]{alon_code2vec_2019}
@@ -124,6 +131,14 @@ Garg, S., Tsipras, D., Liang, P.~S., and Valiant, G.
 \newblock \emph{Advances in neural information processing systems},
   35:\penalty0 30583--30598, 2022.
 
+\bibitem[Geirhos et~al.(2020)Geirhos, Jacobsen, Michaelis, Zemel, Brendel,
+  Bethge, and Wichmann]{geirhos2020shortcut}
+Geirhos, R., Jacobsen, J.-H., Michaelis, C., Zemel, R., Brendel, W., Bethge,
+  M., and Wichmann, F.~A.
+\newblock Shortcut learning in deep neural networks.
+\newblock \emph{Nature Machine Intelligence}, 2:\penalty0 665--673, 2020.
+\newblock \doi{10.1038/s42256-020-00257-z}.
+
 \bibitem[Graves et~al.(2014)Graves, Wayne, and Danihelka]{graves_neural_2014}
 Graves, A., Wayne, G., and Danihelka, I.
 \newblock Neural {Turing} {Machines}, December 2014.
@@ -144,6 +159,14 @@ Graves, A., Wayne, G., Reynolds, M., Harley, T., Danihelka, I.,
 \newblock \doi{10.1038/nature20101}.
 \newblock URL \url{https://www.nature.com/articles/nature20101}.
 
+\bibitem[Gururangan et~al.(2018)Gururangan, Swayamdipta, Levy, Schwartz,
+  Bowman, and Smith]{gururangan2018annotation}
+Gururangan, S., Swayamdipta, S., Levy, O., Schwartz, R., Bowman, S.~R., and
+  Smith, N.~A.
+\newblock Annotation artifacts in natural language inference data.
+\newblock In \emph{Proceedings of NAACL-HLT}, 2018.
+\newblock URL \url{https://aclanthology.org/N18-2017/}.
+
 \bibitem[Han et~al.(2024)Han, Schoelkopf, Zhao, Qi, Riddell, Zhou, Coady, Peng,
   Qiao, Benson, Sun, Wardle-Solano, Szabo, Zubova, Burtell, Fan, Liu, Wong,
   Sailor, Ni, Nan, Kasai, Yu, Zhang, Fabbri, Kryscinski, Yavuz, Liu, Lin, Joty,
@@ -158,6 +181,18 @@ Han, S., Schoelkopf, H., Zhao, Y., Qi, Z., Riddell, M., Zhou, W., Coady, J.,
   {Logic}, October 2024.
 \newblock URL \url{http://arxiv.org/abs/2209.00840}.
 \newblock arXiv:2209.00840 [cs].
+
+\bibitem[Hastie et~al.(2009)Hastie, Tibshirani, and
+  Friedman]{hastie2009elements}
+Hastie, T., Tibshirani, R., and Friedman, J.
+\newblock \emph{The Elements of Statistical Learning}.
+\newblock Springer, 2 edition, 2009.
+\newblock URL \url{https://hastie.su.domains/ElemStatLearn/}.
+
+\bibitem[Horn \& Johnson(2012)Horn and Johnson]{horn2012matrix}
+Horn, R.~A. and Johnson, C.~R.
+\newblock \emph{Matrix Analysis}.
+\newblock Cambridge University Press, 2 edition, 2012.
 
 \bibitem[Hudson \& Manning(2018)Hudson and Manning]{hudson_compositional_2018}
 Hudson, D.~A. and Manning, C.~D.
@@ -193,6 +228,12 @@ Jiang, A.~Q., Sablayrolles, A., Mensch, A., Bamford, C., Chaplot, D.~S., Casas,
 \newblock Mistral 7b.
 \newblock \emph{arXiv preprint arXiv:2310.06825}, 2023.
 
+\bibitem[Kallenberg(2021)]{kallenberg2021foundations}
+Kallenberg, O.
+\newblock \emph{Foundations of Modern Probability}.
+\newblock Springer, 3 edition, 2021.
+\newblock \doi{10.1007/978-3-030-61871-1}.
+
 \bibitem[Kolter et~al.(2007)Kolter, Abbeel, and Ng]{kolter_hierarchical_2007}
 Kolter, J., Abbeel, P., and Ng, A.
 \newblock Hierarchical {Apprenticeship} {Learning} with {Application} to
@@ -213,6 +254,20 @@ Krishnamurthy, J., Dasigi, P., and Gardner, M.
   Association for Computational Linguistics.
 \newblock \doi{10.18653/v1/D17-1160}.
 \newblock URL \url{https://aclanthology.org/D17-1160/}.
+
+\bibitem[Lehmann \& Casella(1998)Lehmann and Casella]{lehmann1998theory}
+Lehmann, E.~L. and Casella, G.
+\newblock \emph{Theory of Point Estimation}.
+\newblock Springer, 2 edition, 1998.
+\newblock \doi{10.1007/b98854}.
+
+\bibitem[Lu et~al.(2022)Lu, Bartolo, Moore, Riedel, and
+  Stenetorp]{lu2021fantastically}
+Lu, Y., Bartolo, M., Moore, A., Riedel, S., and Stenetorp, P.
+\newblock Fantastically ordered prompts and where to find them: Overcoming
+  few-shot prompt order sensitivity.
+\newblock In \emph{Proceedings of ACL}, 2022.
+\newblock URL \url{https://aclanthology.org/2022.acl-long.556/}.
 
 \bibitem[Lyu et~al.(2023)Lyu, Havaldar, Stein, Zhang, Rao, Wong, Apidianaki,
   and Callison-Burch]{lyu2023faithful}
@@ -239,6 +294,13 @@ Marra, G., Giannini, F., Diligenti, M., and Gori, M.
   January 2019.
 \newblock URL \url{http://arxiv.org/abs/1901.04195}.
 \newblock arXiv:1901.04195 [cs].
+
+\bibitem[McCoy et~al.(2019)McCoy, Pavlick, and Linzen]{mccoy2019right}
+McCoy, R.~T., Pavlick, E., and Linzen, T.
+\newblock Right for the wrong reasons: Diagnosing syntactic heuristics in
+  natural language inference.
+\newblock In \emph{Proceedings of ACL}, 2019.
+\newblock URL \url{https://aclanthology.org/P19-1334/}.
 
 \bibitem[Merrill \& Sabharwal(2024)Merrill and
   Sabharwal]{merrill_expressive_2024}
@@ -271,6 +333,14 @@ Parisi, A., Zhao, Y., and Fiedel, N.
 \newblock {TALM}: {Tool} {Augmented} {Language} {Models}, May 2022.
 \newblock URL \url{http://arxiv.org/abs/2205.12255}.
 \newblock arXiv:2205.12255 [cs].
+
+\bibitem[Pezeshkpour \& Hruschka(2023)Pezeshkpour and
+  Hruschka]{pezeshkpour2023order}
+Pezeshkpour, P. and Hruschka, E.
+\newblock Large language models sensitivity to the order of options in
+  multiple-choice questions.
+\newblock \emph{arXiv preprint arXiv:2308.11483}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2308.11483}.
 
 \bibitem[Poggio et~al.(2017)Poggio, Mhaskar, Rosasco, Miranda, and
   Liao]{poggio2017and}
@@ -384,6 +454,12 @@ Veličković, P. and Blundell, C.
 \newblock URL
   \url{https://linkinghub.elsevier.com/retrieve/pii/S2666389921000994}.
 
+\bibitem[Wainwright(2019)]{wainwright2019high}
+Wainwright, M.~J.
+\newblock \emph{High-Dimensional Statistics: A Non-Asymptotic Viewpoint}.
+\newblock Cambridge University Press, 2019.
+\newblock \doi{10.1017/9781108627771}.
+
 \bibitem[Wang et~al.(2025)Wang, Chang, Patel, Biju, Wu, Liu, Ding, Rezazadeh,
   Shah, Bao, and Siow]{wang2025mcpbenchbenchmarkingtoolusingllm}
 Wang, Z., Chang, Q., Patel, H., Biju, S., Wu, C.-E., Liu, Q., Ding, A.,
@@ -443,5 +519,14 @@ Zhang, R., Frei, S., and Bartlett, P.~L.
 \newblock Trained transformers learn linear models in-context.
 \newblock \emph{Journal of Machine Learning Research}, 25\penalty0
   (49):\penalty0 1--55, 2024.
+
+\bibitem[Zhao et~al.(2021)Zhao, Wallace, Feng, Klein, and
+  Singh]{zhao2021calibrate}
+Zhao, T.~Z., Wallace, E., Feng, S., Klein, D., and Singh, S.
+\newblock Calibrate before use: Improving few-shot performance of language
+  models.
+\newblock In \emph{Proceedings of the International Conference on Machine
+  Learning}, 2021.
+\newblock URL \url{https://proceedings.mlr.press/v139/zhao21c.html}.
 
 \end{thebibliography}

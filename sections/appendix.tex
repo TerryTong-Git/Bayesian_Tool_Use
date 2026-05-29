@@ -12,22 +12,225 @@ execution. Captions and result paragraphs state whether a table uses the full
 evaluation set, a 25\% subset, a single seed, or per-arm parse-normalized
 denominators.
 
-\input{sections/appendix/complexity_stratified_route_accuracy}
-\input{sections/appendix/model_stratified_route_accuracy}
+\subsection{Complexity-Stratified Route Accuracy}
+\label{app:complexity_stratified_route_accuracy}
+
+We stratify the main route-accuracy evaluation by the asymptotic complexity
+class of each task. Across classes, Route~3 remains the main source of
+improvement over Route~2, while Route~2 is close to Route~1.
+
+\begin{center}
+\footnotesize
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrrrr@{}}
+\toprule
+Complexity & Tasks & Inst. & R1 & R2 & R3 & R2--R1 & $p_{2,1}$ & R3--R2 \\
+\midrule
+$O(1)$ & 4 & 227 & 49.8 & 49.4 & 85.0 & -0.4 & 0.52 & 35.6 \\
+$O(\log n)$ & 1 & 35 & 22.4 & 28.6 & 32.9 & 6.2 & 2.7e-04 & 4.3 \\
+$O(n)$ & 4 & 135 & 4.8 & 5.0 & 7.5 & 0.2 & 0.635 & 2.5 \\
+$O(n \log n)$ & 5 & 68 & 0.0 & 0.0 & 0.0 & 0.0 & 1 & 0.0 \\
+$O(n^2)$ & 17 & 357 & 12.4 & 12.0 & 49.0 & -0.4 & 0.157 & 37.0 \\
+$O(n^2 \log n)$ & 1 & 1 & 0.0 & 0.0 & 0.0 & 0.0 & 1 & 0.0 \\
+$O(n^3)$ & 4 & 37 & 0.0 & 0.0 & 0.0 & 0.0 & 1 & 0.0 \\
+NP-hard & 8 & 480 & 23.8 & 21.7 & 59.2 & -2.1 & 5.0e-09 & 37.5 \\
+\bottomrule
+\end{tabular*}
+\captionof{table}{Route accuracy grouped by asymptotic complexity.}
+\label{tab:appendix_complexity_routes}
+\end{center}
+
+\appendixresult{Accuracies and deltas in \cref{tab:appendix_complexity_routes} are percentages
+or percentage points. McNemar tests are exact two-sided tests on paired outcomes.
+The main route pattern is not an artifact of averaging together easy and hard
+task families: the Route~3--Route~2 gain remains the largest observed change in
+the high-support classes, while Route~2 stays close to Route~1.}
+
+\paragraph{Task mapping.}
+The largest strata are $O(n^2)$ dynamic-programming, sorting, string, graph, and
+shortest-path tasks; and NP-hard ILP, graph coloring, edge-disjoint paths,
+shortest path, and TSP tasks. The smaller strata cover constant-time arithmetic
+and geometry, logarithmic binary search, linear selection/string matching,
+$O(n \log n)$ scheduling/sorting/hulls, $O(n^2 \log n)$ Kruskal MST, and cubic
+dynamic-programming/shortest-path routines.
+
+\subsection{Model-Stratified Route Accuracy}
+\label{app:model_stratified_route_accuracy}
+
+We stratify the main route comparison by model to check whether the aggregate result is driven by one model family or scale regime. The Route~3 advantage persists across all six full-coverage models, while the Route~2--Route~1 difference is small and changes sign across models.
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.35\textwidth}lrrrrrrrr@{}}
+\toprule
+Model & Type & Inst. & R1 & R2 & R3 & R2--R1 & $p_{2,1}$ & R3--R2 & $p_{3,2}$ \\
+\midrule
+anthropic/claude-haiku-4.5 & closed & 1340 & 31.4 & 27.7 & 48.2 & -3.7 & 4.4e-13 & 20.5 & 6.6e-123 \\
+google/gemini-2.0-flash-001 & closed & 1340 & 22.3 & 21.1 & 54.4 & -1.2 & 0.0159 & 33.3 & $<10^{-300}$ \\
+google/gemini-2.5-flash & closed & 1340 & 23.4 & 23.5 & 54.3 & 0.0 & 0.961 & 30.8 & 1.5e-277 \\
+openai/gpt-4o-mini & closed & 1340 & 18.2 & 16.8 & 49.6 & -1.4 & 0.00312 & 32.8 & 2.7e-280 \\
+mistralai/codestral-2508 & open & 1340 & 17.6 & 18.9 & 52.3 & 1.2 & 0.00113 & 33.5 & 1.3e-284 \\
+mistralai/mixtral-8x22b-instruct & open & 1340 & 15.2 & 15.7 & 42.8 & 0.5 & 0.143 & 27.1 & 3.0e-221 \\
+\bottomrule
+\end{tabular*}
+\captionof{table}{Route accuracy grouped by model.}
+\label{tab:appendix_model_routes}
+\end{center}
+
+\appendixresult{Each row in \cref{tab:appendix_model_routes} has 1,340 unique problems and 4,020
+paired route evaluations. Accuracies and deltas are percentages or percentage
+points. This stratification shows that the execution gain is not an artifact of
+mixing one weak or strong model into the aggregate.}
 
 \section{Functional Similarity Checks}
 \label{app:functional_similarity_checks}
-\input{sections/appendix/prompt_translation_shot_ablation}
-\input{sections/appendix/recursive_language_model_evaluation}
+
+\subsection{Prompt Translation Shot Ablation}
+\label{app:prompt_translation_shot_ablation}
+
+The functional similarity test depends on translating code traces back into natural language. To test sensitivity to prompting, we vary the number of in-context examples used by the translator. More examples improve translated-trace utility and narrow the gap to native natural-language traces.
+
+\begin{center}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
+\toprule
+Shots & $x$ & $x$ + native NL & $x$ + translated NL & $\Delta$ native & $\Delta$ translated & Gap \\
+\midrule
+0 & 32.70\% & 55.70\% & 42.41\% & +23.00pp & +9.70pp & -13.29pp \\
+1 & 32.70\% & 55.70\% & 45.78\% & +23.00pp & +13.08pp & -9.92pp \\
+2 & 32.70\% & 55.70\% & 49.58\% & +23.00pp & +16.88pp & -6.12pp \\
+3 & 32.70\% & 55.70\% & 48.52\% & +23.00pp & +15.82pp & -7.17pp \\
+4 & 32.70\% & 55.70\% & 49.37\% & +23.00pp & +16.67pp & -6.33pp \\
+5 & 32.70\% & 55.70\% & 50.00\% & +23.00pp & +17.30pp & -5.70pp \\
+10 (reference) & 39.00\% & 56.50\% & 52.00\% & +17.50pp & +13.00pp & -4.50pp \\
+\bottomrule
+\end{tabular*}
+\captionof{table}{Translation-additivity shot ablation for Claude Haiku 4.5.}
+\label{tab:appendix_shot_ablation}
+\end{center}
+
+\appendixresult{Rows 0--5 in \cref{tab:appendix_shot_ablation} use a matched 25\% subset sweep.
+The 10-shot reference row comes from the original main-evaluation setting and is
+not from the same subset sweep. Here, $x$ is the question alone, $x$ + native NL
+appends the original natural-language trace, and $x$ + translated NL appends the
+natural-language trace translated from code.}
+
+\subsection{Recursive Language Model Evaluation}
+\label{app:recursive_language_model_evaluation}
+
+To broaden coverage beyond standard LLM forward passes, we evaluate recursive
+language model execution on a 25\% subset at seed~0. Route~1 and Route~2 remain
+close under this executor family.
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Model & RLM Code Acc & RLM NL Acc & Better Arm \\
+\midrule
+Claude Haiku 4.5 & 29.4\% & 30.9\% & NL \\
+Gemini 2.5 Pro & 47.5\% & 45.2\% & Code \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Recursive language model results on the 25\% subset, seed 0.}
+\label{tab:appendix_rlm}
+\end{center}
+
+\appendixresult{The corresponding counts are 202/686 code-correct vs. 212/686 NL-correct for
+Claude Haiku 4.5, and 326/686 code-correct vs. 310/686 NL-correct for Gemini
+2.5 Pro. Because this is a 25\% subset, we use it as model-coverage evidence
+rather than as the main route estimate.}
 
 \section{Additional Model Evaluations}
 \label{app:additional_model_evaluations}
-\input{sections/appendix/coding_specialized_model_evaluation}
-\input{sections/appendix/frontier_model_sanity_checks}
+
+\subsection{Coding-Specialized Model Evaluation}
+\label{app:coding_specialized_model_evaluation}
+
+We evaluate coding-specialized models to test whether models trained on code
+show a different Route~2 pattern. Even for these models, replacing
+natural-language traces with code traces changes little compared with replacing
+LLM simulation by actual code execution.
+
+\begin{center}
+\footnotesize
+\begin{tabular*}{0.92\textwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Model & NL & Sim & Code Exec \\
+\midrule
+x-ai/grok-code-fast-1 (25\% data) & 47.71\% (167/350) & 47.71\% (167/350) & 55.99\% (159/284) \\
+qwen/qwen3-coder (25\% data) & 30.23\% (104/344) & 26.86\% (94/350) & 56.19\% (168/299) \\
+codestral-2508 (original) & 19.89\% (943/4740) & 23.14\% (1097/4740) & 59.65\% (2266/3799) \\
+\bottomrule
+\end{tabular*}
+\captionof{table}{Route accuracy for coding-specialized models. Each cell reports accuracy over correct / denominator.}
+\label{tab:appendix_coding_models}
+\end{center}
+
+\appendixresult{Grok and Qwen use 25\% subset runs; Codestral uses the original evaluation run.
+Rows use per-arm parse-normalized denominators: NL and Sim drop rows where
+that arm failed to parse, while Code Exec keeps rows with successful code
+execution. The 25\% subset rows broaden model coverage but are not pooled into
+the main six-model estimate.}
+
+\subsection{Frontier Model Controlled-Subset Evaluation}
+\label{app:frontier_model_sanity_checks}
+
+We also evaluate two frontier models on a 350-instance subset at seed~1 with
+tool calling disabled and no patching or repair step. These results are not used
+as the main estimate because they are smaller than the full six-model
+evaluation, but they provide a controlled check that the route pattern is not
+explained only by explicit tool calls.
+
+\begin{center}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr@{}}
+\toprule
+Model & Route 1 & Route 2 & Route 3 \\
+\midrule
+GPT-5.4 & 42.57\% (149/350) & 41.43\% (145/350) & 54.01\% (175/324) \\
+Claude Opus 4.6 & 52.73\% (174/330) & 73.42\% (116/158) & 77.54\% (107/138) \\
+\bottomrule
+\end{tabular*}
+\captionof{table}{Frontier controlled-subset route accuracy. Entries are accuracy (correct / denominator).}
+\label{tab:appendix_frontier_nopatch}
+\end{center}
+
+\appendixresult{Reasoning-mode runs are excluded because hidden reasoning and
+tool scaffolding confound the comparison; rows use seed~1, tool calling
+disabled, and per-arm parse-normalized denominators.}
 
 \section{Failure Analysis}
 \label{app:failure_analysis}
-\input{sections/appendix/code_execution_failure_modes}
+
+\subsection{Code Execution Failure Modes}
+\label{app:code_execution_failure_modes}
+
+When Route~3 fails, failures are mostly semantic wrong answers rather than syntax or timeout failures. This supports the interpretation that code execution errors often originate in the generated program specification rather than in the Python runtime itself.
+
+\begin{center}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Model & Wrong answer & Syntax error & Runtime error & Time limit \\
+\midrule
+Haiku & 50.60\% & 16.37\% & 2.80\% & 30.23\% \\
+Codestral & 63.58\% & 4.36\% & 28.62\% & 3.44\% \\
+Gemini 2.0 & 71.79\% & 19.34\% & 2.46\% & 6.41\% \\
+Gemini 2.5 & 73.36\% & 15.62\% & 3.38\% & 7.64\% \\
+GPT-4o mini & 65.82\% & 3.60\% & 26.73\% & 3.85\% \\
+Mixtral & 45.77\% & 5.56\% & 46.04\% & 2.63\% \\
+Total & 61.06\% & 10.54\% & 19.23\% & 9.17\% \\
+\bottomrule
+\end{tabular}
+\captionof{table}{Distribution of Route~3 code-execution failures.}
+\label{tab:appendix_code_failure_modes}
+\end{center}
+
+\appendixresult{\Cref{tab:appendix_code_failure_modes} is conditional on Route~3 failures and
+excludes parse-only rows where execution completed but the returned value failed
+parsing or type checks. This keeps the diagnostic focused on what happened after
+code execution was actually attempted.}
 
 \section{Reproducibility Notes}
 \label{app:reproducibility_notes}
