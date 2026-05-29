@@ -1,7 +1,5 @@
-% Polished LaTeX appendix source.
-% Intended to be pasted after the main paper body.
-% Required packages in the main preamble: booktabs, array, caption, url or xurl, hyperref, cleveref.
-% Optional, for more flexible line breaks in model/path names: xurl.
+% Polished LaTeX appendix source included by example_paper.tex.
+% Required packages in the main preamble: booktabs, array, caption, url, hyperref, cleveref.
 
 \clearpage
 \onecolumn
@@ -12,14 +10,13 @@
 \newcommand{\RouteOne}{Route~1}
 \newcommand{\RouteTwo}{Route~2}
 \newcommand{\RouteThree}{Route~3}
-\newcommand{\appendixresult}[1]{\par\smallskip\noindent\textbf{Result.}~#1\par\smallskip}
-\newcommand{\appendixnote}[1]{\par\smallskip\noindent\textbf{Note.}~#1\par\smallskip}
+\newcommand{\appendixresult}[1]{\par\noindent\textbf{Result.}~#1\par}
+\newenvironment{appendixtableblock}{\par\smallskip\noindent\begin{minipage}{\linewidth}\centering}{\end{minipage}\par\smallskip}
 
 \section{Supplementary Route Results}
 \label{app:route_robustness}
 
-\paragraph{Route definitions.}
-Across all route tables, \RouteOne{} denotes natural-language reasoning,
+\noindent\textbf{Route definitions.}~Across all route tables, \RouteOne{} denotes natural-language reasoning,
 \RouteTwo{} denotes natural-language simulation over a code trace, and
 \RouteThree{} denotes deterministic code execution. Captions and result notes
 state when a table uses the full evaluation set, a 25\% subset, a single seed,
@@ -33,8 +30,7 @@ We stratify the main route-accuracy evaluation by the asymptotic complexity
 class of each task. Across classes, \RouteThree{} remains the main source of
 improvement over \RouteTwo{}, while \RouteTwo{} stays close to \RouteOne{}.
 
-\begin{table}[!htbp]
-\centering
+\begin{appendixtableblock}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrrrr@{}}
@@ -51,14 +47,13 @@ $O(n^3)$ & 4 & 37 & 0.0 & 0.0 & 0.0 & 0.0 & 1 & 0.0 \\
 NP-hard & 8 & 480 & 23.8 & 21.7 & 59.2 & -2.1 & $5.0{\times}10^{-9}$ & 37.5 \\
 \bottomrule
 \end{tabular*}
-\caption{Route accuracy grouped by asymptotic complexity. McNemar tests are exact two-sided tests on paired outcomes.}
+\captionof{table}{Route accuracy grouped by asymptotic complexity. Tasks and Inst. report task and instance counts; McNemar tests are exact two-sided tests on paired outcomes.}
 \label{tab:appendix_complexity_routes}
-\end{table}
+\end{appendixtableblock}
 
-\appendixresult{The main route pattern in \cref{tab:appendix_complexity_routes} is not an artifact of averaging together easy and hard task families: the \RouteThree{}--\RouteTwo{} gain remains the largest observed change in the high-support classes, while \RouteTwo{} stays close to \RouteOne{}.}
+\appendixresult{\Cref{tab:appendix_complexity_routes} shows the aggregate route pattern within the higher-support complexity strata: \RouteThree{}--\RouteTwo{} is the largest observed route change, while \RouteTwo{} stays close to \RouteOne{}.}
 
-\paragraph{Task mapping.}
-The largest strata are $O(n^2)$ dynamic-programming, sorting, string, graph, and
+\noindent\textbf{Task mapping.}~The largest strata are $O(n^2)$ dynamic-programming, sorting, string, graph, and
 shortest-path tasks; and NP-hard ILP, graph coloring, edge-disjoint paths,
 shortest path, and TSP tasks. The smaller strata cover constant-time arithmetic
 and geometry, logarithmic binary search, linear selection/string matching,
@@ -73,11 +68,10 @@ result is driven by one model family or scale regime. The \RouteThree{} advantag
 persists across all six full-coverage models, while the \RouteTwo{}--\RouteOne{}
 difference is small and changes sign across models.
 
-\begin{table}[!htbp]
-\centering
+\begin{appendixtableblock}
 \footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.34\linewidth}lrrrrrrrr@{}}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.36\linewidth}lrrrrrrrr@{}}
 \toprule
 Model & Type & Inst. & R1 & R2 & R3 & R2--R1 & $p_{2,1}$ & R3--R2 & $p_{3,2}$ \\
 \midrule
@@ -89,11 +83,11 @@ Model & Type & Inst. & R1 & R2 & R3 & R2--R1 & $p_{2,1}$ & R3--R2 & $p_{3,2}$ \\
 \path{mistralai/mixtral-8x22b-instruct} & open & 1340 & 15.2 & 15.7 & 42.8 & 0.5 & 0.143 & 27.1 & $3.0{\times}10^{-221}$ \\
 \bottomrule
 \end{tabular*}
-\caption{Route accuracy grouped by model. Each row contains 1,340 unique problems and 4,020 paired route evaluations.}
+\captionof{table}{Route accuracy grouped by model. Each row contains 1,340 unique problems and 4,020 paired route evaluations.}
 \label{tab:appendix_model_routes}
-\end{table}
+\end{appendixtableblock}
 
-\appendixresult{\Cref{tab:appendix_model_routes} shows that the execution gain is not an artifact of mixing one weak or strong model into the aggregate.}
+\appendixresult{\Cref{tab:appendix_model_routes} shows that \RouteThree{} stays above \RouteTwo{} for every full-coverage model row, so the aggregate execution gain is not driven by a single weak or strong model.}
 
 \section{Functional Similarity Checks}
 \label{app:functional_similarity_checks}
@@ -106,8 +100,7 @@ natural language. To test sensitivity to prompting, we vary the number of
 in-context examples used by the translator. More examples improve
 translated-trace utility and narrow the gap to native natural-language traces.
 
-\begin{table}[!htbp]
-\centering
+\begin{appendixtableblock}
 \small
 \setlength{\tabcolsep}{4pt}
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
@@ -123,11 +116,11 @@ Shots & $x$ & $x$ + native NL & $x$ + translated NL & $\Delta$ native & $\Delta$
 10 (reference) & 39.00\% & 56.50\% & 52.00\% & +17.50pp & +13.00pp & -4.50pp \\
 \bottomrule
 \end{tabular*}
-\caption{Translation-additivity shot ablation for Claude Haiku 4.5. Rows 0--5 use a matched 25\% subset sweep; the 10-shot row is an original main-evaluation reference and is not from the same subset sweep.}
+\captionof{table}{Translation-additivity shot ablation for Claude Haiku 4.5. Gap is translated NL minus native NL. Rows 0--5 use a matched 25\% subset sweep; the 10-shot row is an original main-evaluation reference and is not from the same subset sweep.}
 \label{tab:appendix_shot_ablation}
-\end{table}
+\end{appendixtableblock}
 
-\appendixresult{In \cref{tab:appendix_shot_ablation}, $x$ is the question alone, $x$ + native NL appends the original natural-language trace, and $x$ + translated NL appends the natural-language trace translated from code.}
+\appendixresult{\Cref{tab:appendix_shot_ablation} shows that translated traces improve over the question-only baseline at every reported shot setting, but remain below native natural-language traces in every row.}
 
 \section{Additional Model Evaluations}
 \label{app:additional_model_evaluations}
@@ -136,25 +129,24 @@ Shots & $x$ & $x$ + native NL & $x$ + translated NL & $\Delta$ native & $\Delta$
 \label{app:recursive_language_model_evaluation}
 
 To broaden coverage beyond standard LLM forward passes, we evaluate recursive
-language model execution on a 25\% subset at seed~0. \RouteOne{} and \RouteTwo{}
-remain close under this executor family.
+language model execution on a 25\% subset at seed~0. The code and
+natural-language arms remain close under this executor family.
 
-\begin{table}[!htbp]
-\centering
+\begin{appendixtableblock}
 \small
-\begin{tabular}{lrrr}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
 \toprule
 Model & RLM Code Acc & RLM NL Acc & Better Arm \\
 \midrule
 Claude Haiku 4.5 & 29.4\% & 30.9\% & NL \\
 Gemini 2.5 Pro & 47.5\% & 45.2\% & Code \\
 \bottomrule
-\end{tabular}
-\caption{Recursive language model results on the 25\% subset, seed~0.}
+\end{tabular*}
+\captionof{table}{Recursive language model code-vs.-NL accuracy on the 25\% subset, seed~0. Better Arm marks the higher row accuracy.}
 \label{tab:appendix_rlm}
-\end{table}
+\end{appendixtableblock}
 
-\appendixresult{The corresponding counts in \cref{tab:appendix_rlm} are 202/686 code-correct vs. 212/686 NL-correct for Claude Haiku 4.5, and 326/686 code-correct vs. 310/686 NL-correct for Gemini 2.5 Pro. Because this is a 25\% subset, we use it as model-coverage evidence rather than as the main route estimate.}
+\appendixresult{\Cref{tab:appendix_rlm} has no uniform winner: the NL arm is higher for Claude Haiku 4.5, while the code arm is higher for Gemini 2.5 Pro. The corresponding counts are 202/686 code-correct vs. 212/686 NL-correct for Claude Haiku 4.5, and 326/686 code-correct vs. 310/686 NL-correct for Gemini 2.5 Pro. Because this is a 25\% subset, we use it as model-coverage evidence rather than as the main route estimate.}
 
 \subsection{Coding-Specialized Model Evaluation}
 \label{app:coding_specialized_model_evaluation}
@@ -164,11 +156,10 @@ show a different \RouteTwo{} pattern. Even for these models, replacing
 natural-language traces with code traces changes little compared with replacing
 LLM simulation by actual code execution.
 
-\begin{table}[!htbp]
-\centering
+\begin{appendixtableblock}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
-\begin{tabular*}{0.94\linewidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.39\linewidth}ccc@{}}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.39\linewidth}ccc@{}}
 \toprule
 Model & NL & Sim & Code Exec \\
 \midrule
@@ -177,11 +168,11 @@ Model & NL & Sim & Code Exec \\
 \path{codestral-2508} (original) & 19.89\% (943/4740) & 23.14\% (1097/4740) & 59.65\% (2266/3799) \\
 \bottomrule
 \end{tabular*}
-\caption{Route accuracy for coding-specialized models. Each cell reports accuracy with correct/denominator counts.}
+\captionof{table}{Route accuracy for coding-specialized models. Each cell reports accuracy with correct/denominator counts; denominators are parse-normalized per arm.}
 \label{tab:appendix_coding_models}
-\end{table}
+\end{appendixtableblock}
 
-\appendixresult{Grok and Qwen use 25\% subset runs; Codestral uses the original evaluation run. Rows use per-arm parse-normalized denominators: NL and Sim drop rows where that arm failed to parse, while Code Exec keeps rows with successful code execution. The 25\% subset rows broaden model coverage but are not pooled into the main six-model estimate.}
+\appendixresult{\Cref{tab:appendix_coding_models} shows Code Exec as the highest-accuracy arm in each coding-specialized row. Grok and Qwen use 25\% subset runs; Codestral uses the original evaluation run. Rows use per-arm parse-normalized denominators and are not pooled into the main six-model estimate.}
 
 \subsection{Frontier Model Controlled-Subset Evaluation}
 \label{app:frontier_model_sanity_checks}
@@ -192,8 +183,7 @@ as the main estimate because they are smaller than the full six-model
 evaluation, but they provide a controlled check that the route pattern is not
 explained only by explicit tool calls.
 
-\begin{table}[!htbp]
-\centering
+\begin{appendixtableblock}
 \small
 \setlength{\tabcolsep}{5pt}
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
@@ -204,11 +194,11 @@ GPT-5.4 & 42.57\% (149/350) & 41.43\% (145/350) & 54.01\% (175/324) \\
 Claude Opus 4.6 & 52.73\% (174/330) & 73.42\% (116/158) & 77.54\% (107/138) \\
 \bottomrule
 \end{tabular*}
-\caption{Frontier controlled-subset route accuracy. Entries report accuracy with correct/denominator counts.}
+\captionof{table}{Frontier tool-disabled controlled-subset route accuracy. Entries report accuracy with correct/denominator counts.}
 \label{tab:appendix_frontier_nopatch}
-\end{table}
+\end{appendixtableblock}
 
-\appendixresult{Reasoning-mode runs are excluded because hidden reasoning and tool scaffolding confound the comparison; rows use seed~1, tool calling disabled, and per-arm parse-normalized denominators.}
+\appendixresult{\Cref{tab:appendix_frontier_nopatch} keeps \RouteThree{} ahead in both tool-disabled subset rows. Reasoning-mode runs are excluded because hidden reasoning and tool scaffolding would confound the route comparison.}
 
 \section{Failure Analysis}
 \label{app:failure_analysis}
@@ -216,15 +206,14 @@ Claude Opus 4.6 & 52.73\% (174/330) & 73.42\% (116/158) & 77.54\% (107/138) \\
 \subsection{Code Execution Failure Modes}
 \label{app:code_execution_failure_modes}
 
-When \RouteThree{} fails, failures are mostly semantic wrong answers rather than
-syntax or timeout failures. This supports the interpretation that code execution
-errors often originate in the generated program specification rather than in the
-Python runtime itself.
+Among \RouteThree{} code-execution failures, most failures are semantic wrong
+answers rather than syntax or timeout failures. This supports the interpretation
+that these errors often originate in the generated program specification rather
+than in the Python runtime itself.
 
-\begin{table}[!htbp]
-\centering
+\begin{appendixtableblock}
 \small
-\begin{tabular}{lrrrr}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{}}
 \toprule
 Model & Wrong answer & Syntax error & Runtime error & Time limit \\
 \midrule
@@ -236,9 +225,9 @@ GPT-4o mini & 65.82\% & 3.60\% & 26.73\% & 3.85\% \\
 Mixtral & 45.77\% & 5.56\% & 46.04\% & 2.63\% \\
 Total & 61.06\% & 10.54\% & 19.23\% & 9.17\% \\
 \bottomrule
-\end{tabular}
-\caption{Distribution of \RouteThree{} code-execution failures.}
+\end{tabular*}
+\captionof{table}{Failure-mode distribution conditional on \RouteThree{} code-execution failures.}
 \label{tab:appendix_code_failure_modes}
-\end{table}
+\end{appendixtableblock}
 
-\appendixresult{\Cref{tab:appendix_code_failure_modes} is conditional on \RouteThree{} failures and excludes parse-only rows where execution completed but the returned value failed parsing or type checks. This keeps the diagnostic focused on what happened after code execution was actually attempted.}
+\appendixresult{\Cref{tab:appendix_code_failure_modes} is conditional on \RouteThree{} code-execution failures and excludes parse-only rows where execution completed but the returned value failed parsing or type checks. This keeps the diagnostic focused on what happened after code execution was actually attempted.}

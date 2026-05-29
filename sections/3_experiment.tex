@@ -144,7 +144,7 @@ approximately $4.1\times$ higher odds of correctness.
 \label{sec:rep_analysis}
 In Section~\ref{sec:performance}, Route~1 and Route~2 achieved similar paired accuracies under our evaluated models and prompts. The key research question in this section is, thus: \textbf{Can we provide evidence that input representation is not the bottleneck to end-task performance?} We first model the theory in the simple linear case, then show that even when theory breaks down in the high-dimensional non-linear case, the results still hold.
 
-The main result is that when we model code distribution as a canonicalization of natural language distribution, we can show for our simple linear hypothesis class that the uniform worst-case risk over \emph{all} hypotheses is exactly 0. In other words, under these conditions, code is non-inferior natural language.
+The main result is that when we model code distribution as a canonicalization of natural language distribution, we can show for our simple linear hypothesis class that the uniform worst-case risk over \emph{all} hypotheses is exactly 0. In other words, under these conditions, ``code'' reasoning is non-inferior to ``natural language'' reasoning.
 
 
 % , one that is distributional level (\S\ref{sec:dist_similarity}), and one that is functional level (\S\ref{sec:func_similarity}). When these are satisfied, we have that
@@ -342,7 +342,7 @@ The main result is that when we model code distribution as a canonicalization of
 % \varepsilon.
 % \] holds.
 
-We compare two input representations for the same downstream prediction class. This controlled setup is the key move: the realizable and linear hypothesis class is fixed,
+Controlling the downstream hypothesis class enables us to compare the effect of the two input representations. For convenience, the downstream hypothesis class is modelled as realizable and linear.
 \begin{equation}
 \cH_{\rm lin}=\big\{h_{a,v}(b,u)=a^\top b+v^\top u:
 a\in\R^{d_B},\ v\in\R^{d_U}\big\}.

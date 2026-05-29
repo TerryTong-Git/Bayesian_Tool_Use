@@ -1,4 +1,4 @@
-\begin{thebibliography}{64}
+\begin{thebibliography}{63}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -11,6 +11,7 @@ Achiam, J., Adler, S., Agarwal, S., Ahmad, L., Akkaya, I., Aleman, F.~L.,
   Almeida, D., Altenschmidt, J., Altman, S., Anadkat, S., et~al.
 \newblock Gpt-4 technical report.
 \newblock \emph{arXiv preprint arXiv:2303.08774}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2303.08774}.
 
 \bibitem[Aky{\"u}rek et~al.(2022)Aky{\"u}rek, Schuurmans, Andreas, Ma, and
   Zhou]{akyurek2022learning}
@@ -18,6 +19,7 @@ Aky{\"u}rek, E., Schuurmans, D., Andreas, J., Ma, T., and Zhou, D.
 \newblock What learning algorithm is in-context learning? investigations with
   linear models.
 \newblock \emph{arXiv preprint arXiv:2211.15661}, 2022.
+\newblock URL \url{https://arxiv.org/abs/2211.15661}.
 
 \bibitem[Allamanis et~al.(2018)Allamanis, Barr, Devanbu, and
   Sutton]{allamanis2018survey}
@@ -34,20 +36,12 @@ Alon, U., Zilberstein, M., Levy, O., and Yahav, E.
   (POPL):\penalty0 1--29, January 2019.
 \newblock ISSN 2475-1421.
 \newblock \doi{10.1145/3290353}.
-\newblock URL \url{https://dl.acm.org/doi/10.1145/3290353}.
 
-\bibitem[Altabaa et~al.(2025{\natexlab{a}})Altabaa, Montasser, and
-  Lafferty]{altabaa2025cot}
-Altabaa, A., Montasser, O., and Lafferty, J.
-\newblock Cot information: Improved sample complexity under chain-of-thought
-  supervision.
-\newblock \emph{arXiv preprint arXiv:2505.15927}, 2025{\natexlab{a}}.
-
-\bibitem[Altabaa et~al.(2025{\natexlab{b}})Altabaa, Montasser, and
+\bibitem[Altabaa et~al.(2025)Altabaa, Montasser, and
   Lafferty]{altabaa_cot_2025}
 Altabaa, A., Montasser, O., and Lafferty, J.
 \newblock {CoT} {Information}: {Improved} {Sample} {Complexity} under
-  {Chain}-of-{Thought} {Supervision}, May 2025{\natexlab{b}}.
+  {Chain}-of-{Thought} {Supervision}, May 2025.
 \newblock URL \url{http://arxiv.org/abs/2505.15927}.
 \newblock arXiv:2505.15927 [stat].
 
@@ -70,8 +64,10 @@ Andreas, J., Rohrbach, M., Darrell, T., and Klein, D.
 
 \bibitem[Anthropic(2024)]{anthropic2024claude}
 Anthropic.
-\newblock The claude 3 model family: A new standard for intelligence.
+\newblock The claude 3 model family: Opus, sonnet, haiku.
 \newblock \emph{Anthropic Technical Report}, 2024.
+\newblock URL
+  \url{https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf}.
 
 \bibitem[Berant et~al.(2013)Berant, Chou, Frostig, and
   Liang]{berant_semantic_2013}
@@ -115,14 +111,16 @@ Fan, L., Hua, W., Li, L., Ling, H., Zhang, Y., and Hemphill, L.
 \newblock Nphardeval: Dynamic benchmark on reasoning ability of large language
   models via complexity classes.
 \newblock \emph{arXiv preprint arXiv:2312.14890}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2312.14890}.
 
 \bibitem[Gao et~al.(2023)Gao, Madaan, Zhou, Alon, Liu, Yang, Callan, and
   Neubig]{gao2023pal}
 Gao, L., Madaan, A., Zhou, S., Alon, U., Liu, P., Yang, Y., Callan, J., and
   Neubig, G.
-\newblock Pal: Program-aided language models.
-\newblock In \emph{International Conference on Machine Learning}, pp.\
-  10764--10799. PMLR, 2023.
+\newblock {PAL}: Program-aided language models.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine
+  Learning}, pp.\  10764--10799. PMLR, 2023.
+\newblock URL \url{https://proceedings.mlr.press/v202/gao23f.html}.
 
 \bibitem[Garg et~al.(2022)Garg, Tsipras, Liang, and Valiant]{garg2022can}
 Garg, S., Tsipras, D., Liang, P.~S., and Valiant, G.
@@ -130,6 +128,7 @@ Garg, S., Tsipras, D., Liang, P.~S., and Valiant, G.
   function classes.
 \newblock \emph{Advances in neural information processing systems},
   35:\penalty0 30583--30598, 2022.
+\newblock URL \url{https://arxiv.org/abs/2208.01066}.
 
 \bibitem[Geirhos et~al.(2020)Geirhos, Jacobsen, Michaelis, Zemel, Brendel,
   Bethge, and Wichmann]{geirhos2020shortcut}
@@ -193,6 +192,7 @@ Hastie, T., Tibshirani, R., and Friedman, J.
 Horn, R.~A. and Johnson, C.~R.
 \newblock \emph{Matrix Analysis}.
 \newblock Cambridge University Press, 2 edition, 2012.
+\newblock \doi{10.1017/CBO9781139020411}.
 
 \bibitem[Hudson \& Manning(2018)Hudson and Manning]{hudson_compositional_2018}
 Hudson, D.~A. and Manning, C.~D.
@@ -227,6 +227,7 @@ Jiang, A.~Q., Sablayrolles, A., Mensch, A., Bamford, C., Chaplot, D.~S., Casas,
   D. d.~l., Bressand, F., Lengyel, G., Lample, G., Saulnier, L., et~al.
 \newblock Mistral 7b.
 \newblock \emph{arXiv preprint arXiv:2310.06825}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2310.06825}.
 
 \bibitem[Kallenberg(2021)]{kallenberg2021foundations}
 Kallenberg, O.
@@ -276,7 +277,9 @@ Lyu, Q., Havaldar, S., Stein, A., Zhang, L., Rao, D., Wong, E., Apidianaki, M.,
 \newblock Faithful chain-of-thought reasoning.
 \newblock In \emph{The 13th International Joint Conference on Natural Language
   Processing and the 3rd Conference of the Asia-Pacific Chapter of the
-  Association for Computational Linguistics (IJCNLP-AACL 2023)}, 2023.
+  Association for Computational Linguistics (IJCNLP-AACL 2023)}, pp.\
+  305--329. Association for Computational Linguistics, 2023.
+\newblock \doi{10.18653/v1/2023.ijcnlp-main.20}.
 
 \bibitem[Mahdavi et~al.(2023)Mahdavi, Swersky, Kipf, Hashemi, Thrampoulidis,
   and Liao]{mahdavi_towards_2023}
@@ -327,6 +330,7 @@ Pan, L., Albalak, A., Wang, X., and Wang, W.~Y.
 \newblock Logic-lm: Empowering large language models with symbolic solvers for
   faithful logical reasoning.
 \newblock \emph{arXiv preprint arXiv:2305.12295}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2305.12295}.
 
 \bibitem[Parisi et~al.(2022)Parisi, Zhao, and Fiedel]{parisi_talm_2022}
 Parisi, A., Zhao, Y., and Fiedel, N.
@@ -349,6 +353,7 @@ Poggio, T., Mhaskar, H., Rosasco, L., Miranda, B., and Liao, Q.
   dimensionality: a review.
 \newblock \emph{International Journal of Automation and Computing}, 14\penalty0
   (5):\penalty0 503--519, 2017.
+\newblock \doi{10.1007/s11633-017-1054-2}.
 
 \bibitem[Puri et~al.(2021)Puri, Kung, Janssen, Zhang, Domeniconi, Zolotov,
   Dolby, Chen, Choudhury, Decker, Thost, Buratti, Pujar, Ramji, Finkler,
@@ -395,6 +400,7 @@ Schick, T., Dwivedi-Yu, J., Dess\'{\i}, R., Raileanu, R., Lomeli, M., Hambro,
 \newblock In \emph{Proceedings of the 37th International Conference on Neural
   Information Processing Systems}, NIPS '23, Red Hook, NY, USA, 2023. Curran
   Associates Inc.
+\newblock URL \url{https://arxiv.org/abs/2302.04761}.
 
 \bibitem[Schneider \& Chein(2003)Schneider and
   Chein]{schneider_controlled_2003}
@@ -405,8 +411,6 @@ Schneider, W. and Chein, J.~M.
   2003.
 \newblock ISSN 0364-0213, 1551-6709.
 \newblock \doi{10.1207/s15516709cog2703_8}.
-\newblock URL
-  \url{https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog2703_8}.
 
 \bibitem[Shen(2024)]{shen_llm_2024}
 Shen, Z.
@@ -435,14 +439,16 @@ Team, G., Anil, R., Borgeaud, S., Wu, Y., Alayrac, J.-B., Yu, J., Sorber, R.,
   Schalkwyk, J., Dai, A.~M., Hauth, A., et~al.
 \newblock Gemini: A family of highly capable multimodal models.
 \newblock \emph{arXiv preprint arXiv:2312.11805}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2312.11805}.
 
 \bibitem[Veli{\v{c}}kovi{\'c} et~al.(2022)Veli{\v{c}}kovi{\'c}, Badia, Budden,
   Pascanu, Banino, Dashevskiy, Hadsell, and Blundell]{velivckovic2022clrs}
 Veli{\v{c}}kovi{\'c}, P., Badia, A.~P., Budden, D., Pascanu, R., Banino, A.,
   Dashevskiy, M., Hadsell, R., and Blundell, C.
 \newblock The clrs algorithmic reasoning benchmark.
-\newblock \emph{International Conference on Machine Learning}, pp.\
-  22084--22102, 2022.
+\newblock In \emph{Proceedings of the 39th International Conference on Machine
+  Learning}, pp.\  22084--22102. PMLR, 2022.
+\newblock URL \url{https://proceedings.mlr.press/v162/velickovic22a.html}.
 
 \bibitem[Veličković \& Blundell(2021)Veličković and
   Blundell]{velickovic_neural_2021}
@@ -476,11 +482,13 @@ Wei, J., Wang, X., Schuurmans, D., Bosma, M., Xia, F., Chi, E., Le, Q.~V.,
   models.
 \newblock \emph{Advances in neural information processing systems},
   35:\penalty0 24824--24837, 2022.
+\newblock URL \url{https://arxiv.org/abs/2201.11903}.
 
 \bibitem[Xie et~al.(2021)Xie, Raghunathan, Liang, and Ma]{xie2021explanation}
 Xie, S.~M., Raghunathan, A., Liang, P., and Ma, T.
 \newblock An explanation of in-context learning as implicit bayesian inference.
 \newblock \emph{arXiv preprint arXiv:2111.02080}, 2021.
+\newblock URL \url{https://arxiv.org/abs/2111.02080}.
 
 \bibitem[Yan et~al.(2020)Yan, Swersky, Koutra, Ranganathan, and
   Hashemi]{yan_neural_2020}
@@ -506,6 +514,7 @@ Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., and Cao, Y.
 \newblock {ReAct}: Synergizing reasoning and acting in language models.
 \newblock In \emph{International Conference on Learning Representations
   (ICLR)}, 2023.
+\newblock URL \url{https://openreview.net/forum?id=WE_vluYUL-X}.
 
 \bibitem[Zelikman et~al.(2022)Zelikman, Wu, Mu, and
   Goodman]{zelikman_star_2022}
@@ -519,6 +528,7 @@ Zhang, R., Frei, S., and Bartlett, P.~L.
 \newblock Trained transformers learn linear models in-context.
 \newblock \emph{Journal of Machine Learning Research}, 25\penalty0
   (49):\penalty0 1--55, 2024.
+\newblock URL \url{https://jmlr.org/papers/v25/23-1042.html}.
 
 \bibitem[Zhao et~al.(2021)Zhao, Wallace, Feng, Klein, and
   Singh]{zhao2021calibrate}
