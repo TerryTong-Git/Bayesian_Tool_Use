@@ -32,12 +32,12 @@ task families: the Route~3--Route~2 gain remains the largest observed change in
 the high-support classes, while Route~2 stays close to Route~1.}
 
 \paragraph{Task mapping.}
-The 40-task analysis set excludes \texttt{segments\_intersect},
-\texttt{knap}, \texttt{gcp}, and \texttt{spp} from the broader 44-task
-route-analysis mapping. The largest retained strata are $O(n^2)$
-dynamic-programming, sorting, string, graph, and shortest-path tasks; and
-NP-hard ILP, edge-disjoint paths, shortest-path, and TSP tasks. The smaller
-strata cover constant-time arithmetic, logarithmic binary search,
-linear selection/string matching,
+The 40-task analysis set is the broader 44-task route-analysis mapping after
+excluding \texttt{segments\_intersect}, \texttt{knap}, \texttt{gcp}, and
+\texttt{spp}. Within the retained set, the largest strata are $O(n^2)$
+dynamic-programming, sorting, string, graph, and shortest-path tasks, plus
+NP-hard ILP, edge-disjoint paths, shortest-path, and TSP tasks. Smaller strata
+cover constant-time arithmetic, logarithmic binary search, linear
+selection/string matching,
 $O(n \log n)$ scheduling/sorting/hulls, $O(n^2 \log n)$ Kruskal MST, and cubic
 dynamic-programming/shortest-path routines.

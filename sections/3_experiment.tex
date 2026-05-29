@@ -40,6 +40,9 @@ controlled by a parameter $\tau$ when applicable.
 We evaluate closed-source models (\texttt{Claude Haiku~4.5, GPT-4o-mini,
 Gemini~2.0 Flash, Gemini~2.5 Flash}) and open-source models
 (\texttt{Mixtral-8x22b-Instruct, Codestral-2508}).
+The appendix stratifies these results by complexity and model and reports
+subset model coverage
+(\cref{tab:appendix_complexity_routes,tab:appendix_model_routes,app:additional_model_evaluations}).
 
 % Models with more than
 % 50\% JSON parse failures are excluded to avoid confounding instruction
@@ -132,13 +135,9 @@ of $[+29.20,+33.71]$pp. For Route~1 vs.\ Route~2, the paired gap is
 +0.15pp with a 95\% cluster-bootstrap interval of $[-0.30,+0.61]$pp
 and a two-sided McNemar $p=0.39$, so we do not conclude a meaningful
 difference between natural-language reasoning and code simulation under
-this evaluation. Performance gaps widen with increasing task difficulty
-(\cref{fig:per_task_accuracy}): Route~3 remains substantially higher as
-the language-based routes degrade.
-
-In summary, the main empirical result is not that code simulation reliably
-beats natural-language reasoning, but that deterministic execution is the
-source of the large route-level gain.
+this evaluation. On the other hand, performance gaps widen with increasing task difficulty
+(\cref{fig:per_task_accuracy}), Route~3 remains substantially higher as
+the language-based routes degrade. This motivates the hypothesis that execution is the bottleneck.
 
 % \subsection{Representation-Level Analysis: Does Language Add Information?}
 % \label{sec:rep_analysis}
@@ -153,7 +152,7 @@ source of the large route-level gain.
 
 \section{Route~1 vs.\ Route~2 Analysis}
 \label{sec:rep_analysis}
-In Section~\ref{sec:performance}, Route~1 and Route~2 achieved similar paired accuracies under our evaluated models and prompts. The key research question in this section is, thus: \textbf{Can we provide evidence that input representation is not the bottleneck to end-task performance?} We first model the theory in the simple linear case, then show that even when theory breaks down in the high-dimensional non-linear case, the results still hold.
+In Section~\ref{sec:performance}, Route~1 and Route~2 achieved similar paired accuracies under our evaluated models and prompts. This section asks: \textbf{Can we provide evidence that input representation is not the bottleneck to end-task performance?} We first model the theory in the simple linear case (\cref{sec:rep-noninferiority,sec:covariance-ordering}), then test the corresponding language-interface prediction (\cref{sec:func_similarity}).
 
 The main result is that when we model code distribution as a canonicalization of natural language distribution, we can show for our simple linear hypothesis class that the uniform worst-case risk over \emph{all} hypotheses is exactly 0. In other words, under these conditions, ``code'' reasoning is non-inferior to ``natural language'' reasoning.
 
@@ -320,15 +319,7 @@ The main result is that when we model code distribution as a canonicalization of
 %     \label{fig:embedding_scatter}
 % \end{figure*}
 
-\begin{figure}[t]
-    \centering
-    \vspace{-5pt}
-    % \includegraphics[width=\linewidth]{images/translation_additivity.png}
-    \includegraphics[width=\linewidth]{images/final/fig5_additivity.pdf}
-    \vspace{-3pt}
-    \caption{\textbf{Translated NL has the same functionality as the original native NL quantified by end-task accuracy. } When concatenating the reasoning traces to the prompt, we get much higher accuracy as opposed to the baseline with just the prompt, indicating the model is using the reasoning. There are statistically significant differences between the baseline and concatenated prompts, but no statistically significant difference between the Translated NL and Native NL concatenations. Source data is randomly sampled from existing data used to generate \cref{fig:main}, we use 1000 samples per model. }
-    \label{fig:translation_additivity}
-\end{figure}
+
 
 % \paragraph{Results.}
 % Across $\sim$2000 samples per judge ($\sim$6000 total across three judges), discrimination accuracy is near chance (50\%), with 50\% included in the Wilson CI. The control discrimination between raw code and native NL is substantially higher (e.g., $\approx$82\%), indicating the judges can detect obvious representation differences but \emph{fail to distinguish translated vs.\ native NL}.
@@ -358,7 +349,9 @@ Controlling the downstream hypothesis class enables us to compare the effect of 
 \cH_{\rm lin}=\big\{h_{a,v}(b,u)=a^\top b+v^\top u:
 a\in\R^{d_B},\ v\in\R^{d_U}\big\}.
 \label{eq:linear-class-section3}
-\end{equation} and only the input distribution changes $P_C$ and $P_N$, both of which are part of the same feature space. Let $r\in\{C,N\}$, where $C$ denotes code and $N$ denotes native natural language. For each task, route $r$ produces a random input:
+\end{equation}
+Only the input distribution changes: \(P_C\) and \(P_N\) both live in the
+same feature space. Let $r\in\{C,N\}$, where $C$ denotes code and $N$ denotes native natural language. For each task, route $r$ produces a random input:
 \begin{equation}
     S_r=(B,U_r)\sim P_r,
     \qquad S_r\in\R^{d_B+d_U}.
@@ -371,13 +364,26 @@ Prior research in NLP / LLMs has shown that models are sensitive to syntactic
 heuristics, prompting, lexical choice, etc
 \citep{gururangan2018annotation,mccoy2019right,geirhos2020shortcut,zhao2021calibrate,lu2021fantastically,pezeshkpour2023order}.
 
+As a running example, consider a dynamic-programming problem. The core \(B\)
+contains the recurrence, boundary conditions, and final query that determine the
+answer. A code trace may still vary in non-answer-changing details such as
+variable names, helper-function names, or formatting; these are part of \(U_C\).
+A natural-language trace can express the same recurrence, but it also admits
+extra paraphrases such as ``fill the table from smaller subproblems,'' ``reuse
+previous states,'' or ``work backward from the target.'' These additional
+surface choices are the extra term \(\eta_N\). If both routes preserve \(B\),
+then those prose choices should not create new algorithmic information; they
+only create more surface variation for the same downstream reasoner to ignore.
+This is the theory's route to the claim that representation is not the
+bottleneck.
+
 We collect the linear-model assumption here before proving the risk comparison.
 The assumption is stated as a shared-core generative model with extra
 natural-language nuisance. Its first-order orthogonality conditions imply the
 centering and risk-separation facts used below; these consequences are recorded
 as a lemma rather than as additional assumptions.
 
-\begin{assumption}[\textbf{Shared core with extra natural-language nuisance}]
+\begin{assumption}
 \label{ass:extra-nuisance}
 There exist variables \(B\), \(U_C\), \(\eta_N\), and \(\varepsilon\) such that
 \begin{equation}
@@ -416,7 +422,15 @@ structured statistical object with regularities distinct from ordinary prose
 \citep{allamanis2018survey}.
 \end{assumption}
 
-\begin{lemma}[Consequences of the shared-core nuisance assumption]
+The next lemma is mainly a bookkeeping result, but it is load-bearing for the
+story. To argue that representation is not the bottleneck, we must separate
+answer signal from surface form. If a phrase in the natural-language trace
+changes the recurrence or the queried output, it belongs in the core \(B\), not
+in the nuisance \(\eta_N\). The lemma states that, once the core is fixed, both
+routes' surface coordinates remain centered nuisance and do not secretly carry
+residual label information.
+
+\begin{lemma}
 \label{lem:shared-core-consequences}
 Under \cref{ass:extra-nuisance}, for \(r\in\{C,N\}\),
 \begin{equation}
@@ -478,6 +492,12 @@ Finally,
 \]
 \end{proof}
 
+Intuitively, the lemma says that the extra natural-language words are not
+allowed to be a hidden answer channel once the algorithmic core is known. This
+matters because the later comparison is about burden, not missing information:
+code can be a leaner representation precisely because it removes irrelevant
+surface variation while retaining the same \(B\).
+
 Let
 \begin{equation}
     \Sigma_{U,r}=\E[U_rU_r^\top]
@@ -487,8 +507,9 @@ be the route-$r$ nuisance covariance. We use the Loewner order on positive
 semidefinite matrices: $A\preceq B$ means $B-A$ is positive semidefinite,
 equivalently $v^\top A v\le v^\top Bv$ for every vector $v$.
 
-\begin{remark}[Finite-sample OLS learning intuition]
-For intuition on why the nuisance coordinates hurt learning in the finite sample regime. Let $p=d_B+d_U$ and consider the Gaussian special case
+\begin{remark}[Finite-sample intuition]
+For intuition on why nuisance coordinates hurt learning in the finite-sample
+regime, let $p=d_B+d_U$ and consider the Gaussian special case
 \begin{equation}
     S_r\sim\mathcal N(0,\Sigma_r),\qquad
     Y=\beta^{\star\top}S_r+\varepsilon,
@@ -501,6 +522,11 @@ with $\varepsilon\sim\mathcal N(0,\sigma^2)$. Ordinary least squares and ridge r
     \label{eq:ols-excess}
 \end{equation}
 where $R^\star=\sigma^2$. Fitting irrelevant coordinates increases finite-sample prediction error \citep{hastie2009elements,wainwright2019high}.
+In the running example, this is the difference between learning from the
+recurrence itself and learning from many alternative descriptions of the same
+recurrence. Extra wording can be harmless in the infinite-data idealization, but
+it is not a new source of answer-relevant information; it is a nuisance channel
+that a finite model must learn not to use.
 \end{remark}
 
 
@@ -577,7 +603,15 @@ The code route has no larger nuisance covariance than native natural language if
 This terminology refers only to the route-specific nuisance covariance order.
 \end{definition}
 
-\begin{proposition}[Extra nuisance implies covariance ordering]
+The proposition below is the bridge from the story to the algebra. If native
+natural language is the code-side nuisance plus extra paraphrase, then the
+natural-language nuisance cloud should be at least as spread out as the code
+nuisance cloud in every linear direction. This is not a claim that code is
+better because it is shorter; it is a claim that, conditional on the same core,
+the additional natural-language degrees of freedom do not supply extra answer
+signal.
+
+\begin{proposition}
 \label{prop:extra-implies-cov}
 Under \cref{ass:extra-nuisance},
 \begin{equation}
@@ -607,15 +641,21 @@ This is the covariance addition formula for conditionally uncorrelated component
 
 Thus \cref{ass:extra-nuisance} provides the structural justification for the
 exact covariance ordering used in the main comparison.
+In words, adding paraphrase variation can widen the nuisance distribution, but
+it cannot make every nuisance direction less variable while preserving the same
+core. This is the first formal step toward saying that representation alone is
+not where the Route~1/Route~2 gap should come from.
 
 
-
-\paragraph{Uniform linear-risk theorem.}
-\label{sec:uniform-theorem}
 
 The covariance order gives the desired uniform statement for the unrestricted linear class.
+This theorem targets the main skeptical alternative: perhaps native natural
+language contains a representation-specific advantage that a downstream reasoner
+could exploit. The theorem gives the downstream linear rule every possible
+choice of coefficients and still finds no representation-risk advantage for
+native natural language under the shared-core model.
 
-\begin{theorem}[Uniform representation non-inferiority under covariance ordering]
+\begin{theorem}
 \label{thm:cov-ordering}
 Under \cref{ass:extra-nuisance}, for squared loss and the common class $\cH_{\rm lin}$ in \eqref{eq:linear-class-section3},
 \begin{equation}
@@ -642,7 +682,15 @@ where $R_{\rm core}(a)=\E[((a-\theta)^\top B-\varepsilon)^2]$ does not depend on
 by \eqref{eq:cov-order}. Taking the supremum over $h\in\cH_{\rm lin}$ proves \eqref{eq:uniform-ordering}.
 \end{proof}
 
-\begin{corollary}[Approximate covariance ordering on a Lipschitz-bounded class]
+The proof exposes the mechanism. The risk decomposes into a shared core term
+and a nuisance term. Since the core term is identical for code and native
+natural language, the only possible representation-level difference is the
+penalty for depending on \(U_r\). Because native language has no smaller
+nuisance covariance, it cannot lower that penalty. Thus, in this model,
+improving Route~1 by changing the trace representation is not the bottleneck;
+the core algorithmic information is already present in the code representation.
+
+\begin{corollary}
 \label{cor:approx-cov-ordering}
 Under \cref{ass:extra-nuisance}, suppose exact covariance ordering is relaxed to
 \begin{equation}
@@ -674,6 +722,13 @@ For \(h_{a,v}\in\cH_L\), \cref{lem:shared-core-consequences} gives the same risk
 By \eqref{eq:approx-cov-order}, this is at most \(\kappa\|v\|_2^2\), and \(\|v\|_2\le L\) by \eqref{eq:lipschitz-linear-class}. Taking the supremum over \(h\in\cH_L\) proves \eqref{eq:approx-uniform-ordering}.
 \end{proof}
 In the case where the exact version is too strong, the approximate version shows that the same comparison survives with an explicit \(\tau_{\rm rep}=L^2\kappa\) margin.
+The role of the margin is important for interpretation: small covariance
+violations may create a small representation cost, but they would have to be
+large and aligned with a highly nuisance-sensitive hypothesis to explain the
+large empirical Route~2/Route~3 gap. The corollary therefore connects the clean
+linear story to the empirical conclusion: any remaining representation
+disadvantage is bounded by a nuisance-sensitivity margin rather than being the
+primary bottleneck.
 
 Overall, the linear result isolates a narrow representation-level claim: once both routes preserve the same core, extra native-language nuisance can only increase risk for this hypothesis class, and approximate ordering converts directly into a non-inferiority margin.
 
@@ -705,10 +760,28 @@ Overall, the linear result isolates a narrow representation-level claim: once bo
 % The theorem relies on covariance ordering, not on a bare claim that code is simpler. The extra-nuisance assumption in \cref{ass:extra-nuisance} is a sufficient condition, not an empirical fact. If exact ordering is too strong, \cref{cor:approx-cov-ordering} gives the corresponding margin statement for hypotheses with bounded Lipschitz sensitivity to nuisance coordinates. If the code route has nuisance covariance in directions to which a hypothesis is especially sensitive, or if no Lipschitz bound is imposed in the approximate case, the margin can be loose or vacuous.
 
 % The common-core assumption is also essential. Lower entropy or lower covariance alone is not enough: a constant representation has zero nuisance but may discard the answer. The theory therefore requires both signal preservation and lower nuisance burden. The translated-code-to-NL experiment is best read as a direct test of the language-interface decision claim, not as a verification of every modeling assumption.
+\begin{figure}[t]
+    \centering
+    \vspace{-5pt}
+    % \includegraphics[width=\linewidth]{images/translation_additivity.png}
+    \includegraphics[width=\linewidth]{images/final/fig5_additivity.pdf}
+    \vspace{-28pt}
+    \caption{\textbf{Translated NL has the same functionality as the original native NL quantified by end-task accuracy. } When concatenating the reasoning traces to the prompt, we get much higher accuracy as opposed to the baseline with just the prompt, indicating the model is using the reasoning. There are statistically significant differences between the baseline and concatenated prompts, but no statistically significant difference between the Translated NL and Native NL concatenations. Source data is randomly sampled from existing data used to generate \cref{fig:main}, we use 1000 samples per model. }
+    \label{fig:translation_additivity}
+\end{figure}
 
 \subsection{Decision Intervention Reduction}
 \label{sec:func_similarity}
-When the theory breaks down due to non-linearity and high-dimensionality, we find that the non-inferiority assertion still holds in practice. The implications are that representation does not explain as much of the observed performance uplift as execution.
+The linear results are not meant to claim that LLMs are linear regressors or
+that real traces literally satisfy the covariance model. They instead identify
+what a representation bottleneck would have to look like: native natural
+language would need to supply decision-relevant information not recoverable from
+the code trace. When the theory breaks down due to non-linearity and
+high-dimensionality, we therefore test this implication directly. If translating
+code into natural language preserves downstream accuracy relative to native
+natural-language reasoning, then the representation story remains the same even
+outside the linear proof: the missing performance is not primarily in the trace
+representation.
 
 \paragraph{Intervention setup.}
 Our goal is to provide evidence that code is non-inferior to NL in expected loss in the LLM regime. In our proof, we modelled NL as a fixed transformation (linearly additive projection) of a code latent. Similarly, we apply a fixed transformation of the code (i.e. permutations, syntactic shifts etc) to simulate NL. We expect it to yield nothing worse, since the underlying assumption is that code contains all decision-relevant information. The following experiment tests that implication directly.
@@ -739,7 +812,7 @@ We fail to reject the null hypothesis of equal performance, and observe overlapp
 This suggests that, under our evaluated settings, translating code into NL does not destroy decision-relevant information for downstream answering, consistent with the claim that NL CoT does not systematically add algorithmic advantage beyond what is in code. Qualitatively, we notice that the translated results are quite similar to the originals, though this seems heavily reliant on the translating prompt.
 
 
-\paragraph{Interpretation.} Our empirical results indicate that translated code traces and native natural-language traces provide similar decision-relevant information in the settings we study. In particular, we find no evidence that natural-language reasoning introduces novel algorithmic strategies beyond those already captured by code representations on algorithmic tasks. As a result, replacing NL traces with code traces in the generation stage does not constitute a performance bottleneck when optimizing the end-to-end reasoning pipeline. Instead, the remaining limitations are best attributed to the execution mechanism rather than the trace representation (\cref{sec:route2v3}).
+\paragraph{Interpretation.} Our empirical results indicate that translated code traces and native natural-language traces provide similar decision-relevant information in the settings we study. We find no evidence that natural-language reasoning introduces novel algorithmic strategies beyond those already captured by code representations on algorithmic tasks. Thus, in these experiments, replacing NL traces with code traces in the generation stage is not the end-to-end bottleneck. The execution analysis in \cref{sec:route2v3} examines the remaining gap; \cref{tab:appendix_shot_ablation} reports a shot ablation.
 
 % The end-to-end results in Section~\ref{sec:performance} are consistent with the hypothesis. If true, the hypothesis would imply little benefits of NL over code for the trace generation stage. Thus, using code in the trace generation stage, and delegating to an external runtime in the execution stage which also avoids simulation noise would be the optimal choice (Arm 3). We test the hypothesis by answering two research questions.
 

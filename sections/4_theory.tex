@@ -157,6 +157,7 @@ To address this question, we also ask two sub-questions:
 We pinpoint execution as the bottleneck (cf.\ \cref{sec:rep_analysis}), highlighting how using LLMs to generate code plans and then delegating to an external solver is the optimal policy among the 3 routes (\cref{sec:performance}). In the 40-task analysis set, Route~3 exceeds Route~2 by +31.47pp. The recovery mass where Route~2 succeeds while Route~3 fails is 1.61\%, whereas the execution-win mass where Route~3 succeeds while Route~2 fails is 33.08\%.
 
 \subsection{Setup}
+\label{sec:route2v3_setup}
 As defined in Section~\ref{sec:framework}, Route~2 and Route~3 share the same
 trace generator $E_{\mathrm{Code}}$ and differ only in the executor.
 
@@ -223,7 +224,7 @@ Because the simulator may partially ignore $Z_{\mathrm{C}}$ and answer directly 
 \paragraph{Interpretation.}
 Route~2 can outperform Route~3 only if the recovery mass $\Pr(\neg C)\,r$ is large enough to offset simulation noise on correct-execution instances $\Pr(C)\,e_C$.
 Empirically, we find that recovery mass is consistently small across tasks and models (\cref{fig:recovery_final}), indicating that Route~2 rarely compensates for execution failures via recovery.
-In the 40-task analysis set, this recovery mass is 1.61\%, while the execution-win mass $\Pr(C)e_C$ is 33.08\%. This explains why deterministic execution typically achieves lower end-to-end error than simulation on the same generated code traces (\cref{fig:main}).
+In the 40-task analysis set, this recovery mass is 1.61\%, and the execution-win mass $\Pr(C)e_C$ is 33.08\%. These values explain why deterministic execution typically achieves lower end-to-end error than simulation on the same generated code traces (\cref{fig:main}). \Cref{tab:appendix_code_failure_modes} reports the corresponding code-execution failure modes.
 
 % \paragraph{Theory--Empirics Connection.}
 % Although Theorem 1 is stated in terms of optimal (existential) risk, it provides a reduction: under empirically-motivated assumptions, any NL-trace decision rule in 
@@ -252,7 +253,7 @@ In the 40-task analysis set, this recovery mass is 1.61\%, while the execution-w
     \vspace{-5pt}
     % \includegraphics[width=\linewidth]{images/recovery_vs_digits_overall.png}
     \includegraphics[width=\linewidth]{images/final/fig6_recovery.pdf}
-    \vspace{-3pt}
+    \vspace{-28pt}
     \caption{\textbf{Recovery mass (blue) is 1.61\% overall, while execution-win mass (red) is 33.08\% overall.} Recovery mass $\Pr(\neg C)\,r$ counts cases where code execution fails but LLM simulation succeeds. Execution-win mass $\Pr(C)e_C$ counts cases where code execution succeeds and LLM simulation fails.}
     \label{fig:recovery_final}
 \end{figure}

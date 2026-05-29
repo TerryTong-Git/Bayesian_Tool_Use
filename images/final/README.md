@@ -1,30 +1,35 @@
-# Figures — Bayesian Tool Use paper
+# Figures - Bayesian Tool Use paper
+
+Current PDF assets were replaced from `/Users/terrytong/Downloads/files (3).zip`
+on 2026-05-28. The paper references the PDFs below from `images/final/`; PNG
+files are regenerated previews for inspection only.
 
 ## Files
 
-| Figure | File | Source dimensions | Renders in paper as | LaTeX env |
-|--------|------|-------------------|---------------------|-----------|
-| 1 — Three-route framework | `fig1_framework.pdf` | 10.0 × 2.2″ | 6.85 × 1.51″ | `figure*` |
-| 2 — Prompt templates | `fig2_prompts.pdf` | 11.0 × 2.6″ | 6.85 × 1.62″ | `figure*` |
-| 3 — Main accuracy + paired contrasts | `fig3_main.pdf` | 10.0 × 2.5″ | 6.85 × 1.71″ | `figure*` |
-| 4 — Per-task accuracy + GLMM | `fig4_per_task.pdf` | 10.0 × 2.9″ | 6.85 × 1.99″ | `figure*` |
-| 5 — Translation additivity | `fig5_additivity.pdf` | 5.0 × 2.7″ | 3.35 × 1.81″ | `figure` |
-| 6 — Recovery vs difficulty | `fig6_recovery.pdf` | 5.0 × 2.8″ | 3.35 × 1.88″ | `figure` |
+| Figure | File | Source size | Paper include | LaTeX env |
+|--------|------|-------------|---------------|-----------|
+| 1 - Three-route framework | `fig1_framework.pdf` | 8.50 x 2.90 in | `width=\linewidth` | `figure` |
+| 2 - Prompt templates | `fig2_prompts.pdf` | 8.56 x 2.04 in | `width=\textwidth` | `figure*` |
+| 3 - Main accuracy + paired contrasts | `fig3_main.pdf` | 10.94 x 3.04 in | `width=\textwidth` | `figure*` |
+| 4 - Per-task accuracy + GLMM | `fig4_per_task.pdf` | 12.73 x 4.16 in | `width=\textwidth` | `figure*` |
+| 5 - Translation additivity | `fig5_additivity.pdf` | 4.39 x 2.91 in | `width=\linewidth` | `figure` |
+| 6 - Recovery vs difficulty | `fig6_recovery.pdf` | 5.94 x 3.86 in | `width=\linewidth` | `figure` |
 
 PNG previews are included alongside each PDF for quick inspection.
 
 ## LaTeX usage
 
 ```latex
-\begin{figure*}[t]
+\begin{figure}[t]
   \centering
-  \includegraphics[width=\linewidth]{fig1_framework.pdf}
+  \includegraphics[width=\linewidth]{images/final/fig1_framework.pdf}
   \caption{...}
-  \label{fig:framework}
-\end{figure*}
+  \label{fig:three_routes}
+\end{figure}
 ```
 
-For single-column figures (5, 6) use `figure` and `\linewidth`.
+Full-width figures (2-4) use `figure*` and `\textwidth`; single-column figures
+(1, 5, 6) use `figure` and `\linewidth`.
 
 ## Style consistency
 

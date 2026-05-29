@@ -1,12 +1,15 @@
 \section{Introduction} \label{sec:intro}
 
-Many agentic systems orchestrate symbolic solvers, LLMs, and other tools, demonstrating state-of-the-art performance ~\cite{gao2023pal,yao2023react, 10.5555/3666122.3669119, yang2024sweagent,wang2025mcpbenchbenchmarkingtoolusingllm}. Prior research empirically demonstrates that translating problems into solver-executable code representations (hereafter denoted Route 3) and delegating execution often outperforms reasoning end-to-end in NL (hereafter denoted Route 1) on logic- and algorithmic-style complex reasoning tasks ~\cite{lyu2023faithful, pan2023logic}. However, it is unclear whether benefits come from the more structured code representation itself used in the planning and reasoning process, or the reliability of external solvers, or both. Little progress has been made in this direction since the problem itself is ill-posed: two routes learn fundamentally different objects, so there is no common formal target and metric to compare.
+Many agentic systems orchestrate symbolic solvers, LLMs, and other tools, achieving state-of-the-art performance ~\cite{gao2023pal,yao2023react, 10.5555/3666122.3669119, yang2024sweagent,wang2025mcpbenchbenchmarkingtoolusingllm}. Prior work shows that translating problems into solver-executable code (Route~3) and delegating execution often outperforms end-to-end NL reasoning (Route~1) on logic- and algorithmic-style complex reasoning tasks ~\cite{lyu2023faithful, pan2023logic}.
+
+\smallskip
+It is unclear whether these gains come from the structured code representation, the reliability of an external executor, or both. A direct comparison is ill-posed because the routes learn different objects: natural-language traces versus solver-executable programs. Without a common intermediate route, performance gaps conflate representation and execution.
 
 \begin{figure}[t]
     \centering
-    \vspace{-5pt}
+    \vspace{-20pt}
     \includegraphics[width=\linewidth]{images/final/fig1_framework.pdf}
-    \vspace{-3pt}
+    \vspace{-22pt}
     \caption{\textbf{Three-Route Framework.} We decompose algorithmic reasoning into: (1) \emph{Translation} into NL or code, and (2) \emph{Execution} via LLM or solver. This yields three routes: \textbf{Route~1} (Direct NL), \textbf{Route~2} (Code + NL simulation), \textbf{Route~3} (Code + Solver Execution). Prior work compares only Route~1 vs.\ Route~3, confounding translation and execution. Our Route~2 isolates these factors. }
     \label{fig:three_routes}
 \end{figure}
@@ -17,18 +20,23 @@ Many agentic systems orchestrate symbolic solvers, LLMs, and other tools, demons
     \vspace{-5pt}
     % \includegraphics[width=\textwidth]{images/CleanShot 2026-01-28 at 16.25.56@2x.png}
     \includegraphics[width=\textwidth]{images/final/fig2_prompts.pdf}
-    \vspace{-3pt}
+    \vspace{-28pt}
     \caption{\textbf{Prompt templates for three-route evaluation.} \textbf{Route~1 (NL)}: LLM reasons in natural language only, code forbidden. \textbf{Route~2 (Sim)}: LLM generates Python \texttt{solution()} then simulates execution in NL. \textbf{Route~3 (Code)}: Same code executed in Python runtime. This isolates execution mechanism while controlling translation.}
     \label{fig:route_prompts}
 \end{figure*}
 
-This paper presents a systematic three-route framework (\cref{fig:three_routes,sec:framework}) that breaks down the question into tractable pairwise comparisons between the different routes. We decouple the end-to-end pipeline into a trace generation phase (e.g. Chain of Thought \cite{wei2022chain}) and an execution phase (see \cref{def:trace}), instantiated by controlled prompts in \cref{fig:route_prompts}. This allows us to fix one phase, and make causal claims on the effects of phase on end-to-end reasoning performance. We first instantiate this framework and find the empirical pattern Route 1 (NL + NL Reasoning) $\approx$ Route 2 (Code + NL Reasoning) $<$ Route 3 (Code + Python Execution) (\cref{sec:empirical,sec:performance}). On the 40-task analysis set, Route~2 is +0.15pp above Route~1 with a 95\% cluster-bootstrap CI crossing zero, while Route~3 exceeds Route~1 by +31.6pp and Route~2 by +31.5pp across six models and seeds $\{0,1,2\}$. Our results suggest Route 3 (Code + Python Execution) is optimal (\cref{fig:main,fig:per_task_accuracy}). To understand where language is bottlenecked, we operationalize our framework below.
+This paper presents a systematic three-route framework (\cref{fig:three_routes,sec:framework}) that makes the comparison tractable. We decouple the pipeline into trace generation (e.g. Chain of Thought \cite{wei2022chain}) and execution (see \cref{def:trace}), instantiated by controlled prompts in \cref{fig:route_prompts}. Route~2 fixes the executor class while changing the representation through code generation followed by LLM simulation. Route~3 reuses the same code trace and delegates execution to Python.
 
-When analyzing the pair Route 1 v.s. Route 2 (\cref{sec:rep_analysis}), we fix the execution phase to be a LLM with NL reasoning, and vary the representation modality of its Chain-of-Thought to be either code or NL. We first model the linear case, showing that under the assumptions that code is more structured than natural language in the nuisance parameter sense, then the worst case risk for code representations are uniformly better than natural language representations over all hypotheses in our linear hypothesis class (\cref{sec:rep-noninferiority,thm:cov-ordering}). We show that this fixed transformation nuisance perspective holds in the non-linear and high-dimensional LLM regime when the theory breaks down (\cref{sec:func_similarity,fig:translation_additivity}). The results show that code reasoning traces, when transformed to natural language reasoning via a proxy LM, do just as well as the original natural language traces. This provides evidence against representation as the bottleneck.
+\smallskip
+Empirically, the framework yields Route~1 (NL + NL reasoning) $\approx$ Route~2 (code + NL simulation) $<$ Route~3 (code + Python execution) (\cref{sec:empirical,sec:performance}). On the 40-task benchmark tasks, the accuracies are 17.21\%, 17.37\%, and 48.84\%, respectively. The paired Route~2--Route~1 gap is +0.15pp with 95\% cluster-bootstrap CI $[-0.30,+0.61]$pp. Route~3 exceeds Route~2 by +31.47pp with CI $[+29.20,+33.71]$pp (\cref{fig:main,fig:per_task_accuracy}).
+
+\smallskip
+To test representation, we hold the LLM executor fixed and vary only the trace. Theory shows that code is risk non-inferior when natural language adds nuisance variation. The nuisance assumption seems to align with our intuition that a problem solution can be expressed in more ways in natural language than in code. A reconstruction experiment empirically demonstrates that code-derived NL traces also recover native-NL performance (\cref{sec:rep_analysis,sec:func_similarity,fig:translation_additivity}). Thus, code retains decision-relevant information, and representation is not the primary bottleneck in this setting.
 
 % Because our goal is to optimize the end-to-end reasoning pipeline rather than any particular instantiation of it, we evaluate representations and executors in terms of their computation-constrained optimal risk (hereafter optimal risk). This criterion captures the best achievable performance within a model family and abstracts away suboptimal prompt or executor choices. We propose sufficient conditions such that the optimal risk of code is never worse than language up to a small amount of error $\varepsilon$. Furthermore, we empirically verify these conditions through interventions that show that code traces can be translated into natural language without losing decision-relevant information (\cref{sec:func_similarity}).
 
-We further analyze Route 2 v.s. Route 3 (\cref{sec:route2v3}), identifying execution to be the bottleneck. In the 40-task analysis set, the recovery mass where Route~2 succeeds while Route~3 fails is 1.61\%, while the execution-win mass where Route~3 succeeds while Route~2 fails is 33.08\% (\cref{fig:recovery_final}). On an analysis of hardness scaling, we find that code execution (Route 3) scales much better as problems become more difficult.
+\smallskip
+We then analyze Route~2 vs.\ Route~3 (\cref{sec:route2v3}), where the code trace is fixed and only the executor changes. The recovery mass where Route~2 succeeds while Route~3 fails is 1.61\%, and the execution-win mass where Route~3 succeeds while Route~2 fails is 33.08\% (\cref{fig:recovery_final}). As task difficulty increases, code execution maintains substantially higher accuracy. We therefore attribute the gap in our evaluated setting to reliable execution rather than code trace generation.
 % \yu{too dense, each paragraph should only have one focus, and some claims sound handwavy/overconfident, e.g., hinting at trace generation not being the bottleneck, (i.e. looks similar),}
 
 
@@ -92,7 +100,7 @@ Our main contributions are:
     \vspace{-5pt}
     % \includegraphics[width=\textwidth]{images/combined_accuracy_delta.png}
     \includegraphics[width=\textwidth]{images/final/fig3_main.pdf}
-    \vspace{-3pt}
+    \vspace{-22pt}
     \caption{\textbf{Code + Solver Execution performs better than Direct NL reasoning quantified by end-task accuracy overall and within paired instances.} Paired instance contrasts are shown in the bootstrap distributions. Results are averaged over the 40-task analysis set with 1,113 unique problem instances, 3 seeds, and 6 models. }
     \label{fig:main}
 \end{figure*}
