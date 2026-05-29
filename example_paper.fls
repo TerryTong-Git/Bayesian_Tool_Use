@@ -1,4 +1,4 @@
-PWD /Users/terrytong/Documents/Research Projects/ICML 2026 - Algorithmic Reasoning/Bayesian_Tool_Use_source_20260521
+PWD /Users/terrytong/Documents/Research Projects/ICML 2026 - Algorithmic Reasoning/Bayesian_Tool_Use
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -40,6 +40,8 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/subfigure/subfigure.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/subfigure/subfigure.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
@@ -224,8 +226,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/tabularx.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/tabularx.sty
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
