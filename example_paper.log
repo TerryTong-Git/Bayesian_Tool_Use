@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 21:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.25)  28 MAY 2026 21:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1198,8 +1198,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-)
-(./sections/1_introduction.tex
+
+Underfull \hbox (badness 1087) in paragraph at lines 4--5
+\OT1/ptm/m/n/10 (+20) language rea-son-ing pipeline. We for-mal-ize
+ []
+
+) (./sections/1_introduction.tex
 <images/final/fig1_framework.pdf, id=58, 396.02449pt x 169.8345pt>
 File: images/final/fig1_framework.pdf Graphic file (type pdf)
 <use images/final/fig1_framework.pdf>
@@ -1220,21 +1224,21 @@ local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
  <./images/final/fig1_framework.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<images/final/fig3_main.pdf, id=153, 611.34772pt x 182.72516pt>
+<images/final/fig3_main.pdf, id=135, 611.34772pt x 182.72516pt>
 File: images/final/fig3_main.pdf Graphic file (type pdf)
 <use images/final/fig3_main.pdf>
 Package pdftex.def Info: images/final/fig3_main.pdf  used on input line 95.
 (pdftex.def)             Requested size: 487.8225pt x 145.80391pt.
-)
-(./sections/2_framework.tex [2 <./images/final/fig2_prompts.pdf>]
+) (./sections/2_framework.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2 <./images/final/fig2_prompts.pdf>]
 Underfull \hbox (badness 2990) in paragraph at lines 102--104
 \OT1/ptm/m/n/10 (+20) The cor-re-spond-ing ex-ecu-tor fam-ily is the sin-gle-to
 n
  []
 
-<images/final/fig4_per_task.pdf, id=216, 654.17715pt x 211.10066pt>
+<images/final/fig4_per_task.pdf, id=196, 654.17715pt x 211.10066pt>
 File: images/final/fig4_per_task.pdf Graphic file (type pdf)
 <use images/final/fig4_per_task.pdf>
 Package pdftex.def Info: images/final/fig4_per_task.pdf  used on input line 119
@@ -1250,47 +1254,58 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./images/final/fig3_main.pdf>]
-Underfull \hbox (badness 3965) in paragraph at lines 33--40
- \OT1/ptm/b/n/10 (+20) Data and mod-els. \OT1/ptm/m/n/10 (+20) We eval-u-ate on
- the CLRS-30
+Underfull \hbox (badness 10000) in paragraph at lines 33--43
+\OT1/ptm/m/n/10 (+20) mod-els (\OT1/pcr/m/n/10 Claude Haiku 4.5, GPT-4o-mini,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--40
-\OT1/pcr/m/n/10 Haiku 4.5, GPT-4o-mini, Gemini 2.5 Pro\OT1/ptm/m/n/10 (+20) )
+Underfull \hbox (badness 10000) in paragraph at lines 33--43
+\OT1/pcr/m/n/10 Gemini 2.0 Flash, Gemini 2.5 Flash\OT1/ptm/m/n/10 (+20) ) and
+ []
+
+
+Underfull \hbox (badness 6658) in paragraph at lines 33--43
+\OT1/ptm/m/n/10 (+20) open-source mod-els (\OT1/pcr/m/n/10 Mixtral-8x22b-Instru
+ct,
+ []
+
+
+Underfull \hbox (badness 1221) in paragraph at lines 123--134
+ \OT1/ptm/b/n/10 (+20) Re-sults. \OT1/ptm/m/n/10 (+20) Across the 40-task anal-
+y-sis set (Fig-ure [][]3[][]),
  []
 
 [4 <./images/final/fig4_per_task.pdf>]
-<images/final/fig5_additivity.pdf, id=306, 317.56644pt x 210.64885pt>
+<images/final/fig5_additivity.pdf, id=286, 317.56644pt x 210.64885pt>
 File: images/final/fig5_additivity.pdf Graphic file (type pdf)
 <use images/final/fig5_additivity.pdf>
 Package pdftex.def Info: images/final/fig5_additivity.pdf  used on input line 3
-16.
+19.
 (pdftex.def)             Requested size: 234.8775pt x 155.80055pt.
  [5 <./images/final/fig5_additivity.pdf>]
-Overfull \hbox (202.80815pt too wide) in paragraph at lines 604--605
+Overfull \hbox (202.80815pt too wide) in paragraph at lines 607--608
 \OMS/cmsy/m/n/10 f[]g$
  []
 
 [6]
-Underfull \hbox (badness 3601) in paragraph at lines 617--619
+Underfull \hbox (badness 3601) in paragraph at lines 620--622
  \OT1/ptm/b/n/10 (+20) Pro-to-col and mod-els. \OT1/ptm/m/n/10 (+20) We run thi
 s test on 1000
  []
 
 
-Underfull \hbox (badness 3068) in paragraph at lines 617--619
+Underfull \hbox (badness 3068) in paragraph at lines 620--622
 \OT1/ptm/m/n/10 (+20) held-out in-stances across mul-ti-ple trans-la-tor mod-el
 s
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 617--619
+Underfull \hbox (badness 10000) in paragraph at lines 620--622
 \OT1/ptm/m/n/10 (+20) (\OT1/pcr/m/n/10 Claude-Haiku-4.5, Gemini-2.5-Flash,
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 617--619
+Underfull \hbox (badness 3713) in paragraph at lines 620--622
 \OT1/pcr/m/n/10 Mixtral-8x22B-Instruct\OT1/ptm/m/n/10 (+20) ). Cru-cially, in t
 his
  []
@@ -1304,164 +1319,143 @@ Overfull \hbox (7.72076pt too wide) detected at line 192
 0 C\OT1/cmr/m/n/10 ) \OML/cmm/m/it/10 r:
  []
 
-<images/final/fig6_recovery.pdf, id=434, 311.79486pt x 196.65921pt>
+[7]
+<images/final/fig6_recovery.pdf, id=420, 311.79486pt x 196.65921pt>
 File: images/final/fig6_recovery.pdf Graphic file (type pdf)
 <use images/final/fig6_recovery.pdf>
 Package pdftex.def Info: images/final/fig6_recovery.pdf  used on input line 255
 .
 (pdftex.def)             Requested size: 234.8775pt x 148.14821pt.
-) (./sections/5_related_work.tex [7]
+
+Underfull \hbox (badness 3219) in paragraph at lines 257--257
+[][]\OT1/ptm/b/n/9 (+20) Recovery mass (blue) is 1.61% over-all, while
+ []
+
+) (./sections/5_related_work.tex) (./sections/6_conclusion.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-)
-(./sections/6_conclusion.tex) (./example_paper.bbl
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8 <./images/final/fig6_recovery.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 49--57
+ [8 <./images/final/fig6_recovery.pdf>]) (./example_paper.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 41--49
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www . cambridge . or
 g / core /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--57
+Underfull \hbox (badness 10000) in paragraph at lines 41--49
 \OT1/pcr/m/n/10 product / identifier / S0140525X10000853 /
  []
 
 
-Underfull \hbox (badness 4156) in paragraph at lines 66--71
-\OT1/ptm/m/n/10 (+20) net, haiku.  \OT1/ptm/m/it/10 (+20) An-thropic Tech-ni-ca
-l Re-port\OT1/ptm/m/n/10 (+20) , 2024.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 66--71
-\OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / www-[]cdn . anthropi
-c . com /
- []
-
-
-Overfull \hbox (19.92252pt too wide) in paragraph at lines 66--71
-\OT1/pcr/m/n/10 de8ba9b01c9ab7cbabf5c33b80b7bbc618857627 /
- []
-
-
-Underfull \hbox (badness 3068) in paragraph at lines 83--91
+Underfull \hbox (badness 3068) in paragraph at lines 68--76
 \OT1/ptm/m/n/10 (+20) 831, Mont-pel-lier France, Septem-ber 2018. ACM.
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 93--101
+Underfull \hbox (badness 2809) in paragraph at lines 78--86
 \OT1/ptm/m/n/10 (+20) ing with the MAXQ Value Func-tion De-com-po-si-
  []
 
 [9]
-Underfull \hbox (badness 2134) in paragraph at lines 186--190
+Underfull \hbox (badness 2134) in paragraph at lines 163--167
 \OT1/ptm/m/it/10 (+20) e-ments of Sta-tis-ti-cal Learn-ing\OT1/ptm/m/n/10 (+20)
  .  Springer, 2 edi-
  []
 
 
-Underfull \hbox (badness 4096) in paragraph at lines 198--203
+Underfull \hbox (badness 4096) in paragraph at lines 175--180
 []\OT1/ptm/m/n/10 (+20) Hudson, D. A. and Man-ning, C. D.  Com-po-si-
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 198--203
+Underfull \hbox (badness 1648) in paragraph at lines 175--180
 \OT1/ptm/m/n/10 (+20) tional At-ten-tion Net-works for Ma-chine Rea-son-ing,
  []
 
 
-Underfull \hbox (badness 3158) in paragraph at lines 233--237
+Underfull \hbox (badness 3158) in paragraph at lines 202--206
 []\OT1/ptm/m/n/10 (+20) Kallenberg, O.  \OT1/ptm/m/it/10 (+20) Foun-da-tions of
  Mod-ern Prob-a-bil-
  []
 
 
-Underfull \hbox (badness 3386) in paragraph at lines 239--246
+Underfull \hbox (badness 3386) in paragraph at lines 208--215
 \OT1/ptm/m/n/10 (+20) tice-ship Learn-ing with Ap-pli-ca-tion to Quadruped
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 239--246
+Underfull \hbox (badness 1460) in paragraph at lines 208--215
 \OT1/ptm/m/n/10 (+20) Lo-co-mo-tion.  In \OT1/ptm/m/it/10 (+20) Ad-vances in Ne
 u-ral In-for-ma-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--246
+Underfull \hbox (badness 10000) in paragraph at lines 208--215
 \OT1/pcr/m/n/10 cc / paper _ files / paper / 2007 / hash /
  []
 
 
-Overfull \hbox (23.42252pt too wide) in paragraph at lines 239--246
+Overfull \hbox (23.42252pt too wide) in paragraph at lines 208--215
 \OT1/pcr/m/n/10 54a367d629152b720749e187b3eaa11b-[]Abstract .
  []
 
 
-Underfull \hbox (badness 4291) in paragraph at lines 310--315
+Underfull \hbox (badness 4291) in paragraph at lines 279--284
 []\OT1/ptm/m/n/10 (+20) Merrill, W. and Sab-har-wal, A.  The Ex-pres-sive
  []
 
 
-Underfull \hbox (badness 5274) in paragraph at lines 310--315
+Underfull \hbox (badness 5274) in paragraph at lines 279--284
 \OT1/ptm/m/n/10 (+20) 2024.  URL [][]$\OT1/pcr/m/n/10 http : / / arxiv . org / 
 abs / 2310 .
  []
 
 [10]
-Underfull \hbox (badness 1102) in paragraph at lines 386--394
+Underfull \hbox (badness 1102) in paragraph at lines 355--363
 \OT1/pcr/m/n/10 002$[][]\OT1/ptm/m/n/10 (+20) .  URL [][]$\OT1/pcr/m/n/10 https
  : / / linkinghub . elsevier .
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 407--414
+Underfull \hbox (badness 1072) in paragraph at lines 376--383
 \OT1/ptm/m/n/10 (+20) matic pro-cess-ing: be-hav-ior, the-ory, and bi-o-log-i-c
 al
  []
 
 
-Underfull \hbox (badness 2495) in paragraph at lines 416--420
+Underfull \hbox (badness 2495) in paragraph at lines 385--389
 []\OT1/ptm/m/n/10 (+20) Shen, Z.  LLM With Tools: A Sur-vey, Septem-
  []
 
 
-Underfull \hbox (badness 2894) in paragraph at lines 422--427
+Underfull \hbox (badness 2894) in paragraph at lines 391--396
 []\OT1/ptm/m/n/10 (+20) Shin, R. and Durme, B. V.  Few-Shot Se-man-tic
  []
 
 
-Underfull \hbox (badness 1845) in paragraph at lines 422--427
+Underfull \hbox (badness 1845) in paragraph at lines 391--396
 \OT1/ptm/m/n/10 (+20) Pars-ing with Lan-guage Mod-els Trained On Code,
  []
 
 
-Underfull \hbox (badness 1983) in paragraph at lines 446--452
-[]\OT1/ptm/m/n/10 (+20) Veli[]ckovi[]c, P., Ba-dia, A. P., Bud-den, D., Pas-can
-u,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 455--462
+Underfull \hbox (badness 10000) in paragraph at lines 407--414
 [][]\OT1/ptm/m/n/10 (+20) doi: $\OT1/pcr/m/n/10 10 . 1016 / j . patter . 2021 .
  100273$[][]\OT1/ptm/m/n/10 (+20) .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 455--462
+Underfull \hbox (badness 10000) in paragraph at lines 407--414
 \OT1/ptm/m/n/10 (+20) URL [][]$\OT1/pcr/m/n/10 https : / / linkinghub . elsevie
 r . com /
  []
 
 [11]
-Underfull \hbox (badness 5274) in paragraph at lines 521--525
+Underfull \hbox (badness 5274) in paragraph at lines 473--477
 \OT1/ptm/m/n/10 (+20) 2022.  URL [][]$\OT1/pcr/m/n/10 http : / / arxiv . org / 
 abs / 2203 .
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 535--541
+Underfull \hbox (badness 1112) in paragraph at lines 487--493
 []\OT1/ptm/m/n/10 (+20) Zhao, T. Z., Wal-lace, E., Feng, S., Klein, D., and
  []
 
@@ -1483,13 +1477,13 @@ Package rerunfilecheck Info: File `example_paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36717 strings out of 474116
- 725421 string characters out of 5743682
+ 36689 strings out of 474116
+ 724821 string characters out of 5743682
  1962187 words of memory out of 5000000
- 57843 multiletter control sequences out of 15000+600000
- 607592 words of font info for 375 fonts, out of 8000000 for 9000
+ 57826 multiletter control sequences out of 15000+600000
+ 607309 words of font info for 371 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 93i,13n,99p,1671b,681s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,13n,99p,1671b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -1513,10 +1507,10 @@ fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on example_paper.pdf (15 pages, 567843 bytes).
+Output written on example_paper.pdf (15 pages, 566051 bytes).
 PDF statistics:
- 937 PDF objects out of 1000 (max. 8388607)
- 748 compressed objects within 8 object streams
- 153 named destinations out of 1000 (max. 500000)
+ 904 PDF objects out of 1000 (max. 8388607)
+ 715 compressed objects within 8 object streams
+ 147 named destinations out of 1000 (max. 500000)
  66235 words of extra memory for PDF output out of 74296 (max. 10000000)
 

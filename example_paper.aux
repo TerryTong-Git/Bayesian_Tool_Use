@@ -5,12 +5,6 @@
 \citation{gao2023pal,yao2023react,10.5555/3666122.3669119,yang2024sweagent,wang2025mcpbenchbenchmarkingtoolusingllm}
 \citation{lyu2023faithful,pan2023logic}
 \citation{wei2022chain}
-\citation{jiang2023mistral}
-\citation{achiam2023gpt4}
-\citation{team2023gemini}
-\citation{anthropic2024claude}
-\citation{velivckovic2022clrs}
-\citation{fan2023nphardeval}
 \newlabel{sec:intro}{{1}{1}{}{section.1}{}}
 \newlabel{sec:intro@cref}{{[section][1][]1}{[1][1][]1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
@@ -24,7 +18,7 @@
 \newlabel{def:task@cref}{{[subsection][1][2]2.1}{[1][2][]2}}
 \newlabel{def:trace}{{2.2}{2}{}{subsection.2.2}{}}
 \newlabel{def:trace@cref}{{[subsection][2][2]2.2}{[1][2][]2}}
-\newlabel{fig:main}{{3}{3}{\textbf {Code + Solver Execution performs better than Direct NL reasoning quantified by end-task accuracy overall and within paired instances.} Paired instance contrasts are shown in the bootstrap distributions. Results are averaged over CLRS30, NPHardEval, Custom Eval Suite, 3 seeds and 6 models}{figure.caption.3}{}}
+\newlabel{fig:main}{{3}{3}{\textbf {Code + Solver Execution performs better than Direct NL reasoning quantified by end-task accuracy overall and within paired instances.} Paired instance contrasts are shown in the bootstrap distributions. Results are averaged over the 40-task analysis set with 1,113 unique problem instances, 3 seeds, and 6 models}{figure.caption.3}{}}
 \newlabel{fig:main@cref}{{[figure][3][]3}{[1][2][]3}}
 \newlabel{def:route}{{2.3}{3}{}{subsection.2.3}{}}
 \newlabel{def:route@cref}{{[subsection][3][2]2.3}{[1][2][]3}}
@@ -63,11 +57,11 @@
 \newlabel{eq:ols-excess@cref}{{[equation][8][]8}{[1][5][]5}}
 \newlabel{sec:covariance-domination}{{3.3.2}{5}{}{subsubsection.3.3.2}{}}
 \newlabel{sec:covariance-domination@cref}{{[subsubsection][2][3,3]3.3.2}{[1][5][]5}}
-\newlabel{def:cov-dominance}{{3.3}{5}{\textbf {Nuisance covariance dominance}}{theorem.3.3}{}}
-\newlabel{def:cov-dominance@cref}{{[definition][3][3]3.3}{[1][5][]5}}
-\newlabel{eq:cov-order}{{10}{5}{\textbf {Nuisance covariance dominance}}{equation.3.10}{}}
-\newlabel{eq:cov-order@cref}{{[equation][10][]10}{[1][5][]5}}
 \citation{horn2012matrix,kallenberg2021foundations}
+\newlabel{def:cov-dominance}{{3.3}{6}{\textbf {Nuisance covariance dominance}}{theorem.3.3}{}}
+\newlabel{def:cov-dominance@cref}{{[definition][3][3]3.3}{[1][5][]6}}
+\newlabel{eq:cov-order}{{10}{6}{\textbf {Nuisance covariance dominance}}{equation.3.10}{}}
+\newlabel{eq:cov-order@cref}{{[equation][10][]10}{[1][6][]6}}
 \newlabel{prop:extra-implies-cov}{{3.4}{6}{Extra nuisance implies covariance dominance}{theorem.3.4}{}}
 \newlabel{prop:extra-implies-cov@cref}{{[proposition][4][3]3.4}{[1][6][]6}}
 \newlabel{sec:uniform-theorem}{{3.3.2}{6}{}{equation.3.15}{}}
@@ -84,13 +78,13 @@
 \newlabel{eq:approx-uniform-dominance@cref}{{[equation][22][]22}{[1][6][]6}}
 \newlabel{sec:func_similarity}{{3.4}{6}{}{subsection.3.4}{}}
 \newlabel{sec:func_similarity@cref}{{[subsection][4][3]3.4}{[1][6][]6}}
+\newlabel{sec:route2v3}{{4}{7}{}{section.4}{}}
+\newlabel{sec:route2v3@cref}{{[section][4][]4}{[1][7][]7}}
 \citation{graves_neural_2014,velickovic_neural_2021,reed_neural_2016,graves_hybrid_2016}
 \citation{schneider_controlled_2003,risko_cognitive_2016,anderson_neural_2010}
 \citation{kolter_hierarchical_2007,dietterich_hierarchical_2000}
 \citation{hudson_compositional_2018,hupkes_compositionality_2020,andreas_neural_2017,poggio2017and}
 \citation{velickovic_neural_2021,mahdavi_towards_2023,ibarz_generalist_2022,yan_neural_2020}
-\newlabel{sec:route2v3}{{4}{7}{}{section.4}{}}
-\newlabel{sec:route2v3@cref}{{[section][4][]4}{[1][7][]7}}
 \citation{marra_integrating_2019,olausson_linc_2023,han_folio_2024}
 \citation{wei2022chain,zelikman_star_2022,merrill_expressive_2024,altabaa_cot_2025}
 \citation{xie2021explanation,garg2022can,akyurek2022learning,zhang2024trained}
@@ -98,86 +92,80 @@
 \citation{shen_llm_2024,10.5555/3666122.3669119,qin_toolllm_2023,tang_toolalpaca_2023,parisi_talm_2022}
 \citation{shin_few-shot_2022,krishnamurthy_neural_2017,berant_semantic_2013,dong_language_2016}
 \citation{puri_codenet_2021,alon_code2vec_2019,chen_neural_2018}
-\bibdata{example_paper}
-\bibcite{achiam2023gpt4}{{1}{2023}{{Achiam et~al.}}{{Achiam, Adler, Agarwal, Ahmad, Akkaya, Aleman, Almeida, Altenschmidt, Altman, Anadkat, et~al.}}}
-\newlabel{fig:recovery_final}{{6}{8}{\textbf {Recovery mass (blue) $<$ 2\% on average and reduces as tasks get harder. On the other hand, LLM execution gets noisier compared to python execution (red) }. Recovery rate $\Pr (\neg C)\,r$ (Code Execution Fails but LLM Reasoning succeeds $|$ Incorrect Code) in blue trends down. Exec wins $\Pr (C)e_C$ (Code Execution succeeds and LLM reasoning fails $|$ Correct Code) increases as tasks get harder}{figure.caption.6}{}}
-\newlabel{fig:recovery_final@cref}{{[figure][6][]6}{[1][7][]8}}
+\newlabel{fig:recovery_final}{{6}{8}{\textbf {Recovery mass (blue) is 1.61\% overall, while execution-win mass (red) is 33.08\% overall.} Recovery mass $\Pr (\neg C)\,r$ counts cases where code execution fails but LLM simulation succeeds. Execution-win mass $\Pr (C)e_C$ counts cases where code execution succeeds and LLM simulation fails}{figure.caption.6}{}}
+\newlabel{fig:recovery_final@cref}{{[figure][6][]6}{[1][8][]8}}
 \newlabel{sec:related_work}{{5}{8}{}{section.5}{}}
-\newlabel{sec:related_work@cref}{{[section][5][]5}{[1][7][]8}}
+\newlabel{sec:related_work@cref}{{[section][5][]5}{[1][8][]8}}
 \newlabel{sec:conclusion}{{6}{8}{}{section.6}{}}
 \newlabel{sec:conclusion@cref}{{[section][6][]6}{[1][8][]8}}
-\bibcite{akyurek2022learning}{{2}{2022}{{Aky{\"u}rek et~al.}}{{Aky{\"u}rek, Schuurmans, Andreas, Ma, and Zhou}}}
-\bibcite{allamanis2018survey}{{3}{2018}{{Allamanis et~al.}}{{Allamanis, Barr, Devanbu, and Sutton}}}
-\bibcite{alon_code2vec_2019}{{4}{2019}{{Alon et~al.}}{{Alon, Zilberstein, Levy, and Yahav}}}
-\bibcite{altabaa_cot_2025}{{5}{2025}{{Altabaa et~al.}}{{Altabaa, Montasser, and Lafferty}}}
-\bibcite{anderson_neural_2010}{{6}{2010}{{Anderson}}{{}}}
-\bibcite{andreas_neural_2017}{{7}{2017}{{Andreas et~al.}}{{Andreas, Rohrbach, Darrell, and Klein}}}
-\bibcite{anthropic2024claude}{{8}{2024}{{Anthropic}}{{}}}
-\bibcite{berant_semantic_2013}{{9}{2013}{{Berant et~al.}}{{Berant, Chou, Frostig, and Liang}}}
-\bibcite{chen_neural_2018}{{10}{2018}{{Chen \& Zhou}}{{Chen and Zhou}}}
-\bibcite{dietterich_hierarchical_2000}{{11}{2000}{{Dietterich}}{{}}}
-\bibcite{dong_language_2016}{{12}{2016}{{Dong \& Lapata}}{{Dong and Lapata}}}
-\bibcite{fan2023nphardeval}{{13}{2023}{{Fan et~al.}}{{Fan, Hua, Li, Ling, Zhang, and Hemphill}}}
-\bibcite{gao2023pal}{{14}{2023}{{Gao et~al.}}{{Gao, Madaan, Zhou, Alon, Liu, Yang, Callan, and Neubig}}}
-\bibcite{garg2022can}{{15}{2022}{{Garg et~al.}}{{Garg, Tsipras, Liang, and Valiant}}}
-\bibcite{geirhos2020shortcut}{{16}{2020}{{Geirhos et~al.}}{{Geirhos, Jacobsen, Michaelis, Zemel, Brendel, Bethge, and Wichmann}}}
-\bibcite{graves_neural_2014}{{17}{2014}{{Graves et~al.}}{{Graves, Wayne, and Danihelka}}}
-\bibcite{graves_hybrid_2016}{{18}{2016}{{Graves et~al.}}{{Graves, Wayne, Reynolds, Harley, Danihelka, Grabska-Barwińska, Colmenarejo, Grefenstette, Ramalho, Agapiou, Badia, Hermann, Zwols, Ostrovski, Cain, King, Summerfield, Blunsom, Kavukcuoglu, and Hassabis}}}
-\bibcite{gururangan2018annotation}{{19}{2018}{{Gururangan et~al.}}{{Gururangan, Swayamdipta, Levy, Schwartz, Bowman, and Smith}}}
-\bibcite{han_folio_2024}{{20}{2024}{{Han et~al.}}{{Han, Schoelkopf, Zhao, Qi, Riddell, Zhou, Coady, Peng, Qiao, Benson, Sun, Wardle-Solano, Szabo, Zubova, Burtell, Fan, Liu, Wong, Sailor, Ni, Nan, Kasai, Yu, Zhang, Fabbri, Kryscinski, Yavuz, Liu, Lin, Joty, Zhou, Xiong, Ying, Cohan, and Radev}}}
-\bibcite{hastie2009elements}{{21}{2009}{{Hastie et~al.}}{{Hastie, Tibshirani, and Friedman}}}
-\bibcite{horn2012matrix}{{22}{2012}{{Horn \& Johnson}}{{Horn and Johnson}}}
-\bibcite{hudson_compositional_2018}{{23}{2018}{{Hudson \& Manning}}{{Hudson and Manning}}}
-\bibcite{hupkes_compositionality_2020}{{24}{2020}{{Hupkes et~al.}}{{Hupkes, Dankers, Mul, and Bruni}}}
-\bibcite{ibarz_generalist_2022}{{25}{2022}{{Ibarz et~al.}}{{Ibarz, Kurin, Papamakarios, Nikiforou, Bennani, Csordás, Dudzik, Bošnjak, Vitvitskyi, Rubanova, Deac, Bevilacqua, Ganin, Blundell, and Veličković}}}
-\bibcite{jiang2023mistral}{{26}{2023}{{Jiang et~al.}}{{Jiang, Sablayrolles, Mensch, Bamford, Chaplot, Casas, Bressand, Lengyel, Lample, Saulnier, et~al.}}}
-\bibcite{kallenberg2021foundations}{{27}{2021}{{Kallenberg}}{{}}}
-\bibcite{kolter_hierarchical_2007}{{28}{2007}{{Kolter et~al.}}{{Kolter, Abbeel, and Ng}}}
-\bibcite{krishnamurthy_neural_2017}{{29}{2017}{{Krishnamurthy et~al.}}{{Krishnamurthy, Dasigi, and Gardner}}}
-\bibcite{lehmann1998theory}{{30}{1998}{{Lehmann \& Casella}}{{Lehmann and Casella}}}
-\bibcite{lu2021fantastically}{{31}{2022}{{Lu et~al.}}{{Lu, Bartolo, Moore, Riedel, and Stenetorp}}}
-\bibcite{lyu2023faithful}{{32}{2023}{{Lyu et~al.}}{{Lyu, Havaldar, Stein, Zhang, Rao, Wong, Apidianaki, and Callison-Burch}}}
-\bibcite{mahdavi_towards_2023}{{33}{2023}{{Mahdavi et~al.}}{{Mahdavi, Swersky, Kipf, Hashemi, Thrampoulidis, and Liao}}}
-\bibcite{marra_integrating_2019}{{34}{2019}{{Marra et~al.}}{{Marra, Giannini, Diligenti, and Gori}}}
-\bibcite{mccoy2019right}{{35}{2019}{{McCoy et~al.}}{{McCoy, Pavlick, and Linzen}}}
-\bibcite{merrill_expressive_2024}{{36}{2024}{{Merrill \& Sabharwal}}{{Merrill and Sabharwal}}}
-\bibcite{olausson_linc_2023}{{37}{2023}{{Olausson et~al.}}{{Olausson, Gu, Lipkin, Zhang, Solar-Lezama, Tenenbaum, and Levy}}}
-\bibcite{pan2023logic}{{38}{2023}{{Pan et~al.}}{{Pan, Albalak, Wang, and Wang}}}
-\bibcite{parisi_talm_2022}{{39}{2022}{{Parisi et~al.}}{{Parisi, Zhao, and Fiedel}}}
-\bibcite{pezeshkpour2023order}{{40}{2023}{{Pezeshkpour \& Hruschka}}{{Pezeshkpour and Hruschka}}}
-\bibcite{poggio2017and}{{41}{2017}{{Poggio et~al.}}{{Poggio, Mhaskar, Rosasco, Miranda, and Liao}}}
-\bibcite{puri_codenet_2021}{{42}{2021}{{Puri et~al.}}{{Puri, Kung, Janssen, Zhang, Domeniconi, Zolotov, Dolby, Chen, Choudhury, Decker, Thost, Buratti, Pujar, Ramji, Finkler, Malaika, and Reiss}}}
-\bibcite{qin_toolllm_2023}{{43}{2023}{{Qin et~al.}}{{Qin, Liang, Ye, Zhu, Yan, Lu, Lin, Cong, Tang, Qian, Zhao, Hong, Tian, Xie, Zhou, Gerstein, Li, Liu, and Sun}}}
-\bibcite{reed_neural_2016}{{44}{2016}{{Reed \& Freitas}}{{Reed and Freitas}}}
-\bibcite{risko_cognitive_2016}{{45}{2016}{{Risko \& Gilbert}}{{Risko and Gilbert}}}
-\bibcite{10.5555/3666122.3669119}{{46}{2023}{{Schick et~al.}}{{Schick, Dwivedi-Yu, Dess\'{\i }, Raileanu, Lomeli, Hambro, Zettlemoyer, Cancedda, and Scialom}}}
-\bibcite{schneider_controlled_2003}{{47}{2003}{{Schneider \& Chein}}{{Schneider and Chein}}}
-\bibcite{shen_llm_2024}{{48}{2024}{{Shen}}{{}}}
-\bibcite{shin_few-shot_2022}{{49}{2022}{{Shin \& Durme}}{{Shin and Durme}}}
-\bibcite{tang_toolalpaca_2023}{{50}{2023}{{Tang et~al.}}{{Tang, Deng, Lin, Han, Liang, Cao, and Sun}}}
-\bibcite{team2023gemini}{{51}{2023}{{Team et~al.}}{{Team, Anil, Borgeaud, Wu, Alayrac, Yu, Sorber, Schalkwyk, Dai, Hauth, et~al.}}}
-\bibcite{velivckovic2022clrs}{{52}{2022}{{Veli{\v {c}}kovi{\'c} et~al.}}{{Veli{\v {c}}kovi{\'c}, Badia, Budden, Pascanu, Banino, Dashevskiy, Hadsell, and Blundell}}}
-\bibcite{velickovic_neural_2021}{{53}{2021}{{Veličković \& Blundell}}{{Veličković and Blundell}}}
-\bibcite{wainwright2019high}{{54}{2019}{{Wainwright}}{{}}}
-\bibcite{wang2025mcpbenchbenchmarkingtoolusingllm}{{55}{2025}{{Wang et~al.}}{{Wang, Chang, Patel, Biju, Wu, Liu, Ding, Rezazadeh, Shah, Bao, and Siow}}}
-\bibcite{wei2022chain}{{56}{2022}{{Wei et~al.}}{{Wei, Wang, Schuurmans, Bosma, Xia, Chi, Le, Zhou, et~al.}}}
-\bibcite{xie2021explanation}{{57}{2021}{{Xie et~al.}}{{Xie, Raghunathan, Liang, and Ma}}}
-\bibcite{yan_neural_2020}{{58}{2020}{{Yan et~al.}}{{Yan, Swersky, Koutra, Ranganathan, and Hashemi}}}
-\bibcite{yang2024sweagent}{{59}{2024}{{Yang et~al.}}{{Yang, Jimenez, Wettig, Lieret, Yao, Narasimhan, and Press}}}
-\bibcite{yao2023react}{{60}{2023}{{Yao et~al.}}{{Yao, Zhao, Yu, Du, Shafran, Narasimhan, and Cao}}}
-\bibcite{zelikman_star_2022}{{61}{2022}{{Zelikman et~al.}}{{Zelikman, Wu, Mu, and Goodman}}}
-\bibcite{zhang2024trained}{{62}{2024}{{Zhang et~al.}}{{Zhang, Frei, and Bartlett}}}
-\bibcite{zhao2021calibrate}{{63}{2021}{{Zhao et~al.}}{{Zhao, Wallace, Feng, Klein, and Singh}}}
+\bibdata{example_paper}
+\bibcite{akyurek2022learning}{{1}{2022}{{Aky{\"u}rek et~al.}}{{Aky{\"u}rek, Schuurmans, Andreas, Ma, and Zhou}}}
+\bibcite{allamanis2018survey}{{2}{2018}{{Allamanis et~al.}}{{Allamanis, Barr, Devanbu, and Sutton}}}
+\bibcite{alon_code2vec_2019}{{3}{2019}{{Alon et~al.}}{{Alon, Zilberstein, Levy, and Yahav}}}
+\bibcite{altabaa_cot_2025}{{4}{2025}{{Altabaa et~al.}}{{Altabaa, Montasser, and Lafferty}}}
+\bibcite{anderson_neural_2010}{{5}{2010}{{Anderson}}{{}}}
+\bibcite{andreas_neural_2017}{{6}{2017}{{Andreas et~al.}}{{Andreas, Rohrbach, Darrell, and Klein}}}
+\bibcite{berant_semantic_2013}{{7}{2013}{{Berant et~al.}}{{Berant, Chou, Frostig, and Liang}}}
+\bibcite{chen_neural_2018}{{8}{2018}{{Chen \& Zhou}}{{Chen and Zhou}}}
+\bibcite{dietterich_hierarchical_2000}{{9}{2000}{{Dietterich}}{{}}}
+\bibcite{dong_language_2016}{{10}{2016}{{Dong \& Lapata}}{{Dong and Lapata}}}
+\bibcite{gao2023pal}{{11}{2023}{{Gao et~al.}}{{Gao, Madaan, Zhou, Alon, Liu, Yang, Callan, and Neubig}}}
+\bibcite{garg2022can}{{12}{2022}{{Garg et~al.}}{{Garg, Tsipras, Liang, and Valiant}}}
+\bibcite{geirhos2020shortcut}{{13}{2020}{{Geirhos et~al.}}{{Geirhos, Jacobsen, Michaelis, Zemel, Brendel, Bethge, and Wichmann}}}
+\bibcite{graves_neural_2014}{{14}{2014}{{Graves et~al.}}{{Graves, Wayne, and Danihelka}}}
+\bibcite{graves_hybrid_2016}{{15}{2016}{{Graves et~al.}}{{Graves, Wayne, Reynolds, Harley, Danihelka, Grabska-Barwińska, Colmenarejo, Grefenstette, Ramalho, Agapiou, Badia, Hermann, Zwols, Ostrovski, Cain, King, Summerfield, Blunsom, Kavukcuoglu, and Hassabis}}}
+\bibcite{gururangan2018annotation}{{16}{2018}{{Gururangan et~al.}}{{Gururangan, Swayamdipta, Levy, Schwartz, Bowman, and Smith}}}
+\bibcite{han_folio_2024}{{17}{2024}{{Han et~al.}}{{Han, Schoelkopf, Zhao, Qi, Riddell, Zhou, Coady, Peng, Qiao, Benson, Sun, Wardle-Solano, Szabo, Zubova, Burtell, Fan, Liu, Wong, Sailor, Ni, Nan, Kasai, Yu, Zhang, Fabbri, Kryscinski, Yavuz, Liu, Lin, Joty, Zhou, Xiong, Ying, Cohan, and Radev}}}
+\bibcite{hastie2009elements}{{18}{2009}{{Hastie et~al.}}{{Hastie, Tibshirani, and Friedman}}}
+\bibcite{horn2012matrix}{{19}{2012}{{Horn \& Johnson}}{{Horn and Johnson}}}
+\bibcite{hudson_compositional_2018}{{20}{2018}{{Hudson \& Manning}}{{Hudson and Manning}}}
+\bibcite{hupkes_compositionality_2020}{{21}{2020}{{Hupkes et~al.}}{{Hupkes, Dankers, Mul, and Bruni}}}
+\bibcite{ibarz_generalist_2022}{{22}{2022}{{Ibarz et~al.}}{{Ibarz, Kurin, Papamakarios, Nikiforou, Bennani, Csordás, Dudzik, Bošnjak, Vitvitskyi, Rubanova, Deac, Bevilacqua, Ganin, Blundell, and Veličković}}}
+\bibcite{kallenberg2021foundations}{{23}{2021}{{Kallenberg}}{{}}}
+\bibcite{kolter_hierarchical_2007}{{24}{2007}{{Kolter et~al.}}{{Kolter, Abbeel, and Ng}}}
+\bibcite{krishnamurthy_neural_2017}{{25}{2017}{{Krishnamurthy et~al.}}{{Krishnamurthy, Dasigi, and Gardner}}}
+\bibcite{lehmann1998theory}{{26}{1998}{{Lehmann \& Casella}}{{Lehmann and Casella}}}
+\bibcite{lu2021fantastically}{{27}{2022}{{Lu et~al.}}{{Lu, Bartolo, Moore, Riedel, and Stenetorp}}}
+\bibcite{lyu2023faithful}{{28}{2023}{{Lyu et~al.}}{{Lyu, Havaldar, Stein, Zhang, Rao, Wong, Apidianaki, and Callison-Burch}}}
+\bibcite{mahdavi_towards_2023}{{29}{2023}{{Mahdavi et~al.}}{{Mahdavi, Swersky, Kipf, Hashemi, Thrampoulidis, and Liao}}}
+\bibcite{marra_integrating_2019}{{30}{2019}{{Marra et~al.}}{{Marra, Giannini, Diligenti, and Gori}}}
+\bibcite{mccoy2019right}{{31}{2019}{{McCoy et~al.}}{{McCoy, Pavlick, and Linzen}}}
+\bibcite{merrill_expressive_2024}{{32}{2024}{{Merrill \& Sabharwal}}{{Merrill and Sabharwal}}}
+\bibcite{olausson_linc_2023}{{33}{2023}{{Olausson et~al.}}{{Olausson, Gu, Lipkin, Zhang, Solar-Lezama, Tenenbaum, and Levy}}}
+\bibcite{pan2023logic}{{34}{2023}{{Pan et~al.}}{{Pan, Albalak, Wang, and Wang}}}
+\bibcite{parisi_talm_2022}{{35}{2022}{{Parisi et~al.}}{{Parisi, Zhao, and Fiedel}}}
+\bibcite{pezeshkpour2023order}{{36}{2023}{{Pezeshkpour \& Hruschka}}{{Pezeshkpour and Hruschka}}}
+\bibcite{poggio2017and}{{37}{2017}{{Poggio et~al.}}{{Poggio, Mhaskar, Rosasco, Miranda, and Liao}}}
+\bibcite{puri_codenet_2021}{{38}{2021}{{Puri et~al.}}{{Puri, Kung, Janssen, Zhang, Domeniconi, Zolotov, Dolby, Chen, Choudhury, Decker, Thost, Buratti, Pujar, Ramji, Finkler, Malaika, and Reiss}}}
+\bibcite{qin_toolllm_2023}{{39}{2023}{{Qin et~al.}}{{Qin, Liang, Ye, Zhu, Yan, Lu, Lin, Cong, Tang, Qian, Zhao, Hong, Tian, Xie, Zhou, Gerstein, Li, Liu, and Sun}}}
+\bibcite{reed_neural_2016}{{40}{2016}{{Reed \& Freitas}}{{Reed and Freitas}}}
+\bibcite{risko_cognitive_2016}{{41}{2016}{{Risko \& Gilbert}}{{Risko and Gilbert}}}
+\bibcite{10.5555/3666122.3669119}{{42}{2023}{{Schick et~al.}}{{Schick, Dwivedi-Yu, Dess\'{\i }, Raileanu, Lomeli, Hambro, Zettlemoyer, Cancedda, and Scialom}}}
+\bibcite{schneider_controlled_2003}{{43}{2003}{{Schneider \& Chein}}{{Schneider and Chein}}}
+\bibcite{shen_llm_2024}{{44}{2024}{{Shen}}{{}}}
+\bibcite{shin_few-shot_2022}{{45}{2022}{{Shin \& Durme}}{{Shin and Durme}}}
+\bibcite{tang_toolalpaca_2023}{{46}{2023}{{Tang et~al.}}{{Tang, Deng, Lin, Han, Liang, Cao, and Sun}}}
+\bibcite{velickovic_neural_2021}{{47}{2021}{{Veličković \& Blundell}}{{Veličković and Blundell}}}
+\bibcite{wainwright2019high}{{48}{2019}{{Wainwright}}{{}}}
+\bibcite{wang2025mcpbenchbenchmarkingtoolusingllm}{{49}{2025}{{Wang et~al.}}{{Wang, Chang, Patel, Biju, Wu, Liu, Ding, Rezazadeh, Shah, Bao, and Siow}}}
+\bibcite{wei2022chain}{{50}{2022}{{Wei et~al.}}{{Wei, Wang, Schuurmans, Bosma, Xia, Chi, Le, Zhou, et~al.}}}
+\bibcite{xie2021explanation}{{51}{2021}{{Xie et~al.}}{{Xie, Raghunathan, Liang, and Ma}}}
+\bibcite{yan_neural_2020}{{52}{2020}{{Yan et~al.}}{{Yan, Swersky, Koutra, Ranganathan, and Hashemi}}}
+\bibcite{yang2024sweagent}{{53}{2024}{{Yang et~al.}}{{Yang, Jimenez, Wettig, Lieret, Yao, Narasimhan, and Press}}}
+\bibcite{yao2023react}{{54}{2023}{{Yao et~al.}}{{Yao, Zhao, Yu, Du, Shafran, Narasimhan, and Cao}}}
+\bibcite{zelikman_star_2022}{{55}{2022}{{Zelikman et~al.}}{{Zelikman, Wu, Mu, and Goodman}}}
+\bibcite{zhang2024trained}{{56}{2024}{{Zhang et~al.}}{{Zhang, Frei, and Bartlett}}}
+\bibcite{zhao2021calibrate}{{57}{2021}{{Zhao et~al.}}{{Zhao, Wallace, Feng, Klein, and Singh}}}
 \bibstyle{icml2025}
 \newlabel{app:route_robustness}{{A}{13}{}{appendix.A}{}}
 \newlabel{app:route_robustness@cref}{{[appendix][1][2147483647]A}{[1][13][]13}}
 \newlabel{app:complexity_stratified_route_accuracy}{{A.1}{13}{}{subsection.A.1}{}}
 \newlabel{app:complexity_stratified_route_accuracy@cref}{{[subappendix][1][2147483647,1]A.1}{[1][13][]13}}
-\newlabel{tab:appendix_complexity_routes}{{1}{13}{Route accuracy grouped by asymptotic complexity. Tasks and Inst. report task and instance counts; McNemar tests are exact two-sided tests on paired outcomes}{table.1}{}}
+\newlabel{tab:appendix_complexity_routes}{{1}{13}{Route accuracy grouped by asymptotic complexity in the main route evaluation. Tasks and Inst. report task and instance counts; $p_{2,1}$ is the exact two-sided McNemar test for \RouteTwo {} vs. \RouteOne {} on paired outcomes}{table.1}{}}
 \newlabel{tab:appendix_complexity_routes@cref}{{[table][1][2147483647]1}{[1][13][]13}}
 \newlabel{app:model_stratified_route_accuracy}{{A.2}{13}{}{subsection.A.2}{}}
 \newlabel{app:model_stratified_route_accuracy@cref}{{[subappendix][2][2147483647,1]A.2}{[1][13][]13}}
-\newlabel{tab:appendix_model_routes}{{2}{13}{Route accuracy grouped by model. Each row contains 1,340 unique problems and 4,020 paired route evaluations}{table.2}{}}
+\newlabel{tab:appendix_model_routes}{{2}{13}{Route accuracy grouped by model on the 40-task analysis set. Each row contains 1,113 unique problems and 3,339 paired route evaluations; $p_{2,1}$ and $p_{3,2}$ are exact two-sided McNemar tests for \RouteTwo {} vs. \RouteOne {} and \RouteThree {} vs. \RouteTwo {}, respectively}{table.2}{}}
 \newlabel{tab:appendix_model_routes@cref}{{[table][2][2147483647]2}{[1][13][]13}}
 \newlabel{app:functional_similarity_checks}{{B}{13}{}{appendix.B}{}}
 \newlabel{app:functional_similarity_checks@cref}{{[appendix][2][2147483647]B}{[1][13][]13}}
@@ -197,12 +185,12 @@
 \newlabel{tab:appendix_coding_models@cref}{{[table][5][2147483647]5}{[1][14][]14}}
 \newlabel{app:frontier_model_sanity_checks}{{C.3}{14}{}{subsection.C.3}{}}
 \newlabel{app:frontier_model_sanity_checks@cref}{{[subappendix][3][2147483647,3]C.3}{[1][14][]14}}
-\newlabel{tab:appendix_frontier_nopatch}{{6}{14}{Frontier tool-disabled controlled-subset route accuracy. Entries report accuracy with correct/denominator counts}{table.6}{}}
+\newlabel{tab:appendix_frontier_nopatch}{{6}{14}{Frontier tool-disabled controlled-subset route accuracy on the seed~1 350-instance subset with no patching or repair. Entries report accuracy with correct/denominator counts}{table.6}{}}
 \newlabel{tab:appendix_frontier_nopatch@cref}{{[table][6][2147483647]6}{[1][14][]14}}
 \newlabel{app:failure_analysis}{{D}{15}{}{appendix.D}{}}
 \newlabel{app:failure_analysis@cref}{{[appendix][4][2147483647]D}{[1][14][]15}}
 \newlabel{app:code_execution_failure_modes}{{D.1}{15}{}{subsection.D.1}{}}
 \newlabel{app:code_execution_failure_modes@cref}{{[subappendix][1][2147483647,4]D.1}{[1][14][]15}}
-\newlabel{tab:appendix_code_failure_modes}{{7}{15}{Failure-mode distribution conditional on \RouteThree {} code-execution failures}{table.7}{}}
+\newlabel{tab:appendix_code_failure_modes}{{7}{15}{Failure-mode distribution conditional on \RouteThree {} code-execution failures. Rows are within-model percentages and sum to 100\% up to rounding}{table.7}{}}
 \newlabel{tab:appendix_code_failure_modes@cref}{{[table][7][2147483647]7}{[1][15][]15}}
 \gdef \@abspage@last{15}

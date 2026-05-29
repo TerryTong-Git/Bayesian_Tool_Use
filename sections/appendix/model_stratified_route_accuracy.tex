@@ -10,19 +10,19 @@ We stratify the main route comparison by model to check whether the aggregate re
 \toprule
 Model & Type & Inst. & R1 & R2 & R3 & R2--R1 & $p_{2,1}$ & R3--R2 & $p_{3,2}$ \\
 \midrule
-anthropic/claude-haiku-4.5 & closed & 1340 & 31.4 & 27.7 & 48.2 & -3.7 & 4.4e-13 & 20.5 & 6.6e-123 \\
-google/gemini-2.0-flash-001 & closed & 1340 & 22.3 & 21.1 & 54.4 & -1.2 & 0.0159 & 33.3 & $<10^{-300}$ \\
-google/gemini-2.5-flash & closed & 1340 & 23.4 & 23.5 & 54.3 & 0.0 & 0.961 & 30.8 & 1.5e-277 \\
-openai/gpt-4o-mini & closed & 1340 & 18.2 & 16.8 & 49.6 & -1.4 & 0.00312 & 32.8 & 2.7e-280 \\
-mistralai/codestral-2508 & open & 1340 & 17.6 & 18.9 & 52.3 & 1.2 & 0.00113 & 33.5 & 1.3e-284 \\
-mistralai/mixtral-8x22b-instruct & open & 1340 & 15.2 & 15.7 & 42.8 & 0.5 & 0.143 & 27.1 & 3.0e-221 \\
+anthropic/claude-haiku-4.5 & closed & 1113 & 23.3 & 23.6 & 47.1 & 0.3 & 0.612 & 23.5 & 2.4e-148 \\
+google/gemini-2.0-flash-001 & closed & 1113 & 17.5 & 18.1 & 51.8 & 0.7 & 0.137 & 33.7 & 8.5e-298 \\
+google/gemini-2.5-flash & closed & 1113 & 20.7 & 20.5 & 50.2 & -0.1 & 0.823 & 29.7 & 3.1e-238 \\
+openai/gpt-4o-mini & closed & 1113 & 14.1 & 12.9 & 49.1 & -1.2 & 0.00663 & 36.1 & $<10^{-300}$ \\
+mistralai/codestral-2508 & open & 1113 & 15.0 & 15.8 & 52.7 & 0.8 & 0.0279 & 36.9 & $<10^{-300}$ \\
+mistralai/mixtral-8x22b-instruct & open & 1113 & 12.7 & 13.2 & 42.1 & 0.5 & 0.127 & 28.9 & 7.2e-253 \\
 \bottomrule
 \end{tabular*}
 \captionof{table}{Route accuracy grouped by model.}
 \label{tab:appendix_model_routes}
 \end{center}
 
-\appendixresult{Each row in \cref{tab:appendix_model_routes} has 1,340 unique problems and 4,020
+\appendixresult{Each row in \cref{tab:appendix_model_routes} has 1,113 unique problems and 3,339
 paired route evaluations. Accuracies and deltas are percentages or percentage
 points. This stratification shows that the execution gain is not an artifact of
 mixing one weak or strong model into the aggregate.}

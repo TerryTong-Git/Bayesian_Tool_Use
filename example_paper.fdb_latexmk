@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex example_paper"] 1780028661.19016 "example_paper.aux" "example_paper.bbl" "example_paper" 1780028662.96364 0
+["bibtex example_paper"] 1780029148.77074 "example_paper.aux" "example_paper.bbl" "example_paper" 1780029209.19418 0
   "./example_paper.bib" 1780024016.08185 125247 ae723e8a71d0b33edf90086836ae8502 ""
   "./icml2025.bst" 1779428338 27147 88eb4aed280e585571f8eac50f39a681 ""
-  "example_paper.aux" 1780028662.58211 20290 a9f9c904a79828edd5f009f84dcd4781 "pdflatex"
+  "example_paper.aux" 1780029208.82293 19644 0a71e37d08e098da57d1824f8055f8f5 "pdflatex"
   (generated)
   "example_paper.bbl"
   "example_paper.blg"
   (rewritten before read)
-["pdflatex"] 1780028661.3143 "example_paper.tex" "example_paper.pdf" "example_paper" 1780028662.96381 0
+["pdflatex"] 1780029207.55505 "example_paper.tex" "example_paper.pdf" "example_paper" 1780029209.19436 0
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -273,9 +273,9 @@
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "algorithm.sty" 1779428338 2223 ada3eaa0c1bd465a639433dfafc2fc4e ""
   "algorithmic.sty" 1779428338 7784 49b44dd4deab911352f92235b9fcffff ""
-  "example_paper.aux" 1780028662.58211 20290 a9f9c904a79828edd5f009f84dcd4781 "pdflatex"
-  "example_paper.bbl" 1780028661.31056 25472 86cea4144566e2acfedeb9c293178765 "bibtex example_paper"
-  "example_paper.out" 1780028662.17222 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "example_paper.aux" 1780029208.82293 19644 0a71e37d08e098da57d1824f8055f8f5 "pdflatex"
+  "example_paper.bbl" 1780029148.90725 23003 1544641ade3fc7dc8466da207d51bccf "bibtex example_paper"
+  "example_paper.out" 1780029208.39717 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "example_paper.tex" 1780023745.91319 9510 56d31ece9933ff3e9d156bb15d732004 ""
   "fancyhdr.sty" 1779428338 20521 e5d13d98d57bd53d4fed3aa61bd29c86 ""
   "icml2025.sty" 1779916397.09898 28208 40333541e46c0c324686c524f57b49c2 ""
@@ -285,14 +285,14 @@
   "images/final/fig4_per_task.pdf" 1780013361.41272 58944 63ffb30e1e3606fbfde81de8cc38ed85 ""
   "images/final/fig5_additivity.pdf" 1780013361.41322 30144 924ab26a04024dede41f3e2910773234 ""
   "images/final/fig6_recovery.pdf" 1780013361.41379 30344 e74963b4212bfc258ea2e145e96d6e78 ""
-  "sections/0_abstract.tex" 1780021925.38411 4940 0e4baf30bcc1524526b9cd7eb7d51b46 ""
-  "sections/1_introduction.tex" 1780022200.40873 18043 50a3b6129d8e0f62ed0c817cee493b59 ""
+  "sections/0_abstract.tex" 1780029188.30017 5015 fb61a5e27e6d97a1a1348fb2c7848f97 ""
+  "sections/1_introduction.tex" 1780029148.32186 17783 0181567373c8b03117bd7f06f7d354c6 ""
   "sections/2_framework.tex" 1780022440.43987 8196 f4404beceae981e26e6de8da956df5b3 ""
-  "sections/3_experiment.tex" 1780028264.93886 45355 411a7cce92d17735d43d4a59c0823698 ""
-  "sections/4_theory.tex" 1780007238.89882 14292 3f70417620a459dc08c354c87646e430 ""
+  "sections/3_experiment.tex" 1780029108.02989 45570 d23b78e5ede2dfb7b28b490b172402da ""
+  "sections/4_theory.tex" 1780029108.03023 14194 217a6aca24456d6d688dffbffc31a4dc ""
   "sections/5_related_work.tex" 1780023569.16366 3447 861605290fc8c1f806ce22dce0d4eff7 ""
-  "sections/6_conclusion.tex" 1779428338 2909 5a798f400b834b14dec1f87d7b9960af ""
-  "sections/appendix.tex" 1780028646.64369 12235 769c522e73a1985648c664c5cf7b5192 ""
+  "sections/6_conclusion.tex" 1780029108.03076 2924 2f06b6734a7834584bee5581bb3d25dc ""
+  "sections/appendix.tex" 1780029134.62247 12691 5256de436ca00a7c67bde7b22d6d0a12 ""
   (generated)
   "example_paper.aux"
   "example_paper.log"

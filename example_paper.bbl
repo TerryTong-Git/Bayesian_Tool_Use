@@ -1,17 +1,9 @@
-\begin{thebibliography}{63}
+\begin{thebibliography}{57}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[Achiam et~al.(2023)Achiam, Adler, Agarwal, Ahmad, Akkaya, Aleman,
-  Almeida, Altenschmidt, Altman, Anadkat, et~al.]{achiam2023gpt4}
-Achiam, J., Adler, S., Agarwal, S., Ahmad, L., Akkaya, I., Aleman, F.~L.,
-  Almeida, D., Altenschmidt, J., Altman, S., Anadkat, S., et~al.
-\newblock Gpt-4 technical report.
-\newblock \emph{arXiv preprint arXiv:2303.08774}, 2023.
-\newblock URL \url{https://arxiv.org/abs/2303.08774}.
 
 \bibitem[Aky{\"u}rek et~al.(2022)Aky{\"u}rek, Schuurmans, Andreas, Ma, and
   Zhou]{akyurek2022learning}
@@ -62,13 +54,6 @@ Andreas, J., Rohrbach, M., Darrell, T., and Klein, D.
 \newblock URL \url{http://arxiv.org/abs/1511.02799}.
 \newblock arXiv:1511.02799 [cs].
 
-\bibitem[Anthropic(2024)]{anthropic2024claude}
-Anthropic.
-\newblock The claude 3 model family: Opus, sonnet, haiku.
-\newblock \emph{Anthropic Technical Report}, 2024.
-\newblock URL
-  \url{https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf}.
-
 \bibitem[Berant et~al.(2013)Berant, Chou, Frostig, and
   Liang]{berant_semantic_2013}
 Berant, J., Chou, A., Frostig, R., and Liang, P.
@@ -104,14 +89,6 @@ Dong, L. and Lapata, M.
 \newblock Language to {Logical} {Form} with {Neural} {Attention}, June 2016.
 \newblock URL \url{http://arxiv.org/abs/1601.01280}.
 \newblock arXiv:1601.01280 [cs].
-
-\bibitem[Fan et~al.(2023)Fan, Hua, Li, Ling, Zhang, and
-  Hemphill]{fan2023nphardeval}
-Fan, L., Hua, W., Li, L., Ling, H., Zhang, Y., and Hemphill, L.
-\newblock Nphardeval: Dynamic benchmark on reasoning ability of large language
-  models via complexity classes.
-\newblock \emph{arXiv preprint arXiv:2312.14890}, 2023.
-\newblock URL \url{https://arxiv.org/abs/2312.14890}.
 
 \bibitem[Gao et~al.(2023)Gao, Madaan, Zhou, Alon, Liu, Yang, Callan, and
   Neubig]{gao2023pal}
@@ -220,14 +197,6 @@ Ibarz, B., Kurin, V., Papamakarios, G., Nikiforou, K., Bennani, M., Csordás,
   {Conference}}, pp.\  2:1--2:23. PMLR, December 2022.
 \newblock URL \url{https://proceedings.mlr.press/v198/ibarz22a.html}.
 \newblock ISSN: 2640-3498.
-
-\bibitem[Jiang et~al.(2023)Jiang, Sablayrolles, Mensch, Bamford, Chaplot,
-  Casas, Bressand, Lengyel, Lample, Saulnier, et~al.]{jiang2023mistral}
-Jiang, A.~Q., Sablayrolles, A., Mensch, A., Bamford, C., Chaplot, D.~S., Casas,
-  D. d.~l., Bressand, F., Lengyel, G., Lample, G., Saulnier, L., et~al.
-\newblock Mistral 7b.
-\newblock \emph{arXiv preprint arXiv:2310.06825}, 2023.
-\newblock URL \url{https://arxiv.org/abs/2310.06825}.
 
 \bibitem[Kallenberg(2021)]{kallenberg2021foundations}
 Kallenberg, O.
@@ -432,23 +401,6 @@ Tang, Q., Deng, Z., Lin, H., Han, X., Liang, Q., Cao, B., and Sun, L.
   with 3000 {Simulated} {Cases}, September 2023.
 \newblock URL \url{http://arxiv.org/abs/2306.05301}.
 \newblock arXiv:2306.05301 [cs].
-
-\bibitem[Team et~al.(2023)Team, Anil, Borgeaud, Wu, Alayrac, Yu, Sorber,
-  Schalkwyk, Dai, Hauth, et~al.]{team2023gemini}
-Team, G., Anil, R., Borgeaud, S., Wu, Y., Alayrac, J.-B., Yu, J., Sorber, R.,
-  Schalkwyk, J., Dai, A.~M., Hauth, A., et~al.
-\newblock Gemini: A family of highly capable multimodal models.
-\newblock \emph{arXiv preprint arXiv:2312.11805}, 2023.
-\newblock URL \url{https://arxiv.org/abs/2312.11805}.
-
-\bibitem[Veli{\v{c}}kovi{\'c} et~al.(2022)Veli{\v{c}}kovi{\'c}, Badia, Budden,
-  Pascanu, Banino, Dashevskiy, Hadsell, and Blundell]{velivckovic2022clrs}
-Veli{\v{c}}kovi{\'c}, P., Badia, A.~P., Budden, D., Pascanu, R., Banino, A.,
-  Dashevskiy, M., Hadsell, R., and Blundell, C.
-\newblock The clrs algorithmic reasoning benchmark.
-\newblock In \emph{Proceedings of the 39th International Conference on Machine
-  Learning}, pp.\  22084--22102. PMLR, 2022.
-\newblock URL \url{https://proceedings.mlr.press/v162/velickovic22a.html}.
 
 \bibitem[Veličković \& Blundell(2021)Veličković and
   Blundell]{velickovic_neural_2021}

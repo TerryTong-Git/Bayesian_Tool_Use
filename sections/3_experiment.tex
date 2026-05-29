@@ -2,7 +2,7 @@
 \label{sec:empirical}
 Our evaluation aims to answer the research questions (RQ):
 \begin{enumerate}
-    \item[1)] Does $\text{Route~1} \leq \text{Route~2} < \text{Route~3}$ hold? (\S\ref{sec:instantiation}, \S\ref{sec:performance})
+    \item[1)] Does $\text{Route~1} \approx \text{Route~2} < \text{Route~3}$ hold? (\S\ref{sec:instantiation}, \S\ref{sec:performance})
 \end{enumerate}
  % RQ 1 is central to the main thesis, and RQ 2 provides motivation to offload to an executor, as well as empirical foundations for the assumptions in  Section~\ref{sec:theory}.
 
@@ -30,13 +30,16 @@ For each problem instance $i$, we observe paired Bernoulli outcomes \[\bigl(Y_i^
 % For notational symmetry, $X_i$ is included in both mappings, although it
 % is ignored by the external executor.
 \paragraph{Data and models.}
-We evaluate on the CLRS-30 benchmark ($n=500$), the NP-Hard-Eval
-benchmark ($n=540$), and a custom fine-grained evaluation suite
-($n=540$), across three random seeds $\{0,1,2 \}$. Tasks span Arithmetic, Dynamic
-Programming, and Integer Linear Programming (ILP), with difficulty
-controlled by a parameter $\tau$.
-We evaluate both closed-source models (\texttt{Claude Haiku~4.5, GPT-4o-mini, Gemini~2.5 Pro})
-and open-source models (\texttt{Mixtral-8x22b-Instruct, Codestral-22B}).
+We evaluate a 40-task analysis set drawn from CLRS-30, NP-Hard-Eval,
+and a custom fine-grained evaluation suite, across three random seeds
+$\{0,1,2 \}$. The set contains 1,113 unique problem instances and
+20,034 paired route evaluations after pooling six full-coverage models.
+Tasks span arithmetic, dynamic programming, graph algorithms, string
+algorithms, geometry, sorting, and NP-hard optimization, with difficulty
+controlled by a parameter $\tau$ when applicable.
+We evaluate closed-source models (\texttt{Claude Haiku~4.5, GPT-4o-mini,
+Gemini~2.0 Flash, Gemini~2.5 Flash}) and open-source models
+(\texttt{Mixtral-8x22b-Instruct, Codestral-2508}).
 
 % Models with more than
 % 50\% JSON parse failures are excluded to avoid confounding instruction
@@ -117,17 +120,17 @@ with instance and seed modeled as random effects.
 % \end{figure*}
 
 \paragraph{Results.}
-Across all benchmarks (\cref{fig:main}), we reject the global null hypothesis
-($p < 0.001$ after correction).
-\emph{Post-hoc tests show a statistically significant advantage of Route~3
-over Route~2}, with a positive paired accuracy gap excluding zero in the
-95\% confidence interval.
-For Route~1 vs.\ Route~2 we do not reject the null, indicating that we cannot
-conclude a meaningful difference between natural-language reasoning
-and code simulation under this evaluation.
-Performance gaps widen with increasing task difficulty (\cref{fig:per_task_accuracy}): Route~3 remains
-stable while Route~1 degrades sharply, with code execution achieving
-approximately $4.1\times$ higher odds of correctness.
+Across the 40-task analysis set (\cref{fig:main}), Route~1 reaches
+17.21\% accuracy, Route~2 reaches 17.37\%, and Route~3 reaches 48.84\%.
+\emph{Route~3 has a statistically significant advantage over Route~2},
+with a +31.47pp paired accuracy gap and a 95\% cluster-bootstrap interval
+of $[+29.20,+33.71]$pp. For Route~1 vs.\ Route~2, the paired gap is
++0.15pp with a 95\% cluster-bootstrap interval of $[-0.30,+0.61]$pp
+and a two-sided McNemar $p=0.39$, so we do not conclude a meaningful
+difference between natural-language reasoning and code simulation under
+this evaluation. Performance gaps widen with increasing task difficulty
+(\cref{fig:per_task_accuracy}): Route~3 remains substantially higher as
+the language-based routes degrade.
 
 % \subsection{Representation-Level Analysis: Does Language Add Information?}
 % \label{sec:rep_analysis}
