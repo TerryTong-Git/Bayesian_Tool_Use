@@ -1,4 +1,4 @@
-PWD /Users/terrytong/Documents/Research Projects/ICML 2026 - Algorithmic Reasoning/Bayesian_Tool_Use_source_20260521
+PWD /Users/terrytong/Documents/Research Projects/ICML 2026 - Algorithmic Reasoning/Bayesian_Tool_Use
 INPUT /usr/local/texlive/2024/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -426,12 +426,12 @@ INPUT ./sections/0_abstract.tex
 INPUT sections/0_abstract.tex
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT ./sections/1_introduction.tex
 INPUT ./sections/1_introduction.tex
 INPUT ./sections/1_introduction.tex
@@ -504,11 +504,6 @@ INPUT ./sections/3_experiment.tex
 INPUT ./sections/3_experiment.tex
 INPUT sections/3_experiment.tex
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf
 INPUT ./images/final/fig5_additivity.pdf
 INPUT ./images/final/fig5_additivity.pdf
 INPUT ./images/final/fig5_additivity.pdf

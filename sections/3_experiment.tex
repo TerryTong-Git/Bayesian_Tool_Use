@@ -10,14 +10,14 @@ Our evaluation aims to answer the research questions (RQ):
 \subsection{Experimental Instantiation of the Three Routes}
 \label{sec:instantiation}
 
-To draw  conclusions about the effect of modality in the trace generation or different execution methods, we ensure one stage is always fixed. For Route 1 vs Route 2, we fix the execution phase by using the same LLM reasoning model forward pass, but use different modalities in the trace generator. For Route 2 vs Route 3, we fix the trace generator which outputs code, then use different execution methods, either LLM reasoning model forward pass, or a python3 runtime. Below, let $X_i$ be the task instantiation of instance $i$. Structured JSON outputs are enforced for sampling in all routes
+To draw conclusions about trace modality and execution method, we fix one stage at a time. For Route~1 vs.\ Route~2, we fix the execution phase by using the same LLM reasoning model forward pass, but use different modalities in the trace generator. For Route~2 vs.\ Route~3, we fix the trace generator that outputs code, then use different execution methods: either an LLM reasoning model forward pass or a Python~3 runtime. Below, let $X_i$ be the task instantiation of instance $i$. Structured JSON outputs are enforced for sampling in all routes
 (\cref{fig:route_prompts}).
 
 \paragraph{Sampling Route 1.}  Route 1 prompts an LLM $E_{NL} $ to function as a trace generator $Z_{NL} := E_{NL}(X_i)$. The trace is then fed into the same LLM $\rho_{NL} = E_{NL}$ to produce an answer $Y_{i}^{(NL)} := \rho_{NL} (Z_{NL})$. The prompt instructs the model to never use code, and to output a structured rationale and answer (see \cref{fig:route_prompts}). Operationalized, one experimental run for Route 1 is encapsulated in a single LLM reasoning model's forward pass without pause.
 \paragraph{Sampling Route 2.} Similarly, Route 2 uses a LLM $E_{Code}$ as a trace generator for code modality $Z_{Code} := E_{Code}(X_i)$. The trace is then fed into the same LLM $\rho_{Sim} = E_{Code}$ to produce an answer $Y_{i}^{(Sim)} := \rho_{Sim} (Z_{Code})$. Operationalized, one experimental run for Route 2 is encapsulated in a single LLM reasoning model's forward pass without pause. Prompt templates are controlled to be as similar as possible, with
 Route~2 differing only by the inclusion of a code-generation and
 simulation instruction (\cref{fig:route_prompts}). We prompt the model to output a program snippet, structured reasoning over the code, followed by an answer.
-\paragraph{Sampling Route 3.} Route 3 takes the exact same code trace $Z_{Code}$ as Route 2, except it runs it through a python3 runtime $\rho_{Exec}$, and retrieves the solution $Y_i^{(Exec)} = \rho_{Exec}(Z_{Code})$. The python3 runtime has access to 5 standard scientific libraries: \texttt{Scipy, Numpy, Pandas, PuLP,} and \texttt{Pytorch}.
+\paragraph{Sampling Route 3.} Route 3 takes the exact same code trace $Z_{Code}$ as Route 2, except it runs it through a Python~3 runtime $\rho_{Exec}$ and retrieves the solution $Y_i^{(Exec)} = \rho_{Exec}(Z_{Code})$. The Python~3 runtime has access to five standard scientific libraries: \texttt{SciPy, NumPy, pandas, PuLP,} and \texttt{PyTorch}.
 \paragraph{Observed outcomes.}
 For each problem instance $i$, we observe paired Bernoulli outcomes \[\bigl(Y_i^{(\mathrm{NL})},\; Y_i^{(\mathrm{Sim})},\; Y_i^{(\mathrm{Exec})}\bigr).\]
 % Let $X_i$ denote the original problem instance and $C_i$ the generated
@@ -41,7 +41,7 @@ We evaluate closed-source models (\texttt{Claude Haiku~4.5, GPT-4o-mini,
 Gemini~2.0 Flash, Gemini~2.5 Flash}) and open-source models
 (\texttt{Mixtral-8x22b-Instruct, Codestral-2508}).
 \Cref{app:complexity_stratified_route_accuracy,app:model_stratified_route_accuracy}
-stratifies these results by complexity and model, and
+stratify these results by complexity and model, and
 \cref{app:additional_model_evaluations} reports subset model coverage.
 
 % Models with more than
@@ -135,7 +135,7 @@ of $[+29.20,+33.71]$pp. For Route~1 vs.\ Route~2, the paired gap is
 +0.15pp with a 95\% cluster-bootstrap interval of $[-0.30,+0.61]$pp
 and a two-sided McNemar $p=0.39$, so we do not conclude a meaningful
 difference between natural-language reasoning and code simulation under
-this evaluation. On the other hand, performance gaps widen with increasing task difficulty
+this evaluation. As performance gaps widen with increasing task difficulty
 (\cref{fig:per_task_accuracy}), Route~3 remains substantially higher as
 the language-based routes degrade. This motivates the hypothesis that execution is the bottleneck.
 
@@ -329,7 +329,7 @@ The main result is that when we model code distribution as a canonicalization of
 % This suggests that, under our translation procedure, code-derived NL traces are distributionally similar to native NL CoT for most tasks.
 % We observe a small number of task-level exceptions (e.g., rod-cutting and Kruskal-style MST) where discrimination may exceed chance, which we treat as potential failure modes of a single fixed translator or as task-specific stylistic artifacts.
 
-\subsection{Linear Modelling Setup and Intuition}
+\subsection{Linear Modeling Setup and Intuition}
 \label{sec:rep-noninferiority}
 
 % We study code and native natural-language representations as two input distributions for the same downstream hypothesis class. The theory keeps the executor fixed and places the route difference in the representation distribution.
@@ -344,7 +344,7 @@ The main result is that when we model code distribution as a canonicalization of
 % \varepsilon.
 % \] holds.
 
-Controlling the downstream hypothesis class enables us to compare the effect of the two input representations. For convenience, the downstream hypothesis class is modelled as realizable and linear.
+Controlling the downstream hypothesis class enables us to compare the effect of the two input representations. For convenience, the downstream hypothesis class is modeled as realizable and linear.
 \begin{equation}
 \cH_{\rm lin}=\big\{h_{a,v}(b,u)=a^\top b+v^\top u:
 a\in\R^{d_B},\ v\in\R^{d_U}\big\}.
@@ -590,7 +590,7 @@ Under \cref{ass:extra-nuisance}, for squared loss and the common class $\cH_{\rm
     \sup_{h\in\cH_{\rm lin}}\{R_C(h)-R_N(h)\}\le 0.
     \label{eq:uniform-ordering}
 \end{equation}
-Consequently code is representation-non-inferior to native natural language with margin \(\varepsilon=0\) in this linear model.
+Consequently code is representation-non-inferior to native natural language with margin 0 in this linear model.
 \end{theorem}
 
 \begin{proof}
@@ -614,10 +614,10 @@ Since the core term is identical for code and native
 natural language, the only possible representation-level difference is the
 penalty for depending on \(U_r\). Because native language has no smaller
 nuisance covariance, it cannot lower that penalty. Thus, in this model,
-trace representation in Route~1 cannot be the bottleneck for improving performance, since the core algorithmic information is already present in the code representation \footnote{If this were not the case, we would not be able to get the final answer.}.
+trace representation in Route~1 cannot be the bottleneck for improving performance, since the core algorithmic information is already present in the code representation \footnote{If this were not the case, we would not be able to get the final answer output from our pipeline.}.
 
 \begin{remark}[Finite-sample OLS intuition]
-By studying why nuisance coordinates hurts learning in the finite-sample regime, we can gain intuition about the results in our uniform population risk result above. Let $p=d_B+d_U$ and consider the Gaussian special case
+By studying why nuisance coordinates hurt learning in the finite-sample regime, we can gain intuition about the uniform population risk result above. Let $p=d_B+d_U$ and consider the Gaussian special case
 \begin{equation}
     S_r\sim\mathcal N(0,\Sigma_r),\qquad
     Y=\beta^{\star\top}S_r+\varepsilon,
@@ -671,26 +671,20 @@ Overall, the linear theory provides an intuition for why representation is not t
     % \includegraphics[width=\linewidth]{images/translation_additivity.png}
     \includegraphics[width=\linewidth]{images/final/fig5_additivity.pdf}
     \vspace{-28pt}
-    \caption{\textbf{Translated NL has the same functionality as the original native NL quantified by end-task accuracy. } When concatenating the reasoning traces to the prompt, we get much higher accuracy as opposed to the baseline with just the prompt, indicating the model is using the reasoning. There are statistically significant differences between the baseline and concatenated prompts, but no statistically significant difference between the Translated NL and Native NL concatenations. Source data is randomly sampled from existing data used to generate \cref{fig:main}, we use 1000 samples per model. }
+    \caption{\textbf{Translated NL has similar downstream functionality to native NL as measured by end-task accuracy.} When we concatenate reasoning traces to the prompt, accuracy rises above the question-only baseline, indicating that the model uses the reasoning. Baseline-vs-concatenated differences are statistically significant, while Translated NL and Native NL are not significantly different. Source data is randomly sampled from the data used to generate \cref{fig:main}; we use 1000 samples per model. }
     \label{fig:translation_additivity}
 \end{figure}
 
 \subsection{Decision Intervention Reduction}
 \label{sec:func_similarity}
-The linear results are not meant to claim that LLMs are linear regressors or
-that real traces literally satisfy the covariance model. They instead identify
-what a representation bottleneck would have to look like: native natural
-language would need to supply decision-relevant information not recoverable from
-the code trace. When the theory breaks down due to non-linearity and
-high-dimensionality, we therefore test this implication directly. If translating
-code into natural language preserves downstream accuracy relative to native
+When the theory breaks down due to non-linearity and
+high-dimensionality, we show that the practical implications remain. If translating code into natural language via fixed transformation, similar to our nuisance intuition, preserves downstream accuracy relative to native
 natural-language reasoning, then the representation story remains the same even
 outside the linear proof: the missing performance is not primarily in the trace
 representation.
 
 \paragraph{Intervention setup.}
-Our goal is to provide evidence that code is non-inferior to NL in expected loss in the LLM regime. In our proof, we modelled NL as a fixed transformation (linearly additive projection) of a code latent. Similarly, we apply a fixed transformation of the code (i.e. permutations, syntactic shifts etc) to simulate NL. We expect it to yield nothing worse, since the underlying assumption is that code contains all decision-relevant information. The following experiment tests that implication directly.
-
+Our goal is to provide evidence that code is non-inferior to NL in expected loss in the LLM regime. In our proof, we modeled NL as a fixed transformation (linearly additive projection) of a code latent. Similarly, we apply a fixed transformation of the code (e.g., permutations and syntactic shifts) to simulate NL. We expect NL to yield nothing worse, since the underlying assumption is that code contains all decision-relevant information. The following experiment tests this implication directly.
 
 We show that a fixed transformation of code (to natural language) behaves
 functionally similar to original natural-language reasoning. Here, our estimand
@@ -713,11 +707,11 @@ We run this test on 1000 held-out instances across multiple translator models (\
 Crucially, in this experiment the translator model is matched to the original code generator (i.e., we translate code produced by the same model family), to avoid confounding functional losses with cross-model stylistic mismatch.
 
 \paragraph{Results.}
-We fail to reject the null hypothesis of equal performance, and observe overlapping 95\% confidence intervals between the Native and Translated conditions (\cref{fig:translation_additivity}).
-This suggests that, under our evaluated settings, translating code into NL does not destroy decision-relevant information for downstream answering, consistent with the claim that NL CoT does not systematically add algorithmic advantage beyond what is in code. Qualitatively, we notice that the translated results are quite similar to the originals, though this seems heavily reliant on the translating prompt.
+We fail to reject the null hypothesis of equal performance and observe overlapping 95\% confidence intervals between the Native and Translated conditions (\cref{fig:translation_additivity}).
+This suggests that, under our evaluated settings, translating code into NL does not destroy decision-relevant information for downstream answering, consistent with the claim that NL CoT does not systematically add algorithmic advantage beyond what is in code. Qualitatively, the translated results are similar to the originals, though this appears to depend heavily on the translating prompt.
 
 
-\paragraph{Interpretation.} Our empirical results indicate that translated code traces and native natural-language traces provide similar decision-relevant information in the settings we study. We find no evidence that natural-language reasoning introduces novel algorithmic strategies beyond those already captured by code representations on algorithmic tasks. Thus, in these experiments, replacing NL traces with code traces in the generation stage is not the end-to-end bottleneck. The execution analysis in \cref{sec:route2v3} examines the remaining gap; \cref{tab:appendix_shot_ablation} reports a shot ablation.
+\paragraph{Interpretation.} Our empirical results indicate that translated code traces and native natural-language traces provide similar decision-relevant information in the settings we study. We find no evidence that natural-language reasoning introduces novel algorithmic strategies beyond those already captured by code representations on algorithmic tasks. Thus, in these experiments, replacing NL traces with code traces in the generation stage is not the end-to-end bottleneck. The execution analysis in \cref{sec:route2v3} examines the remaining gap.
 
 % The end-to-end results in Section~\ref{sec:performance} are consistent with the hypothesis. If true, the hypothesis would imply little benefits of NL over code for the trace generation stage. Thus, using code in the trace generation stage, and delegating to an external runtime in the execution stage which also avoids simulation noise would be the optimal choice (Arm 3). We test the hypothesis by answering two research questions.
 
