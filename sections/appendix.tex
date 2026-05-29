@@ -16,26 +16,12 @@
 \section{Supplementary Route Results}
 \label{app:route_robustness}
 
-\noindent\textbf{Route definitions.}~Across all route tables, \RouteOne{} denotes natural-language reasoning,
-\RouteTwo{} denotes natural-language simulation over code traces, and
-\RouteThree{} denotes deterministic code execution. Captions and result notes
-state when a table uses the 40-task analysis set, a 25\% subset, a single seed,
-or per-arm parse-normalized denominators. Unless otherwise stated, accuracies
-are percentages and route differences are percentage points.
-
-\noindent\textbf{Reading guide.}~\Cref{app:route_robustness} stratifies the
-main route result. \Cref{app:functional_similarity_checks} checks the translated
-trace intervention, \cref{app:additional_model_evaluations} reports subset
-model-coverage extensions, and \cref{app:failure_analysis} diagnoses execution
-failures.
-
 \subsection{Complexity-Stratified Route Accuracy}
 \label{app:complexity_stratified_route_accuracy}
 
 We stratify the main route-accuracy evaluation by the asymptotic complexity
 class of each task to check whether a single complexity regime drives the
-aggregate route pattern. Because several strata are small, we report route
-accuracies and route gaps only.
+aggregate route pattern.
 
 \begin{appendixtableblock}
 \footnotesize
@@ -54,16 +40,13 @@ $O(n^3)$ & 4 & 37 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
 NP-hard & 6 & 360 & 17.6 & 16.8 & 69.7 & -0.8 & 53.0 \\
 \bottomrule
 \end{tabular*}
-\captionof{table}{Route accuracy grouped by asymptotic complexity on the 40-task analysis set in the main route evaluation. Tasks and Inst. report task and instance counts; route differences are percentage-point gaps.}
+\captionof{table}{Route accuracy grouped by asymptotic complexity on the 40-task benchmark set in the main route evaluation. We report task and instance counts. The route differences are percentage-point gaps.}
 \label{tab:appendix_complexity_routes}
 \end{appendixtableblock}
 
 \appendixresult{\Cref{tab:appendix_complexity_routes} shows the aggregate route pattern within the larger retained complexity strata. \RouteThree{}--\RouteTwo{} is the largest observed route change, and \RouteTwo{} stays close to \RouteOne{}. Sparse strata should be read as coverage checks rather than separate hypothesis tests.}
 
-\noindent\textbf{Task mapping.}~The 40-task analysis set is the broader
-44-task route-analysis mapping after excluding \texttt{segments\_intersect},
-\texttt{knap}, \texttt{gcp}, and \texttt{spp}. Within the retained set, the
-largest strata are $O(n^2)$ dynamic-programming, sorting, string, graph, and
+\noindent\textbf{Task mapping.}~The retained set's largest strata are $O(n^2)$ dynamic-programming, sorting, string, graph, and
 shortest-path tasks, plus NP-hard ILP, edge-disjoint paths, shortest-path, and
 TSP tasks. Smaller strata cover constant-time arithmetic, logarithmic binary
 search, linear selection/string matching,
@@ -105,8 +88,8 @@ Model & Type & Inst. & R1 & R2 & R3 & R2--R1 & $p_{2,1}$ & R3--R2 & $p_{3,2}$ \\
 \subsection{Prompt Translation Shot Ablation}
 \label{app:prompt_translation_shot_ablation}
 
-The functional similarity test depends on translating code traces back into
-natural language. To test sensitivity to prompting, we vary the number of
+The functional similarity test translates code traces back into natural
+language as a fixed transformation. To test sensitivity to prompting, we vary the number of
 in-context examples used by the translator and measure translated-trace utility
 against native natural-language traces.
 
@@ -126,7 +109,7 @@ Shots & $x$ & $x$ + native NL & $x$ + translated NL & $\Delta$ native & $\Delta$
 10 (reference) & 39.00\% & 56.50\% & 52.00\% & +17.50pp & +13.00pp & -4.50pp \\
 \bottomrule
 \end{tabular*}
-\captionof{table}{Translation-additivity shot ablation for Claude Haiku 4.5. Here $x$ denotes the question-only baseline, and Gap is translated NL minus native NL. Rows 0--5 use a matched 25\% subset sweep; the 10-shot row is an original main-evaluation reference and is not from the same subset sweep.}
+\captionof{table}{Translation-additivity shot ablation for Claude Haiku 4.5. Here $x$ denotes the question-only baseline, and Gap is translated NL minus native NL. Rows 0--5 use a matched 25\% subset sweep. The 10-shot row is an original main-evaluation reference and is not from the same 25\% subset sweep.}
 \label{tab:appendix_shot_ablation}
 \end{appendixtableblock}
 
@@ -156,7 +139,7 @@ Gemini 2.5 Pro & 47.5\% & 45.2\% & Code \\
 \label{tab:appendix_rlm}
 \end{appendixtableblock}
 
-\appendixresult{\Cref{tab:appendix_rlm} has no uniform winner: the RLM NL arm is higher for Claude Haiku 4.5, while the RLM code arm is higher for Gemini 2.5 Pro. The corresponding counts are 202/686 code-correct vs. 212/686 NL-correct for Claude Haiku 4.5, and 326/686 code-correct vs. 310/686 NL-correct for Gemini 2.5 Pro. Because this is a 25\% subset, we use it as model-coverage evidence rather than as the main route estimate.}
+\appendixresult{\Cref{tab:appendix_rlm} shows mixed code-vs.-NL results under RLM execution: the NL arm is higher for Claude Haiku 4.5, while the code arm is higher for Gemini 2.5 Pro. Because this is a 25\% subset, we use it as model-coverage evidence rather than as the main route estimate.}
 
 \subsection{Coding-Specialized Model Evaluation}
 \label{app:coding_specialized_model_evaluation}
@@ -182,16 +165,10 @@ Model & NL & Sim & Code Exec \\
 \label{tab:appendix_coding_models}
 \end{appendixtableblock}
 
-\appendixresult{\Cref{tab:appendix_coding_models} shows that Code Exec is the highest-accuracy arm in each coding-specialized row. Grok and Qwen use 25\% subset runs; Codestral uses the original evaluation run. Rows use per-arm parse-normalized denominators and are not pooled into the main six-model estimate.}
+\appendixresult{\Cref{tab:appendix_coding_models} shows that Code Exec is the highest-accuracy arm in each coding-specialized row. Grok and Qwen use 25\% subset runs, while Codestral uses the original evaluation run.}
 
 \subsection{Frontier Model Controlled-Subset Evaluation}
 \label{app:frontier_model_sanity_checks}
-
-We also evaluate two frontier models on a seed~1, 350-instance subset with
-tool calling disabled and without patching or repair. These subset runs are not
-used as the main estimate because the subset is smaller than the full six-model
-evaluation, but they provide a controlled check that the route pattern is not
-explained only by explicit tool calls.
 
 \begin{appendixtableblock}
 \small
@@ -204,12 +181,13 @@ GPT-5.4 & 42.57\% (149/350) & 41.43\% (145/350) & 54.01\% (175/324) \\
 Claude Opus 4.6 & 52.73\% (174/330) & 73.42\% (116/158) & 77.54\% (107/138) \\
 \bottomrule
 \end{tabular*}
-\captionof{table}{Frontier tool-disabled controlled-subset route accuracy on the seed~1, 350-instance subset without patching or repair. Entries report accuracy with correct/denominator counts.}
+\captionof{table}{Frontier controlled-subset route accuracy on the seed~1, 350-instance subset.}
 \label{tab:appendix_frontier_nopatch}
 \end{appendixtableblock}
 
-\appendixresult{\Cref{tab:appendix_frontier_nopatch} keeps \RouteThree{} ahead in both tool-disabled rows; reasoning-mode runs are excluded as confounded.}
+\appendixresult{\Cref{tab:appendix_frontier_nopatch} keeps \RouteThree{} ahead in both controlled-subset rows, but the margins are smaller than in the main six-model evaluation.}
 
+\clearpage
 \section{Failure Analysis}
 \label{app:failure_analysis}
 
@@ -236,8 +214,8 @@ Mixtral & 60.67\% & 4.95\% & 32.14\% & 2.24\% \\
 Total & 70.43\% & 9.34\% & 11.55\% & 8.67\% \\
 \bottomrule
 \end{tabular*}
-\captionof{table}{Failure-mode distribution conditional on \RouteThree{} code-execution failures. Rows are within-model percentages and sum to 100\% up to rounding.}
+\captionof{table}{Failure-mode distribution conditional on \RouteThree{} code-execution failures. Rows are within-model percentages.}
 \label{tab:appendix_code_failure_modes}
 \end{appendixtableblock}
 
-\appendixresult{\Cref{tab:appendix_code_failure_modes} shows that wrong answers dominate among \RouteThree{} code-execution failures. Parse-only rows where execution completed but the returned value failed parsing or type checks are excluded, keeping the diagnostic focused on failures after execution was attempted.}
+\appendixresult{\Cref{tab:appendix_code_failure_modes} shows that wrong answers dominate among \RouteThree{} code-execution failures. Parse-only rows, where execution completed but the returned value failed parsing or type checks, are excluded to keep the diagnostic focused on failures after execution was attempted.}
