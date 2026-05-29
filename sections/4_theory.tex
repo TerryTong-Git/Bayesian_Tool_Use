@@ -5,7 +5,7 @@
 %     \item[1)] Under the assumptions in \cref{assump1}, can we prove that the compute-constrained optimal risk for code $\leq$ NL + $\varepsilon$? (\cref{arm1varm2})
 %     \item[2)] Can we prove the expected loss is less for code execution (Arm 3) than code reasoning via LLM (Arm 2) when the code is correct, and when the code is wrong, the chances of Arm 2 > Arm 3 is small?
 % \end{enumerate}
-% \yu{It is better to have declarative statements here: 
+% \yu{It is better to have declarative statements here:
 
 % We adopt the three-arm framework introduced in \S\ref{sec:framework}. Each arm is represented as a pair
 % $(E,\rho)$ consisting of a trace generator $E$ and an executor $\rho$,
@@ -34,11 +34,11 @@
 % provide auxiliary side information.
 % Accordingly, all comparisons below are conditional on $X$ and should
 % be interpreted as statements about the relative usefulness of auxiliary
-% traces and execution mechanisms under shared observation of $X$. \yu{Make this paragraph shorter and put it in the footnote.} Deleted since we do not condition on X. 
+% traces and execution mechanisms under shared observation of $X$. \yu{Make this paragraph shorter and put it in the footnote.} Deleted since we do not condition on X.
 
 
 % \subsection{Statistical Interpretation of Results}
-% We begin by introducing three assumptions, with each assumption referencing empirical support from the previous results. We conclude with a theorem that answers the main research question with the following conclusion: code is always as good as natural language for trace generation up to a small error bound, and thus the bottleneck that explains the gap between code and NL is not in the trace generation. 
+% We begin by introducing three assumptions, with each assumption referencing empirical support from the previous results. We conclude with a theorem that answers the main research question with the following conclusion: code is always as good as natural language for trace generation up to a small error bound, and thus the bottleneck that explains the gap between code and NL is not in the trace generation.
 % % \paragraph{Unconditional translation of code traces.}
 
 % \paragraph{Assumption 1 (Translator / trace translation kernel).}
@@ -65,7 +65,7 @@
 % % \yu{$tr$ seems to be short for trace, suggest use $tran$ here}
 % We denote by $E_{\mathrm{Tran}}$ the corresponding translated trace
 % generator.
-% % \yu{Add a sentence to explain the formula: Therefore, any NL trace can be simulated from a code trace through the translator?} I'm not confident about this claim, since I think it might be conditional on the model, best to just omit since its not too relevant to the claim anyway. Which formula are you talking abt (line number helps). 
+% % \yu{Add a sentence to explain the formula: Therefore, any NL trace can be simulated from a code trace through the translator?} I'm not confident about this claim, since I think it might be conditional on the model, best to just omit since its not too relevant to the claim anyway. Which formula are you talking abt (line number helps).
 % This is a one-sided simulation assumption: we do not assume that code
 % traces are simulable from NL traces, nor do we claim Blackwell
 % equivalence.
@@ -117,7 +117,7 @@
 % \, T(z_{\mathrm{NL}} \mid z_{\mathrm{C}})
 % \, dz_{\mathrm{NL}}
 % \]
-% belongs to $\mathcal{H}_{\mathrm{C}}$, i.e. a composed executor behaves as if it is a regular LLM reasoning model. Our empirical insights in the functionality experiments (\cref{sec:func_similarity}) support this claim. 
+% belongs to $\mathcal{H}_{\mathrm{C}}$, i.e. a composed executor behaves as if it is a regular LLM reasoning model. Our empirical insights in the functionality experiments (\cref{sec:func_similarity}) support this claim.
 
 % Under these assumptions, code traces are sufficient (up to $\varepsilon$)
 % to reproduce the performance of the best NL-trace executor.
@@ -136,7 +136,7 @@
 
 
 % \paragraph{Interpretation.}
-% Our analysis suggests that code is always as good as natural language for trace generation up to an $\varepsilon$ difference which we empirically demonstrated was small, and therefore the bottleneck is not code in the trace generation stage. 
+% Our analysis suggests that code is always as good as natural language for trace generation up to an $\varepsilon$ difference which we empirically demonstrated was small, and therefore the bottleneck is not code in the trace generation stage.
 
 % Theorem~\ref{thm:code_ge_nl} is existential: it guarantees the existence
 % of a code-side executor that matches the best NL-side executor up to
@@ -158,7 +158,7 @@ We pinpoint execution as the bottleneck (cf.\ \cref{sec:rep_analysis}), highligh
 
 \subsection{Setup}
 \label{sec:route2v3_setup}
-As defined in Section~\ref{sec:framework}, Route~2 and Route~3 share the same
+As defined in \cref{sec:framework}, Route~2 and Route~3 share the same
 trace generator $E_{\mathrm{Code}}$ and differ only in the executor.
 
 Let $\rho_{\mathrm{Sim}}\in\mathcal{H}_{\mathrm{C}}$ denote the fixed
@@ -197,7 +197,7 @@ Route~2, while recovery on incorrect or failed executions
 ($\Pr(\neg C)r$) helps Route~2.
 Route~3 dominates whenever the recovery mass is insufficient to offset
 simulation noise, a condition quantified empirically in
-Section~\ref{sec:performance}.
+\cref{sec:performance}.
 
 \paragraph{Empirical recovery as an upper bound.}
 A direct way to operationalize the ``recovery'' term in the decomposition is to measure the frequency with which Route~2 succeeds while Route~3 fails on the \emph{same} generated code trace, i.e.,
@@ -227,7 +227,7 @@ Empirically, we find that recovery mass is consistently small across tasks and m
 In the 40-task analysis set, this recovery mass is 1.61\%, and the execution-win mass $\Pr(C)e_C$ is 33.08\%. These values explain why deterministic execution typically achieves lower end-to-end error than simulation on the same generated code traces (\cref{fig:main}). \Cref{tab:appendix_code_failure_modes} reports the corresponding code-execution failure modes.
 
 % \paragraph{Theory--Empirics Connection.}
-% Although Theorem 1 is stated in terms of optimal (existential) risk, it provides a reduction: under empirically-motivated assumptions, any NL-trace decision rule in 
+% Although Theorem 1 is stated in terms of optimal (existential) risk, it provides a reduction: under empirically-motivated assumptions, any NL-trace decision rule in
 %  can be implemented on code traces by “translate-then-decode,” implying code traces are not inherently less informative than NL traces for our executor families (up to ε). Consequently, performance gaps between Arm1 and Arm2 should be attributed to executor suboptimality rather than representational insufficiency. The Arm2–Arm3 decomposition then isolates where strict gains arise: external execution eliminates simulation noise on correct code, while empirically the probability of recovery from incorrect code is small, explaining the observed ordering Arm1 ≈ Arm2 < Arm3.
 % Our theoretical analysis provides an explanatory framework for the empirical ordering
 % $\text{Arm~1} \simeq \text{Arm~2} < \text{Arm~3}$ observed in Section~\ref{sec:empirical}.
